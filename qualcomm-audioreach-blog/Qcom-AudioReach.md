@@ -1,10 +1,8 @@
 # Qualcomm Technologies, Inc. is open-sourcing AudioReach, its end-to-end audio software solution
 
-![AudioReach](images/hero.png)
-
-> **Author:** Patrick Lai, Principal Engineer
-> **Originally published:** October 2024  
-> **Source:** <https://www.qualcomm.com/developer/blog/2024/10/qualcomm-open-sourcing-audio-reach-end-to-end-audio-software>
+> **Author:** Patrick Lai, Principal Engineer </br>
+> **Originally published:** October 2024  </br>
+> **Source:** <https://www.qualcomm.com/developer/blog/2024/10/qualcomm-open-sourcing-audio-reach-end-to-end-audio-software> </br>
 
 ---
 
