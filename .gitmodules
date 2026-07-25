@@ -1,33 +1,33 @@
 [submodule "agm"]
-	path = agm
+	path = vendor/qcom/opensource/agm
 	url = https://git.codelinaro.org/clo/la/platform/vendor/qcom/opensource/audioreach/audioreach-graphmgr.git
 [submodule "ahal-aidl"]
-	path = ahal-aidl
+	path = hardware/qcom/audio-aidl
 	url = https://git.codelinaro.org/clo/la/platform/hardware/qcom/audio-aidl.git
 [submodule "aosp-frameworks-av"]
-	path = aosp-frameworks-av
+	path = frameworks/av
 	url = https://git.codelinaro.org/clo/la/platform/frameworks/av.git
 [submodule "aosp-frameworks-base"]
-	path = aosp-frameworks-base
+	path = frameworks/base
 	url = https://git.codelinaro.org/clo/la/platform/frameworks/base.git
 [submodule "aosp-hardware-interfaces"]
-	path = aosp-hardware-interfaces
+	path = hardware/interfaces
 	url = https://git.codelinaro.org/clo/la/platform/hardware/interfaces.git
 [submodule "aosp-system-media"]
-	path = aosp-system-media
+	path = system/media
 	url = https://git.codelinaro.org/clo/la/platform/system/media.git
 [submodule "ar-conf"]
-	path = ar-conf
+	path = vendor/qcom/opensource/audioreach-conf
 	url = https://git.codelinaro.org/clo/la/platform/vendor/qcom/opensource/audioreach/audioreach-conf.git
 [submodule "ar-engine"]
-	path = ar-engine
+	path = vendor/qcom/opensource/audioreach-engine
 	url = https://git.codelinaro.org/clo/la/platform/vendor/qcom/opensource/audioreach-engine.git
 [submodule "audio-kernel-ar"]
-	path = audio-kernel-ar
+	path = vendor/qcom/opensource/audio-kernel-ar
 	url = https://git.codelinaro.org/clo/la/platform/vendor/qcom/opensource/audio-kernel-ar.git
 [submodule "graphservices"]
-	path = graphservices
+	path = vendor/qcom/opensource/graphservices
 	url = https://git.codelinaro.org/clo/la/platform/vendor/qcom/opensource/audioreach/audioreach-graphservices.git
 [submodule "pal"]
-	path = pal
+	path = vendor/qcom/opensource/pal
 	url = https://git.codelinaro.org/clo/la/platform/vendor/qcom/opensource/audioreach/audioreach-pal.git
