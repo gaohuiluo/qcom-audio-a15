@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Integrator Workflow &mdash; AudioReach Documentation 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/audioreach.css?v=cd7bb9cf" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Platform Porting Guide" href="plat_port.html" />
+    <link rel="prev" title="CAPI Module Development Guide" href="capi_mod_dev.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AudioReach Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sdk_overview.html">AudioReach Project Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">AudioReach Designs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">AudioReach APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">AudioReach Developer Guides</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dev_workflow.html">Development Workflow</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="adding_modules.html">How to add an Audio Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capi_mod_dev.html">CAPI Module Development Guide</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">System Integrator Workflow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#workflow-overview">Workflow Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#customizing-kvs-with-kvh2xml">Customizing KVs with KVH2XML</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plat_port.html">Platform Porting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="available_modules.html">Available Audio Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alsalib_using_audioreach.html">ALSA lib using AudioReach</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arc/index.html">AudioReach Creator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform Reference Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AudioReach Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">AudioReach Developer Guides</a></li>
+          <li class="breadcrumb-item"><a href="dev_workflow.html">Development Workflow</a></li>
+      <li class="breadcrumb-item active">System Integrator Workflow</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/dev/system_workflow.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="system-integrator-workflow">
+<span id="system-workflow"></span><h1>System Integrator Workflow<a class="headerlink" href="#system-integrator-workflow" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id2">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#workflow-overview" id="id3">Workflow Overview</a></p>
+<ul>
+<li><p><a class="reference internal" href="#import-h2xml-xml-files" id="id4">Import H2XML XML files</a></p></li>
+<li><p><a class="reference internal" href="#design-use-case-graphs" id="id5">Design use case graphs</a></p></li>
+<li><p><a class="reference internal" href="#associate-gkv-ckv-tkv" id="id6">Associate GKV, CKV, TKV</a></p></li>
+<li><p><a class="reference internal" href="#configure-dynamic-loading" id="id7">Configure dynamic loading</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#customizing-kvs-with-kvh2xml" id="id8">Customizing KVs with KVH2XML</a></p>
+<ul>
+<li><p><a class="reference internal" href="#kvh2xml-overview" id="id9">KVH2XML overview</a></p></li>
+<li><p><a class="reference internal" href="#adding-a-generic-key" id="id10">Adding a generic key</a></p></li>
+<li><p><a class="reference internal" href="#adding-a-graph-or-calibration-key" id="id11">Adding a graph or calibration key</a></p></li>
+<li><p><a class="reference internal" href="#adding-a-module-tag" id="id12">Adding a module tag</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="introduction">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>This document is a high-level overview of the system integrator workflow.
+A system integrator utilizes AudioReach to design audio use case graph and develop software to operate on the use case graph.
+Before proceeding to rest of document, it is important for system integrator to first understand fundamental AudioReach graph
+composition and use case constructs. For high-level overviews of these concepts along with some examples,
+please refer to the <a class="reference internal" href="../design/design_concept.html#design-concept"><span class="std std-ref">AudioReach Concepts and Terminology</span></a> page.</p>
+</section>
+<section id="workflow-overview">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Workflow Overview</a><a class="headerlink" href="#workflow-overview" title="Link to this heading"></a></h2>
+<figure class="fig-center align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/system_designer_workflow.png"><img alt="../_images/system_designer_workflow.png" height="736" src="../_images/system_designer_workflow.png" width="560" />
+</a>
+<figcaption>
+<p><span class="caption-text">System Integrator Workflow Diagram</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="import-h2xml-xml-files">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Import H2XML XML files</a><a class="headerlink" href="#import-h2xml-xml-files" title="Link to this heading"></a></h3>
+<p>In AudioReach, H2XML definitions are used to generate metadata that can be leveraged
+in ARC to create use cases. H2XML files are generated via annotations in the API files. Some examples of H2XML metadata include:</p>
+<ul class="simple">
+<li><p>CAPI module definitions</p></li>
+<li><p>Key-values and module tags, defined in kvh2xml.h</p></li>
+<li><p>Container properties</p></li>
+<li><p>Driver properties</p></li>
+</ul>
+</section>
+<section id="design-use-case-graphs">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Design use case graphs</a><a class="headerlink" href="#design-use-case-graphs" title="Link to this heading"></a></h3>
+<p>The core task of the system designer is to create a system of graphs that satisfy the
+product-specific use case requirements. The system designer should have some
+knowledge of the tuning requirements for a device in order to utilize the best signal
+processing topology for a particular use case. In many situations, the reference
+implementation may be adequate.</p>
+</section>
+<section id="associate-gkv-ckv-tkv">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Associate GKV, CKV, TKV</a><a class="headerlink" href="#associate-gkv-ckv-tkv" title="Link to this heading"></a></h3>
+<p>To satisfy the driver-side logic, the system designer must associate GKVs, CKVs and
+TKVs to leverage graphs and modules with minimal calibration entries. Some tuning
+knowledge is required (for example, which modules should be sample rate-dependent
+(useful when assigning CKVs)).
+If necessary, the system designer may also create new key-values using the KVH2XML
+header file.</p>
+</section>
+<section id="configure-dynamic-loading">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Configure dynamic loading</a><a class="headerlink" href="#configure-dynamic-loading" title="Link to this heading"></a></h3>
+<p>The system designer may optionally choose to configure whether each module is
+loaded either at bootup or runtime.</p>
+</section>
+</section>
+<section id="customizing-kvs-with-kvh2xml">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Customizing KVs with KVH2XML</a><a class="headerlink" href="#customizing-kvs-with-kvh2xml" title="Link to this heading"></a></h2>
+<section id="kvh2xml-overview">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">KVH2XML overview</a><a class="headerlink" href="#kvh2xml-overview" title="Link to this heading"></a></h3>
+<p>AudioReach defines a data-driven method of use case handling. Using
+KVH2XML.h, H2XML tools, and the Discovery Wizard in ARC, a system designer can
+define and manage custom keys and values.
+The general steps to add or modify keys/key-values are:</p>
+<p>1. Update driver software to include a new key/key-value to associate to a new use
+case.</p>
+<ol class="arabic simple" start="2">
+<li><p>In ARC, import the updated key definitions and associate them to a new use case.</p></li>
+</ol>
+</section>
+<section id="adding-a-generic-key">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Adding a generic key</a><a class="headerlink" href="#adding-a-generic-key" title="Link to this heading"></a></h3>
+<p>In KVH2XML, keys are first defined as generic keys then later added as graph keys,
+calibration keys, or module tags. The below images are examples used
+exclusively by Qualcomm. To add a generic key:</p>
+<ol class="arabic simple">
+<li><p>Open kvh2xml.h located in the audioreach-conf repository.</p></li>
+<li><p>Add a new key ID to the AllKeyIds enum:</p></li>
+</ol>
+<figure class="fig-left align-default">
+<a class="reference internal image-reference" href="../_images/allKeyIds.png"><img alt="../_images/allKeyIds.png" height="307" src="../_images/allKeyIds.png" width="812" />
+</a>
+</figure>
+<p>The key ID value will follow the format 0xFF000000.</p>
+<ol class="arabic simple" start="3">
+<li><p>Define the key values:</p></li>
+</ol>
+<figure class="fig-left align-default">
+<a class="reference internal image-reference" href="../_images/define_key_values.png"><img alt="../_images/define_key_values.png" height="326" src="../_images/define_key_values.png" width="826" />
+</a>
+</figure>
+</section>
+<section id="adding-a-graph-or-calibration-key">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Adding a graph or calibration key</a><a class="headerlink" href="#adding-a-graph-or-calibration-key" title="Link to this heading"></a></h3>
+<p>To add the key as a graph or calibration key (after adding as a generic key):</p>
+<ol class="arabic simple">
+<li><p>Using the key ID, add the generic key to the Graph_Keys enum:</p></li>
+</ol>
+<figure class="fig-left align-default">
+<a class="reference internal image-reference" href="../_images/graph_keys.png"><img alt="../_images/graph_keys.png" height="226" src="../_images/graph_keys.png" width="410" />
+</a>
+</figure>
+<p>Otherwise, if the new key is a calibration key, add it to the CAL-Keys enum:</p>
+<figure class="fig-left align-default">
+<a class="reference internal image-reference" href="../_images/calibration_keys_enum.png"><img alt="../_images/calibration_keys_enum.png" height="206" src="../_images/calibration_keys_enum.png" width="389" />
+</a>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Update the driver side logic to create a use case mapping for the new key.</p></li>
+</ol>
+<p>3. After recompiling, the output XML file is automatically generated. Import the new
+KVH2XML xml file using the Discovery Wizard. For details, see section 4.1 of the ARC guide.</p>
+</section>
+<section id="adding-a-module-tag">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Adding a module tag</a><a class="headerlink" href="#adding-a-module-tag" title="Link to this heading"></a></h3>
+<p>To add the key as a module tag (after adding as a generic key):</p>
+<ol class="arabic simple">
+<li><p>Open <a class="reference external" href="https://github.com/Audioreach/audioreach-conf/blob/master/qcom/kvh2xml.h">kvh2xml.h</a>.</p></li>
+<li><p>Add the new tag as a define in kvh2xml.h. Tag values follow the format 0xC00000FF:</p></li>
+</ol>
+<figure class="fig-left align-default">
+<a class="reference internal image-reference" href="../_images/define_new_tag.png"><img alt="../_images/define_new_tag.png" height="136" src="../_images/define_new_tag.png" width="472" />
+</a>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p>Add one or more keys to associate with the module tag:</p></li>
+</ol>
+<figure class="fig-left align-default">
+<a class="reference internal image-reference" href="../_images/tag_key.png"><img alt="../_images/tag_key.png" height="87" src="../_images/tag_key.png" width="379" />
+</a>
+</figure>
+<ol class="arabic simple" start="4">
+<li><p>Update the driver side logic to utilize the new tag.</p></li>
+</ol>
+<p>5. After recompiling, the output XML file is automatically generated. Import the new
+KVH2XML xml file using the Discovery Wizard. For details, see section 4.1 of the ARC guide.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="capi_mod_dev.html" class="btn btn-neutral float-left" title="CAPI Module Development Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plat_port.html" class="btn btn-neutral float-right" title="Platform Porting Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, AudioReach.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

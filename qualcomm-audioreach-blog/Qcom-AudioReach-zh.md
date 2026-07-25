@@ -22,7 +22,7 @@
 
 本文将带你走一遍 AudioReach SDK，看看它为 PC 主机和手机、车载、XR/VR、智能音箱、摄像头和视频会议等嵌入式设备准备的那些软件组件。
 
-（这是我在 Linaro Connect 上演讲《AudioReach Open Source Project》的摘要，详情和链接见文末。）
+（这是我在 Linaro Connect 上演讲《 AudioReach Open Source Project》的摘要，详情和链接见文末。）
 
 ### 高通的开源实践
 
@@ -195,8 +195,6 @@ AudioReach SDK 在脱机仿真模式下跑的就是嵌入式设备上那一套�
 ---
 
 ## 关于作者
-
-![Patrick Lai](images/author-patrick-lai.png)
 
 Patrick Lai 是高通首席工程师，音频软件团队成员，专攻 Linux 音频，也是 AudioReach 开源项目的首席维护者。
 

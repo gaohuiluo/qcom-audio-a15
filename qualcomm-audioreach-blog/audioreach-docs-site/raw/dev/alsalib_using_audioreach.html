@@ -1,0 +1,681 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALSA lib using AudioReach &mdash; AudioReach Documentation 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/audioreach.css?v=cd7bb9cf" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AudioReach Creator" href="../arc/index.html" />
+    <link rel="prev" title="Available Audio Modules" href="available_modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AudioReach Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sdk_overview.html">AudioReach Project Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">AudioReach Designs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">AudioReach APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">AudioReach Developer Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dev_workflow.html">Development Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plat_port.html">Platform Porting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="available_modules.html">Available Audio Modules</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ALSA lib using AudioReach</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#alsa-lib-setup">ALSA lib Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#metadata-binary-files-generation-using-arc">Metadata Binary Files Generation using ARC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#required-metadata-files">Required Metadata Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generate-metadata-with-arc">Generate Metadata with ARC</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#running-audio-use-cases">Running Audio Use Cases</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general-setup">General Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-amixer">Using amixer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-alsa-ucm">Using ALSA UCM</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arc/index.html">AudioReach Creator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform Reference Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AudioReach Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">AudioReach Developer Guides</a></li>
+      <li class="breadcrumb-item active">ALSA lib using AudioReach</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/dev/alsalib_using_audioreach.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="alsa-lib-using-audioreach">
+<span id="id1"></span><h1>ALSA lib using AudioReach<a class="headerlink" href="#alsa-lib-using-audioreach" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#alsa-lib-setup" id="id10">ALSA lib Setup</a></p>
+<ul>
+<li><p><a class="reference internal" href="#prerequisites" id="id11">Prerequisites</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#metadata-binary-files-generation-using-arc" id="id12">Metadata Binary Files Generation using ARC</a></p>
+<ul>
+<li><p><a class="reference internal" href="#required-metadata-files" id="id13">Required Metadata Files</a></p></li>
+<li><p><a class="reference internal" href="#generate-metadata-with-arc" id="id14">Generate Metadata with ARC</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#running-audio-use-cases" id="id15">Running Audio Use Cases</a></p>
+<ul>
+<li><p><a class="reference internal" href="#general-setup" id="id16">General Setup</a></p></li>
+<li><p><a class="reference internal" href="#using-amixer" id="id17">Using amixer</a></p></li>
+<li><p><a class="reference internal" href="#using-alsa-ucm" id="id18">Using ALSA UCM</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#references" id="id19">References</a></p></li>
+</ul>
+</nav>
+<p>This guide provides detailed information on integrating ALSA lib with AudioReach to realize audio
+use-cases. AudioReach provides a plugin-based architecture built around the AGM (Audio Graph Manager),
+a user-space service that manages the audio graph. ALSA lib integrates with AudioReach through
+the AGM plugin, which exposes a standard ALSA PCM and mixer interface to audio applications.
+The guide covers metadata generation using ARC (AudioReach Creator), ALSA plugin configuration, and examples for
+running audio use-cases using amixer and ALSA UCM.</p>
+<section id="alsa-lib-setup">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">ALSA lib Setup</a><a class="headerlink" href="#alsa-lib-setup" title="Link to this heading"></a></h2>
+<p>This section covers the installation and verification of ALSA lib packages required for AudioReach integration. The ALSA lib packages provide the necessary libraries and utilities to interface with AudioReach’s plugin-based architecture.</p>
+<section id="prerequisites">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Prerequisites</a><a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h3>
+<p>Before setting up for ALSA lib, verify that all AudioReach components are installed on your target platform.
+Refer to the relevant platform setup guide (for example, <a class="reference internal" href="../platform/raspberry_pi4.html#raspberry-pi4"><span class="std std-ref">Raspberry Pi 4</span></a> for Raspberry Pi 4).</p>
+<section id="alsa-package-installation">
+<h4>ALSA Package Installation<a class="headerlink" href="#alsa-package-installation" title="Link to this heading"></a></h4>
+<p><strong>For Yocto-based builds</strong>, the ALSA lib packages should be included in the Yocto build. Open the file <code class="docutils literal notranslate"><span class="pre">&lt;yocto_build_root&gt;/build/conf/local.conf</span></code> and add the required packages:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>IMAGE_INSTALL:append<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot; \</span>
+<span class="s2">alsa-lib \</span>
+<span class="s2">alsa-utils \</span>
+<span class="s2">alsa-tools \</span>
+<span class="s2">alsa-state \</span>
+<span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For non-Yocto environments (e.g., Buildroot, Debian-based distros), install the equivalent packages using the distribution’s package manager or build system.</p>
+</div>
+</section>
+<section id="enabling-alsa-lib-plugin-in-audioreach-components">
+<h4>Enabling ALSA lib Plugin in AudioReach Components<a class="headerlink" href="#enabling-alsa-lib-plugin-in-audioreach-components" title="Link to this heading"></a></h4>
+<p>The ALSA lib plugin support is disabled by default in the AudioReach build system and must be explicitly enabled in two components: <code class="docutils literal notranslate"><span class="pre">audioreach-graphmgr</span></code> and <code class="docutils literal notranslate"><span class="pre">audioreach-conf</span></code>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Project</p></th>
+<th class="head"><p>Flag</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">audioreach-graphmgr</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--enable-alsalib</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AC_ARG_ENABLE</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">no</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">audioreach-conf</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--with-libalsa</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AC_ARG_WITH</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">no</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Yocto Build</strong></p>
+<p>Add the following configuration to <code class="docutils literal notranslate"><span class="pre">&lt;yocto_build_root&gt;/build/conf/local.conf</span></code> to enable the flags.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>EXTRA_OECONF:append:pn-audioreach-graphmgr<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot; --enable-alsalib&quot;</span>
+EXTRA_OECONF:append:pn-audioreach-conf<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot; --with-libalsa&quot;</span>
+</pre></div>
+</div>
+<p><strong>Autotools Build</strong></p>
+<p>Pass the flags directly to the <code class="docutils literal notranslate"><span class="pre">configure</span></code> script for each component:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># audioreach-graphmgr</span>
+./configure<span class="w"> </span>--enable-alsalib
+
+<span class="c1"># audioreach-conf</span>
+./configure<span class="w"> </span>--with-libalsa
+</pre></div>
+</div>
+</section>
+<section id="verify-alsa-installation">
+<h4>Verify ALSA Installation<a class="headerlink" href="#verify-alsa-installation" title="Link to this heading"></a></h4>
+<p>Verify the ALSA installation using below commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available sound cards</span>
+aplay<span class="w"> </span>-l
+
+<span class="c1"># List available PCM devices</span>
+aplay<span class="w"> </span>-L
+
+<span class="c1"># Check ALSA version</span>
+aplay<span class="w"> </span>--version
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="metadata-binary-files-generation-using-arc">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Metadata Binary Files Generation using ARC</a><a class="headerlink" href="#metadata-binary-files-generation-using-arc" title="Link to this heading"></a></h2>
+<p>ARC is used to generate metadata binary files required for ALSA lib integration. These files define the audio graph topology and calibration data.</p>
+<section id="required-metadata-files">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Required Metadata Files</a><a class="headerlink" href="#required-metadata-files" title="Link to this heading"></a></h3>
+<p>The following metadata binary files are generated for ALSA lib integration:</p>
+<dl class="simple">
+<dt><strong>Stream Metadata</strong></dt><dd><p>Defines audio stream properties such as sample rate, bit depth, and channel configuration.</p>
+</dd>
+<dt><strong>Device Metadata</strong></dt><dd><p>Contains device-specific information including hardware capabilities and routing information.</p>
+</dd>
+<dt><strong>Stream-Device Metadata</strong></dt><dd><p>Maps audio streams to specific devices and defines the connection topology.</p>
+</dd>
+</dl>
+</section>
+<section id="generate-metadata-with-arc">
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">Generate Metadata with ARC</a><a class="headerlink" href="#generate-metadata-with-arc" title="Link to this heading"></a></h3>
+<p>Follow these steps to generate metadata files using ARC:</p>
+<p><strong>Step 1: Open ARC (QACT)</strong></p>
+<ol class="arabic">
+<li><p>Launch QACT on a Windows machine</p></li>
+<li><p>Load the ACDB workspace file from <code class="docutils literal notranslate"><span class="pre">/etc/acdbdata/</span></code> (copied from target device)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The ACDB (Audio Calibration Database) workspace file contains the audio calibration and topology data for the target device. It is pre-installed on the target at <code class="docutils literal notranslate"><span class="pre">/etc/acdbdata/</span></code> as part of the AudioReach platform setup.</p>
+</div>
+</li>
+</ol>
+<p><strong>Step 2: ALSA Plugin Exporter</strong></p>
+<ol class="arabic simple">
+<li><p>In QACT, navigate to <strong>Tools → ALSA Plugin Exporter</strong></p></li>
+</ol>
+<figure class="fig-center align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/alsa_lib_toolbar_menu.png"><img alt="../_images/alsa_lib_toolbar_menu.png" height="313" src="../_images/alsa_lib_toolbar_menu.png" width="1015" />
+</a>
+<figcaption>
+<p><span class="caption-text">QACT Tools Menu - ALSA Plugin Exporter</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Click on the <strong>“Configuration MetaData”</strong> tab</p></li>
+</ol>
+<p><strong>Step 3: Configure Use Case</strong></p>
+<ol class="arabic simple">
+<li><p>Select the desired use-case from the dropdown (e.g., <strong>playback</strong>)</p></li>
+</ol>
+<figure class="fig-center align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/use_case_selection.png"><img alt="../_images/use_case_selection.png" height="431" src="../_images/use_case_selection.png" width="1051" />
+</a>
+<figcaption>
+<p><span class="caption-text">Use Case Selection</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Select the appropriate <strong>GKV (Graph Key Vector)</strong> for each subgraph corresponding to the use-case subgraphs.
+<strong>For example</strong>, if the first subgraph has keys set as PCM_LL_Playback, Instance_1 in use-case, then select the corresponding GKV [StreamRX:PCM_LL_Playback] and [Instance: Instance1] for the subgraph.</p></li>
+</ol>
+<figure class="fig-center align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/usecase_gkv_example.png"><img alt="../_images/usecase_gkv_example.png" height="312" src="../_images/usecase_gkv_example.png" width="1179" />
+</a>
+<figcaption>
+<p><span class="caption-text">Use Case Subgraphs and GKV Keys</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="fig-center align-default" id="id5">
+<a class="reference internal image-reference" href="../_images/subgraph_gkv_selection.png"><img alt="../_images/subgraph_gkv_selection.png" height="738" src="../_images/subgraph_gkv_selection.png" width="1044" />
+</a>
+<figcaption>
+<p><span class="caption-text">Subgraph GKV Selection</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>Step 4: Configure Metadata</strong></p>
+<p>This step involves configuring the metadata format and grouping subgraphs for metadata generation.</p>
+<p><strong>4.1: Configure Metadata Format</strong></p>
+<ol class="arabic simple">
+<li><p>Click the <strong>Configure</strong> button at the bottom left</p></li>
+<li><p>Select <strong>“Include TLV header”</strong> option</p></li>
+<li><p>Choose the appropriate file type based on your use-case:</p>
+<ul class="simple">
+<li><p><strong>For ALSA UCM configuration</strong>: Select File type as <strong>bin</strong></p></li>
+<li><p><strong>For amixer configuration</strong>: Select File type as <strong>Hex</strong> with Delimiter as <strong>“COMMA”</strong></p></li>
+</ul>
+</li>
+</ol>
+<figure class="fig-center align-default" id="id6">
+<a class="reference internal image-reference" href="../_images/configure_metadata_format.png"><img alt="../_images/configure_metadata_format.png" height="697" src="../_images/configure_metadata_format.png" width="1001" />
+</a>
+<figcaption>
+<p><span class="caption-text">Configure Metadata Format</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The TLV (Type-Length-Value) header is required for ALSA lib to properly parse and transfer metadata. For UCM-based configurations, binary files with TLV headers are used with the cset-tlv API. For amixer-based configurations, hex format with comma delimiters allows inline metadata specification.</p>
+</div>
+<p><strong>Generated Output</strong></p>
+<p>In both cases, ARC generates <code class="docutils literal notranslate"><span class="pre">.bin</span></code> files containing the metadata.</p>
+<ul>
+<li><p><strong>UCM (bin format)</strong>: The <code class="docutils literal notranslate"><span class="pre">.bin</span></code> file is used directly by ALSA UCM via the <code class="docutils literal notranslate"><span class="pre">cset-tlv</span></code> API. The binary content is transferred as-is to the AGM plugin.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cset-tlv &quot;iface=MIXER,name=&#39;PCM_RT_PROXY-RX-2 metadata&#39; /etc/device_metadata.bin&quot;
+</pre></div>
+</div>
+</li>
+<li><p><strong>amixer (hex format)</strong>: The <code class="docutils literal notranslate"><span class="pre">.bin</span></code> file content is exported as a comma-delimited hex string. This hex payload is passed inline to the amixer command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>amixer<span class="w"> </span>-D<span class="w"> </span>agm<span class="w"> </span>cset<span class="w"> </span><span class="nv">iface</span><span class="o">=</span>MIXER,name<span class="o">=</span><span class="s1">&#39;PCM_RT_PROXY-RX-2 metadata&#39;</span><span class="w"> </span>0x00,0x00,0x00,0x00,0x28,0x00,0x00,0x00,...
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>4.2: Configure Metadata Groups</strong></p>
+<p>Based on the use-case subgraphs, configure the metadata groups by selecting <strong>Group Subgraphs</strong>.</p>
+<ul class="simple">
+<li><p><strong>Group1</strong> → Stream metadata</p></li>
+<li><p><strong>Group2</strong> → Device metadata</p></li>
+<li><p><strong>Group3</strong> → Stream Device metadata</p></li>
+</ul>
+<figure class="fig-center align-default" id="id7">
+<a class="reference internal image-reference" href="../_images/group_subgraphs.png"><img alt="../_images/group_subgraphs.png" height="736" src="../_images/group_subgraphs.png" width="1044" />
+</a>
+<figcaption>
+<p><span class="caption-text">Configure Group Subgraphs</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Configure Group Subgraphs based on the selected use-case. For use-cases without stream_device pre/post processing subgraph, only stream and device bins are generated.</p>
+</div>
+<p><strong>Step 5: Generate Metadata Files</strong></p>
+<ol class="arabic simple">
+<li><p>Update the bin file names for each group:</p>
+<ul class="simple">
+<li><p>Group1: <code class="docutils literal notranslate"><span class="pre">stream_metadata.bin</span></code></p></li>
+<li><p>Group2: <code class="docutils literal notranslate"><span class="pre">device_metadata.bin</span></code></p></li>
+<li><p>Group3: <code class="docutils literal notranslate"><span class="pre">stream_device_metadata.bin</span></code></p></li>
+</ul>
+</li>
+</ol>
+<figure class="fig-center align-default" id="id8">
+<a class="reference internal image-reference" href="../_images/binary_group_naming.png"><img alt="../_images/binary_group_naming.png" height="240" src="../_images/binary_group_naming.png" width="1009" />
+</a>
+<figcaption>
+<p><span class="caption-text">Binary Group Naming</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Add the output directory path and click <strong>“Generate”</strong> to create the metadata binary files.</p></li>
+</ol>
+<figure class="fig-center align-default" id="id9">
+<a class="reference internal image-reference" href="../_images/bin_output_directory.png"><img alt="../_images/bin_output_directory.png" height="244" src="../_images/bin_output_directory.png" width="1007" />
+</a>
+<figcaption>
+<p><span class="caption-text">Binary Output Directory Configuration</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>Step 6: Transfer Files to Target</strong></p>
+<p>Copy the generated metadata files to the Target device:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy metadata files to Target device</span>
+scp<span class="w"> </span>stream_metadata.bin<span class="w"> </span>root@&lt;target_device_ip_address&gt;:/etc/
+scp<span class="w"> </span>device_metadata.bin<span class="w"> </span>root@&lt;target_device_ip_address&gt;:/etc/
+scp<span class="w"> </span>stream_device_metadata.bin<span class="w"> </span>root@&lt;target_device_ip_address&gt;:/etc/
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Metadata bin files are generated on a per-use-case basis. Each use-case has its own set of metadata files.</p>
+</div>
+</section>
+</section>
+<section id="running-audio-use-cases">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">Running Audio Use Cases</a><a class="headerlink" href="#running-audio-use-cases" title="Link to this heading"></a></h2>
+<p>This section demonstrates how to run audio use-cases using aplay using amixer and ALSA
+UCM configurations.</p>
+<section id="general-setup">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">General Setup</a><a class="headerlink" href="#general-setup" title="Link to this heading"></a></h3>
+<p><strong>Prerequisites</strong></p>
+<p>Ensure AudioReach services are running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start AGM server</span>
+agm_server<span class="w"> </span><span class="p">&amp;</span>
+
+<span class="c1"># Verify services are running</span>
+ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>agm
+</pre></div>
+</div>
+<p><strong>Required Files Setup</strong></p>
+<p>Copy the audio files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy audio file</span>
+scp<span class="w"> </span>&lt;clip_name&gt;.wav<span class="w"> </span>root@&lt;target_device_ip_address&gt;:/etc/
+</pre></div>
+</div>
+</section>
+<section id="using-amixer">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Using amixer</a><a class="headerlink" href="#using-amixer" title="Link to this heading"></a></h3>
+<p>This section describes how to configure and run audio use-cases using amixer. The AGM
+plugin exposes mixer controls that allow setting PCM parameters, metadata, and device
+connections directly from the command line. Before running amixer commands, the AGM
+ALSA configuration file must be in place so that ALSA can route audio through the
+AGM plugin.</p>
+<p><strong>AGM ALSA Configuration File</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">agm.conf</span></code> file is the ALSA configuration file that defines the AGM plugin interface.
+This file is shipped as part of the <code class="docutils literal notranslate"><span class="pre">audioreach-conf</span></code> package and is located at
+<code class="docutils literal notranslate"><span class="pre">/etc/alsa/conf.d/</span></code> on the target device. It enables ALSA applications to use the AGM
+plugin for AudioReach integration.</p>
+<p><strong>Configuration Overview</strong></p>
+<p>The AGM configuration file defines:</p>
+<ul class="simple">
+<li><p><strong>Default PCM Device</strong>: Sets the system-wide default audio device to use AGM</p></li>
+<li><p><strong>Parameterized PCM Device</strong>: Allows applications to specify custom card and device numbers</p></li>
+<li><p><strong>Control Interface</strong>: Provides mixer control access for audio parameter configuration</p></li>
+</ul>
+<p><strong>Example agm.conf</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>pcm.!default {
+    type agm
+    card 100
+    device 100
+}
+
+pcm.agm {
+    @args [ CARD DEV ]
+    @args.CARD {
+        type integer
+        default 100
+    }
+    @args.DEV {
+        type integer
+        default 100
+    }
+    type agm
+    card $CARD
+    device $DEV
+}
+
+ctl.agm {
+    type agm
+    card 100
+}
+</pre></div>
+</div>
+<p>Before running the commands below, list the available mixer controls on the target
+to identify the correct control names for your configuration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>amixer<span class="w"> </span>-D<span class="w"> </span>agm<span class="w"> </span>controls
+</pre></div>
+</div>
+<p><strong>Example output:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>numid=1,iface=MIXER,name=&#39;PCM100 metadata&#39;
+numid=2,iface=MIXER,name=&#39;PCM100 setParam&#39;
+numid=3,iface=MIXER,name=&#39;PCM100 setParamTag&#39;
+numid=4,iface=MIXER,name=&#39;PCM100 connect&#39;
+numid=5,iface=MIXER,name=&#39;PCM100 disconnect&#39;
+numid=6,iface=MIXER,name=&#39;PCM100 control&#39;
+numid=26,iface=MIXER,name=&#39;PCM_RT_PROXY-RX-2 rate ch fmt&#39;
+numid=27,iface=MIXER,name=&#39;PCM_RT_PROXY-RX-2 metadata&#39;
+...
+</pre></div>
+</div>
+<dl class="simple">
+<dt>The PCM device names (e.g., <code class="docutils literal notranslate"><span class="pre">PCM100</span></code>, <code class="docutils literal notranslate"><span class="pre">PCM_RT_PROXY-RX-2</span></code>) and their associated controls</dt><dd><p>vary by target configuration. Use the output of this command to substitute the correct names
+in the examples below.</p>
+</dd>
+</dl>
+<p>With the default amixer, metadata payload must be specified directly in the command on
+the same line as the mixer control. The payload must be in hex format with bytes delimited
+by commas (e.g., <code class="docutils literal notranslate"><span class="pre">0x00,0x01,0x02,...</span></code>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set PCM parameters: rate=0xbb80 (48000 Hz), ch=0x2 (stereo), bit_width=0x2 (16-bit), fmt=0x1 (SNDRV_PCM_FORMAT_S16_LE)</span>
+amixer<span class="w"> </span>-D<span class="w"> </span>agm<span class="w"> </span>cset<span class="w"> </span><span class="nv">iface</span><span class="o">=</span>MIXER,name<span class="o">=</span><span class="s1">&#39;PCM_RT_PROXY-RX-2 rate ch fmt&#39;</span><span class="w"> </span>0xbb80,0x2,0x2,0x1
+
+<span class="c1"># Set PCM control</span>
+amixer<span class="w"> </span>-D<span class="w"> </span>agm<span class="w"> </span>cset<span class="w"> </span><span class="nv">iface</span><span class="o">=</span>MIXER,name<span class="o">=</span><span class="s1">&#39;PCM100 control&#39;</span><span class="w"> </span>PCM_RT_PROXY-RX-2
+
+<span class="c1"># Set device metadata with payload (example payload)</span>
+amixer<span class="w"> </span>-D<span class="w"> </span>agm<span class="w"> </span>cset<span class="w"> </span><span class="nv">iface</span><span class="o">=</span>MIXER,name<span class="o">=</span><span class="s1">&#39;PCM_RT_PROXY-RX-2 metadata&#39;</span><span class="w"> </span>&lt;Device<span class="w"> </span>metadata<span class="w"> </span>payload<span class="w"> </span><span class="k">in</span><span class="w"> </span>hex&gt;
+
+<span class="c1"># Set stream metadata with payload (example payload)</span>
+amixer<span class="w"> </span>-D<span class="w"> </span>agm<span class="w"> </span>cset<span class="w"> </span><span class="nv">iface</span><span class="o">=</span>MIXER,name<span class="o">=</span><span class="s1">&#39;PCM100 metadata&#39;</span><span class="w"> </span>&lt;Stream<span class="w"> </span>metadata<span class="w"> </span>payload<span class="w"> </span><span class="k">in</span><span class="w"> </span>hex&gt;
+
+<span class="c1"># Set stream_device metadata with payload (example payload)</span>
+amixer<span class="w"> </span>-D<span class="w"> </span>agm<span class="w"> </span>cset<span class="w"> </span><span class="nv">iface</span><span class="o">=</span>MIXER,name<span class="o">=</span><span class="s1">&#39;PCM100 metadata&#39;</span><span class="w"> </span>&lt;stream_device<span class="w"> </span>metadata<span class="w"> </span>payload<span class="w"> </span><span class="k">in</span><span class="w"> </span>hex&gt;
+
+<span class="c1"># Connect PCM to device</span>
+amixer<span class="w"> </span>-D<span class="w"> </span>agm<span class="w"> </span>cset<span class="w"> </span><span class="nv">iface</span><span class="o">=</span>MIXER,name<span class="o">=</span><span class="s1">&#39;PCM100 connect&#39;</span><span class="w"> </span>PCM_RT_PROXY-RX-2
+</pre></div>
+</div>
+<p><strong>Example: Setting device metadata with hex payload</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>amixer<span class="w"> </span>-D<span class="w"> </span>agm<span class="w"> </span>cset<span class="w"> </span><span class="nv">iface</span><span class="o">=</span>MIXER,name<span class="o">=</span><span class="s1">&#39;PCM_RT_PROXY-RX-2 metadata&#39;</span><span class="w"> </span>0x00,0x00,0x00,0x00,0x28,0x00,0x00,0x00,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0xA2,0x01,0x00,0x00,0xA2,0x00,0x00,0x00,0xAC,0x02,0x00,0x00,0xAC,0x00,0x00,0x00,0x00,0x10,0x00,0x00,0x08,0x02,0x00,0x00,0x00,0x02,0x00,0x00,0x00,0x05,0x00,0x00,0x00
+</pre></div>
+</div>
+<p>Run playback:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>aplay<span class="w"> </span>-D<span class="w"> </span>agm:100,100<span class="w"> </span>/etc/&lt;clip_name&gt;.wav
+</pre></div>
+</div>
+</section>
+<section id="using-alsa-ucm">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Using ALSA UCM</a><a class="headerlink" href="#using-alsa-ucm" title="Link to this heading"></a></h3>
+<p>ALSA Use Case Manager (UCM) provides a higher-level interface for managing audio
+use-cases with AudioReach. UCM uses configuration files to define mixer control
+commands and automate use-case setup.</p>
+<section id="ucm-configuration-files">
+<h4>UCM Configuration Files<a class="headerlink" href="#ucm-configuration-files" title="Link to this heading"></a></h4>
+<p>ALSA UCM discovers configuration by scanning the <code class="docutils literal notranslate"><span class="pre">/usr/share/alsa/ucm2/</span></code> directory.
+For physical sound cards it looks in a subdirectory named after the card; for virtual
+cards it scans <code class="docutils literal notranslate"><span class="pre">/usr/share/alsa/ucm2/conf.virt.d/</span></code>. For AudioReach integration, the
+AGM virtual sound card configuration is  present on the target device in
+<code class="docutils literal notranslate"><span class="pre">conf.virt.d/</span></code> directory.</p>
+<p><strong>AGM virtual sound card configuration file</strong></p>
+<p>The AGM virtual sound card configuration file (<code class="docutils literal notranslate"><span class="pre">agmvirtualsndcard.conf</span></code>) is shipped as part of
+the <code class="docutils literal notranslate"><span class="pre">audioreach-conf</span></code> package and is located at <code class="docutils literal notranslate"><span class="pre">/usr/share/alsa/ucm2/conf.virt.d/</span></code> on the target
+device. It defines the AGM virtual sound card and its associated use-cases, and serves as the entry
+point for ALSA UCM to manage AudioReach-based audio routing.</p>
+<p>Configuration file defines:</p>
+<ul class="simple">
+<li><p><strong>PCM Device Template</strong>: Reusable PCM device configuration with parameterized card and device numbers</p></li>
+<li><p><strong>Control Device</strong>: Mixer control interface for audio parameter management</p></li>
+<li><p><strong>Use Case Definitions</strong>: References to specific audio scenario configurations (e.g., PCMPlayback, VoiceCall)</p></li>
+</ul>
+<p><strong>Example agmvirtualsndcard.conf</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Syntax 4
+
+LibraryConfig.agm.Config {
+    pcm.agm {
+        @args [ CARD DEV ]
+        @args.CARD {
+            type integer
+            default 100
+        }
+        @args.DEV {
+            type integer
+            default 100
+        }
+        type agm
+        card $CARD
+        device $DEV
+    }
+    ctl.agm {
+        type agm
+        card 100
+    }
+}
+
+SectionUseCase.&quot;PCMPlayback&quot; {
+    File &quot;PCMPlayback.conf&quot;
+}
+</pre></div>
+</div>
+<p><strong>Use Case Configuration File</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">PCMPlayback.conf</span></code> file contains the mixer control commands for setting up playback.
+ALSA UCM supports sending .bin files for metadata mixer controls using the <code class="docutils literal notranslate"><span class="pre">cset-tlv</span></code> API.
+This file is located at <code class="docutils literal notranslate"><span class="pre">/usr/share/alsa/ucm2/conf.virt.d/</span></code> on the target device
+alongside <code class="docutils literal notranslate"><span class="pre">agmvirtualsndcard.conf</span></code>.</p>
+<p><strong>Example PCMPlayback.conf Structure</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">PCMPlayback.conf</span></code> file contain mixer control sequences similar to:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Syntax 2
+
+SectionVerb {
+    EnableSequence [
+        cdev &quot;agm&quot;
+        cset &quot;iface=MIXER,name=&#39;PCM_RT_PROXY-RX-2 rate ch fmt&#39; 0xbb80,0x2,0x2,0x1&quot;
+        cset &quot;iface=MIXER,name=&#39;PCM100 control&#39; PCM_RT_PROXY-RX-2&quot;
+        cset-tlv &quot;iface=MIXER,name=&#39;PCM_RT_PROXY-RX-2 metadata&#39; /etc/device_metadata.bin&quot;
+        cset-tlv &quot;iface=MIXER,name=&#39;PCM100 metadata&#39; /etc/stream_metadata.bin&quot;
+        cset-tlv &quot;iface=MIXER,name=&#39;PCM100 metadata&#39; /etc/stream_device_metadata.bin&quot;
+        cset &quot;iface=MIXER,name=&#39;PCM100 connect&#39; PCM_RT_PROXY-RX-2&quot;
+    ]
+
+    DisableSequence [
+    ]
+
+    Value {
+        PlaybackPCM &quot;agm:100,100&quot;
+    }
+}
+
+SectionDevice.&quot;Speaker&quot; {
+    EnableSequence [
+    ]
+
+    DisableSequence [
+    ]
+
+    Value {
+            PlaybackChannels &quot;2&quot;
+    }
+}
+</pre></div>
+</div>
+</section>
+<section id="running-use-case-with-ucm">
+<h4>Running use-case with UCM<a class="headerlink" href="#running-use-case-with-ucm" title="Link to this heading"></a></h4>
+<p><strong>Set-up Use Case</strong></p>
+<p>Use alsaucm to configure the audio use-case:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up playback use-case using alsaucm</span>
+alsaucm<span class="w"> </span>-n<span class="w"> </span>-b<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;EOM</span>
+<span class="s">open agmvirtualsndcard</span>
+<span class="s">set _verb PCMPlayback</span>
+<span class="s">EOM</span>
+</pre></div>
+</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">agmvirtualsndcard</span></code> is the virtual sound card configuration file name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PCMPlayback</span></code> is the use-case Verb in the ALSA UCM, defined in the agmvirtualsndcard.conf</p></li>
+</ul>
+<p><strong>Run Playback with UCM</strong></p>
+<p>After setting up the use-case, run playback:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Play audio file</span>
+aplay<span class="w"> </span>-D<span class="w"> </span>agm:100,100<span class="w"> </span>/etc/&lt;clip_name&gt;.wav
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="references">
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">References</a><a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<p><strong>AudioReach</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/Audioreach/audioreach-graphmgr">audioreach-graphmgr</a></p></li>
+<li><p><a class="reference external" href="https://github.com/Audioreach/audioreach-conf">audioreach-conf</a></p></li>
+<li><p><a class="reference external" href="https://github.com/AudioReach/audioreach-graphmgr/tree/master/plugins/alsalib">AGM ALSA lib plugin</a></p></li>
+<li><p><a class="reference external" href="https://audioreach.github.io/sdk_overview.html#steps-to-install-arc">ARC installation guide</a></p></li>
+</ul>
+<p><strong>ALSA UCM</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.alsa-project.org/alsa-doc/alsa-lib/group__ucm.html">ALSA Use Case Manager (UCM) — libasound API reference</a></p></li>
+<li><p><a class="reference external" href="https://github.com/alsa-project/alsa-ucm-conf">ALSA UCM configuration repository</a></p></li>
+</ul>
+<p><strong>amixer</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://linux.die.net/man/1/amixer">amixer man page</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="available_modules.html" class="btn btn-neutral float-left" title="Available Audio Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../arc/index.html" class="btn btn-neutral float-right" title="AudioReach Creator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, AudioReach.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

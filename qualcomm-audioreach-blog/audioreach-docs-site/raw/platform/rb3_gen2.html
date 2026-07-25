@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RB3 Gen2 &mdash; AudioReach Documentation 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/audioreach.css?v=cd7bb9cf" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="NXP IMX8M Plus" href="nxp.html" />
+    <link rel="prev" title="Raspberry Pi 4" href="raspberry_pi4.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AudioReach Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sdk_overview.html">AudioReach Project Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">AudioReach Designs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">AudioReach APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">AudioReach Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arc/index.html">AudioReach Creator</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Platform Reference Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="raspberry_pi4.html">Raspberry Pi 4</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RB3 Gen2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#architecture-overview">Architecture Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-yocto-image">Create a Yocto image</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-qualcomm-linux-builds-released-crm-builds">Using Qualcomm Linux builds (Released CRM builds)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#directly-pulling-using-meta-layers-audioreach-latest-source-code">Directly pulling using meta layers (AudioReach latest source code)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#flash-the-yocto-image">Flash the Yocto image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-the-rb3-gen2">Setting up the RB3 Gen2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-audio-hardware">Set up Audio hardware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-for-sound-card">Check for Sound Card</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-for-pulseaudio-service">Check for PulseAudio Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-real-time-calibration-mode">Enable Real-time Calibration Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#running-an-audioreach-usecase">Running an AudioReach Usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#playback">Playback</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#record">Record</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#next-steps">Next Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#exploring-audioreach-components-in-the-qclinux-build">Exploring AudioReach Components in the QCLINUX Build</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-new-module-to-adsp-image">Adding a new Module to ADSP Image</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nxp.html">NXP IMX8M Plus</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AudioReach Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Platform Reference Guide</a></li>
+      <li class="breadcrumb-item active">RB3 Gen2</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/platform/rb3_gen2.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rb3-gen2">
+<span id="id1"></span><h1>RB3 Gen2<a class="headerlink" href="#rb3-gen2" title="Link to this heading"></a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="#ArchitectureOverview">Architecture Overview</a></p></li>
+<li><p><a class="reference external" href="#create-a-yocto-image">Create a Yocto Image</a></p></li>
+<li><p><a class="reference external" href="#flash-the-yocto-image">Flash the Yocto image</a></p></li>
+<li><p><a class="reference external" href="#setting-up-the-rb3">Setting up the RB3</a></p></li>
+<li><p><a class="reference external" href="#running-an-audioreach-usecase">Running an AudioReach Usecase</a></p></li>
+<li><p><a class="reference external" href="#next-steps">Next Steps</a></p></li>
+<li><p><a class="reference external" href="#troubleshooting">Troubleshooting</a></p></li>
+</ol>
+<p>This guide provides AudioReach Architecture overview on RB3 (Robotics) platform
+and walks through steps on how to create a Yocto image that integrates
+AudioReach, load that image on a RB3 Gen2 device, and then run an AudioReach
+usecase.</p>
+<section id="architecture-overview">
+<h2>Architecture Overview<a class="headerlink" href="#architecture-overview" title="Link to this heading"></a></h2>
+<blockquote>
+<div><figure class="fig-center align-default">
+<a class="reference internal image-reference" href="../_images/rb3_gen2_reference.png"><img alt="../_images/rb3_gen2_reference.png" height="544" src="../_images/rb3_gen2_reference.png" width="670" />
+</a>
+</figure>
+</div></blockquote>
+<p>The above architecture diagram illustrates the playback/record use-case on a
+RB3 Gen2 using AudioReach. In this setup, PulseAudio test applications are
+utilized to play/record an audio clip, and the sound is rendered/captured
+through devices like microphone and speaker. For more details refer
+<a class="reference internal" href="../design/linux_plug-in_arch.html#lx-plugin-arch"><span class="std std-ref">here</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>AudioReach is currently transitioning from PulseAudio to PipeWire as the
+primary audio server. This documentation will be updated as the migration
+progresses.</p>
+</div>
+</section>
+<section id="create-a-yocto-image">
+<h2>Create a Yocto image<a class="headerlink" href="#create-a-yocto-image" title="Link to this heading"></a></h2>
+<p>The first step is to integrate AudioReach components
+into a Yocto build that can be loaded onto the RB3 device. This involves syncing a Yocto build and then integrating the meta-audioreach layer, which is currently available as a Github repository.</p>
+<p>Before following these steps, it would be helpful to learn the basics of how to use a Yocto project. To do this, please refer to the official <a class="reference external" href="https://docs.yoctoproject.org/">Yocto</a> documentation site.</p>
+<p>There are two options for building a Yocto image that incorporates AudioReach components. One option is to use the Qualcomm Linux builds and the other option is using meta layers directly.</p>
+<section id="using-qualcomm-linux-builds-released-crm-builds">
+<h3>Using Qualcomm Linux builds (Released CRM builds)<a class="headerlink" href="#using-qualcomm-linux-builds-released-crm-builds" title="Link to this heading"></a></h3>
+<p>For instructions on setting up a Yocto build with AudioReach components, refer  <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-70020-254/build_landing_page.html?vproduct=1601111740013072&amp;version=1.5">build guide</a>.</p>
+<p>The build setup process varies based on your Qualcomm access level. For comprehensive details about different access levels, visit the <a class="reference external" href="https://www.qualcomm.com/support/working-with-qualcomm">Working with Qualcomm</a> page.
+<strong>Important Note:</strong> While unregistered users can access basic images for flashing, meaningful AudioReach development requires at least a registered user access level. Registered users gain access to essential development tools like AudioReach Creator
+(ARC). We strongly recommend registering with Qualcomm to unlock the full AudioReach development experience.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li><p>RB3 Platform is based QCS6490 chipset and supported machine names are qcs6490-rb3gen2-core-kit and qcs6490-rb3gen2-vision-kit.</p></li>
+<li><p>To access the ADSP firmware source code, you must be registered as an Authorized user with Qualcomm.</p></li>
+<li><p>Qualcomm Linux supports different versions for Application Development. The <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-70020-252/qualcomm-linux-sw-overview.html">Software Architecture Guide</a> provides detailed information about these versions:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The Base version is an upstream, open-source software stack without Qualcomm proprietary software.</p></li>
+<li><p>The Custom version includes downstream Qualcomm proprietary software with extra SDKs and improved power performance. For AudioReach-based solutions, you should use the Custom variant.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="directly-pulling-using-meta-layers-audioreach-latest-source-code">
+<h3>Directly pulling using meta layers (AudioReach latest source code)<a class="headerlink" href="#directly-pulling-using-meta-layers-audioreach-latest-source-code" title="Link to this heading"></a></h3>
+<p>The current Qualcomm Linux builds for RB3 utilize components from the Code
+Linaro codebase. We are actively working to enable direct integration from
+upstream GitHub repositories, which will allow developers to access the latest
+AudioReach source code directly.</p>
+</section>
+</section>
+<section id="flash-the-yocto-image">
+<h2>Flash the Yocto image<a class="headerlink" href="#flash-the-yocto-image" title="Link to this heading"></a></h2>
+<p>To flash the Yocto image onto your RB3 Gen2 device, follow the instructions provided in the <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-70020-254/flash_images.html?vproduct=1601111740013072&amp;version=1.5#flash-images">Flashing Guide</a>.</p>
+</section>
+<section id="setting-up-the-rb3-gen2">
+<h2>Setting up the RB3 Gen2<a class="headerlink" href="#setting-up-the-rb3-gen2" title="Link to this heading"></a></h2>
+<p>Setup the RB3 hardware using <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-70020-251/set_up_the_device.html#panel-0-V2luZG93cyBob3N0">Qualcomm Linux documentation</a></p>
+<p>Follow below sections to setup the device for this guide:</p>
+<ul class="simple">
+<li><p>Power up the device</p></li>
+<li><p>Set up debug UART</p></li>
+<li><p>Verify the Qualcomm Linux version</p></li>
+<li><p>Connect to a network</p></li>
+</ul>
+<section id="set-up-audio-hardware">
+<h3>Set up Audio hardware<a class="headerlink" href="#set-up-audio-hardware" title="Link to this heading"></a></h3>
+<p>Activate the digital microphone interface (DMIC) on the board, by following steps in section “Set up audio hardware” from <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-70020-16/enable-audio.html#enable-audio">here</a></p>
+</section>
+<section id="check-for-sound-card">
+<h3>Check for Sound Card<a class="headerlink" href="#check-for-sound-card" title="Link to this heading"></a></h3>
+<ul>
+<li><p>Check if Sound card is enumerated:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>/proc/asound/cards
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="check-for-pulseaudio-service">
+<h3>Check for PulseAudio Service<a class="headerlink" href="#check-for-pulseaudio-service" title="Link to this heading"></a></h3>
+<ul>
+<li><p>Check if PulseAudio service is running</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl<span class="w"> </span>status<span class="w"> </span>pulseaudio
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="enable-real-time-calibration-mode">
+<h3>Enable Real-time Calibration Mode<a class="headerlink" href="#enable-real-time-calibration-mode" title="Link to this heading"></a></h3>
+<p>ARC (AudioReach Creator) is a tool that allows the user to perform several
+functionalities related to the audio usecase, including creating and editing
+audio usecase graphs, and editing audio configurations while running an
+audio usecase in real time. For more information on ARC, please refer to the
+<a class="reference internal" href="../arc/index.html#arc-design"><span class="std std-ref">AudioReach Creator</span></a> page.</p>
+<p><strong>NOTE:</strong> ARC is currently supported only on Windows host machine.</p>
+<p>The below steps will demonstrate how to connect ARC to the RB3 so that the
+usecase graph can be viewed in real time.</p>
+<ul class="simple">
+<li><p>Connect a type C cable to RB3 at one end and the USB cable to Windows host machine.</p></li>
+<li><p>Install ARC (also known as QACT) on a Windows host machine using <a class="reference internal" href="../sdk_overview.html#steps-to-install-arc"><span class="std std-ref">Steps to install ARC</span></a>. You will need at least QACT 8.1</p></li>
+<li><p>Open ARC, Click on “Connect to Device”.</p></li>
+</ul>
+</section>
+</section>
+<section id="running-an-audioreach-usecase">
+<h2>Running an AudioReach Usecase<a class="headerlink" href="#running-an-audioreach-usecase" title="Link to this heading"></a></h2>
+<p>Once all of the above setup is complete, we are ready to run Audio use-case on RB3.
+The below section list steps to run playback and record use-case using PulseAudio.
+Check out <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-70020-16/enable-audio.html#enable-audio-with-pulseaudio">Enable Audio use-cases using PulseAudio</a> to know more.</p>
+<section id="playback">
+<h3>Playback<a class="headerlink" href="#playback" title="Link to this heading"></a></h3>
+<ul>
+<li><p>Push a “.wav” file onto some location in the RB3, such as the “/etc” folder.</p>
+<blockquote>
+<div><ul>
+<li><p>Find the IP Address of RB3 device by connecting the serial shell using UART console.</p></li>
+<li><p>Use scp (Secure Copy Protocol) to copy a wav file from host machine to the RB3 device.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>&lt;wave<span class="w"> </span>file<span class="w"> </span>path&gt;<span class="w"> </span>root@&lt;RB3<span class="w"> </span>IP<span class="w"> </span>Address&gt;:/etc/
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Connect an external audio device (such as speakers or headphones) to the audio port of the RB3 if not already connected.</p></li>
+<li><p>Open serial shell terminal window on host machine and run below command to start the playback usecase:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>paplay<span class="w"> </span>&lt;Path<span class="w"> </span>to<span class="w"> </span>.wav<span class="w"> </span>file&gt;<span class="w"> </span>-d<span class="w"> </span>low-latency0
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p>Now the “.wav” file should play through the external audio device. If the RB3 is connected to ARC, the current usecase graph will appear in the graph view.
+The system logs for the usecase will be saved in the file “/var/log/messages”.</p>
+</section>
+<section id="record">
+<h3>Record<a class="headerlink" href="#record" title="Link to this heading"></a></h3>
+<ul>
+<li><p>Open serial shell terminal window on host machine and run below command to start the record usecase:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>parec<span class="w"> </span>--rate<span class="o">=</span><span class="m">48000</span><span class="w"> </span>--format<span class="o">=</span>s16le<span class="w"> </span>--channels<span class="o">=</span><span class="m">1</span><span class="w"> </span>--file-format<span class="o">=</span>wav<span class="w"> </span>&lt;Path<span class="w"> </span>to<span class="w"> </span>store<span class="w"> </span>.wav<span class="w"> </span>file&gt;<span class="w"> </span>-d<span class="w"> </span>regular0
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p>Above command stores the recorded .wav file at specified path.</p>
+</section>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<section id="exploring-audioreach-components-in-the-qclinux-build">
+<h3>Exploring AudioReach Components in the QCLINUX Build<a class="headerlink" href="#exploring-audioreach-components-in-the-qclinux-build" title="Link to this heading"></a></h3>
+<ul>
+<li><p>Recipes for AudioReach components are available at Path: &lt;WORKSPACE_ROOT&gt;/workspace/layers/meta-qcom-hwe/recipes-multimedia/audio/.</p></li>
+<li><p>To modify existing code follow below steps:</p>
+<blockquote>
+<div><ul>
+<li><p>Check for the recipe name from above path.</p></li>
+<li><p>Use <a class="reference external" href="https://docs.yoctoproject.org/ref-manual/devtool-reference.html">devtool</a> to get fetch source as below:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;WORKSPACE_ROOT&gt;/workspace/&lt;build_dir&gt;
+<span class="c1"># example build_dir build-qcom-wayland</span>
+
+devtool<span class="w"> </span>modify<span class="w"> </span>&lt;recipe-name&gt;
+
+<span class="c1">#Example for qcom-agm_git.bb recipe</span>
+devtool<span class="w"> </span>modify<span class="w"> </span>qcom-agm
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>This extracts the source code at path &lt;BUILD_ROOT&gt;/workspace/build-qcom-wayland/workspace/source/qcom-agm/ directory.</p></li>
+<li><p><strong>Note:</strong> The following table maps Qualcomm Linux project names to <a class="reference external" href="https://github.com/Audioreach/">AudioReach</a> GitHub repository names:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Downstream Name</p></th>
+<th class="head"><p>Upstream Project Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>qcom-agm</p></td>
+<td><p>audioreach-graphmgr</p></td>
+</tr>
+<tr class="row-odd"><td><p>qcom-pal</p></td>
+<td><p>audioreach-pal</p></td>
+</tr>
+<tr class="row-even"><td><p>qcom-acdbdata</p></td>
+<td><p>audioreach-conf</p></td>
+</tr>
+<tr class="row-odd"><td><p>qcom-args</p></td>
+<td><p>audioreach-graphservices</p></td>
+</tr>
+<tr class="row-even"><td><p>pulseaudio-plugin</p></td>
+<td><p>audioreach-pulseaudio-plugin</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="adding-a-new-module-to-adsp-image">
+<h3>Adding a new Module to ADSP Image<a class="headerlink" href="#adding-a-new-module-to-adsp-image" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>ADSP source code is available only for Authorized users.</p></li>
+<li><p>If you have Authorized access, refer to <a class="reference external" href="https://docs.qualcomm.com/bundle/80-VN500-28/resource/80-VN500-28_REV_AE_CAPI_Custom_Module_Integration_Into_SPF_for_OEMS_User_Guide.pdf">Adding a Custom Module in SPF</a> guide to integrate a new module into ADSP Image.</p></li>
+<li><p>Alternatively, you can use the Hexagon SDK to compile a standalone .so file for your custom module on the ADSP. The Hexagon SDK can be downloaded from the <a class="reference external" href="https://www.qualcomm.com/developer/software/hexagon-npu-sdk">Qualcomm Developer Network</a>.</p></li>
+</ul>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p>Checkout <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-70020-16/troubleshoot.html">Audio Troubleshooting</a> guide for Audio logging and debugging.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="raspberry_pi4.html" class="btn btn-neutral float-left" title="Raspberry Pi 4" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nxp.html" class="btn btn-neutral float-right" title="NXP IMX8M Plus" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, AudioReach.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

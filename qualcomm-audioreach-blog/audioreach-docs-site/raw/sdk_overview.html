@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AudioReach Project Overview &mdash; AudioReach Documentation 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/audioreach.css?v=cd7bb9cf" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="AudioReach Designs" href="design/index.html" />
+    <link rel="prev" title="AudioReachTM Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            AudioReach Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AudioReach Project Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sdk-overview">SDK Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#platform-support">Platform Support</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#operating-system-support">Operating System Support</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hardware-platform">Hardware Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tools">Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#steps-to-install-arc">Steps to install ARC</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#source-code-repository">Source Code Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-recipe">Build Recipe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contribution-project-governance">Contribution &amp; Project Governance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#roadmap">Roadmap</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="design/index.html">AudioReach Designs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">AudioReach APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev/index.html">AudioReach Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arc/index.html">AudioReach Creator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platform/index.html">Platform Reference Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AudioReach Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AudioReach Project Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/sdk_overview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="audioreach-project-overview">
+<span id="arosp-overview"></span><h1>AudioReach Project Overview<a class="headerlink" href="#audioreach-project-overview" title="Link to this heading"></a></h1>
+<section id="sdk-overview">
+<h2>SDK Overview<a class="headerlink" href="#sdk-overview" title="Link to this heading"></a></h2>
+<p>AudioReach project aims to deliver a comprehensive and complete end-to-end audio software solution to support a broad range of audio and voice use cases across a diverse set of SoC’s and product devices (handset, compute, wearables, hearables, xr, automotive telematics / infotainment, etc). The AudioReach SDK contains the essential components to support a seamless development workflow from off-target to on-target and flexibility to customize and tailor the processing to the capabilities and constraints of the SoC and product device (multiple cores, peripheral devices, etc). See diagrams below for highlights of SDK and workflow enabled by the SDK. In addition, refer to <a class="reference internal" href="design/arch_overview.html#arch-overview"><span class="std std-ref">AudioReach Architecture Overview</span></a> to learn about overall architecture as this page makes several references to key software components in the AudioReach software offering.</p>
+<blockquote>
+<div><figure class="fig-center align-default" id="id3">
+<a class="reference internal image-reference" href="_images/sw_highlights.png"><img alt="_images/sw_highlights.png" height="460" src="_images/sw_highlights.png" width="850" />
+</a>
+<figcaption>
+<p><span class="caption-text"><cite>SDK Highlights</cite></span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="fig-center align-default" id="id4">
+<a class="reference internal image-reference" href="_images/dev_workflow.png"><img alt="_images/dev_workflow.png" height="432" src="_images/dev_workflow.png" width="849" />
+</a>
+<figcaption>
+<p><span class="caption-text"><cite>Development Workflow Enabled by SDK</cite></span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+<section id="platform-support">
+<h3>Platform Support<a class="headerlink" href="#platform-support" title="Link to this heading"></a></h3>
+<section id="operating-system-support">
+<h4>Operating System Support<a class="headerlink" href="#operating-system-support" title="Link to this heading"></a></h4>
+<p>AudioReach Engine</p>
+<ul class="simple">
+<li><p>Linux</p></li>
+</ul>
+<p>OS Platform Software</p>
+<p>Linux: two architectural flavors are offered</p>
+<ul class="simple">
+<li><p>Plug-in architecture is for developers looking for full feature set of what AudioReach has to offer</p></li>
+<li><p>ALSA/ASoC driver architecture is for developers who are accustomed to kernel ALSA/ASoC framework</p></li>
+</ul>
+</section>
+<section id="hardware-platform">
+<h4>Hardware Platform<a class="headerlink" href="#hardware-platform" title="Link to this heading"></a></h4>
+<p>SoCs</p>
+<ul class="simple">
+<li><p>Qualcomm SoCs</p></li>
+<li><p>SoC’s with APPs processor running linux and supports ALSA sound card.</p></li>
+</ul>
+<p>Boards</p>
+<ul class="simple">
+<li><p>Qualcomm RB3 Gen2</p></li>
+<li><p>Raspberry Pi 4</p></li>
+</ul>
+</section>
+</section>
+<section id="tools">
+<h3>Tools<a class="headerlink" href="#tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>AudioReach Creator(ARC), also known as Qualcomm Audio Configuration Tool (QACT) currently, is the most essential tool of entire SDK. ARC enables the entire audio system design workflow.</p></li>
+</ul>
+<p><strong>NOTE</strong>: QACT currently runs only on Windows, with future plans to support on Linux and release an open-source version.</p>
+<section id="steps-to-install-arc">
+<span id="id1"></span><h4>Steps to install ARC<a class="headerlink" href="#steps-to-install-arc" title="Link to this heading"></a></h4>
+<p>ARC public edition is available through <a class="reference external" href="https://softwarecenter.qualcomm.com/#/">Qualcomm Software Center</a>. Follow below steps to install ARC:</p>
+<ul class="simple">
+<li><p>Download and install <strong>Qualcomm Software Center</strong> on Windows host using steps <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-72780-2/install_qsc.html#download-and-install-qsc-on-windows">here</a>.</p></li>
+<li><p>Launch Qualcomm Software Center from start menu.</p></li>
+<li><p>Install required version of <strong>Qualcomm Audio Calibration Tool</strong> using steps shown <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-72780-2/tools_and_sdks.html">here</a>.</p></li>
+</ul>
+</section>
+</section>
+<section id="source-code-repository">
+<h3>Source Code Repository<a class="headerlink" href="#source-code-repository" title="Link to this heading"></a></h3>
+<p>At high-level, AudioReach software components resides in various git repositories. Diagram below gives visual reference to components vs. repositories mapping across processor domains. One would be able to find corresponding repositories in <a class="reference external" href="https://github.com/audioreach">GitHub project site</a>. At the time of writing, only Linux platform is supported. However, more OS platforms will be planned and announced at <a class="reference internal" href="#sdk-roadmap"><span class="std std-ref">Roadmap</span></a> section of this page.</p>
+<p>Cross-platform Software Components</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>AudioReach Graph Services</p></li>
+<li><p>AudioReach Engine including Signal Processing Framework(SPF) and processing modules</p></li>
+</ul>
+</div></blockquote>
+<p>Linux Adaptation</p>
+<blockquote>
+<div><p>Linux platform support is offered with two architectural flavors. For developers looking to utilize full feature set of what AudioReach has to offer, build the product with architecture as depicted in
+the diagram below. Following software components would need to be pulled from corresponding git repositories</p>
+<ul class="simple">
+<li><p>AudioReach Kernel Drivers</p></li>
+<li><p>Audio Graph Manager</p></li>
+</ul>
+<blockquote>
+<div><figure class="fig-center align-default" id="id5">
+<img alt="_images/gitrepo_mapping.png" src="_images/gitrepo_mapping.png" />
+<figcaption>
+<p><span class="caption-text"><cite>AudioReach Source Repository Diagram</cite></span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+<p>For developers looking for ALSA support at Linux kernel level, AudioReach ALSA/ASoC drivers are already available in Linux Kernel under &lt;KERNEL&gt;/sound/soc/qcom/qdsp6.</p>
+</div></blockquote>
+</section>
+<section id="build-recipe">
+<h3>Build Recipe<a class="headerlink" href="#build-recipe" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>The AudioReach meta layer provides the necessary recipes and configurations to build AudioReach software using the OpenEmbedded build system. This layer is curretly designed to support only Yocto.</p></li>
+<li><p>For detailed instructions on how to set up and use the meta layer, please refer to the <a class="reference external" href="https://github.com/Audioreach/meta-audioreach/blob/master/README.md">README</a> file at <a class="reference external" href="https://github.com/audioreach/meta-audioreach">meta-audioreach</a></p></li>
+</ul>
+</section>
+<section id="contribution-project-governance">
+<h3>Contribution &amp; Project Governance<a class="headerlink" href="#contribution-project-governance" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Contributions are most welcome. Contribution guideline for each source repository is documented in CONTRIBUTING.md.</p></li>
+<li><p>AudioReach project is open for self-appointing council governance structure</p></li>
+</ul>
+</section>
+<section id="license">
+<h3>License<a class="headerlink" href="#license" title="Link to this heading"></a></h3>
+<p>Project is licensed under the <a class="reference external" href="https://spdx.org/licenses/BSD-3-Clause.html">BSD-3-clause License</a>.</p>
+</section>
+</section>
+<section id="roadmap">
+<span id="sdk-roadmap"></span><h2>Roadmap<a class="headerlink" href="#roadmap" title="Link to this heading"></a></h2>
+<blockquote>
+<div><figure class="fig-center align-default" id="id6">
+<img alt="_images/roadmap.png" src="_images/roadmap.png" />
+<figcaption>
+<p><span class="caption-text"><cite>AudioReach Development Phases</cite></span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+<p>Feedback to help shaping AudioReach roadmap or contribution to pull in the timeline is highly welcome.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="AudioReachTM Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="design/index.html" class="btn btn-neutral float-right" title="AudioReach Designs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, AudioReach.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

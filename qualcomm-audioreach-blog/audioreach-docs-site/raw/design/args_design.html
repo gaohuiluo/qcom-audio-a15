@@ -1,0 +1,250 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AudioReach Graph Services &mdash; AudioReach Documentation 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/audioreach.css?v=cd7bb9cf" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Generic Packet Router" href="gpr_design.html" />
+    <link rel="prev" title="AudioReach Engine" href="arspf_design.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AudioReach Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sdk_overview.html">AudioReach Project Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">AudioReach Designs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="arch_overview.html">AudioReach Architecture Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design_concept.html">AudioReach Concepts and Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arspf_design.html">AudioReach Engine</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">AudioReach Graph Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#architecture">Architecture</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#graph-service-library">Graph Service Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#acdb-management-library">ACDB Management Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generic-package-router">Generic Package Router</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#audio-tuning-service">Audio Tuning Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#operating-system-abstraction-layer">Operating System Abstraction Layer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gpr_design.html">Generic Packet Router</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lx_design.html">Linux Adaptation Design</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">AudioReach APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">AudioReach Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arc/index.html">AudioReach Creator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform Reference Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AudioReach Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">AudioReach Designs</a></li>
+      <li class="breadcrumb-item active">AudioReach Graph Services</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/design/args_design.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="audioreach-graph-services">
+<span id="args-design"></span><h1>AudioReach Graph Services<a class="headerlink" href="#audioreach-graph-services" title="Link to this heading"></a></h1>
+<section id="introduction">
+<span id="args-introduction"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>AudioReach graph services (ARGS) are a collection of cross-platform software libraries which together provide following services</p>
+<p>Use Case Execution:</p>
+<ul class="simple">
+<li><p>Establish communication channel with AudioReach Engines (ARE)</p></li>
+<li><p>Set up and tear down audio graphs running on ARE for intended use cases</p></li>
+<li><p>Provide audio data interface to client to exchange audio data with ARE</p></li>
+<li><p>Provide control interface allowing client to apply control commands on intended modules in the audio graph</p></li>
+<li><p>Apply calibration on the audio graph</p></li>
+</ul>
+<p>Development Workflow:</p>
+<ul class="simple">
+<li><p>Log audio samples or module-specific data at different tap point throughout the audio graph</p></li>
+<li><p>Perform real time tuning of audio processing modules running in ARE</p></li>
+<li><p>Download new calibration data to the device</p></li>
+<li><p>Monitor system and module resource in real time</p></li>
+<li><p>Remote start of audio use case on device from ARC</p></li>
+</ul>
+</section>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading"></a></h2>
+<section id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h3>
+<p>AudioReach graph services, as depicted below, is consisted of four cross-platform software components: Graph Service Library(GSL), ACDB Manager Library(AML), Generic Packet Router(GPR), and Audio Tuning Service (ATS). These components invoke utilities and obtain platform specific information provided by OS abstraction layer (OSAL) and platform wrapper in order to operate on intended platform.</p>
+<p>GSL serves as entry point for client to access functionalities provided by graph service and ARE. Through GSL APIs, client can initiate graph setup, exchange audio data, and operate on the audio graph running on ARE. GSL queries AML with GKV, CKV, and TKV which are passed by the client to retrieve graph definition, calibration, and tagged payload. Then, GSL packetizes retrieved data from AML and invokes GPR to send commands and receive response from ARE. If module running in DSP is capable of generating event such as key word detection, GSL would relay the detection event back to client.</p>
+<p>Apart from providing service to client, ARGS also plays a critical role in audio system development workflow. Audio tuning service works as bridge between ARC on host PC and rest of audioreach software running on target. ATS dispatches commands from ARC to various service handlers which interfaces with rest of AudioReach software components to achieve development workflow use cases described in <a class="reference internal" href="#args-introduction"><span class="std std-ref">Introduction</span></a>.</p>
+<figure class="fig-center align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/args_arch.png"><img alt="../_images/args_arch.png" height="748" src="../_images/args_arch.png" width="987" />
+</a>
+<figcaption>
+<p><span class="caption-text">AudioReach Graph Services Block Diagram</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="graph-service-library">
+<h3>Graph Service Library<a class="headerlink" href="#graph-service-library" title="Link to this heading"></a></h3>
+<section id="functionalities">
+<h4>Functionalities<a class="headerlink" href="#functionalities" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Loading and Initialization of  Sub-Graphs and Graphs via Graph Key Vector.</p></li>
+<li><p>Graph setup and Dynamic handling of the sub-graphs within the graph</p></li>
+<li><p>Data Command Management - Read/Write buffers</p></li>
+<li><p>Control Command Management ; Handling Pause/Resume/Start/Stop etc.</p></li>
+<li><p>Calibration (Set Config/Get Config) of the ARE Modules.</p></li>
+</ol>
+</section>
+<section id="compositions">
+<h4>Compositions<a class="headerlink" href="#compositions" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>API Layer: GSL API layer defines and exposes APIs to GSL Clients.  It provides API’s to query graph handle from use-case key vector information and also graph management etc.
+Full List of APIs are listed in <a class="reference internal" href="../api/args_gsl.html#args-gsl-api"><span class="std std-ref">Graph Service Layer</span></a>.</p></li>
+<li><p>Control path: this layer performs control operations on use-case graphs on ARE. Some of the GSL control operations include graph management, sub-graph management and event handling. Detailed
+explanation of these operations are described in next chapter on GSL structure.</p>
+<ul>
+<li><p>Graph management layer: this layer is responsible to perform graph-level operations like open, close, etc on ARE. GSL graph management layer interfaces with AML to get graph definition, module
+configuration and calibration in binary blob format and sent to ARE via GPR/IPC. GSL graph management layer also maintains “state” information for each graph that is currently running on ARE.</p></li>
+<li><p>Sub-Graph Management Layer: this layer is responsible to keep track of the sub-graphs from all use-case graphs that are opened on ARE. This layer implements reference counting mechanism for
+sub-graphs so that common sub-graphs across use-cases shall be handled correctly. In addition each subgraph maintains a list of child subgraphs it is connected to.</p></li>
+</ul>
+</li>
+<li><p>Data path: this layer is responsible to receive/send audio data buffers from/to its clients. GSL offers various modes for clients to transfer/receive audio data.</p>
+<ul>
+<li><p>Blocking mode: In this mode, client is responsible for allocating the memory and providing it to GSL in the write/read calls. GSL will copy data from clients memory to its local buffer and indicate
+to client when the data has been copied. Blocking means gsl_write blocks until all the data sent by client has been consumed by GSL (i.e. copied to internal buffer).</p></li>
+<li><p>Non-blocking mode: This mode is very similar to blocking mode except gsl_write consumes as much data as possible and return immediately. Once there is enough space available in the internal buffer
+, GSL notifies client.</p></li>
+<li><p>Shared memory mode: This mode is similar to blocking and non-blocking modes except GSL allocates memory and shares with client.</p></li>
+<li><p>Push-pull mode:</p></li>
+</ul>
+</li>
+<li><p>Event Handling: This layer is responsible to receive events from ARE. Depending on the event received, GSL either takes an action (consumed) within itself or propagates the event to its clients
+using callback functions. Example events are SSR (sub-system restart), EOS (end of stream), and etc.</p></li>
+<li><p>GSL Common: Provides APIs to form GPR packet to be routed to ARE.  The packetizer layer checks for routing ID and updates the destination domain in GPR packet such that it will be routed to
+different instance of ARE running on different subsystem.</p></li>
+</ul>
+</section>
+</section>
+<section id="acdb-management-library">
+<h3>ACDB Management Library<a class="headerlink" href="#acdb-management-library" title="Link to this heading"></a></h3>
+<p>AML provides both get/set APIs to retrieve and adjust data in the ACDB DATA files. It provides data abstractions and organization for how calibration data is to be consumed by its client, GSL.
+On device, there are ACDB file and ACDB delta file. ACDB file stores baseline calibration data needed by GSL and ARE in compressed binary form. Delta file contains data set by GSL and ARC during run time.
+These files are managed by corresponding file managers as part of AML.</p>
+</section>
+<section id="generic-package-router">
+<h3>Generic Package Router<a class="headerlink" href="#generic-package-router" title="Link to this heading"></a></h3>
+<p>Refer to <a class="reference internal" href="gpr_design.html#gpr-overview"><span class="std std-ref">Functional Overview</span></a> for high level overview of GPR.</p>
+</section>
+<section id="audio-tuning-service">
+<h3>Audio Tuning Service<a class="headerlink" href="#audio-tuning-service" title="Link to this heading"></a></h3>
+<p>When ARC is connected to device, ARC is considered in connected mode. Communication is established with ATS via supported transport layer such as TCP/IP. Upon receiving ARC commands, ATS routes the commands to responsible service modules:</p>
+<ul class="simple">
+<li><p>Online Calibration Service (OCS): The Online Calibration service allows ARC to operate portions of AML</p></li>
+<li><p>Real Time Calibration (RTC): This module will hold all implementations of RTC to get/set data from/to ARE through GSL RTC APIs</p></li>
+<li><p>Media controller Service (MCS): This module initiates use cases on-target for advanced tuning features</p></li>
+<li><p>File Transfer Service (FTS): This module allows ARC to transfer files such as ACDB file onto the connected device</p></li>
+</ul>
+<p>ATS, beside depending on OSAL for OS related functionalities, relies on platform wrappers to provide platform specific utilities such as TCP/IP connection, playback/recording APIs.</p>
+</section>
+<section id="operating-system-abstraction-layer">
+<span id="args-osal"></span><h3>Operating System Abstraction Layer<a class="headerlink" href="#operating-system-abstraction-layer" title="Link to this heading"></a></h3>
+<p>In order to run AudioReach graph services on desired OS platform, OSAL implementation shall provide the following functionalities:</p>
+<ul class="simple">
+<li><p>Signal, Sleep, Thread, Mutex</p></li>
+<li><p>Timer</p></li>
+<li><p>Heap allocator</p></li>
+<li><p>File IO</p></li>
+<li><p>Logging</p></li>
+<li><p>Memory operations</p></li>
+<li><p>String operations</p></li>
+<li><p>Shared memory allocator: There are SoCs/HW platforms which rely on shared memory as primary mechanism to exchange control &amp; audio data between processor subsystems. Shared memory allocator should be implemented to utilize platform-specific APIs to allocate shared memory and provide to graph service components</p></li>
+<li><p>Service registry: On systems which ARE runs in assigned process domain, GSL relies on service registry to get notified up &amp; down status of process domain which is hosting the ARE before handshaking with ARE or handling subsystem restart or process domain restart scenarios.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="arspf_design.html" class="btn btn-neutral float-left" title="AudioReach Engine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gpr_design.html" class="btn btn-neutral float-right" title="Generic Packet Router" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, AudioReach.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

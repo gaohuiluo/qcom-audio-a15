@@ -1,0 +1,1486 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AudioReach Engine &mdash; AudioReach Documentation 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/audioreach.css?v=cd7bb9cf" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AudioReach Graph Services" href="args_design.html" />
+    <link rel="prev" title="AudioReach Concepts and Terminology" href="design_concept.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AudioReach Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sdk_overview.html">AudioReach Project Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">AudioReach Designs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="arch_overview.html">AudioReach Architecture Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design_concept.html">AudioReach Concepts and Terminology</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">AudioReach Engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#high-level-architecture">High-level architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#possible-use-cases">Possible use cases</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#framework-requirements">Framework requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#client-interfaces">Client interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#processing-chains-topologies-and-graphs">Processing chains, topologies, and graphs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#media-formats">Media formats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scheduling-methods">Scheduling methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resource-management">Resource management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#debugging">Debugging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#are-components">ARE components</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#high-level-architecture-of-the-are">High-level architecture of the ARE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functional-blocks">Functional blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calibration-and-configuration">Calibration and configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multi-instance-and-multi-core">Multi-instance and multi-core</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#customizations">Customizations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#custom-module">Custom module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-container">Custom container</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#use-cases">Use cases</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#playback">Playback</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#capture">Capture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-cases-with-source-and-sink-modules">Use cases with source and sink modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hands-free-profile-hfp">Hands free profile (HFP)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#voice-activation">Voice activation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#graph-designer-faq">Graph designer FAQ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-many-subgraphs-to-draw">How many subgraphs to draw?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-many-containers-should-i-use">How many containers should I use?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#should-i-use-sc-or-gc">Should I use SC or GC?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-i-improve-efficiency">How can I improve efficiency?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#acronyms-and-terms">Acronyms and terms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="args_design.html">AudioReach Graph Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpr_design.html">Generic Packet Router</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lx_design.html">Linux Adaptation Design</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">AudioReach APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">AudioReach Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arc/index.html">AudioReach Creator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform Reference Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AudioReach Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">AudioReach Designs</a></li>
+      <li class="breadcrumb-item active">AudioReach Engine</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/design/arspf_design.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="audioreach-engine">
+<span id="arspf-design"></span><h1>AudioReach Engine<a class="headerlink" href="#audioreach-engine" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id16">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#overview" id="id17">Overview</a></p>
+<ul>
+<li><p><a class="reference internal" href="#high-level-architecture" id="id18">High-level architecture</a></p></li>
+<li><p><a class="reference internal" href="#possible-use-cases" id="id19">Possible use cases</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#framework-requirements" id="id20">Framework requirements</a></p>
+<ul>
+<li><p><a class="reference internal" href="#general" id="id21">General</a></p></li>
+<li><p><a class="reference internal" href="#client-interfaces" id="id22">Client interfaces</a></p></li>
+<li><p><a class="reference internal" href="#processing-chains-topologies-and-graphs" id="id23">Processing chains, topologies, and graphs</a></p></li>
+<li><p><a class="reference internal" href="#media-formats" id="id24">Media formats</a></p></li>
+<li><p><a class="reference internal" href="#scheduling-methods" id="id25">Scheduling methods</a></p></li>
+<li><p><a class="reference internal" href="#resource-management" id="id26">Resource management</a></p></li>
+<li><p><a class="reference internal" href="#debugging" id="id27">Debugging</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#are-components" id="id28">ARE components</a></p>
+<ul>
+<li><p><a class="reference internal" href="#high-level-architecture-of-the-are" id="id29">High-level architecture of the ARE</a></p></li>
+<li><p><a class="reference internal" href="#functional-blocks" id="id30">Functional blocks</a></p></li>
+<li><p><a class="reference internal" href="#calibration-and-configuration" id="id31">Calibration and configuration</a></p></li>
+<li><p><a class="reference internal" href="#multi-instance-and-multi-core" id="id32">Multi-instance and multi-core</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#customizations" id="id33">Customizations</a></p>
+<ul>
+<li><p><a class="reference internal" href="#custom-module" id="id34">Custom module</a></p></li>
+<li><p><a class="reference internal" href="#custom-container" id="id35">Custom container</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#use-cases" id="id36">Use cases</a></p>
+<ul>
+<li><p><a class="reference internal" href="#playback" id="id37">Playback</a></p></li>
+<li><p><a class="reference internal" href="#capture" id="id38">Capture</a></p></li>
+<li><p><a class="reference internal" href="#use-cases-with-source-and-sink-modules" id="id39">Use cases with source and sink modules</a></p></li>
+<li><p><a class="reference internal" href="#hands-free-profile-hfp" id="id40">Hands free profile (HFP)</a></p></li>
+<li><p><a class="reference internal" href="#voice-activation" id="id41">Voice activation</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#graph-designer-faq" id="id42">Graph designer FAQ</a></p>
+<ul>
+<li><p><a class="reference internal" href="#how-many-subgraphs-to-draw" id="id43">How many subgraphs to draw?</a></p></li>
+<li><p><a class="reference internal" href="#how-many-containers-should-i-use" id="id44">How many containers should I use?</a></p></li>
+<li><p><a class="reference internal" href="#should-i-use-sc-or-gc" id="id45">Should I use SC or GC?</a></p></li>
+<li><p><a class="reference internal" href="#how-can-i-improve-efficiency" id="id46">How can I improve efficiency?</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#acronyms-and-terms" id="id47">Acronyms and terms</a></p></li>
+</ul>
+</nav>
+<section id="introduction">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>This page walks through the high-level software requirements and design
+details of the AudioReach Engine (ARE) used in the context of
+the AudioReach™ architecture. Refer to <a class="reference internal" href="#arspf-acronym"><span class="std std-ref">Acronyms and terms</span></a> for definition of acronyms used in this page</p>
+</section>
+<section id="overview">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">Overview</a><a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<section id="high-level-architecture">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">High-level architecture</a><a class="headerlink" href="#high-level-architecture" title="Link to this heading"></a></h3>
+<p>ARE follows client-server model where a server provides various
+functionalities, like realizing audio use cases, per the client
+requirements.</p>
+<ul class="simple">
+<li><p>The server framework provides the methods to plug in and execute
+algorithms per the use case requirements.</p></li>
+<li><p>The client framework acts as bridge between the high-level software
+stack (like middleware or application) and server framework.</p></li>
+<li><p>The platform (hardware subsystem) and operating system (OS)
+abstraction help the framework to work on different processors and
+hardware architectures.</p></li>
+</ul>
+<p>Below figure illustrates the high-level software architecture used in
+typical audio embedded systems.</p>
+<figure class="fig-center align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/Image1.png"><img alt="../_images/Image1.png" src="../_images/Image1.png" style="width: 4.8901in; height: 6.26002in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">High-level audio software architecture</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="possible-use-cases">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Possible use cases</a><a class="headerlink" href="#possible-use-cases" title="Link to this heading"></a></h3>
+<p>The ARE can be used in various audio and voice use cases. This section
+includes, but is not limited to, the following high-level examples.
+Detailed use cases are illustrated in <a class="reference external" href="#use-cases">Use cases</a> section.</p>
+<section id="audio-capture-and-recording">
+<h4>Audio capture and recording<a class="headerlink" href="#audio-capture-and-recording" title="Link to this heading"></a></h4>
+<p>Audio capture involves the encoding of PCM data coming from a mic or any
+real-time device (end-point).</p>
+<p>Audio formats used for encoding are: PCM, AAC, WMA std, AMRWB, and so
+on.</p>
+<figure class="fig-center align-default">
+<a class="reference internal image-reference" href="../_images/Image2.png"><img alt="../_images/Image2.png" src="../_images/Image2.png" style="width: 4.72918in; height: 0.8025in;" />
+</a>
+</figure>
+</section>
+<section id="audio-renderer-and-playback">
+<h4>Audio renderer and playback<a class="headerlink" href="#audio-renderer-and-playback" title="Link to this heading"></a></h4>
+<p>Audio playback involves the decoding of given audio data, and playing
+the PCM on a speaker or any real-time device.</p>
+<p>Typical audio formats used for decoding are: PCM, MP3, AAC, FLAC, ALAC,
+AC3, EAC3, Vorbis, WMA std, WMA Pro, DTS, APE, and so on.</p>
+<figure class="fig-center align-default">
+<a class="reference internal image-reference" href="../_images/Image3.png"><img alt="../_images/Image3.png" src="../_images/Image3.png" style="width: 4.75001in; height: 0.875in;" />
+</a>
+</figure>
+</section>
+<section id="voice-over-ip-voip">
+<h4>Voice over IP (VoIP)<a class="headerlink" href="#voice-over-ip-voip" title="Link to this heading"></a></h4>
+<p>Voice over Internet Protocol (VoIP) involves both playback and record
+paths simultaneously, and it is used for voice communication.</p>
+<p>Encoder and decoders interact with the host processor application that
+transmits and receives the data over IP during a conversation with the
+far-end user.</p>
+<p>Typical audio formats used for encoding and decoding are: PCM, AAC,
+A-law, µ-law, and so on.</p>
+<figure class="fig-center align-default">
+<a class="reference internal image-reference" href="../_images/Image4.png"><img alt="../_images/Image4.png" src="../_images/Image4.png" style="width: 4.76084in; height: 2.10417in;" />
+</a>
+</figure>
+</section>
+<section id="audio-transcoding">
+<h4>Audio transcoding<a class="headerlink" href="#audio-transcoding" title="Link to this heading"></a></h4>
+<p>Audio transcoding involves converting one audio format to another. For
+example, from MP3 to AAC.</p>
+<figure class="fig-center align-default">
+<a class="reference internal image-reference" href="../_images/Image6.png"><img alt="../_images/Image6.png" src="../_images/Image6.png" style="width: 5.44834in; height: 0.88584in;" />
+</a>
+</figure>
+</section>
+<section id="audio-loopback">
+<h4>Audio loopback<a class="headerlink" href="#audio-loopback" title="Link to this heading"></a></h4>
+<p>Audio loopback involves receiving the data from one audio source and
+rendering it on an audio sink after optional processing.</p>
+<p>An audio loopback is used in various scenarios like mixing the side tone
+in CS voice call, a hands-free profile (HFP), a hearing aid, and so on.</p>
+<p>Following are some loopback use cases, where audio must be routed from
+one device to another device with some conversions.</p>
+<ul class="simple">
+<li><p>PCM to compressed packetized. For example, PCM coming in from a
+device is encoded as DTS and packetized before transmitting to HDMI.</p></li>
+<li><p>Compressed packetized to PCM. For example, data coming from HDMI is
+depacketized, decoded, and transmitted to a speaker for rendering.</p></li>
+<li><p>Compressed packetized to compressed packetized with format
+conversion.</p></li>
+</ul>
+<figure class="fig-center align-default">
+<a class="reference internal image-reference" href="../_images/Image7.png"><img alt="../_images/Image7.png" src="../_images/Image7.png" style="width: 4.01084in; height: 0.63583in;" />
+</a>
+</figure>
+</section>
+<section id="audio-detection">
+<h4>Audio detection<a class="headerlink" href="#audio-detection" title="Link to this heading"></a></h4>
+<p>Audio detection involves receiving the data from an audio source,
+processing it to improve the signal quality, detecting the intended
+attribute or event, and informing the registered clients.</p>
+<p>Audio detection is used in various scenarios like DTMF detection,
+keyword detection, audio context detection, and so on.</p>
+<figure class="fig-center align-default">
+<a class="reference internal image-reference" href="../_images/Image8.png"><img alt="../_images/Image8.png" src="../_images/Image8.png" style="width: 4.85418in; height: 0.8125in;" />
+</a>
+</figure>
+</section>
+</section>
+</section>
+<section id="framework-requirements">
+<h2><a class="toc-backref" href="#id20" role="doc-backlink">Framework requirements</a><a class="headerlink" href="#framework-requirements" title="Link to this heading"></a></h2>
+<section id="general">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">General</a><a class="headerlink" href="#general" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Must be processor and platform agnostic.</p></li>
+<li><p>Must be use case agnostic and data driven.</p></li>
+<li><p>Must provide memory scalability options.</p></li>
+<li><p>Must provide an option to customize the framework.</p></li>
+<li><p>Must provide an option to support various performance modes.</p></li>
+<li><p>Must allow use case-specific customizations.</p></li>
+<li><p>Must support the unified interfaces to the modules (algorithms and
+functionality) to interact with the framework.</p></li>
+<li><p>Must be scalable to support standalone use cases up to high-end
+concurrencies.</p></li>
+<li><p>Should provide the options to dynamically load the processing modules
+and algorithms.</p></li>
+<li><p>Must support multi-core and multi-Instance configurations to enable
+distributed audio processing.</p></li>
+</ul>
+</section>
+<section id="client-interfaces">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Client interfaces</a><a class="headerlink" href="#client-interfaces" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Must support client-server communication in the same processor,
+across the processors, or across the processing domains.</p></li>
+<li><p>Must provide the methods to manage shared memory across the client
+and server framework.</p></li>
+<li><p>Must provide generalized interfaces (synchronous and asynchronous) to
+exchange commands, responses, and events between the client and the
+server framework.</p></li>
+<li><p>Must provide the methods to set up, configure, start, stop, suspend,
+and tear down the use case graphs.</p></li>
+<li><p>Must support run-time calibration and monitoring of the modules.</p></li>
+<li><p>Must provide the methods to publish the framework and module
+capabilities, configurations, and calibration interfaces to enable
+the data driven use case design.</p></li>
+<li><p>Should allow proxy clients to handle use case-specific
+customizations.</p></li>
+</ul>
+</section>
+<section id="processing-chains-topologies-and-graphs">
+<h3><a class="toc-backref" href="#id23" role="doc-backlink">Processing chains, topologies, and graphs</a><a class="headerlink" href="#processing-chains-topologies-and-graphs" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Must support linear processing graphs (where modules are connected
+sequentially one by one).</p></li>
+<li><p>Should support non-linear processing graphs (where modules are
+connected as directed acyclic graphs).</p></li>
+<li><p>Must support real time (RT) and non-real time (NRT) audio sources and
+sinks.</p></li>
+<li><p>Must support <em>stream</em>-based processing graphs where each stream can
+contain multiple channels.</p></li>
+<li><p>Should provide metadata propagation across the processing graphs.</p></li>
+<li><p>Should support the processing modules that have different frame-size
+requirements.</p></li>
+<li><p>Must support the option to run multiple instances of the sample
+module, and the ability to address individual instances of
+configuration or calibration.</p></li>
+<li><p>Must support in-place buffering option for the processing modules in
+the use case graphs.</p></li>
+<li><p>Must provide the methods to support data and control communication
+between the processing modules.</p></li>
+<li><p>Should provide the support for graph-specific functionalities like
+pause, resume, and flush.</p></li>
+<li><p>Should support the modules that take variable input numbers of
+samples and produce the variable numbers of output samples.</p></li>
+<li><p>Should provide the methods to notify the client processor when the
+last sample of the playback stream is rendered out of the audio sink.</p></li>
+</ul>
+</section>
+<section id="media-formats">
+<h3><a class="toc-backref" href="#id24" role="doc-backlink">Media formats</a><a class="headerlink" href="#media-formats" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Must support the fixed and floating point PCM data format.</p></li>
+<li><p>Must support various standard compressed data formats and the generic
+(raw) compressed data format.</p></li>
+<li><p>Must provide support for configuring the number of channels, bit
+width, sample width, and Q factor.</p></li>
+<li><p>Must support the media format propagation across the processing
+modules in the use case.</p></li>
+</ul>
+</section>
+<section id="scheduling-methods">
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">Scheduling methods</a><a class="headerlink" href="#scheduling-methods" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Should support different scheduling modes and different data delivery
+mechanisms (buffer availability, timer scheduled trigger, timed
+packet delivery, deadline driven scheduling, and so on).</p></li>
+<li><p>Should provide options to enable custom scheduling and trigger
+policies to handle complex scenarios.</p></li>
+</ul>
+</section>
+<section id="resource-management">
+<h3><a class="toc-backref" href="#id26" role="doc-backlink">Resource management</a><a class="headerlink" href="#resource-management" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Must provide the methods to manage the processing resources (memory
+management, processor cycles, band width, thread priorities, and so
+on) required for the use case graphs.</p></li>
+<li><p>Should provide the methods to measure the processing requirements of
+both the framework and modules.</p></li>
+<li><p>Should provide the ability to query the delay between required
+modules.</p></li>
+<li><p>Must provide the scalable memory requirement options based on the use
+cases or capabilities.</p></li>
+</ul>
+</section>
+<section id="debugging">
+<h3><a class="toc-backref" href="#id27" role="doc-backlink">Debugging</a><a class="headerlink" href="#debugging" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Must provide the methods to log the diagnostic messages.</p></li>
+<li><p>Must provide the option to log the audio data (PCM and compressed) at
+specified locations in the use case graphs.</p></li>
+<li><p>Should support different debug levels (which can be featurizable) to
+debug complex timing issues, memory leaks, and so on.</p></li>
+</ul>
+</section>
+</section>
+<section id="are-components">
+<h2><a class="toc-backref" href="#id28" role="doc-backlink">ARE components</a><a class="headerlink" href="#are-components" title="Link to this heading"></a></h2>
+<section id="high-level-architecture-of-the-are">
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">High-level architecture of the ARE</a><a class="headerlink" href="#high-level-architecture-of-the-are" title="Link to this heading"></a></h3>
+<figure class="fig-center align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/Image9.png"><img alt="../_images/Image9.png" src="../_images/Image9.png" style="width: 4.90451in; height: 6.65094in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">ARE high-level architecture</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="functional-blocks">
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">Functional blocks</a><a class="headerlink" href="#functional-blocks" title="Link to this heading"></a></h3>
+<p>This section provides a high-level overview of the functional blocks
+used in the ARE.</p>
+<section id="generic-packet-router-gpr">
+<h4>Generic Packet Router (GPR)<a class="headerlink" href="#generic-packet-router-gpr" title="Link to this heading"></a></h4>
+<p>The Generic Packet Router (GPR) provides the routing functionality for
+audio message packets (control, data, events, responses) across the ARE
+(server framework) and Graph Service Library (GSL; that is, the client
+framework).</p>
+<p>The GPR abstracts the platform-specific interprocessor communication
+(IPC) transport and protocol layers.</p>
+<p>Following figure represents the GPR header format, which consists of source
+and destination addresses (domain and port), token (useful for
+asynchronous communication to match the command and response), and
+operation code (opcode).</p>
+<figure class="fig-center align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/Image10.png"><img alt="../_images/Image10.png" src="../_images/Image10.png" style="width: 4.64584in; height: 3.39584in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">GPR header format</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="opcodes">
+<h5>Opcodes<a class="headerlink" href="#opcodes" title="Link to this heading"></a></h5>
+<p>All opcodes are to follow the GUID format.</p>
+<figure class="fig-center align-default">
+<a class="reference internal image-reference" href="../_images/Image11.png"><img alt="../_images/Image11.png" src="../_images/Image11.png" style="width: 4.01084in; height: 0.83334in;" />
+</a>
+</figure>
+<ul class="simple">
+<li><p><strong>Owner</strong> – Indicates the owner of the GUID, that is, whether the
+GUID is defined by the ARE or your custom opcode.</p></li>
+<li><p><strong>Type</strong> – Indicates the specific purpose, for example, control
+command, control response, data command, data response, event, module
+identifier, format identifier, CAPI opcode, and so on.</p></li>
+<li><p><strong>Bits</strong> – Used to interpret the message type as an event or
+response, and to avoid sending the general response or
+acknowledgment.</p></li>
+</ul>
+</section>
+<section id="messaging-between-are-and-gsl">
+<h5>Messaging between ARE and GSL<a class="headerlink" href="#messaging-between-are-and-gsl" title="Link to this heading"></a></h5>
+<p>The ARE supports two types of messaging approaches for optimal system
+performance: in-band and out-of-band messages.</p>
+<figure class="fig-center align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/Image12.png"><img alt="../_images/Image12.png" src="../_images/Image12.png" style="width: 5.74001in; height: 4.63584in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">In-band and out-of-band messaging methods</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="in-band-messages">
+<h5>In-band messages<a class="headerlink" href="#in-band-messages" title="Link to this heading"></a></h5>
+<ul class="simple">
+<li><p>Contain the actual payload/message as part of the GPR payload.</p></li>
+<li><p>The GPR forwards the full packet (that is, GPR header + actual
+payload) across the process domains.</p></li>
+<li><p>Potential memory copies are in intermediate layers between the
+framework server and client (hence the size limitation to reduce
+performance impacts).</p></li>
+<li><p>Typically used for small payloads, such as &lt;512 bytes
+(platform-specific configuration), like simple commands, responses,
+events, and so on.</p></li>
+</ul>
+</section>
+<section id="out-of-band-messages">
+<h5>Out of band messages<a class="headerlink" href="#out-of-band-messages" title="Link to this heading"></a></h5>
+<ul class="simple">
+<li><p>Use separate shared memory to keep the actual payload/message.</p></li>
+<li><p>The GPR forwards the packet with the address of the actual payload
+(that is, GPR address + address of the actual payload).</p></li>
+<li><p>Allow the framework server and client to access the shared memory
+without any additional memory copies between them.</p></li>
+<li><p>Typically used for larger payloads, such as &gt;512 bytes
+(platform-specific configuration), like configuration, calibration,
+data buffers, and so on.</p></li>
+</ul>
+</section>
+</section>
+<section id="modules">
+<h4>Modules<a class="headerlink" href="#modules" title="Link to this heading"></a></h4>
+<p>A module is an addressable <em>functionality</em> in the ARE.</p>
+<ul class="simple">
+<li><p>A <em>module ID</em> is used to identify the functionality, and it is useful
+during module instantiation.</p></li>
+<li><p>A <em>module instance ID</em> is used to identify the instance of the
+module. It is useful when receiving configuration and calibration
+information from the clients.</p></li>
+<li><p>The module instance (a 32-bit instance ID) should register the
+callback functions with GPR for receiving messages directly from
+clients.</p></li>
+</ul>
+<p>Two types of modules are used in the ARE: control modules and data
+processing modules.</p>
+<section id="control-modules">
+<h5>Control modules<a class="headerlink" href="#control-modules" title="Link to this heading"></a></h5>
+<p>Control modules provide the public interfaces to the clients (like GSL,
+Codec Driver, and so on) to control the ARE resources and
+functionalities (each module acts like service that provides specific
+functionalities).</p>
+<p>The Audio Processing Manager (APM), and Integrated Resource Monitor (IRM)
+are a few examples of the control modules.
+These modules are not represented in use case graphs.</p>
+</section>
+<section id="data-processing-modules">
+<h5>Data processing modules<a class="headerlink" href="#data-processing-modules" title="Link to this heading"></a></h5>
+<p>Data processing modules can be static or dynamic, and they are typically
+wrapped with the Common Audio Processing Interface (CAPI). The CAPI
+interface acts as the bridge between the framework and core module
+functionality.</p>
+<p>These modules can have zero or more input and output ports. Ports can be
+control or data, and they are connected to one link at a time (implicit
+mixing and splitting is not supported at these ports). Modules with zero
+input and zero output ports are not supported.</p>
+<p>Examples of data processing modules include decoders, encoders,
+postprocessing modules, hardware or software end-points, DTMF generator
+(source module), DTMF detection (sink module), echo canceller
+(multi-port module), and so on.</p>
+<p>For more details about the CAPI interface, see <a class="reference internal" href="../dev/capi_mod_dev.html#capi-mod-dev-guide"><span class="std std-ref">CAPI Module Development Guide</span></a>.</p>
+</section>
+</section>
+<section id="links-and-connections">
+<h4>Links and connections<a class="headerlink" href="#links-and-connections" title="Link to this heading"></a></h4>
+<p>Links and connections are used to connect the data processing modules to
+create the use case graphs or chains. Originating and terminating points
+of the link are represented by port.</p>
+<p>Two types of links are used in the ARE: control links and data links.</p>
+<figure class="fig-center align-default" id="id5">
+<a class="reference internal image-reference" href="../_images/Image13.png"><img alt="../_images/Image13.png" src="../_images/Image13.png" style="width: 5.76085in; height: 2.22917in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">CAPI-wrapped modules with control or data links</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="control-links">
+<h5>Control links<a class="headerlink" href="#control-links" title="Link to this heading"></a></h5>
+<p>Control links are bi-directional, point-to-point, and dynamic (variable
+in number) or static (fixed in number with a specific label on the
+control port).</p>
+<p>These links are optional and used in the places where two modules are
+required to communicate with each other in a steady state without client
+involvement. They are used for exchanging control messages or intents
+(that are not required to be synchronous with the data) between the two
+modules.</p>
+</section>
+<section id="data-links">
+<h5>Data links<a class="headerlink" href="#data-links" title="Link to this heading"></a></h5>
+<p>Data links are unidirectional, point-to-point, dynamic (variable in
+number, for example, input to the accumulator module can be variable),
+or static (fixed in number with a specific label on the data port, for
+example, an echo reference port can be marked explicitly).</p>
+<p>These links are used for exchanging data messages (that need be
+synchronous with data buffers or samples) between two modules. Each link
+carries one stream of data that can contain multiple channels.</p>
+<p>Data links are not present on the input side for source modules and the
+output side for sink modules.</p>
+</section>
+</section>
+<section id="graph-and-subgraph">
+<h4>Graph and subgraph<a class="headerlink" href="#graph-and-subgraph" title="Link to this heading"></a></h4>
+<p>A <em>graph</em> is the interconnection of a list of data path modules (with
+input and output ports) to achieve an end-to-end use case.</p>
+<p>A <em>subgraph</em> is like a graph and is used to represent a section (to
+control or manage a single unit) of the full graph.</p>
+<ul class="simple">
+<li><p>Subgraph properties provide the necessary configuration for managing
+a subgraph. For example, performance mode (like low power, low
+latency, and so on.), use case scenario ID (to handle any use
+case-specific customizations), and so on.</p></li>
+<li><p>ARE clients control the use cases at a subgraph granularity with the
+help of graph-specific commands like START, STOP, SUSPEND, FLUSH, and
+so on.</p></li>
+</ul>
+<p>For specific use cases, graph and subgraph mean the same thing.</p>
+<p>The ARE supports directed acyclic graphs (no feedback path) only.</p>
+</section>
+<section id="containers">
+<h4>Containers<a class="headerlink" href="#containers" title="Link to this heading"></a></h4>
+<p>A <em>container</em> is a framework implementation that helps in executing a
+group of data processing modules in the same software thread. Following figure
+illustrates this concept.</p>
+<figure class="fig-center align-default" id="id6">
+<a class="reference internal image-reference" href="../_images/Image14.png"><img alt="../_images/Image14.png" src="../_images/Image14.png" style="width: 9in; height: 5.47222in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Containers</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Each container instance runs in its own software thread.</p></li>
+<li><p>Container properties provide the necessary configuration for
+container creation and operation. For example, container type, stack
+size, heap ID, and so on.</p></li>
+<li><p>A <em>Container Type</em> helps in identifying the specified container and
+instantiating it during the use case setup (that is, Graph OPEN).</p></li>
+<li><p>A <em>Container Instance ID</em> is used to represent the instance of the
+container type, and it is used in the use case graph definition.</p></li>
+<li><p>A use case can contain different instances of the same container type
+to distribute the processing modules in different software threads.</p></li>
+</ul>
+<p>Based on the nature of the framework capabilities required by different
+use case modules and product needs, there are three container types:</p>
+</section>
+<section id="generic-container">
+<h4><strong>Generic container</strong><a class="headerlink" href="#generic-container" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Supports hardware end-point/signal triggered modules, shared memory
+end‑points, encoders, decoders, packetizers, depacketizer,
+converters, simple PP modules (including fractional resampling and
+rate matching)</p></li>
+<li><p>Back-to-back fractional resampling or rate matching are not
+supported. But individually fractional resampling or rate matching is
+supported as long as module is connected to the external ports of the
+container through a non-buffering linear chain.</p></li>
+<li><p>Priority (EC) sync, EC module and generic sync are supported starting
+2022.</p></li>
+<li><p>Supports low power island</p></li>
+<li><p>Optimized to run pure signal driven topology.</p></li>
+</ul>
+<p>Threshold aggregation in generic container is as follows:</p>
+<ul class="simple">
+<li><p>If there’s only one module with threshold in the container, then that
+module’s threshold is used.</p></li>
+<li><p>When multiple threshold modules exist, the LCM (Least Common
+Multiple) is taken to be the threshold.</p></li>
+<li><p>If no threshold module is present, then the subgraph performance-mode
+is used to determine the threshold where performance mode for low
+power corresponds to 5 ms and performance mode for low latency is 1
+ms.</p></li>
+<li><p>For raw-compressed formats, the threshold in bytes is used as is.
+Container frame-size is determined by any PCM formats present in the
+other parts of the graph. If the container is solely on
+raw-compressed format, then frame size in time cannot be determined
+and the thread priority setting may not be correct (such scenarios
+occur rarely and have to be handled on a case-by-case basis)</p></li>
+</ul>
+<p><strong>Example scenarios</strong></p>
+<ul class="simple">
+<li><p>If perf-mode is 5 ms (low power) but an end-point module exists that
+raises the threshold to 1 ms, then the container threshold is 1 ms.</p></li>
+<li><p>If there are two threshold modules in the container, one with a 2 ms
+threshold and one with a 5 ms threshold, then the container frame
+size is the LCM which is 10 ms.</p></li>
+<li><p>If the subgraph perf-mode is 5 ms and there are no threshold modules,
+then the container frame size is 5 ms</p></li>
+</ul>
+</section>
+<section id="specialized-container">
+<h4><strong>Specialized container</strong><a class="headerlink" href="#specialized-container" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Mainly designed for PP modules, including complex modules like rate
+matching and multi-port modules such as EC, which need syncing
+requirements for multiple inputs. Fractional resampling is also
+supported.</p></li>
+<li><p>Back-to-back fractional resampling, rate matching is supported.</p></li>
+<li><p>End-point/signal triggered modules, shared memory end-points,
+encoders, decoders, packetizers, depacketizer, and converters are not
+supported.</p></li>
+<li><p>Highly optimized for single input and single output (SISO) chain of simple PP modules:</p></li>
+<li><p>Removal of disabled modules from topo chain.</p></li>
+<li><p>Removal of sync+SAL from processing chain if only one active input
+(and limiter is disabled).</p></li>
+<li><p>Container bypass if all modules are disabled.</p></li>
+<li><p>Simpler steady state checks when there is no internal buffering in
+the container (compared to GC - which does this only for signal
+triggered cases).</p></li>
+<li><p>Voice call has special sync requirements, which are supported only in
+SC, such as smart sync, voice proc triggers etc.</p></li>
+<li><p>Doesn’t support low power island (LPI).</p></li>
+</ul>
+<p>Threshold aggregation in a specialized container is as follows:</p>
+<ul class="simple">
+<li><p>If there are multiple threshold modules, SC only supports modules
+whose thresholds are multiples of each other. If thresholds are not
+multiples, then it’s an error. If this ‘multiple-threshold’ is
+smaller than the frame-size derived from subgraph perf-mode, then the
+closest multiple bigger than the perf-mode-frame-szie is used.
+Otherwise, the multiple is used as is.</p></li>
+</ul>
+<p><strong>Example scenarios of threshold calculation</strong></p>
+<ul class="simple">
+<li><p>If the subgraph perf-mode is low power (5 ms) and the only threshold
+module in the container raises threshold as 2 ms, then container
+frame size is 6 ms, which is the closest multiple of the
+module-threshold which is higher than the perf-mode-frame-size.</p></li>
+<li><p>If the subgraph perf-mode is low power (5 ms) and two threshold
+modules are present in the container – one with 1 ms threshold and
+one raising 3 ms threshold, then the container frame size would be 6
+ms. This is the closest multiple of both modules’ thresholds which is
+higher than the perf-mode-frame-size.</p></li>
+<li><p>If the subgraph perf-mode is low power (5 ms) and there are no
+threshold modules, then the container frame size is 5 ms.</p></li>
+<li><p>If there are two threshold modules in the container, one raising
+threshold as 2 ms and one raising as 3 ms, then it is an error and SC
+will not support that topology.</p></li>
+<li><p>Special cases – For voice call stream-subgraph threshold of 20 ms is
+used and for audio playback stream-pp, 10 ms is the threshold.</p></li>
+</ul>
+</section>
+<section id="off-load-container">
+<h4><strong>Off-load container</strong><a class="headerlink" href="#off-load-container" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Supports reduction of the processing load on the local process domain
+by helping to off-load an intended module or a group of data
+processing modules to a different process domain. This is useful in
+distributed audio processing for effectively utilizing the available
+hardware resources across the different processors.</p></li>
+</ul>
+<p>The container concept enables framework customization that allows you to
+create a <em>custom container</em> if the reference containers do not support
+the necessary capabilities with the specified performance. Such
+customizations can be inter-operable with the reference containers if
+container-to-container interfaces and behaviors are honored.</p>
+<p>Containers help with the following:</p>
+<ul class="simple">
+<li><p>Managing (setup, start, stop, teardown) the processing chains
+(topologies) with CAPI modules.</p></li>
+<li><p>Managing the scheduling and trigger policies for the processing
+graphs inside the container.</p></li>
+<li><p>Parallelizing the processing loads in multi-threaded systems.</p></li>
+<li><p>Sharing the same stack memory across the modules running in that
+container.</p></li>
+<li><p>Ensuring the appropriate resource requirements (heap, thread
+priorities, processor and other infrastructure clocks, and so on)
+required for the modules.</p></li>
+<li><p>Managing the data buffering requirements with peer containers through
+inter-container buffering (ICB) and between the modules in the same
+container.</p></li>
+<li><p>Hosting the necessary command queues to interact with the APM, peer
+containers, external clients, and internal modules for control
+messaging.</p></li>
+<li><p>Hosting the data queues and buffer queues to exchange the data path
+messages (data buffers, metadata, end-of-stream (EOS), media format,
+and so on) with peer containers.</p></li>
+<li><p>These queues are created by the containers when the graph is opened.</p></li>
+<li><p>DataQ is created for every input port of the module that is at the
+container boundary.</p></li>
+<li><p>BufferQ is created for every output port of the module that is at the
+container boundary.</p></li>
+<li><p>Propagating the port (data and control) state information (start or
+stop) and nature of the data flow (real time or non-real time) with
+peer containers through the command queues. This information is
+useful for updating the scheduling policies at run-time.</p></li>
+</ul>
+<p>Below figure provides an example dataflow and scheduling policies involved
+in a simple use case with containers.</p>
+<figure class="fig-center align-default" id="id7">
+<a class="reference internal image-reference" href="../_images/Image15.png"><img alt="../_images/Image15.png" src="../_images/Image15.png" style="width: 9in; height: 3.79167in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example dataflow across containers</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>When the use case is started with the default trigger policy:</p>
+<ol class="arabic simple">
+<li><p>The container triggers or calls its topology processing when both
+input buffers (filled with data from upstream) and output buffers
+(free buffers) are available.</p></li>
+<li><p>During the topology processing, input data is propagated through the
+sequence of CAPI modules (per the use case graph definition) to the
+output buffer.</p></li>
+<li><p>After consuming the input buffer completely, the data is pushed back
+to the upstream’ s output queue (BufferQ).</p></li>
+<li><p>Once the output buffer is filled, the data is delivered to the
+downstream container input queue (DataQ).</p></li>
+<li><p>These steps are repeated at each container that is driven by buffer
+availability.</p></li>
+</ol>
+<p>The framework also allows the modules to override the default trigger
+policies by using trigger policy framework extensions. For example, some
+modules might want to be called whenever input or output buffer is
+available (such as the buffering type of modules).</p>
+</section>
+<section id="audio-processing-manager-apm">
+<h4>Audio Processing Manager (APM)<a class="headerlink" href="#audio-processing-manager-apm" title="Link to this heading"></a></h4>
+<p>The Audio Processing Manager (APM) is responsible for setting up and
+managing the use case graphs in the ARE.</p>
+<p>As illustrated in Figure: <a class="reference internal" href="#audio-processing-module-image"><span class="std std-ref">Audio Processing Manager</span></a>, the APM provides generic public interfaces
+to the GSL client for performing the following graph operations:</p>
+<ul class="simple">
+<li><p>Set up and configure the container processing threads.</p></li>
+<li><p>Set up the module’s graph within containers.</p></li>
+<li><p>Configure and calibrate individual modules within each container.</p></li>
+<li><p>Update the run-time graph, including adding and removing containers
+and modules from the graph.</p></li>
+<li><p>Manage data path connections and disconnection across containers.</p></li>
+<li><p>Provide run-time calibration of modules within a given container.</p></li>
+<li><p>Provide shared memory mapping interfaces.</p></li>
+<li><p>Provide path delay between two modules.</p></li>
+<li><p>Provide the global framework reset functionality with help of
+CLOSE_ALL command.</p></li>
+</ul>
+<figure class="fig-center align-default" id="id8">
+<span id="audio-processing-module-image"></span><a class="reference internal image-reference" href="../_images/Image16.png"><img alt="../_images/Image16.png" src="../_images/Image16.png" style="width: 6.01085in; height: 7.76085in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Audio Processing Manager</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The APM also handles the commands for controlling a subgraph’s state
+machine:</p>
+<figure class="fig-center align-default" id="id9">
+<a class="reference internal image-reference" href="../_images/Image17.png"><img alt="../_images/Image17.png" src="../_images/Image17.png" style="width: 5.97918in; height: 4.63584in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">APM state machine</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="closed">
+<h4><strong>CLOSED</strong><a class="headerlink" href="#closed" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>The logical/non-existent graph state before OPEN and after CLOSE.</p></li>
+</ul>
+</section>
+<section id="stopped">
+<h4><strong>STOPPED</strong><a class="headerlink" href="#stopped" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>The state after the graph is opened or transitioned from STARTED as
+part of STOP.</p></li>
+<li><p>For a START-to-STOP transition, the module algorithmic state is
+reset, and the container internal data buffers are flushed.</p></li>
+<li><p>Platform-specific resources (MIPS, bus bandwidth, and so on) are
+de-voted.</p></li>
+</ul>
+</section>
+<section id="prepared">
+<h4><strong>PREPARED</strong><a class="headerlink" href="#prepared" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>The media format is propagated through a module topology, if
+available.</p></li>
+<li><p>The module applies input media format-dependent calibrations.</p></li>
+</ul>
+</section>
+<section id="started">
+<h4><strong>STARTED</strong><a class="headerlink" href="#started" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Platform-specific resources (MIPS, bus bandwidth, and so on) are
+voted.</p></li>
+<li><p>When applicable, data triggers, hardware end point, timer interrupts
+are enabled.</p></li>
+<li><p>A subgraph is ready for handling the data flow.</p></li>
+</ul>
+</section>
+<section id="suspended">
+<h4><strong>SUSPENDED</strong><a class="headerlink" href="#suspended" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Platform-specific resources (MIPS, bus bandwidth, and so on)
+de-voted.</p></li>
+<li><p>The module algorithmic state and container internal data buffers are
+maintained and not flushed, unlike the STOP command.</p></li>
+</ul>
+<p>In addition to handling commands from the host processor client, the APM
+is also responsible for the following operations:</p>
+<ul class="simple">
+<li><p>Depending on the type of command, interact with containers via the
+framework messaging APIs for sending these commands and handle
+responses from the containers.</p></li>
+<li><p>For a given command, aggregate the container’s response for the
+message and send an aggregated acknowledgement back to the GSL.</p></li>
+<li><p>For a given end-to-end graph, manage and coordinate with containers
+for use cases (such as rate matching) that involve control path data
+exchange between modules located across different containers.</p></li>
+</ul>
+<p>This includes utilities for end-to-end container-module graph sorting
+with respect to data flow direction from the data source to the sink,
+graph search, and traversal routines.</p>
+</section>
+<section id="audio-module-data-base-amdb">
+<h4>Audio Module Data Base (AMDB)<a class="headerlink" href="#audio-module-data-base-amdb" title="Link to this heading"></a></h4>
+<p>The Audio Module database (AMDB) provides the database of CAPI-wrapped
+modules (both static and dynamic modules) in the ARE.</p>
+<figure class="fig-center align-default" id="id10">
+<span id="audio-module-data-base"></span><a class="reference internal image-reference" href="../_images/Image19.png"><img alt="../_images/Image19.png" src="../_images/Image19.png" style="width: 4.27084in; height: 3.52084in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Audio Module Data Base</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The AMDB is responsible for the following operations.</p>
+<ul class="simple">
+<li><p>Provide the client (to GSL) interfaces to register or deregister
+custom modules and load or unload the dynamic modules at boot time or
+use case boundaries.</p></li>
+<li><p>Interact with containers for instantiating and tearing down the
+module.</p></li>
+<li><p>Use the platform-specific dynamic download utilities for downloading
+shared objects to the specified memory (DDR, low-power memory, and so
+on.).</p></li>
+<li><p>Manage the reference counter so that a module will not be unloaded if
+it is being used by active use cases.</p></li>
+</ul>
+<p>As shown in Figure: <a class="reference internal" href="#audio-module-data-base"><span class="std std-ref">Audio Module Data Base</span></a></p>
+</section>
+<section id="built-in-modules">
+<h4><strong>Built-in modules</strong><a class="headerlink" href="#built-in-modules" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Modules that are built with the ARE, both static and dynamic objects.</p></li>
+<li><p>The AMDB uses the module database (module ID, entry point functions
+in autogenerated .c file) that is generated with the build system, so
+no separate registration or deregistration is required.</p></li>
+</ul>
+</section>
+<section id="custom-modules">
+<h4><strong>Custom modules</strong><a class="headerlink" href="#custom-modules" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Modules that are built as standalone dynamic objects instead of building with ARE</p></li>
+<li><p>These modules and dynamic objects must be registered with the
+AudioReach calibration and configuration tool (ARC) using the custom module integration workflow, which in turn
+registers them with the AMDB in the ARE.</p></li>
+</ul>
+</section>
+<section id="static-modules">
+<h4><strong>Static Modules</strong><a class="headerlink" href="#static-modules" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Static modules are loaded at boot time along with the ARE.</p></li>
+</ul>
+</section>
+<section id="dynamic-modules">
+<h4><strong>Dynamic Modules</strong><a class="headerlink" href="#dynamic-modules" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Depending on the memory and latency tradeoffs, dynamic modules can be
+loaded at boot time or at a use case boundary.</p></li>
+</ul>
+</section>
+<section id="integrated-resource-monitor-irm">
+<h4>Integrated Resource Monitor (IRM)<a class="headerlink" href="#integrated-resource-monitor-irm" title="Link to this heading"></a></h4>
+<p>The Integrated Resource Monitor (IRM) provides the profiling metrics for
+different resources in the underlying platform.</p>
+<p>The ARC platform displays resource metrics (MIPs, bandwidth, heap
+usage, and so on) for system designers.</p>
+<figure class="fig-center align-default" id="id11">
+<a class="reference internal image-reference" href="../_images/Image21.png"><img alt="../_images/Image21.png" src="../_images/Image21.png" style="width: 5.02085in; height: 3.65084in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Integrated Resource Monitor</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="platform-and-os-abstraction-layer">
+<h4>Platform and OS Abstraction Layer<a class="headerlink" href="#platform-and-os-abstraction-layer" title="Link to this heading"></a></h4>
+<p>The platform and operating system abstraction layer (POSAL) provides the
+necessary abstraction to the framework and makes it processor (hardware)
+or platform (software) agnostic.</p>
+<p>Some of the abstractions include, but are not limited to, the following:</p>
+<ul class="simple">
+<li><p>Power management</p></li>
+<li><p>MIPs/MCPs/MPPs and bandwidth voting to select processor and system
+bus clocks.</p></li>
+<li><p>Latency voting which could control various performance modes</p></li>
+<li><p>Custom power domains to achieve various power goals</p></li>
+<li><p>Processor specific intrinsics to help with optimizations</p></li>
+<li><p>Memory Management (different types of heap memories, shared memory
+mapping and so on)</p></li>
+<li><p>Cache memory operations (clean, invalidate operations)</p></li>
+<li><p>Conditional and atomic variables</p></li>
+<li><p>Priority inheritance and recursive mutex, nmutex</p></li>
+<li><p>Signals and Channels (enables to listen multiple signals)</p></li>
+<li><p>Interrupts handling</p></li>
+<li><p>Timers</p></li>
+<li><p>Software threads (priority-based preemptive scheduling)</p></li>
+<li><p>Platform specific thread priority data base</p></li>
+<li><p>Data (PCM or Compressed) and message logging for diagnostic purposes</p></li>
+</ul>
+</section>
+</section>
+<section id="calibration-and-configuration">
+<span id="spf-cal-config-mode"></span><h3><a class="toc-backref" href="#id31" role="doc-backlink">Calibration and configuration</a><a class="headerlink" href="#calibration-and-configuration" title="Link to this heading"></a></h3>
+<p>Calibration and configuration comprise the control information provided
+to the module at setup and runtime to control the module’s
+functionality.</p>
+<figure class="fig-center align-default" id="id12">
+<a class="reference internal image-reference" href="../_images/Image22.png"><img alt="../_images/Image22.png" src="../_images/Image22.png" style="width: 6.01085in; height: 2.70584in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Calibration modes</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Following are the three types of calibration interfaces exposed by the
+AudioReach Engine.</p>
+<section id="regular-and-non-shared-calibration">
+<h4>Regular and non-shared calibration<a class="headerlink" href="#regular-and-non-shared-calibration" title="Link to this heading"></a></h4>
+<p>Steps:</p>
+<ol class="arabic simple">
+<li><p>The client provides the calibration memory to the module.</p></li>
+<li><p>The module copies the calibration data to internal buffers and provides the response to the client.</p></li>
+<li><p>The client frees the shared buffer.</p></li>
+</ol>
+<p>Overheads:</p>
+<ul class="simple">
+<li><p>Additional memory (internal buffer) and buffer copy overhead.</p></li>
+<li><p>Hence, we recommend small calibration sizes.</p></li>
+</ul>
+<p>The ARE supports both in-band and out-of-band calibration methods.</p>
+</section>
+<section id="persistent-and-shared-calibration">
+<h4>Persistent and shared calibration<a class="headerlink" href="#persistent-and-shared-calibration" title="Link to this heading"></a></h4>
+<p>Steps:</p>
+<ol class="arabic simple">
+<li><p>The client provides the calibration memory to the module through an
+out-of-band payload.</p></li>
+<li><p>The module uses the client-shared memory directly without copying the
+calibration data to internal buffers, and it provides the response to
+the client.</p></li>
+<li><p>If the use case is active, the client preserves the shared memory
+that is being used by the module.</p></li>
+<li><p>The client frees the shared buffer once the use case is closed.</p></li>
+</ol>
+<p>Memory usage and processing cycles are optimal because no copy is
+involved.</p>
+<p>Persistent calibration memory acts like read-write (RW) from the module
+instance perspective. We recommend this approach for large calibration
+and configuration blocks (like machine learning models).</p>
+<p>Only out-of-band calibration is supported.</p>
+</section>
+<section id="shared-persistent-or-global-shared-calibration">
+<h4>Shared-persistent or global-shared calibration<a class="headerlink" href="#shared-persistent-or-global-shared-calibration" title="Link to this heading"></a></h4>
+<p>This approach is like persistent calibration. However, in this case, the
+same data is shared to multiple modules, which can help to save more
+memory.</p>
+<p>Shared persistent calibration memory acts like read-only (RO) from the
+module’s perspective. It is typically used for large calibration or
+configuration blocks where the same data can be shared across multiple
+module instances (such as resampler coefficients).</p>
+<p>Only out-of-band calibration is supported.</p>
+</section>
+</section>
+<section id="multi-instance-and-multi-core">
+<h3><a class="toc-backref" href="#id32" role="doc-backlink">Multi-instance and multi-core</a><a class="headerlink" href="#multi-instance-and-multi-core" title="Link to this heading"></a></h3>
+<p>The ARE enables multi-core and multi-instance system configurations with
+the help of Master and Satellite architecture. These capabilities help
+in distributing audio processing loads across the processors to achieve
+functional and performance goals.</p>
+<section id="multi-instance-configuration">
+<h4>Multi-Instance configuration<a class="headerlink" href="#multi-instance-configuration" title="Link to this heading"></a></h4>
+<p>Use multi-instance configuration for running disjointed and complete use
+cases in different process domains.</p>
+<p>To route a specific use case to a specific process domain, the use case
+designer must provide the hint (through a routing ID). The GSL uses the
+routing information and interacts with that process domain ARE (also
+called the <em>master framework</em>) to realize the use case.</p>
+<p>An example scenario is a system where multiple processors are used for
+different power profiles:</p>
+<ul class="simple">
+<li><p>Always ON use cases are routed to a low power processor</p></li>
+<li><p>Another high-power use case is routed to another processor</p></li>
+</ul>
+<figure class="fig-center align-default" id="id13">
+<a class="reference internal image-reference" href="../_images/Image23.png"><img alt="../_images/Image23.png" src="../_images/Image23.png" style="width: 5.76085in; height: 4.51084in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">ARE in multi-core and multi-instance configuration</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="multi-core-configuration">
+<h4>Multi-core configuration<a class="headerlink" href="#multi-core-configuration" title="Link to this heading"></a></h4>
+<p>Use multi-core configuration to distribute a given use case across
+multiple process domains. Like a star topology, each off-load graph
+originates and terminates with the master ARE.</p>
+<p>To avoid additional complexities with data or control synchronization
+and subsystem re-start mechanisms, there is no communication across the
+satellites.</p>
+<ul class="simple">
+<li><p>The use case designer must provide the hint (by selecting the
+appropriate process domain) for the modules that are to be off-loaded
+and distributed.</p></li>
+<li><p>The GSL provides this use case information to the ARE (Master), which
+in turn interacts with the required satellite frameworks to realize
+the use case.</p></li>
+<li><p>Distributed processing helps utilize the processing resources
+effectively in the system at the cost of potential latency or power
+increase. Hence the control of selecting the use cases and modules
+given to the use case designer (with the help of ARC).</p></li>
+</ul>
+<figure class="fig-center align-default" id="id14">
+<span id="playback-with-offload-module-use-case-designer-view"></span><a class="reference internal image-reference" href="../_images/Image24.png"><img alt="../_images/Image24.png" src="../_images/Image24.png" style="width: 5.76085in; height: 2.91084in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Playback with off-load modules – Use case designer’s view</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Both ARE-Master and ARE-Satellite support most of the capabilities
+across the process domains, excluding any platform-specific capabilities
+or modules.</p>
+<ul class="simple">
+<li><p>Figure: <a class="reference internal" href="#playback-with-offload-module-use-case-designer-view"><span class="std std-ref">Playback with off-load modules – Use case designer’s view</span></a> shows the simple playback use case using off-load
+container to off-load couple of modules into another processor.</p></li>
+<li><p>Figure: <a class="reference internal" href="#playback-with-offload-modules-implementation-view"><span class="std std-ref">Playback with off-load modules – ARE implementation view</span></a> represents its implementation view.</p>
+<ul>
+<li><p>Off-load container with shared memory end points inserted in the
+graph to route the data between master and satellite process domains
+for the given off-load use case.</p></li>
+<li><p>This additional hop across the process domains can increase
+additional latency due to inter process communication overheads and
+additional buffering between the off-load container and satellite
+containers to enable the parallel processing.</p></li>
+</ul>
+</li>
+</ul>
+<figure class="fig-center align-default" id="id15">
+<span id="playback-with-offload-modules-implementation-view"></span><a class="reference internal image-reference" href="../_images/Image25.png"><img alt="../_images/Image25.png" src="../_images/Image25.png" style="width: 5.76085in; height: 2.91084in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Playback with off-load modules – ARE implementation view</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The off-load container is inter-operable with other reference
+containers. It helps to propagate the metadata, end-of-stream (EOS),
+media format, and state (START, STOP, SUSPEND) information across the
+off-loading modules.</p>
+</section>
+</section>
+</section>
+<section id="customizations">
+<h2><a class="toc-backref" href="#id33" role="doc-backlink">Customizations</a><a class="headerlink" href="#customizations" title="Link to this heading"></a></h2>
+<section id="custom-module">
+<h3><a class="toc-backref" href="#id34" role="doc-backlink">Custom module</a><a class="headerlink" href="#custom-module" title="Link to this heading"></a></h3>
+<p>For steps on how to add a custom module, please refer to the <a class="reference internal" href="../dev/adding_modules.html#adding-modules"><span class="std std-ref">How to add an Audio Module</span></a> guide.</p>
+</section>
+<section id="custom-container">
+<h3><a class="toc-backref" href="#id35" role="doc-backlink">Custom container</a><a class="headerlink" href="#custom-container" title="Link to this heading"></a></h3>
+<p>The custom container development workflow involves the following steps:</p>
+<ol class="arabic simple">
+<li><p>The custom container must use the internal messaging APIs defined
+between the APM and containers to set up, configure, start, stop,
+suspend, and tear down the graph.</p></li>
+<li><p>The custom container must use inter-container messaging to make it
+inter-operable with other reference containers.</p></li>
+<li><p>Develop the custom container per the above guidelines, with specified
+scheduling policies and performance requirements.</p></li>
+<li><p>Update the supported module headers with this new custom container.</p></li>
+<li><p>Update the internal container data base tables with entry point
+functions so the APM can create the container during use case setup.</p></li>
+<li><p>Update the APM API header file with the new container type, and
+regenerate the API XML file (using the h2xml tool).</p></li>
+<li><p>Import the API XML files into the ARC platform to see the new
+container and supported modules for creating use case graphs.</p></li>
+</ol>
+</section>
+</section>
+<section id="use-cases">
+<h2><a class="toc-backref" href="#id36" role="doc-backlink">Use cases</a><a class="headerlink" href="#use-cases" title="Link to this heading"></a></h2>
+<p>This section lists some common use cases that are realized using
+AudioReach. <strong>NOTE:</strong> This is not an exhaustive list.</p>
+<section id="playback">
+<h3><a class="toc-backref" href="#id37" role="doc-backlink">Playback</a><a class="headerlink" href="#playback" title="Link to this heading"></a></h3>
+<p>The playback use case is the most common audio use case and it involves
+decoding, postprocessing, and rendering. AudioReach software is
+data-driven and doesn’t assume anything about the graph shape or its
+contents as that is up to the designer, but the following diagram serves
+as an example.</p>
+<p>The graph is divided into 3 subgraphs: stream, device PP, and global
+device. This structure aligns with how audio playback is controlled in a
+handset product. The global device subgraph gets data from low power
+streams as well as low latency audio streams + voice call. The device PP
+subgraph does device specific processing, e.g., multi-band DRC. The
+stream subgraph contains decoder, stream-specific processing and
+audio‑video synchronization control. During device switch, e.g., from
+handset to headset, the device subgraph can be swapped with another
+variant.</p>
+<p>The following diagram also shows 5 stages of processing. Various stages
+help in achieving pipelined processing, thus distributing the load on
+multiple threads. These stages are designated as containers, each of
+which runs in its own software thread. Typically in a low power
+configuration, all containers run at 5 ms frame size whereas the codec
+DMA sink container runs at 1 ms frame size. Any frame size ≥ 1 ms is
+allowed.</p>
+<p>The first container involves receiving data from the client through a
+write shared memory end point, getting the data decoded (any decoder
+such as AAC or MP33 can replace the PCM decoder), and followed by PCM
+conversion, such as bit-width conversion to deinterleaved format for
+subsequent processing.</p>
+<p>The second stage contains stream-specific processing such as volume
+control, media format conversion, e.g., sample rate conversion. Data
+logging can be placed at any place in the graph for debugging purposes.
+The soft-pause module helps ramp up or down during pause or resume.</p>
+<p>The splitter renderer can split the stream synchronously on multiple
+devices (if needed), and also computes session-time for AV sync.</p>
+<p>Device postprocessing is where multiple concurrent streams can be mixed
+and further postprocessed. Before mixing using simple accumulator and
+limiter, the inputs are synchronized using a sync module. In the global
+device SG, further mixing is possible (with low latency audio) and
+ultimately, the data is rendered through the codec DMA sink module.</p>
+<figure class="fig-center align-default">
+<a class="reference internal image-reference" href="../_images/Image27.png"><img alt="../_images/Image27.png" src="../_images/Image27.png" style="width: 5.76085in; height: 2.81084in;" />
+</a>
+</figure>
+</section>
+<section id="capture">
+<h3><a class="toc-backref" href="#id38" role="doc-backlink">Capture</a><a class="headerlink" href="#capture" title="Link to this heading"></a></h3>
+<p>The following capture path contains 3 subgraphs and 4 containers. The
+data from the hardware received through the codec DMA source is passed
+through several stages of processing and is ultimately read by HLOS
+through a read shared memory end-point.</p>
+<figure class="fig-center align-default">
+<a class="reference internal image-reference" href="../_images/Image28.png"><img alt="../_images/Image28.png" src="../_images/Image28.png" style="width: 5.76085in; height: 3.21084in;" />
+</a>
+</figure>
+</section>
+<section id="use-cases-with-source-and-sink-modules">
+<h3><a class="toc-backref" href="#id39" role="doc-backlink">Use cases with source and sink modules</a><a class="headerlink" href="#use-cases-with-source-and-sink-modules" title="Link to this heading"></a></h3>
+<p>The following example graphs contain source (DTMF generator) and sink
+(DTMF detector) modules.</p>
+<figure class="fig-center align-default">
+<a class="reference internal image-reference" href="../_images/Image29.png"><img alt="../_images/Image29.png" src="../_images/Image29.png" style="width: 5.76085in; height: 1.51084in;" />
+</a>
+</figure>
+</section>
+<section id="hands-free-profile-hfp">
+<h3><a class="toc-backref" href="#id40" role="doc-backlink">Hands free profile (HFP)</a><a class="headerlink" href="#hands-free-profile-hfp" title="Link to this heading"></a></h3>
+<p>The following HFP graph contains 2 loopbacks between hardware source to
+hardware sink. There’s also a feedback path for EC. The top graph is the
+mic path on the local device being sent to Bluetooth (connected through
+I2S). The botton graph is the speaker path where BT data coming from I2S
+is rendered on the codec DMA sink.</p>
+<figure class="fig-center align-default">
+<a class="reference internal image-reference" href="../_images/Image30.png"><img alt="../_images/Image30.png" src="../_images/Image30.png" style="width: 6.46085in; height: 3.21084in;" />
+</a>
+</figure>
+</section>
+<section id="voice-activation">
+<h3><a class="toc-backref" href="#id41" role="doc-backlink">Voice activation</a><a class="headerlink" href="#voice-activation" title="Link to this heading"></a></h3>
+<p>The voice activation use case involves receiving mic data and running it
+through a voice activation module after preprocessing for noise. The
+history buffer stores large amounts of pre-roll data (&gt; 1 sec). This
+data is released to second stages running on the client whenever a
+keyword is detected by the voice activation engine. The 2 modules
+communicate through the control link. This graph consists of real-time
+as well as non-real-time processing.</p>
+<figure class="fig-center align-default">
+<a class="reference internal image-reference" href="../_images/Image31.png"><img alt="../_images/Image31.png" src="../_images/Image31.png" style="width: 6.46085in; height: 1.41084in;" />
+</a>
+</figure>
+</section>
+</section>
+<section id="graph-designer-faq">
+<h2><a class="toc-backref" href="#id42" role="doc-backlink">Graph designer FAQ</a><a class="headerlink" href="#graph-designer-faq" title="Link to this heading"></a></h2>
+<p>Use case graphs must satisfy both functional and performance
+requirements simultaneously. Graph designers typically focus on
+functionality and don’t realize the importance of proper graph shapes on
+performance. An improper graph can consume extra cycle overheads or
+consume additional memory. This chapter describes aspects related to
+graph drawing. More information is available in <a class="reference internal" href="../dev/capi_mod_dev.html#capi-mod-dev-guide"><span class="std std-ref">CAPI Module Development Guide</span></a>.</p>
+<section id="how-many-subgraphs-to-draw">
+<h3><a class="toc-backref" href="#id43" role="doc-backlink">How many subgraphs to draw?</a><a class="headerlink" href="#how-many-subgraphs-to-draw" title="Link to this heading"></a></h3>
+<p>A graph for a given use case consists of one or more subgraphs. Signal
+Processing Framework (ARE) is agnostic to subgraphs. Subgraphs are drawn
+based on how a client wants to control the graphs, e.g., a device-switch
+use case demands stream vs. device subgraphs.</p>
+</section>
+<section id="how-many-containers-should-i-use">
+<h3><a class="toc-backref" href="#id44" role="doc-backlink">How many containers should I use?</a><a class="headerlink" href="#how-many-containers-should-i-use" title="Link to this heading"></a></h3>
+<p>Containers like GC and SC are data processing threads (a custom
+container may have multiple data processing threads, but this guidance
+only considers GC and SC). Data processing threads typically run
+periodically based on their frame duration, e.g., the end‑point may run
+every millisecond, device PP may run every 5 ms, or a decoder may run
+every 21.33 ms (1024 samples at 48k), so one reason to use different
+containers is to handle difference in frame durations.</p>
+<p>Even for a given frame duration, you may want to use different
+containers for the purpose of load balancing. This is true especially
+with Hexagon processor which supports multiple hardware threads. Having
+multiple containers helps in utilizing the hardware threads
+concurrently, completing the job faster and allowing longer sleep
+durations between frames.</p>
+<p>Signal triggered modules are interrupt or timer driven. Currently only
+one signal triggered module is supported by one container. Further, some
+modules are supported only in certain container types, e.g., encoders
+are supported only in GC.</p>
+<p>Using lot of containers can increase memory requirement due to stacks,
+instance memory, and buffer memories. For every stage of a container,
+double buffering is typically added. This might increase data path
+latency. More containers also means more MIPS used on overheads.</p>
+<p>Occasionally, subgraph boundaries may influence the number of containers
+needed, e.g., an ultra low latency (ULL) stream being rendered on 2
+devices: handset and speaker. It’s possible to have ULL stream SG in an
+end-point container in a standalone use case. However, if there are 2
+end-points using different containers if we host stream-SG in device
+containers, then during device switch the stream will also be torn down;
+since this is not acceptable, we need to put stream-SG in its own
+container.</p>
+<p>For very low frame sizes (≤ 1 ms), cycle overheads might be lowered when
+there are no subgraph boundaries within a container. To elaborate
+consider graph, [{A-&gt;B}-&gt;{C-&gt;D}], in this graph square brackets denote
+container boundaries. Flower brackets denote subgraph boundaries, and
+A,B,C, and D are module instances. There are subgraphs within the
+container. However, in this graph: {[A-&gt;B-&gt;C-&gt;D]} there are no subgraph
+boundaries within a container. This graph {[A-&gt;B]-&gt;[C-&gt;D]}, also doesn’t
+have a subgraph boundary within a container.</p>
+</section>
+<section id="should-i-use-sc-or-gc">
+<h3><a class="toc-backref" href="#id45" role="doc-backlink">Should I use SC or GC?</a><a class="headerlink" href="#should-i-use-sc-or-gc" title="Link to this heading"></a></h3>
+<p>Some modules are supported only in GC and some may be only available in
+SC. The h2xml of the module specifies the supported container type.</p>
+<p>The generic container can satisfy most requirements, except:</p>
+<ul class="simple">
+<li><p>Power optimizations for chain of PP modules in mobile use cases</p></li>
+<li><p>Special synchronization requirements, such as smart sync for voice
+calls</p></li>
+<li><p>Back-to-back rate matching or fractional resampling modules, i.e.,
+sample slip &gt; MFC doing fractional resampling</p></li>
+</ul>
+<p>If you have only PP modules (including sync, SAL, splitter, EC, filters,
+effects etc), using SC is recommended. GC support for PP modules is to
+be exercised mainly when those modules have to work alongside other
+modules which are supported only in GC.</p>
+</section>
+<section id="how-can-i-improve-efficiency">
+<h3><a class="toc-backref" href="#id46" role="doc-backlink">How can I improve efficiency?</a><a class="headerlink" href="#how-can-i-improve-efficiency" title="Link to this heading"></a></h3>
+<p>Memory, MIPS (overheads), and latency are some KPIs that cannot be
+improved unless efficient graphs are used. Some general guidelines are:</p>
+<ul class="simple">
+<li><p>Keep the optimum number of containers</p></li>
+<li><p>Some graphs have additional containers that don’t serve any purpose.
+Combine containers if possible and if that’s more optimal</p></li>
+<li><p>Remove unnecessary modules</p></li>
+<li><p>Each module in a graph adds an overhead (MIPS or memory) by its
+presence</p></li>
+<li><p>Even disabled modules may cause additional overhead</p></li>
+<li><p>Question the need for every module in the graph</p></li>
+<li><p>Remove any unnecessary connections between modules</p></li>
+<li><p>Reduce media format conversions by trying to reorder the modules</p></li>
+<li><p>Lower the frame duration, increase the MIPS overhead.</p></li>
+<li><p>Keep only necessary modules at lower frame sizes. Use longer frame
+sizes if delay is not a concern</p></li>
+<li><p>Signal triggered containers are generally more optimal in terms of
+MIPS, because scheduling policies used in signal triggered containers</p></li>
+<li><p>Use ARC Online mode to confirm that only the modules intended for a
+use case are running when your use case runs. Sometimes HLOS might
+launch background graphs which may not be desired. Use the ARC IRM
+tool to measure MIPS and memory at various levels (overall processor,
+use case, or module level)</p></li>
+</ul>
+<p>More module specific guidelines can be referenced from <a class="reference internal" href="../dev/capi_mod_dev.html#capi-mod-dev-guide"><span class="std std-ref">CAPI Module Development Guide</span></a></p>
+</section>
+</section>
+<section id="acronyms-and-terms">
+<span id="arspf-acronym"></span><h2><a class="toc-backref" href="#id47" role="doc-backlink">Acronyms and terms</a><a class="headerlink" href="#acronyms-and-terms" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Acronym or term</p></th>
+<th class="head"><p>Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ACDB</p></td>
+<td><p>Audio Calibration Data Base</p></td>
+</tr>
+<tr class="row-odd"><td><p>AMDB</p></td>
+<td><p>Audio Module Data Base</p></td>
+</tr>
+<tr class="row-even"><td><p>APM</p></td>
+<td><p>Audio Processing Manager</p></td>
+</tr>
+<tr class="row-odd"><td><p>CAPI</p></td>
+<td><p>Common Audio Processor Interface</p></td>
+</tr>
+<tr class="row-even"><td><p>GC</p></td>
+<td><p>Generic Container</p></td>
+</tr>
+<tr class="row-odd"><td><p>GSL</p></td>
+<td><p>Graph Service Library</p></td>
+</tr>
+<tr class="row-even"><td><p>ICB</p></td>
+<td><p>Inter-container buffering</p></td>
+</tr>
+<tr class="row-odd"><td><p>IPC</p></td>
+<td><p>Interprocessor communication</p></td>
+</tr>
+<tr class="row-even"><td><p>IRM</p></td>
+<td><p>Integrated Resource Monitor</p></td>
+</tr>
+<tr class="row-odd"><td><p>NRT</p></td>
+<td><p>Non-Real Time</p></td>
+</tr>
+<tr class="row-even"><td><p>OLC</p></td>
+<td><p>Off-load Container</p></td>
+</tr>
+<tr class="row-odd"><td><p>Opcode</p></td>
+<td><p>Operation code</p></td>
+</tr>
+<tr class="row-even"><td><p>POSAL</p></td>
+<td><p>Platform and Operating System Abstraction Layer</p></td>
+</tr>
+<tr class="row-odd"><td><p>RAT</p></td>
+<td><p>Rate Adaptive Timer</p></td>
+</tr>
+<tr class="row-even"><td><p>RT</p></td>
+<td><p>Real Time</p></td>
+</tr>
+<tr class="row-odd"><td><p>RTOS</p></td>
+<td><p>Real Time Operating System</p></td>
+</tr>
+<tr class="row-even"><td><p>SC</p></td>
+<td><p>Specialized Container</p></td>
+</tr>
+<tr class="row-odd"><td><p>SDK</p></td>
+<td><p>Software development kit</p></td>
+</tr>
+<tr class="row-even"><td><p>ARE</p></td>
+<td><p>AudioReach Engine</p></td>
+</tr>
+<tr class="row-odd"><td><p>ARC</p></td>
+<td><p>AudioReach Creator</p></td>
+</tr>
+<tr class="row-even"><td><p>SPF</p></td>
+<td><p>Signal Processing Framework</p></td>
+</tr>
+<tr class="row-odd"><td><p>VoIP</p></td>
+<td><p>Voice over IP</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="design_concept.html" class="btn btn-neutral float-left" title="AudioReach Concepts and Terminology" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="args_design.html" class="btn btn-neutral float-right" title="AudioReach Graph Services" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, AudioReach.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
