@@ -134,3 +134,5 @@ nav:
       - 故障排查: qcom-linux-audio-guide/docs-zh/troubleshoot.md
       - 术语对照表: qcom-linux-audio-guide/docs-zh/术语对照表.md
       - 参考资料: qcom-linux-audio-guide/docs-zh/references.md
+  - 代码分析：
+      - 架构详解: qcom-audio-code-analysis/高通 AudioReach 音频架构详解.md
