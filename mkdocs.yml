@@ -1,0 +1,133 @@
+site_name: Qualcomm 音频文档资料库
+site_description: 高通 AudioReach 与 Qualcomm Linux 音频子系统中文整理资料
+site_author: gaohuiluo
+# 部署到 GitHub Pages 后的地址（请按实际仓库确认）
+site_url: https://gaohuiluo.github.io/qcom-audio-a15/
+repo_url: https://github.com/gaohuiluo/qcom-audio-a15
+repo_name: gaohuiluo/qcom-audio-a15
+edit_uri: edit/main/docs/
+
+docs_dir: docs
+
+# 不发布：英文原文、原始 HTML 存档、脚本、子目录 README（首页已提供导航）
+exclude_docs: |
+  **/md_en/
+  **/raw/
+  **/*.py
+  **/*.sh
+  **/*.html
+  README.md
+  blogs/README.md
+  blogs/qcom-audioreach-en.md
+  audioreach-official/README.md
+  audioreach-official/TRANSLATION_GUIDE.md
+  qcom-linux-audio-guide/docs-zh/README.md
+
+theme:
+  name: material
+  language: zh
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色模式
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - navigation.footer
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - md_in_html
+
+nav:
+  - 首页: index.md
+  - 博客与演讲:
+      - AudioReach 开源（中文）: blogs/qcom-audioreach-zh.md
+      - Linaro Connect 2024 演讲: blogs/linaro-connect-2024-talk.md
+  - AudioReach 官方文档:
+      - 概览: audioreach-official/md_zh/index.md
+      - SDK 概览与路线图: audioreach-official/md_zh/sdk_overview.md
+      - 设计:
+          - 设计总览: audioreach-official/md_zh/design/index.md
+          - 架构概览: audioreach-official/md_zh/design/arch_overview.md
+          - 核心概念与术语: audioreach-official/md_zh/design/design_concept.md
+          - AudioReach 引擎（SPF）: audioreach-official/md_zh/design/arspf_design.md
+          - 图服务（ARGS）: audioreach-official/md_zh/design/args_design.md
+          - 通用包路由器（GPR）: audioreach-official/md_zh/design/gpr_design.md
+          - Linux 适配设计: audioreach-official/md_zh/design/lx_design.md
+          - Linux ASoC 架构: audioreach-official/md_zh/design/linux_asoc_arch.md
+          - Linux 插件架构: audioreach-official/md_zh/design/linux_plug-in_arch.md
+      - API 参考:
+          - API 总览: audioreach-official/md_zh/api/index.md
+          - 引擎 API: audioreach-official/md_zh/api/arspf_api.md
+          - SPF CAPI 接口: audioreach-official/md_zh/api/spf_capi.md
+          - POSAL 平台抽象层: audioreach-official/md_zh/api/posal_api.md
+          - 图服务 API: audioreach-official/md_zh/api/args_api.md
+          - GSL 图服务层: audioreach-official/md_zh/api/args_gsl.md
+          - AROSAL OS 抽象层: audioreach-official/md_zh/api/args_arosal.md
+          - GPR API: audioreach-official/md_zh/api/gpr_api.md
+      - 开发者指南:
+          - 指南总览: audioreach-official/md_zh/dev/index.md
+          - 开发工作流: audioreach-official/md_zh/dev/dev_workflow.md
+          - 系统工作流: audioreach-official/md_zh/dev/system_workflow.md
+          - 平台移植指南: audioreach-official/md_zh/dev/plat_port.md
+          - 可用音频模块列表: audioreach-official/md_zh/dev/available_modules.md
+          - 如何添加音频模块: audioreach-official/md_zh/dev/adding_modules.md
+          - CAPI 模块开发指南: audioreach-official/md_zh/dev/capi_mod_dev.md
+          - 使用 ALSA lib: audioreach-official/md_zh/dev/alsalib_using_audioreach.md
+      - AudioReach Creator（ARC）: audioreach-official/md_zh/arc/index.md
+      - 平台参考:
+          - 平台总览: audioreach-official/md_zh/platform/index.md
+          - Raspberry Pi 4: audioreach-official/md_zh/platform/raspberry_pi4.md
+          - RB3 Gen2: audioreach-official/md_zh/platform/rb3_gen2.md
+          - NXP IMX8M Plus: audioreach-official/md_zh/platform/nxp.md
+  - Qualcomm Linux 音频指南:
+      - 音频概览: qcom-linux-audio-guide/docs-zh/overview.md
+      - 启用音频: qcom-linux-audio-guide/docs-zh/enable-audio.md
+      - PAL 层定制: qcom-linux-audio-guide/docs-zh/pal.md
+      - TinyALSA 应用: qcom-linux-audio-guide/docs-zh/tinyalsa.md
+      - 定制音频图（AGM）: qcom-linux-audio-guide/docs-zh/agm.md
+      - 定制音频用例: qcom-linux-audio-guide/docs-zh/customize.md
+      - 高级特性（VoIP ECNS）: qcom-linux-audio-guide/docs-zh/features.md
+      - 故障排查: qcom-linux-audio-guide/docs-zh/troubleshoot.md
+      - 术语对照表: qcom-linux-audio-guide/docs-zh/术语对照表.md
+      - 参考资料: qcom-linux-audio-guide/docs-zh/references.md

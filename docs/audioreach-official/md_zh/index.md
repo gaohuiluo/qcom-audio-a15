@@ -40,9 +40,3 @@
     - [Raspberry Pi 4](platform/raspberry_pi4.md)
     - [RB3 Gen2](platform/rb3_gen2.md)
     - [NXP IMX8M Plus](platform/nxp.md)
-
-## 索引与表格
-
-- [Index](genindex.md)
-- [Module Index](py-modindex.md)
-- [Search Page](search.md)
