@@ -1,0 +1,18 @@
+/* 许多图为透明背景的 Visio SVG / RGBA PNG，深色模式下透出深底导致“图片发黑”。
+   统一给正文图片加白底与内边距，浅色/深色模式下均可正常阅读。 */
+.md-typeset img {
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+/* 仅给示意图/框图类图片加内边距，避免贴边被白底裁切显得突兀。
+   截图（通常本身就是矩形实底）也能安全地套用白底。 */
+.md-typeset p > img,
+.md-typeset figure img {
+  padding: 8px;
+}
+
+/* 深色模式下给图片一个浅色描边，与深色页面背景区分开 */
+[data-md-color-scheme="slate"] .md-typeset img {
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
