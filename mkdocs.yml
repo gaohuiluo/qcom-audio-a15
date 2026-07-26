@@ -9,6 +9,9 @@ edit_uri: edit/main/docs/
 
 docs_dir: docs
 
+extra_css:
+  - stylesheets/extra.css
+
 # 不发布：英文原文、原始 HTML 存档、脚本、子目录 README（首页已提供导航）
 exclude_docs: |
   **/md_en/
