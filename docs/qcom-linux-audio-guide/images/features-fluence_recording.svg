@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="../media/fluence_recording.svg" class="st14 cursor-zoomin" color-interpolation-filters="sRGB" height="3.95139in" viewbox="0 0 910 284.5" width="12.6389in" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" xmlns:xlink="http://www.w3.org/1999/xlink">
+<v:documentproperties v:langid="1033" v:viewmarkup="false">
+<v:userdefs>
+<v:ud v:nameu="msvNoAutoConnect" v:val="VT0(1):26"></v:ud>
+</v:userdefs>
+</v:documentproperties>
+<style>.svg-2 .st1 { fill: #ffffff; stroke: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1 }
+.svg-2 .st2 { fill: #fafafa; stroke: #d2d7e1; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5 }
+.svg-2 .st3 { fill: #fafafa; stroke: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5 }
+.svg-2 .st4 { fill: #ffffff; stroke: #d2d7e1; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-2 .st5 { fill: #6280cc; stroke: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-2 .st6 { fill: #ffffff; font-family: Roboto; font-size: 1.00001em; letter-spacing: 0.0833327em }
+.svg-2 .st7 { font-size: 1em }
+.svg-2 .st8 { fill: none; stroke: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1 }
+.svg-2 .st9 { fill: #000000; font-family: Roboto; font-size: 1.16666em; letter-spacing: 0.0714292em }
+.svg-2 .st10 { fill: #ffffff; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-2 .st11 { stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-2 .st12 { marker-end: url("#2-mrkr4-37"); stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-2 .st13 { fill: #000000; fill-opacity: 1; stroke: #000000; stroke-opacity: 1; stroke-width: 0.44247787610619 }
+.svg-2 .st14 { fill: none; fill-rule: evenodd; font-size: 12px; overflow: visible; stroke-linecap: square; stroke-miterlimit: 3 }</style>
+<defs id="Markers">
+<g id="lend4">
+<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"></path>
+</g>
+<marker class="st13" id="2-mrkr4-37" markerunits="strokeWidth" orient="auto" overflow="visible" refx="-4.52" v:arrowsize="2" v:arrowtype="4" v:setback="4.52">
+<use transform="scale(-2.26,-2.26) " xlink:href="#lend4"></use>
+</marker>
+</defs>
+<g v:groupcontext="backgroundPage" v:index="1" v:mid="4">
+<v:userdefs>
+<v:ud v:nameu="msvVisioCreated" v:prompt="" v:val="VT0(0):26"></v:ud>
+</v:userdefs>
+<title>VBackground-1</title>
+<v:pageproperties height="3.95139" v:drawingscale="0.0138889" v:drawingunits="29" v:pagescale="0.0138889" v:shadowoffsetx="9" v:shadowoffsety="-9" width="12.6389"></v:pageproperties>
+<g id="shape1-1" v:groupcontext="shape" v:mid="1">
+<title>Solid</title>
+<v:userdefs>
+<v:ud v:nameu="Background" v:val="VT0(0):26"></v:ud>
+<v:ud v:nameu="visVersion" v:val="VT0(15):26"></v:ud>
+<v:ud v:nameu="msvShapeCategories" v:prompt="" v:val="VT4(DoNotContain)"></v:ud>
+<v:ud v:nameu="msvVisioCreated" v:prompt="" v:val="VT0(0):26"></v:ud>
+</v:userdefs>
+<rect class="st1" height="284.5" rx="4.5" ry="4.5" width="910" x="0" y="0"></rect>
+</g>
+</g>
+<g v:groupcontext="foregroundPage" v:index="2" v:mid="0">
+<title>Page-1</title>
+<v:pageproperties v:drawingscale="0.0138889" v:drawingunits="29" v:pagescale="0.0138889" v:shadowoffsetx="9" v:shadowoffsety="-9"></v:pageproperties>
+<v:layer v:index="0" v:name="Connector"></v:layer>
+<g id="shape18-3" transform="translate(18.75,-18.75)" v:groupcontext="shape" v:mid="18">
+<title>Sheet.18</title>
+<rect class="st2" height="247" rx="4.5" ry="4.5" width="872.5" x="0" y="37.5"></rect>
+</g>
+<g id="shape17-5" transform="translate(37,-37.5)" v:groupcontext="shape" v:mid="17">
+<title>Sheet.17</title>
+<rect class="st3" height="209" rx="4.5" ry="4.5" width="835.5" x="0" y="75.5"></rect>
+</g>
+<g id="shape2-7" transform="translate(207.136,-56.5)" v:groupcontext="shape" v:mid="2">
+<title>Sheet.2</title>
+<rect class="st4" height="136" rx="4.5" ry="4.5" width="510.864" x="0" y="148.5"></rect>
+</g>
+<g id="shape3-9" transform="translate(222,-88.5)" v:groupcontext="shape" v:mid="3">
+<title>Rectangle</title>
+<desc>Gains</desc>
+<v:userdefs>
+<v:ud v:nameu="visVersion" v:val="VT0(15):26"></v:ud>
+</v:userdefs>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="64" cy="248.5" height="72" width="128"></v:textrect>
+<rect class="st5" height="72" rx="4.5" ry="4.5" width="128" x="0" y="212.5"></rect>
+<text class="st6" v:langid="1033" x="46.29" y="253"><v:paragraph v:horizalign="1" v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Gains</text> </g>
+<g id="shape4-12" transform="translate(398,-88.5)" v:groupcontext="shape" v:mid="4">
+<title>Rectangle.4</title>
+<desc>SMECNS</desc>
+<v:userdefs>
+<v:ud v:nameu="visVersion" v:val="VT0(15):26"></v:ud>
+</v:userdefs>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="64" cy="248.5" height="72" width="128"></v:textrect>
+<rect class="st5" height="72" rx="4.5" ry="4.5" width="128" x="0" y="212.5"></rect>
+<text class="st6" v:langid="1033" x="37.05" y="253"><v:paragraph v:horizalign="1" v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>SMECNS</text> </g>
+<g id="shape5-15" transform="translate(574,-88.5)" v:groupcontext="shape" v:mid="5">
+<title>Rectangle.5</title>
+<desc>Postprocessing modules</desc>
+<v:userdefs>
+<v:ud v:nameu="visVersion" v:val="VT0(15):26"></v:ud>
+</v:userdefs>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="64" cy="248.5" height="72" width="128"></v:textrect>
+<rect class="st5" height="72" rx="4.5" ry="4.5" width="128" x="0" y="212.5"></rect>
+<text class="st6" v:langid="1033" x="15.28" y="244"><v:paragraph v:horizalign="1" v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Postprocessing <tspan class="st7" dy="1.5em" x="37.4">modules</tspan></text> </g>
+<g id="shape6-19" transform="translate(402.786,-207.929)" v:groupcontext="shape" v:mid="6">
+<title>Sheet.6</title>
+<desc>Qualcomm LPAI</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="76" cy="274.5" height="20" width="152"></v:textrect>
+<rect class="st8" height="20" rx="4.5" ry="4.5" width="152" x="0" y="264.5"></rect>
+<text class="st9" v:langid="1033" x="4" y="279.75"><v:paragraph v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Qualcomm LPAI</text> </g>
+<g id="shape9-22" transform="translate(55,-93.5)" v:groupcontext="shape" v:mid="9">
+<title>Sheet.9</title>
+<desc>Speech + Noise + Echo input</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="46.25" cy="253.5" height="62" width="92.51"></v:textrect>
+<rect class="st8" height="62" rx="4.5" ry="4.5" width="92.5" x="0" y="222.5"></rect>
+<text class="st9" v:langid="1033" x="4" y="237.75"><v:paragraph v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Speech + <v:lf></v:lf><tspan class="st7" dy="1.5em" x="4">Noise + <v:lf></v:lf></tspan><tspan class="st7" dy="1.5em" x="4">Echo input</tspan></text> </g>
+<g id="shape10-27" transform="translate(150,-108.5)" v:groupcontext="shape" v:mid="10">
+<title>Circle</title>
+<v:userdefs>
+<v:ud v:nameu="visVersion" v:val="VT0(15):26"></v:ud>
+</v:userdefs>
+<path class="st10" d="M0 268.5 A16 16 0 1 1 32 268.5 A16 16 0 0 1 0 268.5 Z"></path>
+</g>
+<g id="shape11-29" transform="translate(434.5,124) rotate(90)" v:groupcontext="shape" v:mid="11">
+<title>Sheet.11</title>
+<path class="st11" d="M0 284.5 L72 284.5"></path>
+</g>
+<g id="shape12-32" transform="translate(182,-124.5)" v:groupcontext="shape" v:mid="12">
+<title>Sheet.12</title>
+<path class="st12" d="M0 284.5 L30.96 284.5"></path>
+</g>
+<g id="shape13-38" transform="translate(350,-124.5)" v:groupcontext="shape" v:mid="13">
+<title>Sheet.13</title>
+<path class="st12" d="M0 284.5 L38.96 284.5"></path>
+</g>
+<g id="shape14-43" transform="translate(526,-124.5)" v:groupcontext="shape" v:mid="14">
+<title>Sheet.14</title>
+<path class="st12" d="M0 284.5 L38.96 284.5"></path>
+</g>
+<g id="shape15-48" transform="translate(702,-128.5)" v:groupcontext="shape" v:mid="15">
+<title>Sheet.15</title>
+<path class="st12" d="M0 284.5 L43.96 284.5"></path>
+</g>
+<g id="shape16-53" transform="translate(761.5,-98.5)" v:groupcontext="shape" v:mid="16">
+<title>Sheet.16</title>
+<desc>Clean speech output</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="46.25" cy="253.5" height="62" width="92.51"></v:textrect>
+<rect class="st8" height="62" rx="4.5" ry="4.5" width="92.5" x="0" y="222.5"></rect>
+<text class="st9" v:langid="1033" x="4" y="237.75"><v:paragraph v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Clean <tspan class="st7" dy="1.5em" x="4">speech </tspan><tspan class="st7" dy="1.5em" x="4">output</tspan></text> </g>
+</g>
+</svg>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" aria-label="../media/AGM_service_blocks.svg" class="st11 cursor-zoomin" color-interpolation-filters="sRGB" height="6.49306in" viewbox="0 0 529.5 467.5" width="7.35417in" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" xmlns:xlink="http://www.w3.org/1999/xlink">
+<v:documentproperties v:langid="1033" v:viewmarkup="false">
+<v:userdefs>
+<v:ud v:nameu="msvNoAutoConnect" v:val="VT0(1):26"></v:ud>
+</v:userdefs>
+</v:documentproperties>
+<style>.svg-2 .st1 { fill: #ffffff; stroke: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1 }
+.svg-2 .st2 { fill: #fafafa; stroke: #d2d7e1; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5 }
+.svg-2 .st3 { fill: #fafafa; stroke: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.24 }
+.svg-2 .st4 { fill: #000000; font-family: Roboto; font-size: 1.16666em; letter-spacing: 0.0714292em }
+.svg-2 .st5 { fill: #ffffff; stroke: #d2d7e1; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-2 .st6 { fill: #d2d7e1; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-2 .st7 { fill: #d2d7e1; stroke: #d2d7e1; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-2 .st8 { marker-end: url("#2-mrkr4-44"); stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-2 .st9 { fill: #000000; fill-opacity: 1; stroke: #000000; stroke-opacity: 1; stroke-width: 0.44247787610619 }
+.svg-2 .st10 { stroke: #d2d7e1; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-2 .st11 { fill: none; fill-rule: evenodd; font-size: 12px; overflow: visible; stroke-linecap: square; stroke-miterlimit: 3 }</style>
+<defs id="Markers">
+<g id="lend4">
+<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"></path>
+</g>
+<marker class="st9" id="2-mrkr4-44" markerunits="strokeWidth" orient="auto" overflow="visible" refx="-4.52" v:arrowsize="2" v:arrowtype="4" v:setback="4.52">
+<use transform="scale(-2.26,-2.26) " xlink:href="#lend4"></use>
+</marker>
+</defs>
+<g v:groupcontext="backgroundPage" v:index="1" v:mid="4">
+<v:userdefs>
+<v:ud v:nameu="msvVisioCreated" v:prompt="" v:val="VT0(0):26"></v:ud>
+</v:userdefs>
+<title>VBackground-1</title>
+<v:pageproperties height="6.49306" v:drawingscale="0.0138889" v:drawingunits="29" v:pagescale="0.0138889" v:shadowoffsetx="9" v:shadowoffsety="-9" width="7.35417"></v:pageproperties>
+<g id="shape1-1" v:groupcontext="shape" v:mid="1">
+<title>Solid</title>
+<v:userdefs>
+<v:ud v:nameu="Background" v:val="VT0(0):26"></v:ud>
+<v:ud v:nameu="visVersion" v:val="VT0(15):26"></v:ud>
+<v:ud v:nameu="msvShapeCategories" v:prompt="" v:val="VT4(DoNotContain)"></v:ud>
+<v:ud v:nameu="msvVisioCreated" v:prompt="" v:val="VT0(0):26"></v:ud>
+</v:userdefs>
+<rect class="st1" height="467.5" rx="4.5" ry="4.5" width="529.5" x="0" y="0"></rect>
+</g>
+</g>
+<g v:groupcontext="foregroundPage" v:index="2" v:mid="0">
+<title>Page-1</title>
+<v:pageproperties v:drawingscale="0.0138889" v:drawingunits="29" v:pagescale="0.0138889" v:shadowoffsetx="9" v:shadowoffsety="-9"></v:pageproperties>
+<v:layer v:index="0" v:name="Connector"></v:layer>
+<g id="shape33-3" transform="translate(18.75,-18.75)" v:groupcontext="shape" v:mid="33">
+<title>Sheet.33</title>
+<rect class="st2" height="430" rx="4.5" ry="4.5" width="492" x="0" y="37.5"></rect>
+</g>
+<g id="shape22-5" transform="translate(37.87,-36.87)" v:groupcontext="shape" v:mid="22">
+<title>Rectangle</title>
+<desc>Kernel space</desc>
+<v:userdefs>
+<v:ud v:nameu="visVersion" v:val="VT0(15):26"></v:ud>
+</v:userdefs>
+<v:textblock v:margins="rect(4,4,4,4)" v:verticalalign="0"></v:textblock>
+<v:textrect cx="227" cy="441.5" height="52" width="454"></v:textrect>
+<rect class="st3" height="52" rx="4.5" ry="4.5" width="454" x="0" y="415.5"></rect>
+<text class="st4" v:langid="1033" x="4" y="435.25"><v:paragraph v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Kernel space</text> </g>
+<g id="shape23-8" transform="translate(37.87,-108.87)" v:groupcontext="shape" v:mid="23">
+<title>Rectangle.23</title>
+<desc>Userspace</desc>
+<v:userdefs>
+<v:ud v:nameu="visVersion" v:val="VT0(15):26"></v:ud>
+</v:userdefs>
+<v:textblock v:margins="rect(4,4,4,4)" v:verticalalign="2"></v:textblock>
+<v:textrect cx="227" cy="306.5" height="322" width="454"></v:textrect>
+<rect class="st3" height="322" rx="4.5" ry="4.5" width="454" x="0" y="145.5"></rect>
+<text class="st4" v:langid="1033" x="4" y="458.25"><v:paragraph v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Userspace</text> </g>
+<g id="shape1-11" transform="translate(171.87,-112.87)" v:groupcontext="shape" v:mid="1">
+<title>Square</title>
+<desc>AGM service</desc>
+<v:userdefs>
+<v:ud v:nameu="visVersion" v:val="VT0(15):26"></v:ud>
+</v:userdefs>
+<v:textblock v:margins="rect(4,4,4,4)" v:verticalalign="0"></v:textblock>
+<v:textrect cx="156" cy="311.5" height="312" width="312.01"></v:textrect>
+<rect class="st5" height="312" rx="4.5" ry="4.5" width="312" x="0" y="155.5"></rect>
+<text class="st4" v:langid="1033" x="4" y="175.25"><v:paragraph v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>AGM service</text> </g>
+<g id="shape2-14" transform="translate(203.87,-328.87)" v:groupcontext="shape" v:mid="2">
+<title>Sheet.2</title>
+<desc>AGM API</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="124" cy="451.5" height="32" width="248.01"></v:textrect>
+<rect class="st6" height="32" rx="4.5" ry="4.5" width="248" x="0" y="435.5"></rect>
+<text class="st4" v:langid="1033" x="92.44" y="456.75"><v:paragraph v:horizalign="1" v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>AGM API</text> </g>
+<g id="shape4-17" transform="translate(211.87,-264.87)" v:groupcontext="shape" v:mid="4">
+<title>Sheet.4</title>
+<desc>PAL</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="124" cy="451.5" height="32" width="248.01"></v:textrect>
+<rect class="st7" height="32" rx="4.5" ry="4.5" width="248" x="0" y="435.5"></rect>
+<text class="st4" v:langid="1033" x="109.75" y="456.75"><v:paragraph v:horizalign="1" v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>PAL</text> </g>
+<g id="shape3-20" transform="translate(203.87,-272.87)" v:groupcontext="shape" v:mid="3">
+<title>Sheet.3</title>
+<desc>Session objects</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="124" cy="451.5" height="32" width="248.01"></v:textrect>
+<rect class="st6" height="32" rx="4.5" ry="4.5" width="248" x="0" y="435.5"></rect>
+<text class="st4" v:langid="1033" x="67.27" y="456.75"><v:paragraph v:horizalign="1" v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Session objects</text> </g>
+<g id="shape7-23" transform="translate(203.87,-144.87)" v:groupcontext="shape" v:mid="7">
+<title>Sheet.7</title>
+<desc>GSL</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="56" cy="451.5" height="32" width="112.01"></v:textrect>
+<rect class="st6" height="32" rx="4.5" ry="4.5" width="112" x="0" y="435.5"></rect>
+<text class="st4" v:langid="1033" x="41.81" y="456.75"><v:paragraph v:horizalign="1" v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>GSL</text> </g>
+<g id="shape13-26" transform="translate(335.37,-47.75)" v:groupcontext="shape" v:mid="13">
+<title>Sheet.13</title>
+<desc>ALSA devices</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="58.25" cy="451.5" height="32" width="116.51"></v:textrect>
+<rect class="st7" height="32" rx="4.5" ry="4.5" width="116.5" x="0" y="435.5"></rect>
+<text class="st4" v:langid="1033" x="9.74" y="456.75"><v:paragraph v:horizalign="1" v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>ALSA devices</text> </g>
+<g id="shape18-29" transform="translate(211.87,-200.87)" v:groupcontext="shape" v:mid="18">
+<title>Sheet.18</title>
+<rect class="st6" height="24" rx="4.5" ry="4.5" width="112" x="0" y="443.5"></rect>
+</g>
+<g id="shape17-31" transform="translate(203.87,-208.87)" v:groupcontext="shape" v:mid="17">
+<title>Sheet.17</title>
+<desc>Graph objects</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="56" cy="451.5" height="32" width="112.01"></v:textrect>
+<rect class="st6" height="32" rx="4.5" ry="4.5" width="112" x="0" y="435.5"></rect>
+<text class="st4" v:langid="1033" x="6.18" y="456.75"><v:paragraph v:horizalign="1" v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Graph objects</text> </g>
+<g id="shape21-34" transform="translate(343.37,-200.87)" v:groupcontext="shape" v:mid="21">
+<title>Sheet.21</title>
+<rect class="st6" height="24" rx="4.5" ry="4.5" width="116.5" x="0" y="443.5"></rect>
+</g>
+<g id="shape9-36" transform="translate(335.37,-208.87)" v:groupcontext="shape" v:mid="9">
+<title>Sheet.9</title>
+<desc>Device objects</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="58.25" cy="451.5" height="32" width="116.51"></v:textrect>
+<rect class="st6" height="32" rx="4.5" ry="4.5" width="116.5" x="0" y="435.5"></rect>
+<text class="st4" v:langid="1033" x="5.9" y="456.75"><v:paragraph v:horizalign="1" v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Device objects</text> </g>
+<g id="shape28-39" transform="translate(243.37,-272.87)" v:groupcontext="shape" v:layermember="0" v:mid="28">
+<title>Dynamic connector.28</title>
+<path class="st8" d="M12.5 467.5 L12.5 490.46"></path>
+</g>
+<g id="shape30-45" transform="translate(243.37,-208.87)" v:groupcontext="shape" v:layermember="0" v:mid="30">
+<title>Dynamic connector.30</title>
+<path class="st8" d="M12.5 467.5 L12.5 490.46"></path>
+</g>
+<g id="shape31-50" transform="translate(380.37,-272.87)" v:groupcontext="shape" v:layermember="0" v:mid="31">
+<title>Dynamic connector.31</title>
+<path class="st8" d="M12.5 467.5 L12.5 490.46"></path>
+</g>
+<g id="shape32-55" transform="translate(37.75,-98.75)" v:groupcontext="shape" v:mid="32">
+<title>Sheet.32</title>
+<path class="st10" d="M0 467.5 L454 467.5"></path>
+</g>
+<g id="shape25-58" transform="translate(381.37,-208.87)" v:groupcontext="shape" v:layermember="0" v:mid="25">
+<title>Dynamic connector</title>
+<path class="st8" d="M12.5 467.5 L12.5 587.58"></path>
+</g>
+</g>
+</svg>

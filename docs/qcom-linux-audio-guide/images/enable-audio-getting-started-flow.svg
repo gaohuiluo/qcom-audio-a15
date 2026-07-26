@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="../media/getting-started-flow.svg" class="st10" color-interpolation-filters="sRGB" height="2.79861in" viewbox="0 0 715.5 201.5" width="9.9375in" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" xmlns:xlink="http://www.w3.org/1999/xlink">
+<v:documentproperties v:langid="1033" v:viewmarkup="false">
+<v:userdefs>
+<v:ud v:nameu="msvNoAutoConnect" v:val="VT0(1):26"></v:ud>
+</v:userdefs>
+</v:documentproperties>
+<style>.svg-6 .st1 { fill: #ffffff; stroke: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1 }
+.svg-6 .st2 { fill: #fafafa; stroke: #d2d7e1; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5 }
+.svg-6 .st3 { fill: #6280cc; stroke: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-6 .st4 { fill: #ffffff; font-family: Roboto; font-size: 1.00001em; font-weight: bold; letter-spacing: 0.0833327em }
+.svg-6 .st5 { font-family: Symbol; font-size: 1em; font-weight: normal }
+.svg-6 .st6 { font-size: 1em; font-weight: normal }
+.svg-6 .st7 { marker-end: url("#3-mrkr4-43"); stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-6 .st8 { fill: #000000; fill-opacity: 1; stroke: #000000; stroke-opacity: 1; stroke-width: 0.44247787610619 }
+.svg-6 .st9 { stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-6 .st10 { fill: none; fill-rule: evenodd; font-size: 12px; overflow: visible; stroke-linecap: square; stroke-miterlimit: 3 }</style>
+<defs id="Markers">
+<g id="lend4">
+<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"></path>
+</g>
+<marker class="st8" id="3-mrkr4-43" markerunits="strokeWidth" orient="auto" overflow="visible" refx="-4.52" v:arrowsize="2" v:arrowtype="4" v:setback="4.52">
+<use transform="scale(-2.26,-2.26) " xlink:href="#lend4"></use>
+</marker>
+</defs>
+<g v:groupcontext="backgroundPage" v:index="1" v:mid="4">
+<v:userdefs>
+<v:ud v:nameu="msvVisioCreated" v:prompt="" v:val="VT0(0):26"></v:ud>
+</v:userdefs>
+<title>VBackground-1</title>
+<v:pageproperties height="2.79861" v:drawingscale="0.0138889" v:drawingunits="29" v:pagescale="0.0138889" v:shadowoffsetx="9" v:shadowoffsety="-9" width="9.9375"></v:pageproperties>
+<g id="shape1-1" v:groupcontext="shape" v:mid="1">
+<title>Solid</title>
+<v:userdefs>
+<v:ud v:nameu="Background" v:val="VT0(0):26"></v:ud>
+<v:ud v:nameu="visVersion" v:val="VT0(15):26"></v:ud>
+<v:ud v:nameu="msvShapeCategories" v:prompt="" v:val="VT4(DoNotContain)"></v:ud>
+<v:ud v:nameu="msvVisioCreated" v:prompt="" v:val="VT0(0):26"></v:ud>
+</v:userdefs>
+<rect class="st1" height="201.5" rx="4.5" ry="4.5" width="715.5" x="0" y="0"></rect>
+</g>
+</g>
+<g v:groupcontext="foregroundPage" v:index="2" v:mid="0">
+<title>Page-1</title>
+<v:pageproperties v:drawingscale="0.0138889" v:drawingunits="29" v:pagescale="0.0138889" v:shadowoffsetx="9" v:shadowoffsety="-9"></v:pageproperties>
+<v:layer v:index="0" v:name="Connector"></v:layer>
+<g id="shape18-3" transform="translate(18.75,-18.75)" v:groupcontext="shape" v:mid="18">
+<title>Sheet.18</title>
+<rect class="st2" height="164" rx="4.5" ry="4.5" width="678" x="0" y="37.5"></rect>
+</g>
+<g id="shape5-5" transform="translate(37.75,-37.75)" v:groupcontext="shape" v:mid="5">
+<title>Rectangle.5</title>
+<desc>Prerequisites Build procedure Flash software release SSH conn...</desc>
+<v:userdefs>
+<v:ud v:nameu="visVersion" v:val="VT0(15):26"></v:ud>
+</v:userdefs>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="96" cy="138.5" height="126" width="192.01"></v:textrect>
+<rect class="st3" height="126" rx="4.5" ry="4.5" width="192" x="0" y="75.5"></rect>
+<text class="st4" v:langid="1033" x="51.86" y="105.83"><v:paragraph></v:paragraph><v:tablist></v:tablist>Prerequisites<v:lf></v:lf><v:lf></v:lf><v:newlinechar></v:newlinechar><v:paragraph v:bullet="1" v:indentfirst="-18" v:indentleft="18"></v:paragraph><tspan class="st5" dy="3.611em" v:isbullet="true" x="4">·</tspan><tspan class="st5"> </tspan><tspan class="st6">Build procedure<v:newlinechar></v:newlinechar></tspan><tspan class="st5" dy="1.215em" v:isbullet="true" x="4">·</tspan><tspan class="st5"> </tspan><tspan class="st6">Flash software release<v:newlinechar></v:newlinechar></tspan><tspan class="st5" dy="1.215em" v:isbullet="true" x="4">·</tspan><tspan class="st5"> </tspan><tspan class="st6">SSH connection</tspan></text> </g>
+<g id="shape9-17" transform="translate(261.75,-37.75)" v:groupcontext="shape" v:mid="9">
+<title>Rectangle.9</title>
+<desc>Set up audio hardware Third-party codec configuration Accesso...</desc>
+<v:userdefs>
+<v:ud v:nameu="visVersion" v:val="VT0(15):26"></v:ud>
+</v:userdefs>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="96" cy="138.5" height="126" width="192.01"></v:textrect>
+<rect class="st3" height="126" rx="4.5" ry="4.5" width="192" x="0" y="75.5"></rect>
+<text class="st4" v:langid="1033" x="23.94" y="105.92"><v:paragraph></v:paragraph><v:tablist></v:tablist>Set up audio hardware<v:lf></v:lf><v:lf></v:lf><v:newlinechar></v:newlinechar><v:paragraph v:bullet="1" v:indentfirst="-18" v:indentleft="18"></v:paragraph><tspan class="st5" dy="3.611em" v:isbullet="true" x="4">·</tspan><tspan class="st5"> </tspan><tspan class="st6">Third</tspan><tspan class="st6">-</tspan><tspan class="st6">party codec </tspan><tspan class="st6" dy="1.204em" x="22">configuration<v:newlinechar></v:newlinechar></tspan><tspan class="st5" dy="1.211em" v:isbullet="true" x="4">·</tspan><tspan class="st5"> </tspan><tspan class="st6">Accessory connection</tspan></text> </g>
+<g id="shape10-29" transform="translate(485.75,-37.75)" v:groupcontext="shape" v:mid="10">
+<title>Rectangle.10</title>
+<desc>Run audio Recording validation Playback validation</desc>
+<v:userdefs>
+<v:ud v:nameu="visVersion" v:val="VT0(15):26"></v:ud>
+</v:userdefs>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="96" cy="138.5" height="126" width="192.01"></v:textrect>
+<rect class="st3" height="126" rx="4.5" ry="4.5" width="192" x="0" y="75.5"></rect>
+<text class="st4" v:langid="1033" x="63.82" y="105.92"><v:paragraph></v:paragraph><v:tablist></v:tablist>Run audio<v:lf></v:lf><v:lf></v:lf><v:newlinechar></v:newlinechar><v:paragraph v:bullet="1" v:indentfirst="-18" v:indentleft="18"></v:paragraph><tspan class="st5" dy="3.611em" v:isbullet="true" x="4">·</tspan><tspan class="st5"> </tspan><tspan class="st6">Recording validation<v:newlinechar></v:newlinechar><v:paragraph v:bullet="1" v:indentfirst="-18" v:indentleft="18"></v:paragraph></tspan><tspan class="st5" dy="1.215em" v:isbullet="true" x="4">·</tspan><tspan class="st5"> </tspan><tspan class="st6">Playback validation</tspan><v:lf></v:lf></text> </g>
+<g id="shape13-38" transform="translate(229.75,-88.25)" v:groupcontext="shape" v:layermember="0" v:mid="13">
+<title>Dynamic connector</title>
+<path class="st7" d="M0 189 L22.96 189"></path>
+</g>
+<g id="shape14-44" transform="translate(453.75,-88.25)" v:groupcontext="shape" v:layermember="0" v:mid="14">
+<title>Dynamic connector.14</title>
+<path class="st7" d="M0 189 L22.96 189"></path>
+</g>
+<g id="shape15-49" transform="translate(53.75,-117.75)" v:groupcontext="shape" v:mid="15">
+<title>Sheet.15</title>
+<path class="st9" d="M0 201.5 L160 201.5"></path>
+</g>
+<g id="shape16-52" transform="translate(277.75,-117.75)" v:groupcontext="shape" v:mid="16">
+<title>Sheet.16</title>
+<path class="st9" d="M0 201.5 L160 201.5"></path>
+</g>
+<g id="shape17-55" transform="translate(501.75,-117.75)" v:groupcontext="shape" v:mid="17">
+<title>Sheet.17</title>
+<path class="st9" d="M0 201.5 L160 201.5"></path>
+</g>
+</g>
+</svg>

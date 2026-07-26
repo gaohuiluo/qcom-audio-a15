@@ -1,0 +1,109 @@
+# How to add an Audio Module
+
+1. Introduction
+2. Create the folder structure
+3. Create an API file
+4. Add the source code and CAPI Wrapper
+5. Create a build file
+6. Add entries to build the module
+7. Build the module and import to ARC
+8. Test the module
+
+## Introduction
+
+This guide will outline how to incorporate, build, and test an audio algorithm in audioreach-engine, in the form of a **module**, using these basic steps:
+
+![workflow diagram](../_images/workflow_diagram.png)
+
+As noted in the workflow diagram above, this guide will show how to add a module with source code, or how to instead add a prebuilt “.a” binary file, which will be discussed in the section Create a build file.
+
+After building the module and adding it to a usecase graph using ARC, the updated ACDB and workspace files can be pushed to the “etc/acdbdata” folder on the device. For more information on how to use ARC (also known as QACT), please refer to the ARC user guide.
+
+Before following these steps, there are a few prerequisites to keep in mind:
+
+- These steps are based on adding a module to the AudioReach yocto project, so it is required to create a local yocto build first. To learn how to do this, please refer to the Platform Reference Guide for your preferred platform (such as the [Raspberry Pi 4](../platform/raspberry_pi4.html#raspberry-pi4) setup instructions). A guide on how to build a standalone module outside of the audioreach-engine source tree will be added at a later date.
+- It might be helpful to learn some basic information about CMake and KConfig, though this is not required.
+- This guide will also be referencing **h2xml**, which is created by Qualcomm. Some information on h2xml can be found [here](https://github.com/Audioreach/h2xml).
+- Additionally, it may help to look over the [Example Gain](https://github.com/Audioreach/audioreach-engine/tree/master/modules/examples/gain) module, which will be used as an example throughout this guide.
+
+To learn how to build a module that is already included in the audioreach-engine project, please refer to Step 3 of the section Add entries to build the module.
+
+**Note:** This guide will often refer to a “tmp” audioreach-engine folder that will be generated from compiling audioreach-engine, which will contain important files used in multiple steps of this guide. Because this guide is written based on audioreach-engine compiled using the yocto build system, the exact location of audioreach-engine build artificat may vary depending on the build system. For example, on the Raspberry Pi 4, this folder will be located in “<build_root>/build/tmp/work/cortexa7t2hf-neon-vfpv4-poky-linux-gnueabi/audioreach-engine/1.0+git/audioreach-engine-1.0+git”.
+
+## Create the folder structure
+
+- First, choose a location to create the module folder. Most of the current modules are found in the [modules](https://github.com/Audioreach/audioreach-engine/tree/master/modules) folder, in one of two locations:
+    - The “audio” folder contains audio encoders and decoders.
+    - The “processing” folder contains audio processing modules.
+- Below is the recommended folder structure for a module:
+    - api: Contains the API file.
+    - build: Contains the CMakeLists build file.
+    - lib: Contains the header files/source code
+    - capi: Contains the header files/source code for the CAPI wrapper.
+    - bin (optional): Contains the binary file
+
+## Create an API file
+
+- The API file will be used by AudioReach Creator to obtain information about the module, such as configurable structs and parameters, the module description, and the module ID. An API file is required for every module.
+    - For example, the below image shows some of the information included in the API file for the Example Gain module:
+- When a module is compiled, the API will be converted to an XML file using h2xml. This XML file can then be imported into ARC, which will use this to obtain the module information. After this, the module will be available to use in ARC.
+- For example, the API file will be used to construct the “Calibration Window” for a module, which can be viewed by double-clicking a module in the workspace of ARC. The Calibration Window is used to set configurable parameters for the module.
+- To better visualize how the Calibration Window is constructed from the a module’s API file, please note the image of API file for the Example Gain module below:
+    - This section of the API file depicts the parameter **PARAM_ID_GAIN_MODULE_GAIN**, as well as the struct **param_id_module_gain_cfg_t** that contains the variables **gain** and **reserved**. Additionally, underneath the parameters, there are some h2xml annotations.
+    - These parameters, structs, and h2xml entries in the API file will be used by ARC to construct the Calibration Window for the Example Gain module, shown below:
+- For a comprehensive overview on how to develop an API file, please refer to the “Module” section of the [CAPI Module Development Guide](capi_mod_dev.html#capi-mod-dev-guide).
+
+## Add the source code and CAPI Wrapper
+
+- The custom algorithm for the module can be developed and optimized using standard industrial tool such as Matlab.
+- When developing the CAPI wrapper, there are a few functions that are mandatory to implement, including the entry point init functions, get_param, set_param, set_properties, get_properties, process, and end function. For example, below is the list of the required CAPI functions from the Example Gain module:
+- For information on how to create a CAPI wrapper for the module, please refer to the [CAPI Module Development Guide](capi_mod_dev.html#capi-mod-dev-guide).
+
+## Create a build file
+
+- First, create a “CMakeLists.txt” file under the module’s “build” directory. Please refer to the existing build files, such as the [Example Gain](https://github.com/Audioreach/audioreach-engine/blob/master/modules/examples/gain/CMakeLists.txt).
+    - If using a prebuilt binary file instead of the source files, please refer to the build file for the [iir_mbdrc](https://github.com/Audioreach/audioreach-engine/tree/master/modules/processing/gain_control/iir_mbdrc/build) module.
+- In the build file, add the “sources” and “includes” sections to link the module’s source and header files. The layout of the “sources” and “includes” section should follow the below format:
+    - Note: If using a binary file, the “sources” section is not required.
+- Now add the “spf_module_sources” section. This will be used by the AMDB, which stands for Audio Module DataBase. The AMDB will look for the CAPI entry point functions of the modules when the audio graph is created. As an example, here is the “spf_module_sources” section for the Example Gain module:
+- Please note that all of the entries shown in the above example are required. Most of this information will be taken from the API file. Here is a list of each entry and their use:
+    - **KConfig:** This will be used in the KConfig file to indicate whether the module will be automatically generated or not.
+    - **Name:** The name of the module.
+    - **Major/minor version:** Major or minor version of the module.
+    - **amdb_itype:** Interface type of the module. Currently only “capi” value is supported.
+    - **amdb_mtype:** This is the module type. For example, in this case “PP” stands for post-processing or pre-processing. The other possible types include “end_point”, “generic”, “decoder”, “encoder”, “packetizer”, “depacketizer”, “converter”, “detector”, “generator”, and “framework”.
+    - **amdb_mid:** This is the module ID. This module ID should be the same as the module ID in the API file.
+    - **amdb_tag:** This tag will provide the prefix of the CAPI entry point functions for the module. In the Example Gain module shown above, the CAPI functions are prepended with “capi_example_gain”. AMDB will use the prefix to find the entry functions; for example, “capi_example_gain_init”.
+    - **amdb_mod_name:** The name of the module. This should be the same name that is in the API file.
+    - **srcs/includes:** These will link the sources and includes added in the build file. If you are using a binary, you do not need the “srcs” section.
+    - **h2xml_headers:** The path to the API file
+    - **CFlags:** Any CFlags that are required to build the module.
+- Additionally, the **STATIC_LIB_PATH** entry is added in the case of using a binary file. This should follow the below format:
+
+## Add entries to build the module
+
+- To ensure the module is compiled, it is required to add a few build entries in other audioreach-engine build files. Follow the below steps before building the module:
+    1. In “audioreach-engine/modules/CMakeLists.txt”, add the below entry (please note that this CONFIG_MODULE_NAME must be the same name that is in the module’s build file, under the KConfig entry):
+    2. In “audioreach-engine/modules/KConfig”, add an entry like below:
+    3. In “audioreach-engine/arch/<platform>/configs/defconfig”, add an entry for the module in the format “CONFIG_MODULE_NAME”. This must be the same name that is added to the modules/CMakeLists.txt file above. There are three options for setting the module entry:
+          - “y” will link the module to the audioreach-engine library in a single shared library.
+          - “m” will build the module as a standalone shared library in the “tmp” audioreach-engine folder.
+          - “n” will not build the module at all.
+
+## Build the module and import to ARC
+
+- Now all of the setup is completed. If using a yocto build, running “bitbake audioreach-engine” should build the module.
+    - To ensure that the module was picked up for compilation after running the bitbake command, check the file “audioreach-engine/fwk/spf/amdb/autogen/linux/spf_static_build_config.h”. The CAPI wrapper entry functions for the module should be printed here. If not, double check that the previous step was fully completed.
+- When the module is compiled, h2xml will convert the API to the XML file that will be imported into ARC. This can be found in the “tmp” audioreach-engine folder, inside the folder “h2xml_autogen”. This XML file will have the same name as the API file for the module.
+- To use the module in an audio usecase graph, import the XML file into ARC. For steps on how to do this, please refer to section 4.1 of the ARC guide.
+
+## Test the module
+
+- First, set up the preferred device. A full device image can be generated from the yocto build and flashed after successfully compiling “audioreach-engine” and then generating a full image by running “bitbake <image_name>”.
+- If an image is already flashed onto the device, it is possible to use the module without re-flashing the image:
+    - If the module entry was set to “y” in defconfig, simply push “libspf.so” to the “/usr/lib” folder on the device.
+          - “libspf.so” is the audioreach-engine library, and it can be found in the “tmp” audioreach-engine folder.
+    - If the module entry was set to “m”, navigate to the “tmp” audioreach-engine and find the folder generated for the custom module. Here, there should be a “.so” file generated for the module. Push this to the “/usr/lib” folder on the device.
+- Add the module to the audio usecase graph in ARC. Save the workspace to update the ACDB files.
+- Push the updated ACDB files to the ACDB folder on the device and try running an audio use case. If there are no issues with the use case, the module will appear in the graph when ARC is connected to the device in online mode.
+    - Please refer to the relevant Platform Reference Guide for steps on connecting ARC in online mode.

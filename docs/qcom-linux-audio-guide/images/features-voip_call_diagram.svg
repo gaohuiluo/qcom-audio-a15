@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" aria-label="../media/voip_call_diagram.svg" class="st15 cursor-zoomin" color-interpolation-filters="sRGB" height="6.61979in" viewbox="0 0 752.25 476.625" width="10.4479in" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" xmlns:xlink="http://www.w3.org/1999/xlink">
+<v:documentproperties v:langid="1033" v:viewmarkup="false">
+<v:userdefs>
+<v:ud v:nameu="msvNoAutoConnect" v:val="VT0(1):26"></v:ud>
+</v:userdefs>
+</v:documentproperties>
+<style>.svg-3 .st1 { fill: #ffffff; stroke: none; stroke-width: 0.25 }
+.svg-3 .st2 { fill: #fafafa; stroke: #d2d7e1; stroke-width: 1.5 }
+.svg-3 .st3 { fill: #ffffff; stroke: #d2d7e1; stroke-width: 2 }
+.svg-3 .st4 { fill: #6280cc; stroke: none; stroke-width: 2 }
+.svg-3 .st5 { fill: #ffffff; font-family: Roboto; font-size: 1.00001em }
+.svg-3 .st6 { font-size: 1em }
+.svg-3 .st7 { stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-3 .st8 { fill: none; stroke: #000000; stroke-width: 2 }
+.svg-3 .st9 { marker-end: url("#3-mrkr4-45"); stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-3 .st10 { fill: #000000; fill-opacity: 1; stroke: #000000; stroke-opacity: 1; stroke-width: 0.44247787610619 }
+.svg-3 .st11 { fill: none; stroke: none; stroke-width: 0.5 }
+.svg-3 .st12 { fill: #000000; font-family: Roboto; font-size: 1.00001em }
+.svg-3 .st13 { fill: none; stroke: none; stroke-width: 2 }
+.svg-3 .st14 { stroke: #000000; stroke-dasharray: 14, 10; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-3 .st15 { fill: none; fill-rule: evenodd; font-size: 12px; overflow: visible; stroke-linecap: square; stroke-miterlimit: 3 }</style>
+<defs id="Markers">
+<g id="lend4">
+<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"></path>
+</g>
+<marker class="st10" id="3-mrkr4-45" markerunits="strokeWidth" orient="auto" overflow="visible" refx="-4.52" v:arrowsize="2" v:arrowtype="4" v:setback="4.52">
+<use transform="scale(-2.26,-2.26) " xlink:href="#lend4"></use>
+</marker>
+</defs>
+<g v:groupcontext="backgroundPage" v:index="1" v:mid="4">
+<v:userdefs>
+<v:ud v:nameu="msvThemeOrder" v:val="VT0(0):26"></v:ud>
+<v:ud v:nameu="msvVisioCreated" v:prompt="" v:val="VT0(0):26"></v:ud>
+</v:userdefs>
+<title>VBackground-1</title>
+<v:pageproperties height="6.61979" v:drawingscale="1" v:drawingunits="19" v:pagescale="1" v:shadowoffsetx="9" v:shadowoffsety="-9" width="10.4479"></v:pageproperties>
+<g id="shape1-1" v:groupcontext="shape" v:mid="1">
+<title>Solid</title>
+<v:userdefs>
+<v:ud v:nameu="Background" v:val="VT0(0):26"></v:ud>
+<v:ud v:nameu="visVersion" v:val="VT0(15):26"></v:ud>
+<v:ud v:nameu="msvShapeCategories" v:prompt="" v:val="VT4(DoNotContain)"></v:ud>
+<v:ud v:nameu="msvVisioCreated" v:prompt="" v:val="VT0(0):26"></v:ud>
+</v:userdefs>
+<rect class="st1" height="476.625" width="752.25" x="0" y="0"></rect>
+</g>
+</g>
+<g v:groupcontext="foregroundPage" v:index="2" v:mid="0">
+<v:userdefs>
+<v:ud v:nameu="msvThemeOrder" v:val="VT0(0):26"></v:ud>
+</v:userdefs>
+<title>Page-1</title>
+<v:pageproperties v:drawingscale="1" v:drawingunits="19" v:pagescale="1" v:shadowoffsetx="9" v:shadowoffsety="-9"></v:pageproperties>
+<v:layer v:index="0" v:name="Connector"></v:layer>
+<g id="shape38-3" transform="translate(19.5,-19.5)" v:groupcontext="shape" v:mid="38">
+<title>Sheet.38</title>
+<rect class="st2" height="437.625" width="713.25" x="0" y="39"></rect>
+</g>
+<g id="shape1-5" transform="translate(114.9,-40.5)" v:groupcontext="shape" v:mid="1">
+<title>Sheet.1</title>
+<rect class="st3" height="377" rx="4.5" ry="4.5" width="522" x="0" y="99.625"></rect>
+</g>
+<g id="shape3-7" transform="translate(164.4,-314)" v:groupcontext="shape" v:mid="3">
+<title>Sheet.3</title>
+<desc>Gains</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="49.5" cy="454.125" height="45" width="99"></v:textrect>
+<rect class="st4" height="45" rx="4.5" ry="4.5" width="99" x="0" y="431.625"></rect>
+<text class="st5" v:langid="1033" x="34.29" y="457.73"><v:paragraph v:horizalign="1"></v:paragraph><v:tablist></v:tablist>Gains</text> </g>
+<g id="shape4-10" transform="translate(164.4,-237.5)" v:groupcontext="shape" v:mid="4">
+<title>Sheet.4</title>
+<desc>Gains</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="49.5" cy="454.125" height="45" width="99"></v:textrect>
+<rect class="st4" height="45" rx="4.5" ry="4.5" width="99" x="0" y="431.625"></rect>
+<text class="st5" v:langid="1033" x="34.29" y="457.73"><v:paragraph v:horizalign="1"></v:paragraph><v:tablist></v:tablist>Gains</text> </g>
+<g id="shape5-13" transform="translate(497.4,-269)" v:groupcontext="shape" v:mid="5">
+<title>Sheet.5</title>
+<desc>Postprocessing modules</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="49.5" cy="454.125" height="45" width="99"></v:textrect>
+<rect class="st4" height="45" rx="4.5" ry="4.5" width="99" x="0" y="431.625"></rect>
+<text class="st5" v:langid="1033" x="7.78" y="450.53"><v:paragraph v:horizalign="1"></v:paragraph><v:tablist></v:tablist>Postprocessing <tspan class="st6" dy="1.2em" x="26.4">modules</tspan></text> </g>
+<g id="shape6-17" transform="translate(339.9,-201.5)" v:groupcontext="shape" v:mid="6">
+<title>Sheet.6</title>
+<desc>Fluence</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="49.5" cy="386.625" height="180" width="99"></v:textrect>
+<rect class="st4" height="180" rx="4.5" ry="4.5" width="99" x="0" y="296.625"></rect>
+<text class="st5" v:langid="1033" x="28.61" y="390.23"><v:paragraph v:horizalign="1"></v:paragraph><v:tablist></v:tablist>Fluence</text> </g>
+<g id="shape7-20" transform="translate(155.4,-80)" v:groupcontext="shape" v:mid="7">
+<title>Sheet.7</title>
+<desc>Gains</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="49.5" cy="454.125" height="45" width="99"></v:textrect>
+<rect class="st4" height="45" rx="4.5" ry="4.5" width="99" x="0" y="431.625"></rect>
+<text class="st5" v:langid="1033" x="34.29" y="457.73"><v:paragraph v:horizalign="1"></v:paragraph><v:tablist></v:tablist>Gains</text> </g>
+<g id="shape8-23" transform="translate(326.4,-80)" v:groupcontext="shape" v:mid="8">
+<title>Sheet.8</title>
+<desc>Fluence</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="49.5" cy="454.125" height="45" width="99"></v:textrect>
+<rect class="st4" height="45" rx="4.5" ry="4.5" width="99" x="0" y="431.625"></rect>
+<text class="st5" v:langid="1033" x="28.61" y="457.73"><v:paragraph v:horizalign="1"></v:paragraph><v:tablist></v:tablist>Fluence</text> </g>
+<g id="shape9-26" transform="translate(497.4,-80)" v:groupcontext="shape" v:mid="9">
+<title>Sheet.9</title>
+<desc>Postprocessing modules</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="49.5" cy="454.125" height="45" width="99"></v:textrect>
+<rect class="st4" height="45" rx="4.5" ry="4.5" width="99" x="0" y="431.625"></rect>
+<text class="st5" v:langid="1033" x="7.78" y="450.53"><v:paragraph v:horizalign="1"></v:paragraph><v:tablist></v:tablist>Postprocessing <tspan class="st6" dy="1.2em" x="26.4">modules</tspan></text> </g>
+<g id="shape12-30" transform="translate(555.525,122.125) rotate(90)" v:groupcontext="shape" v:mid="12">
+<title>Sheet.12</title>
+<path class="st7" d="M0 476.62 L36 476.62"></path>
+</g>
+<g id="shape13-33" transform="translate(555.525,198.625) rotate(90)" v:groupcontext="shape" v:mid="13">
+<title>Sheet.13</title>
+<path class="st7" d="M0 476.62 L36 476.62"></path>
+</g>
+<g id="shape15-36" transform="translate(79.575,-327.5)" v:groupcontext="shape" v:mid="15">
+<title>Sheet.15</title>
+<ellipse class="st8" cx="9" cy="467.625" rx="9" ry="9"></ellipse>
+</g>
+<g id="shape16-38" transform="translate(79.425,-251)" v:groupcontext="shape" v:mid="16">
+<title>Sheet.16</title>
+<ellipse class="st8" cx="9" cy="467.625" rx="9" ry="9"></ellipse>
+</g>
+<g id="shape17-40" transform="translate(97.425,-251)" v:groupcontext="shape" v:layermember="0" v:mid="17">
+<title>Dynamic connector</title>
+<path class="st9" d="M0 467.62 L57.94 467.62"></path>
+</g>
+<g id="shape18-46" transform="translate(97.5708,-327.363)" v:groupcontext="shape" v:layermember="0" v:mid="18">
+<title>Dynamic connector.18</title>
+<path class="st9" d="M0 467.76 L57.79 467.52"></path>
+</g>
+<g id="shape20-51" transform="translate(263.4,-327.5)" v:groupcontext="shape" v:layermember="0" v:mid="20">
+<title>Dynamic connector.20</title>
+<path class="st9" d="M0 467.62 L67.46 467.62"></path>
+</g>
+<g id="shape21-56" transform="translate(263.4,-251)" v:groupcontext="shape" v:layermember="0" v:mid="21">
+<title>Dynamic connector.21</title>
+<path class="st9" d="M0 467.62 L67.46 467.62"></path>
+</g>
+<g id="shape22-61" transform="translate(155.4,-111.5)" v:groupcontext="shape" v:layermember="0" v:mid="22">
+<title>Dynamic connector.22</title>
+<path class="st9" d="M0 485.62 L-49.46 485.63"></path>
+</g>
+<g id="shape23-66" transform="translate(326.4,-93.5)" v:groupcontext="shape" v:layermember="0" v:mid="23">
+<title>Dynamic connector.23</title>
+<path class="st9" d="M0 467.62 L-62.96 467.62"></path>
+</g>
+<g id="shape24-71" transform="translate(497.4,-93.5)" v:groupcontext="shape" v:layermember="0" v:mid="24">
+<title>Dynamic connector.24</title>
+<path class="st9" d="M0 467.62 L-62.96 467.62"></path>
+</g>
+<g id="shape25-76" transform="translate(654.9,-93.5)" v:groupcontext="shape" v:layermember="0" v:mid="25">
+<title>Dynamic connector.25</title>
+<path class="st9" d="M0 467.63 L-49.46 467.62"></path>
+</g>
+<g id="shape26-81" transform="translate(596.4,-300.5)" v:groupcontext="shape" v:layermember="0" v:mid="26">
+<title>Dynamic connector.26</title>
+<path class="st9" d="M0 485.62 L49.46 485.63"></path>
+</g>
+<g id="shape27-86" transform="translate(438.9,-282.5)" v:groupcontext="shape" v:layermember="0" v:mid="27">
+<title>Dynamic connector.27</title>
+<path class="st9" d="M0 467.62 L49.46 467.62"></path>
+</g>
+<g id="shape31-91" transform="translate(123.9,-102.5)" v:groupcontext="shape" v:layermember="0" v:mid="31">
+<title>Dynamic connector.31</title>
+<path class="st7" d="M9 476.62 L9 359.63"></path>
+</g>
+<g id="shape32-94" transform="translate(132.9,-210.5)" v:groupcontext="shape" v:layermember="0" v:mid="32">
+<title>Dynamic connector.32</title>
+<path class="st9" d="M0 467.62 L197.96 467.62"></path>
+</g>
+<g id="shape33-99" transform="translate(654.9,-269)" v:groupcontext="shape" v:mid="33">
+<title>Sheet.33</title>
+<desc>Speech output</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="29.45" cy="456.175" height="40.9" width="58.91"></v:textrect>
+<rect class="st11" height="40.9" width="58.9" x="0" y="435.725"></rect>
+<text class="st12" v:langid="1033" x="9.72" y="452.58"><v:paragraph v:horizalign="1"></v:paragraph><v:tablist></v:tablist>Speech <v:newlinechar></v:newlinechar><tspan class="st6" dy="1.2em" x="12.13">output</tspan></text> </g>
+<g id="shape35-103" transform="translate(654.9,-80)" v:groupcontext="shape" v:mid="35">
+<title>Sheet.35</title>
+<desc>Speech input</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="29.45" cy="456.175" height="40.9" width="58.91"></v:textrect>
+<rect class="st11" height="40.9" width="58.9" x="0" y="435.725"></rect>
+<text class="st12" v:langid="1033" x="9.72" y="452.58"><v:paragraph v:horizalign="1"></v:paragraph><v:tablist></v:tablist>Speech <v:newlinechar></v:newlinechar><tspan class="st6" dy="1.2em" x="16.05">input</tspan></text> </g>
+<g id="shape36-107" transform="translate(38,-80)" v:groupcontext="shape" v:mid="36">
+<title>Sheet.36</title>
+<desc>Speaker</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="29.45" cy="456.175" height="40.9" width="58.91"></v:textrect>
+<rect class="st11" height="40.9" width="58.9" x="0" y="435.725"></rect>
+<text class="st12" v:langid="1033" x="7.83" y="459.78"><v:paragraph v:horizalign="1"></v:paragraph><v:tablist></v:tablist>Speaker</text> </g>
+<g id="shape37-110" transform="translate(332.075,-417.5)" v:groupcontext="shape" v:mid="37">
+<title>Sheet.37</title>
+<desc>Qualcomm LPAI</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="55.3375" cy="466.7" height="19.85" width="110.68"></v:textrect>
+<rect class="st13" height="19.85" width="110.675" x="0" y="456.775"></rect>
+<text class="st12" v:langid="1033" x="12.06" y="470.3"><v:paragraph v:horizalign="1"></v:paragraph><v:tablist></v:tablist>Qualcomm LPAI</text> </g>
+<g id="shape39-113" transform="translate(526.5,-177.55)" v:groupcontext="shape" v:mid="39">
+<title>Sheet.39</title>
+<desc>Transmission path</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="54.1" cy="468.65" height="15.95" width="108.2"></v:textrect>
+<rect class="st11" height="15.95" width="108.2" x="0" y="460.675"></rect>
+<text class="st12" v:langid="1033" x="4.35" y="472.25"><v:paragraph v:horizalign="1"></v:paragraph><v:tablist></v:tablist>Transmission path</text> </g>
+<g id="shape40-116" transform="translate(543.163,-147.275)" v:groupcontext="shape" v:mid="40">
+<title>Sheet.40</title>
+<desc>Receiving path</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="43.4187" cy="468.65" height="15.95" width="86.84"></v:textrect>
+<rect class="st11" height="15.95" width="86.8375" x="0" y="460.675"></rect>
+<text class="st12" v:langid="1033" x="4.35" y="472.25"><v:paragraph v:horizalign="1"></v:paragraph><v:tablist></v:tablist>Receiving path</text> </g>
+<g id="shape41-119" transform="translate(114.9,-171)" v:groupcontext="shape" v:mid="41">
+<title>Sheet.41</title>
+<path class="st14" d="M0 476.62 L522 476.62"></path>
+</g>
+</g>
+</svg>
