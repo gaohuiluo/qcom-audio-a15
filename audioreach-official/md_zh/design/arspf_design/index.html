@@ -1,0 +1,4679 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="高通 AudioReach 与 Qualcomm Linux 音频子系统中文整理资料">
+      
+      
+        <meta name="author" content="gaohuiluo">
+      
+      
+        <link rel="canonical" href="https://gaohuiluo.github.io/qcom-audio-a15/audioreach-official/md_zh/design/arspf_design/">
+      
+      
+        <link rel="prev" href="../design_concept/">
+      
+      
+        <link rel="next" href="../args_design/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>AudioReach 引擎（SPF） - Qualcomm 音频文档资料库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#audioreach-引擎" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="Qualcomm 音频文档资料库" class="md-header__button md-logo" aria-label="Qualcomm 音频文档资料库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Qualcomm 音频文档资料库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AudioReach 引擎（SPF）
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gaohuiluo/qcom-audio-a15" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gaohuiluo/qcom-audio-a15
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../blogs/qcom-audioreach-zh/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  博客与演讲
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  AudioReach 官方文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../qcom-linux-audio-guide/docs-zh/overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Qualcomm Linux 音频指南
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Qualcomm 音频文档资料库" class="md-nav__button md-logo" aria-label="Qualcomm 音频文档资料库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Qualcomm 音频文档资料库
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gaohuiluo/qcom-audio-a15" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gaohuiluo/qcom-audio-a15
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    博客与演讲
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    博客与演讲
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blogs/qcom-audioreach-zh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach 开源（中文）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blogs/linaro-connect-2024-talk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linaro Connect 2024 演讲
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach 官方文档
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AudioReach 官方文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdk_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 概览与路线图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    设计
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    设计
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    架构概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design_concept/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    核心概念与术语
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach 引擎（SPF）
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach 引擎（SPF）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#引言" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        引言
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#概述" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#高层架构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        高层架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#可能的用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可能的用例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="可能的用例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#音频采集与录制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        音频采集与录制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#音频渲染与播放" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        音频渲染与播放
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#网络电话voip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络电话（VoIP）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#音频转码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        音频转码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#音频环回" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        音频环回
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#音频检测" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        音频检测
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#框架需求" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        框架需求
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="框架需求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#通用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#客户端接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        客户端接口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#处理链拓扑与图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        处理链、拓扑与图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#媒体格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        媒体格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#调度方法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        调度方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#资源管理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        资源管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#调试" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        调试
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#are-组件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ARE 组件
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ARE 组件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#are-的高层架构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ARE 的高层架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#功能块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        功能块
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="功能块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#通用包路由器gpr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通用包路由器（GPR）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="通用包路由器（GPR）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#操作码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        操作码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#are-与-gsl-之间的消息传递" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ARE 与 GSL 之间的消息传递
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#带内消息" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        带内消息
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#带外消息" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        带外消息
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模块
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#控制模块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        控制模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#数据处理模块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据处理模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#链路与连接" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        链路与连接
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="链路与连接">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#控制链路" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        控制链路
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#数据链路" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据链路
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#图与子图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图与子图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#容器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        容器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#通用容器generic-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通用容器（Generic container）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#专用容器specialized-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        专用容器（Specialized container）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#卸载容器off-load-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        卸载容器（Off-load container）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#音频处理管理器apm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        音频处理管理器（APM）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLOSED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stopped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STOPPED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prepared" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PREPARED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STARTED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suspended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SUSPENDED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#音频模块数据库amdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        音频模块数据库（AMDB）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#内置模块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        内置模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#自定义模块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自定义模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#静态模块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        静态模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#动态模块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        动态模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#集成资源监视器irm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        集成资源监视器（IRM）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#平台与操作系统抽象层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        平台与操作系统抽象层
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#校准与配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        校准与配置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="校准与配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#常规且非共享校准" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常规且非共享校准
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#持久且共享校准" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        持久且共享校准
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#共享持久或全局共享校准" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        共享持久或全局共享校准
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#多实例与多核" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多实例与多核
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多实例与多核">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#多实例配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多实例配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#多核配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多核配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#定制化" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定制化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="定制化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#自定义模块_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自定义模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#自定义容器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自定义容器
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="用例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#播放" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        播放
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#采集" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        采集
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#带源模块与汇模块的用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        带源模块与汇模块的用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#免提配置文件hfp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        免提配置文件（HFP）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#语音激活" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        语音激活
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#图设计者-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图设计者 FAQ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="图设计者 FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#应画多少个子图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应画多少个子图？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#应使用多少个容器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应使用多少个容器？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#我应该用-sc-还是-gc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        我应该用 SC 还是 GC？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#如何提升效率" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        如何提升效率？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#缩略语与术语" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        缩略语与术语
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../args_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图服务（ARGS）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpr_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通用包路由器（GPR）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lx_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 适配设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux_asoc_arch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux ASoC 架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux_plug-in_arch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 插件架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 参考
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API 参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/arspf_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    引擎 API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/spf_capi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SPF CAPI 接口
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/posal_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    POSAL 平台抽象层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/args_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图服务 API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/args_gsl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GSL 图服务层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/args_arosal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AROSAL OS 抽象层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/gpr_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPR API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发者指南
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    开发者指南
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/dev_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/system_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/plat_port/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    平台移植指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/available_modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    可用音频模块列表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/adding_modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    如何添加音频模块
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/capi_mod_dev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAPI 模块开发指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/alsalib_using_audioreach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用 ALSA lib
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach Creator（ARC）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../platform/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    平台参考
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    平台参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../platform/raspberry_pi4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../platform/rb3_gen2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RB3 Gen2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../platform/nxp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NXP IMX8M Plus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qualcomm Linux 音频指南
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Qualcomm Linux 音频指南
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    音频概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/enable-audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    启用音频
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/pal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL 层定制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/tinyalsa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TinyALSA 应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/agm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定制音频图（AGM）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/customize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定制音频用例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高级特性（VoIP ECNS）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/troubleshoot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    故障排查
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7%E8%A1%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    术语对照表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#引言" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        引言
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#概述" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#高层架构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        高层架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#可能的用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可能的用例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="可能的用例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#音频采集与录制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        音频采集与录制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#音频渲染与播放" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        音频渲染与播放
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#网络电话voip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络电话（VoIP）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#音频转码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        音频转码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#音频环回" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        音频环回
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#音频检测" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        音频检测
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#框架需求" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        框架需求
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="框架需求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#通用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#客户端接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        客户端接口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#处理链拓扑与图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        处理链、拓扑与图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#媒体格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        媒体格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#调度方法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        调度方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#资源管理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        资源管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#调试" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        调试
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#are-组件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ARE 组件
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ARE 组件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#are-的高层架构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ARE 的高层架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#功能块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        功能块
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="功能块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#通用包路由器gpr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通用包路由器（GPR）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="通用包路由器（GPR）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#操作码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        操作码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#are-与-gsl-之间的消息传递" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ARE 与 GSL 之间的消息传递
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#带内消息" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        带内消息
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#带外消息" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        带外消息
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模块
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#控制模块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        控制模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#数据处理模块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据处理模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#链路与连接" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        链路与连接
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="链路与连接">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#控制链路" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        控制链路
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#数据链路" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据链路
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#图与子图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图与子图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#容器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        容器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#通用容器generic-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通用容器（Generic container）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#专用容器specialized-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        专用容器（Specialized container）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#卸载容器off-load-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        卸载容器（Off-load container）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#音频处理管理器apm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        音频处理管理器（APM）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLOSED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stopped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STOPPED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prepared" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PREPARED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STARTED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suspended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SUSPENDED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#音频模块数据库amdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        音频模块数据库（AMDB）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#内置模块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        内置模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#自定义模块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自定义模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#静态模块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        静态模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#动态模块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        动态模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#集成资源监视器irm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        集成资源监视器（IRM）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#平台与操作系统抽象层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        平台与操作系统抽象层
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#校准与配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        校准与配置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="校准与配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#常规且非共享校准" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常规且非共享校准
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#持久且共享校准" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        持久且共享校准
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#共享持久或全局共享校准" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        共享持久或全局共享校准
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#多实例与多核" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多实例与多核
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多实例与多核">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#多实例配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多实例配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#多核配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多核配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#定制化" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定制化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="定制化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#自定义模块_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自定义模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#自定义容器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自定义容器
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="用例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#播放" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        播放
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#采集" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        采集
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#带源模块与汇模块的用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        带源模块与汇模块的用例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#免提配置文件hfp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        免提配置文件（HFP）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#语音激活" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        语音激活
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#图设计者-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图设计者 FAQ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="图设计者 FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#应画多少个子图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应画多少个子图？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#应使用多少个容器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应使用多少个容器？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#我应该用-sc-还是-gc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        我应该用 SC 还是 GC？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#如何提升效率" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        如何提升效率？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#缩略语与术语" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        缩略语与术语
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="audioreach-引擎">AudioReach 引擎<a class="headerlink" href="#audioreach-引擎" title="Permanent link">&para;</a></h1>
+<ul>
+<li>引言</li>
+<li>概述<ul>
+<li>高层架构</li>
+<li>可能的用例</li>
+</ul>
+</li>
+<li>框架需求<ul>
+<li>通用</li>
+<li>客户端接口</li>
+<li>处理链、拓扑与图</li>
+<li>媒体格式</li>
+<li>调度方法</li>
+<li>资源管理</li>
+<li>调试</li>
+</ul>
+</li>
+<li>ARE 组件<ul>
+<li>ARE 的高层架构</li>
+<li>功能块</li>
+<li>校准与配置</li>
+<li>多实例与多核</li>
+</ul>
+</li>
+<li>定制化<ul>
+<li>自定义模块</li>
+<li>自定义容器</li>
+</ul>
+</li>
+<li>用例<ul>
+<li>播放</li>
+<li>采集</li>
+<li>带源模块与汇模块的用例</li>
+<li>免提配置文件（HFP）</li>
+<li>语音激活</li>
+</ul>
+</li>
+<li>图设计者 FAQ<ul>
+<li>应画多少个子图？</li>
+<li>应使用多少个容器？</li>
+<li>我应该用 SC 还是 GC？</li>
+<li>如何提升效率？</li>
+</ul>
+</li>
+<li>缩略语与术语</li>
+</ul>
+<h2 id="引言">引言<a class="headerlink" href="#引言" title="Permanent link">&para;</a></h2>
+<p>本页介绍在 AudioReach™ 架构语境下所使用的 AudioReach 引擎（ARE）的高层软件需求与设计细节。本页所用缩略语的定义请参见“缩略语与术语”。</p>
+<h2 id="概述">概述<a class="headerlink" href="#概述" title="Permanent link">&para;</a></h2>
+<h3 id="高层架构">高层架构<a class="headerlink" href="#高层架构" title="Permanent link">&para;</a></h3>
+<p>ARE 遵循客户端-服务器模型，其中服务器按照客户端的需求提供各种功能，例如实现音频用例。</p>
+<ul>
+<li>服务器框架提供了按用例需求插入并执行算法的方法。</li>
+<li>客户端框架充当高层软件栈（如中间件或应用程序）与服务器框架之间的桥梁。</li>
+<li>平台（硬件子系统）与操作系统（OS）抽象帮助框架在不同的处理器和硬件架构上工作。</li>
+</ul>
+<p>下图展示了典型音频嵌入式系统中所使用的高层软件架构。</p>
+<p><img alt="Image1" src="../../_images/Image1.png" />
+<em>高层音频软件架构</em></p>
+<h3 id="可能的用例">可能的用例<a class="headerlink" href="#可能的用例" title="Permanent link">&para;</a></h3>
+<p>ARE 可用于各种音频和语音用例。本节包括但不限于以下高层示例。详细用例在“用例”一节中说明。</p>
+<h4 id="音频采集与录制">音频采集与录制<a class="headerlink" href="#音频采集与录制" title="Permanent link">&para;</a></h4>
+<p>音频采集涉及对来自麦克风或任意实时设备（端点）的 PCM 数据进行编码。</p>
+<p>用于编码的音频格式有：PCM、AAC、WMA std、AMRWB 等。</p>
+<p><img alt="Image2" src="../../_images/Image2.png" /></p>
+<h4 id="音频渲染与播放">音频渲染与播放<a class="headerlink" href="#音频渲染与播放" title="Permanent link">&para;</a></h4>
+<p>音频播放涉及对给定的音频数据进行解码，并将 PCM 在扬声器或任意实时设备上播放出来。</p>
+<p>用于解码的典型音频格式有：PCM、MP3、AAC、FLAC、ALAC、AC3、EAC3、Vorbis、WMA std、WMA Pro、DTS、APE 等。</p>
+<p><img alt="Image3" src="../../_images/Image3.png" /></p>
+<h4 id="网络电话voip">网络电话（VoIP）<a class="headerlink" href="#网络电话voip" title="Permanent link">&para;</a></h4>
+<p>网络电话（Voice over Internet Protocol，VoIP）同时涉及播放通路和录制通路，用于语音通信。</p>
+<p>编码器和解码器与主机处理器上的应用程序交互，在与远端用户对话期间通过 IP 收发数据。</p>
+<p>用于编码和解码的典型音频格式有：PCM、AAC、A-law、µ-law 等。</p>
+<p><img alt="Image4" src="../../_images/Image4.png" /></p>
+<h4 id="音频转码">音频转码<a class="headerlink" href="#音频转码" title="Permanent link">&para;</a></h4>
+<p>音频转码涉及将一种音频格式转换为另一种，例如从 MP3 转为 AAC。</p>
+<p><img alt="Image6" src="../../_images/Image6.png" /></p>
+<h4 id="音频环回">音频环回<a class="headerlink" href="#音频环回" title="Permanent link">&para;</a></h4>
+<p>音频环回涉及从一个音频源接收数据，经过可选的处理后在一个音频汇上渲染出来。</p>
+<p>音频环回用于各种场景，例如在 CS 语音通话中混入侧音、免提配置文件（HFP）、助听器等。</p>
+<p>以下是一些环回用例，其中音频必须从一个设备路由到另一个设备并进行某些转换。</p>
+<ul>
+<li>PCM 到压缩打包格式。例如，从设备进来的 PCM 被编码为 DTS 并打包，然后传输到 HDMI。</li>
+<li>压缩打包格式到 PCM。例如，来自 HDMI 的数据被解包、解码，然后传输到扬声器进行渲染。</li>
+<li>压缩打包格式到压缩打包格式，并进行格式转换。</li>
+</ul>
+<p><img alt="Image7" src="../../_images/Image7.png" /></p>
+<h4 id="音频检测">音频检测<a class="headerlink" href="#音频检测" title="Permanent link">&para;</a></h4>
+<p>音频检测涉及从一个音频源接收数据，对其进行处理以改善信号质量，检测预期的属性或事件，并通知已注册的客户端。</p>
+<p>音频检测用于各种场景，例如 DTMF 检测、关键词检测、音频上下文检测等。</p>
+<p><img alt="Image8" src="../../_images/Image8.png" /></p>
+<h2 id="框架需求">框架需求<a class="headerlink" href="#框架需求" title="Permanent link">&para;</a></h2>
+<h3 id="通用">通用<a class="headerlink" href="#通用" title="Permanent link">&para;</a></h3>
+<ul>
+<li>必须与处理器和平台无关。</li>
+<li>必须与用例无关且由数据驱动。</li>
+<li>必须提供内存可伸缩选项。</li>
+<li>必须提供定制框架的选项。</li>
+<li>必须提供支持各种性能模式的选项。</li>
+<li>必须允许用例特定的定制化。</li>
+<li>必须支持模块（算法与功能）与框架交互的统一接口。</li>
+<li>必须可伸缩，从独立用例一直支持到高端并发。</li>
+<li>应提供动态加载处理模块和算法的选项。</li>
+<li>必须支持多核和多实例配置，以启用分布式音频处理。</li>
+</ul>
+<h3 id="客户端接口">客户端接口<a class="headerlink" href="#客户端接口" title="Permanent link">&para;</a></h3>
+<ul>
+<li>必须支持同一处理器内、跨处理器或跨处理域的客户端-服务器通信。</li>
+<li>必须提供跨客户端与服务器框架管理共享内存的方法。</li>
+<li>必须提供通用接口（同步与异步）以在客户端与服务器框架之间交换命令、响应和事件。</li>
+<li>必须提供建立、配置、启动、停止、挂起和拆除用例图的方法。</li>
+<li>必须支持模块的运行时校准与监控。</li>
+<li>必须提供发布框架及模块能力、配置和校准接口的方法，以支持数据驱动的用例设计。</li>
+<li>应允许代理客户端处理用例特定的定制化。</li>
+</ul>
+<h3 id="处理链拓扑与图">处理链、拓扑与图<a class="headerlink" href="#处理链拓扑与图" title="Permanent link">&para;</a></h3>
+<ul>
+<li>必须支持线性处理图（其中模块逐个顺序连接）。</li>
+<li>应支持非线性处理图（其中模块以有向无环图形式连接）。</li>
+<li>必须支持实时（RT）和非实时（NRT）音频源与汇。</li>
+<li>必须支持基于<em>流</em>的处理图，其中每个流可以包含多个通道。</li>
+<li>应提供跨处理图的元数据传播。</li>
+<li>应支持具有不同帧尺寸需求的处理模块。</li>
+<li>必须支持运行同一模块多个实例的选项，以及寻址各个实例进行配置或校准的能力。</li>
+<li>必须支持用例图中处理模块的原地缓冲选项。</li>
+<li>必须提供支持处理模块之间数据与控制通信的方法。</li>
+<li>应提供图特定功能的支持，例如暂停、恢复和刷新。</li>
+<li>应支持接受可变输入样本数并产生可变输出样本数的模块。</li>
+<li>应提供在播放流的最后一个样本从音频汇渲染出去时通知客户端处理器的方法。</li>
+</ul>
+<h3 id="媒体格式">媒体格式<a class="headerlink" href="#媒体格式" title="Permanent link">&para;</a></h3>
+<ul>
+<li>必须支持定点和浮点 PCM 数据格式。</li>
+<li>必须支持各种标准压缩数据格式和通用（raw）压缩数据格式。</li>
+<li>必须支持配置通道数、位宽、样本宽度和 Q 因子。</li>
+<li>必须支持用例中跨处理模块的媒体格式传播。</li>
+</ul>
+<h3 id="调度方法">调度方法<a class="headerlink" href="#调度方法" title="Permanent link">&para;</a></h3>
+<ul>
+<li>应支持不同的调度模式和不同的数据交付机制（缓冲区可用性、定时器调度触发、定时包交付、截止期驱动调度等）。</li>
+<li>应提供启用自定义调度和触发策略的选项，以处理复杂场景。</li>
+</ul>
+<h3 id="资源管理">资源管理<a class="headerlink" href="#资源管理" title="Permanent link">&para;</a></h3>
+<ul>
+<li>必须提供管理用例图所需处理资源（内存管理、处理器周期、带宽、线程优先级等）的方法。</li>
+<li>应提供测量框架与模块处理需求的方法。</li>
+<li>应提供查询所需模块之间延迟的能力。</li>
+<li>必须提供基于用例或能力的可伸缩内存需求选项。</li>
+</ul>
+<h3 id="调试">调试<a class="headerlink" href="#调试" title="Permanent link">&para;</a></h3>
+<ul>
+<li>必须提供记录诊断消息的方法。</li>
+<li>必须提供在用例图中指定位置记录音频数据（PCM 与压缩）的选项。</li>
+<li>应支持不同的调试级别（可作为特性开关），以调试复杂的时序问题、内存泄漏等。</li>
+</ul>
+<h2 id="are-组件">ARE 组件<a class="headerlink" href="#are-组件" title="Permanent link">&para;</a></h2>
+<h3 id="are-的高层架构">ARE 的高层架构<a class="headerlink" href="#are-的高层架构" title="Permanent link">&para;</a></h3>
+<p><img alt="Image9" src="../../_images/Image9.png" />
+<em>ARE 高层架构</em></p>
+<h3 id="功能块">功能块<a class="headerlink" href="#功能块" title="Permanent link">&para;</a></h3>
+<p>本节提供 ARE 中所用功能块的高层概览。</p>
+<h4 id="通用包路由器gpr">通用包路由器（GPR）<a class="headerlink" href="#通用包路由器gpr" title="Permanent link">&para;</a></h4>
+<p>通用包路由器（GPR）为跨 ARE（服务器框架）与图服务库（GSL，即客户端框架）的音频消息包（控制、数据、事件、响应）提供路由功能。</p>
+<p>GPR 抽象了平台特定的处理器间通信（IPC）传输层和协议层。</p>
+<p>下图表示 GPR 的头部格式，它由源地址和目的地址（域和端口）、令牌（用于异步通信中匹配命令与响应）以及操作码（opcode）组成。</p>
+<p><img alt="Image10" src="../../_images/Image10.png" />
+<em>GPR 头部格式</em></p>
+<h5 id="操作码">操作码<a class="headerlink" href="#操作码" title="Permanent link">&para;</a></h5>
+<p>所有操作码都要遵循 GUID 格式。</p>
+<p><img alt="Image11" src="../../_images/Image11.png" /></p>
+<ul>
+<li><strong>Owner</strong> —— 指示 GUID 的所有者，即该 GUID 是由 ARE 定义的还是你的自定义操作码。</li>
+<li><strong>Type</strong> —— 指示具体用途，例如控制命令、控制响应、数据命令、数据响应、事件、模块标识符、格式标识符、CAPI 操作码等。</li>
+<li><strong>Bits</strong> —— 用于将消息类型解释为事件或响应，以及避免发送通用响应或确认。</li>
+</ul>
+<h5 id="are-与-gsl-之间的消息传递">ARE 与 GSL 之间的消息传递<a class="headerlink" href="#are-与-gsl-之间的消息传递" title="Permanent link">&para;</a></h5>
+<p>为获得最佳系统性能，ARE 支持两种消息传递方式：带内（in-band）消息和带外（out-of-band）消息。</p>
+<p><img alt="Image12" src="../../_images/Image12.png" />
+<em>带内与带外消息传递方式</em></p>
+<h5 id="带内消息">带内消息<a class="headerlink" href="#带内消息" title="Permanent link">&para;</a></h5>
+<ul>
+<li>将实际负载/消息作为 GPR 负载的一部分。</li>
+<li>GPR 跨处理域转发完整数据包（即 GPR 头部 + 实际负载）。</li>
+<li>在框架服务器与客户端之间的中间层可能存在内存拷贝（因此有大小限制以减少性能影响）。</li>
+<li>通常用于小负载，例如 &lt;512 字节（平台特定配置），如简单命令、响应、事件等。</li>
+</ul>
+<h5 id="带外消息">带外消息<a class="headerlink" href="#带外消息" title="Permanent link">&para;</a></h5>
+<ul>
+<li>使用单独的共享内存来保存实际负载/消息。</li>
+<li>GPR 转发带有实际负载地址的数据包（即 GPR 地址 + 实际负载地址）。</li>
+<li>允许框架服务器与客户端访问共享内存，而无需在两者之间进行额外的内存拷贝。</li>
+<li>通常用于较大负载，例如 &gt;512 字节（平台特定配置），如配置、校准、数据缓冲区等。</li>
+</ul>
+<h4 id="模块">模块<a class="headerlink" href="#模块" title="Permanent link">&para;</a></h4>
+<p>模块是 ARE 中一个可寻址的<em>功能</em>。</p>
+<ul>
+<li><em>module ID</em> 用于标识功能，在模块实例化期间很有用。</li>
+<li><em>module instance ID</em> 用于标识模块的实例，在从客户端接收配置和校准信息时很有用。</li>
+<li>模块实例（一个 32 位实例 ID）应向 GPR 注册回调函数，以便直接从客户端接收消息。</li>
+</ul>
+<p>ARE 中使用两类模块：控制模块和数据处理模块。</p>
+<h5 id="控制模块">控制模块<a class="headerlink" href="#控制模块" title="Permanent link">&para;</a></h5>
+<p>控制模块向客户端（如 GSL、编解码器驱动等）提供公共接口，以控制 ARE 的资源和功能（每个模块就像一个提供特定功能的服务）。</p>
+<p>音频处理管理器（APM）和集成资源监视器（IRM）是控制模块的几个示例。这些模块不在用例图中表示。</p>
+<h5 id="数据处理模块">数据处理模块<a class="headerlink" href="#数据处理模块" title="Permanent link">&para;</a></h5>
+<p>数据处理模块可以是静态的或动态的，它们通常用通用音频处理接口（CAPI）封装。CAPI 接口充当框架与核心模块功能之间的桥梁。</p>
+<p>这些模块可以有零个或多个输入和输出端口。端口可以是控制端口或数据端口，且一次只连接一个链路（这些端口不支持隐式混合和拆分）。不支持零输入零输出端口的模块。</p>
+<p>数据处理模块的示例包括解码器、编码器、后处理模块、硬件或软件端点、DTMF 生成器（源模块）、DTMF 检测（汇模块）、回声消除器（多端口模块）等。</p>
+<p>有关 CAPI 接口的更多细节，请参见 <a href="../../dev/capi_mod_dev/">CAPI Module Development Guide</a>。</p>
+<h4 id="链路与连接">链路与连接<a class="headerlink" href="#链路与连接" title="Permanent link">&para;</a></h4>
+<p>链路和连接用于连接数据处理模块，从而创建用例图或链。链路的起始点和终止点由端口表示。</p>
+<p>ARE 中使用两类链路：控制链路和数据链路。</p>
+<p><img alt="Image13" src="../../_images/Image13.png" />
+<em>带控制链路或数据链路的 CAPI 封装模块</em></p>
+<h5 id="控制链路">控制链路<a class="headerlink" href="#控制链路" title="Permanent link">&para;</a></h5>
+<p>控制链路是双向的、点对点的，且可以是动态的（数量可变）或静态的（数量固定，控制端口带有特定标签）。</p>
+<p>这些链路是可选的，用于两个模块需要在稳态下彼此通信而无需客户端参与的场合。它们用于在两个模块之间交换控制消息或意图（无需与数据同步）。</p>
+<h5 id="数据链路">数据链路<a class="headerlink" href="#数据链路" title="Permanent link">&para;</a></h5>
+<p>数据链路是单向的、点对点的，且可以是动态的（数量可变，例如累加器模块的输入可以是可变的），或静态的（数量固定，数据端口带有特定标签，例如回声参考端口可以被显式标记）。</p>
+<p>这些链路用于在两个模块之间交换数据消息（需与数据缓冲区或样本同步）。每条链路承载一路数据流，其中可以包含多个通道。</p>
+<p>数据链路不出现在源模块的输入侧和汇模块的输出侧。</p>
+<h4 id="图与子图">图与子图<a class="headerlink" href="#图与子图" title="Permanent link">&para;</a></h4>
+<p><em>图</em>是一系列数据通路模块（带有输入和输出端口）的互连，用以实现端到端的用例。</p>
+<p><em>子图</em>类似于图，用于表示完整图的一个部分（以控制或管理单个单元）。</p>
+<ul>
+<li>子图属性提供管理子图所需的配置。例如性能模式（如低功耗、低延迟等）、用例场景 ID（用于处理任何用例特定的定制化）等。</li>
+<li>ARE 客户端借助 START、STOP、SUSPEND、FLUSH 等图特定命令，以子图粒度控制用例。</li>
+</ul>
+<p>对于特定用例，图和子图指的是同一个东西。</p>
+<p>ARE 仅支持有向无环图（无反馈路径）。</p>
+<h4 id="容器">容器<a class="headerlink" href="#容器" title="Permanent link">&para;</a></h4>
+<p><em>容器</em>是一种框架实现，帮助在同一个软件线程中执行一组数据处理模块。下图说明了这个概念。</p>
+<p><img alt="Image14" src="../../_images/Image14.png" />
+<em>容器</em></p>
+<ul>
+<li>每个容器实例运行在其自己的软件线程中。</li>
+<li>容器属性提供容器创建和运行所需的配置。例如容器类型、栈大小、堆 ID 等。</li>
+<li><em>Container Type</em> 有助于识别指定的容器并在用例建立期间（即 Graph OPEN）实例化它。</li>
+<li><em>Container Instance ID</em> 用于表示容器类型的实例，在用例图定义中使用。</li>
+<li>一个用例可以包含同一容器类型的不同实例，以将处理模块分布到不同的软件线程中。</li>
+</ul>
+<p>根据不同用例模块所需的框架能力性质及产品需求，共有三种容器类型：</p>
+<h4 id="通用容器generic-container"><strong>通用容器（Generic container）</strong><a class="headerlink" href="#通用容器generic-container" title="Permanent link">&para;</a></h4>
+<ul>
+<li>支持硬件端点/信号触发模块、共享内存端点、编码器、解码器、打包器、解包器、转换器、简单 PP 模块（包括分数重采样和速率匹配）</li>
+<li>不支持背靠背的分数重采样或速率匹配。但只要模块通过非缓冲的线性链连接到容器的外部端口，单独的分数重采样或速率匹配是支持的。</li>
+<li>从 2022 年起支持优先级（EC）同步、EC 模块和通用同步。</li>
+<li>支持低功耗孤岛（low power island）</li>
+<li>针对运行纯信号驱动拓扑进行了优化。</li>
+</ul>
+<p>通用容器中的阈值聚合如下：</p>
+<ul>
+<li>如果容器中只有一个带阈值的模块，则使用该模块的阈值。</li>
+<li>当存在多个阈值模块时，取其最小公倍数（LCM）作为阈值。</li>
+<li>如果不存在阈值模块，则使用子图的性能模式来确定阈值，其中低功耗的性能模式对应 5 ms，低延迟的性能模式对应 1 ms。</li>
+<li>对于 raw 压缩格式，按字节计的阈值直接使用。容器帧尺寸由图其他部分中存在的任何 PCM 格式决定。如果容器完全采用 raw 压缩格式，则无法确定以时间计的帧尺寸，线程优先级设置可能不正确（此类场景很少出现，需逐案处理）</li>
+</ul>
+<p><strong>示例场景</strong></p>
+<ul>
+<li>如果性能模式为 5 ms（低功耗），但存在一个将阈值提升到 1 ms 的端点模块，则容器阈值为 1 ms。</li>
+<li>如果容器中有两个阈值模块，一个阈值为 2 ms，一个阈值为 5 ms，则容器帧尺寸为最小公倍数，即 10 ms。</li>
+<li>如果子图性能模式为 5 ms 且没有阈值模块，则容器帧尺寸为 5 ms。</li>
+</ul>
+<h4 id="专用容器specialized-container"><strong>专用容器（Specialized container）</strong><a class="headerlink" href="#专用容器specialized-container" title="Permanent link">&para;</a></h4>
+<ul>
+<li>主要为 PP 模块设计，包括复杂模块（如速率匹配）和多端口模块（如 EC），这些模块对多个输入有同步需求。也支持分数重采样。</li>
+<li>支持背靠背的分数重采样、速率匹配。</li>
+<li>不支持端点/信号触发模块、共享内存端点、编码器、解码器、打包器、解包器和转换器。</li>
+<li>针对简单 PP 模块的单输入单输出（SISO）链高度优化：</li>
+<li>从拓扑链中移除已禁用的模块。</li>
+<li>如果只有一个活动输入（且限幅器已禁用），从处理链中移除 sync+SAL。</li>
+<li>如果所有模块都被禁用，则旁路容器。</li>
+<li>当容器中无内部缓冲时，稳态检查更简单（相比 GC——GC 仅对信号触发场景做这种简化）。</li>
+<li>语音通话有特殊的同步需求，仅在 SC 中支持，例如智能同步、语音处理触发等。</li>
+<li>不支持低功耗孤岛（LPI）。</li>
+</ul>
+<p>专用容器中的阈值聚合如下：</p>
+<ul>
+<li>如果存在多个阈值模块，SC 仅支持阈值互为倍数的模块。如果阈值不互为倍数，则报错。如果该“倍数阈值”小于由子图性能模式导出的帧尺寸，则使用大于性能模式帧尺寸的最接近倍数。否则，直接使用该倍数。</li>
+</ul>
+<p><strong>阈值计算的示例场景</strong></p>
+<ul>
+<li>如果子图性能模式为低功耗（5 ms），且容器中唯一的阈值模块将阈值提升为 2 ms，则容器帧尺寸为 6 ms，即大于性能模式帧尺寸的、最接近的模块阈值倍数。</li>
+<li>如果子图性能模式为低功耗（5 ms），且容器中存在两个阈值模块——一个阈值为 1 ms，一个提升 3 ms 阈值，则容器帧尺寸为 6 ms。这是两个模块阈值的、大于性能模式帧尺寸的最接近公倍数。</li>
+<li>如果子图性能模式为低功耗（5 ms）且没有阈值模块，则容器帧尺寸为 5 ms。</li>
+<li>如果容器中有两个阈值模块，一个提升阈值为 2 ms，一个提升为 3 ms，则报错，SC 将不支持该拓扑。</li>
+<li>特殊情况——对于语音通话流子图使用 20 ms 阈值，对于音频播放流 PP，阈值为 10 ms。</li>
+</ul>
+<h4 id="卸载容器off-load-container"><strong>卸载容器（Off-load container）</strong><a class="headerlink" href="#卸载容器off-load-container" title="Permanent link">&para;</a></h4>
+<ul>
+<li>支持通过将预期模块或一组数据处理模块 offload 到不同的处理域，从而减轻本地处理域上的处理负载。这在分布式音频处理中很有用，可有效利用跨不同处理器的可用硬件资源。</li>
+</ul>
+<p>容器概念支持框架定制化，如果参考容器无法以指定的性能支持所需能力，你可以创建<em>自定义容器</em>。只要遵循容器到容器的接口和行为，这类定制化就可以与参考容器互操作。</p>
+<p>容器有助于实现以下功能：</p>
+<ul>
+<li>管理（建立、启动、停止、拆除）由 CAPI 模块构成的处理链（拓扑）。</li>
+<li>管理容器内处理图的调度和触发策略。</li>
+<li>在多线程系统中并行化处理负载。</li>
+<li>在该容器中运行的模块之间共享同一栈内存。</li>
+<li>确保模块所需的适当资源需求（堆、线程优先级、处理器及其他基础设施时钟等）。</li>
+<li>通过容器间缓冲（ICB）管理与对等容器的数据缓冲需求，以及同一容器内模块之间的数据缓冲需求。</li>
+<li>承载必要的命令队列，以与 APM、对等容器、外部客户端和内部模块交互，进行控制消息传递。</li>
+<li>承载数据队列和缓冲区队列，以与对等容器交换数据通路消息（数据缓冲区、元数据、流结束（EOS）、媒体格式等）。</li>
+<li>这些队列在图被打开时由容器创建。</li>
+<li>为位于容器边界的模块的每个输入端口创建 DataQ。</li>
+<li>为位于容器边界的模块的每个输出端口创建 BufferQ。</li>
+<li>通过命令队列向对等容器传播端口（数据和控制）状态信息（启动或停止）和数据流性质（实时或非实时）。此信息对于在运行时更新调度策略很有用。</li>
+</ul>
+<p>下图给出了一个带容器的简单用例中所涉及的示例数据流和调度策略。</p>
+<p><img alt="Image15" src="../../_images/Image15.png" />
+<em>跨容器的示例数据流</em></p>
+<p>当用例以默认触发策略启动时：</p>
+<ol>
+<li>当输入缓冲区（由上游填充数据）和输出缓冲区（空闲缓冲区）都可用时，容器触发或调用其拓扑处理。</li>
+<li>在拓扑处理期间，输入数据通过 CAPI 模块序列（按用例图定义）传播到输出缓冲区。</li>
+<li>在完全消费输入缓冲区后，数据被推回上游的输出队列（BufferQ）。</li>
+<li>一旦输出缓冲区被填满，数据就被交付到下游容器的输入队列（DataQ）。</li>
+<li>这些步骤在每个由缓冲区可用性驱动的容器上重复。</li>
+</ol>
+<p>框架还允许模块通过触发策略框架扩展来覆盖默认触发策略。例如，某些模块可能希望在输入或输出缓冲区可用时随时被调用（例如缓冲类型的模块）。</p>
+<h4 id="音频处理管理器apm">音频处理管理器（APM）<a class="headerlink" href="#音频处理管理器apm" title="Permanent link">&para;</a></h4>
+<p>音频处理管理器（APM）负责在 ARE 中建立和管理用例图。</p>
+<p>如图“音频处理管理器”所示，APM 向 GSL 客户端提供通用公共接口，以执行以下图操作：</p>
+<ul>
+<li>建立和配置容器处理线程。</li>
+<li>在容器内建立模块的图。</li>
+<li>配置和校准每个容器内的各个模块。</li>
+<li>更新运行时图，包括从图中添加和移除容器与模块。</li>
+<li>管理跨容器的数据通路连接和断开。</li>
+<li>提供给定容器内模块的运行时校准。</li>
+<li>提供共享内存映射接口。</li>
+<li>提供两个模块之间的路径延迟。</li>
+<li>借助 CLOSE_ALL 命令提供全局框架复位功能。</li>
+</ul>
+<p><img alt="Image16" src="../../_images/Image16.png" />
+<em>音频处理管理器</em></p>
+<p>APM 还处理用于控制子图状态机的命令：</p>
+<p><img alt="Image17" src="../../_images/Image17.png" />
+<em>APM 状态机</em></p>
+<h4 id="closed"><strong>CLOSED</strong><a class="headerlink" href="#closed" title="Permanent link">&para;</a></h4>
+<ul>
+<li>OPEN 之前和 CLOSE 之后的逻辑/不存在图状态。</li>
+</ul>
+<h4 id="stopped"><strong>STOPPED</strong><a class="headerlink" href="#stopped" title="Permanent link">&para;</a></h4>
+<ul>
+<li>图被打开后，或作为 STOP 的一部分从 STARTED 转换而来的状态。</li>
+<li>对于从 START 到 STOP 的转换，模块的算法状态被复位，容器内部数据缓冲区被刷新。</li>
+<li>平台特定资源（MIPS、总线带宽等）被撤销投票（de-voted）。</li>
+</ul>
+<h4 id="prepared"><strong>PREPARED</strong><a class="headerlink" href="#prepared" title="Permanent link">&para;</a></h4>
+<ul>
+<li>如果可用，媒体格式会通过模块拓扑进行传播。</li>
+<li>模块应用依赖于输入媒体格式的校准。</li>
+</ul>
+<h4 id="started"><strong>STARTED</strong><a class="headerlink" href="#started" title="Permanent link">&para;</a></h4>
+<ul>
+<li>平台特定资源（MIPS、总线带宽等）被投票（voted）。</li>
+<li>在适用时，数据触发、硬件端点、定时器中断被启用。</li>
+<li>子图已准备好处理数据流。</li>
+</ul>
+<h4 id="suspended"><strong>SUSPENDED</strong><a class="headerlink" href="#suspended" title="Permanent link">&para;</a></h4>
+<ul>
+<li>平台特定资源（MIPS、总线带宽等）被撤销投票。</li>
+<li>与 STOP 命令不同，模块的算法状态和容器内部数据缓冲区被保留而不被刷新。</li>
+</ul>
+<p>除处理来自主机处理器客户端的命令外，APM 还负责以下操作：</p>
+<ul>
+<li>根据命令类型，通过框架消息传递 API 与容器交互，以发送这些命令并处理来自容器的响应。</li>
+<li>对于给定命令，聚合容器对该消息的响应，并将聚合后的确认发送回 GSL。</li>
+<li>对于给定的端到端图，管理并协调容器，以处理涉及跨不同容器模块之间控制通路数据交换的用例（如速率匹配）。</li>
+</ul>
+<p>这包括用于端到端容器-模块图排序（相对于从数据源到汇的数据流方向）、图搜索和遍历例程的实用工具。</p>
+<h4 id="音频模块数据库amdb">音频模块数据库（AMDB）<a class="headerlink" href="#音频模块数据库amdb" title="Permanent link">&para;</a></h4>
+<p>音频模块数据库（AMDB）提供 ARE 中 CAPI 封装模块（静态模块和动态模块）的数据库。</p>
+<p><img alt="Image19" src="../../_images/Image19.png" />
+<em>音频模块数据库</em></p>
+<p>AMDB 负责以下操作。</p>
+<ul>
+<li>向客户端（GSL）提供接口，以注册或注销自定义模块，并在启动时或用例边界加载或卸载动态模块。</li>
+<li>与容器交互，以实例化和拆除模块。</li>
+<li>使用平台特定的动态下载实用工具，将共享对象下载到指定内存（DDR、低功耗内存等）。</li>
+<li>管理引用计数器，以便当模块正被活动用例使用时不会被卸载。</li>
+</ul>
+<p>如图“音频模块数据库”所示</p>
+<h4 id="内置模块"><strong>内置模块</strong><a class="headerlink" href="#内置模块" title="Permanent link">&para;</a></h4>
+<ul>
+<li>与 ARE 一起构建的模块，包括静态和动态对象。</li>
+<li>AMDB 使用由构建系统生成的模块数据库（模块 ID、自动生成的 .c 文件中的入口点函数），因此无需单独注册或注销。</li>
+</ul>
+<h4 id="自定义模块"><strong>自定义模块</strong><a class="headerlink" href="#自定义模块" title="Permanent link">&para;</a></h4>
+<ul>
+<li>作为独立动态对象构建、而非与 ARE 一起构建的模块</li>
+<li>这些模块和动态对象必须使用自定义模块集成工作流向 AudioReach 校准与配置工具（ARC）注册，进而由其向 ARE 中的 AMDB 注册。</li>
+</ul>
+<h4 id="静态模块"><strong>静态模块</strong><a class="headerlink" href="#静态模块" title="Permanent link">&para;</a></h4>
+<ul>
+<li>静态模块在启动时与 ARE 一起加载。</li>
+</ul>
+<h4 id="动态模块"><strong>动态模块</strong><a class="headerlink" href="#动态模块" title="Permanent link">&para;</a></h4>
+<ul>
+<li>根据内存和延迟的权衡，动态模块可以在启动时或用例边界加载。</li>
+</ul>
+<h4 id="集成资源监视器irm">集成资源监视器（IRM）<a class="headerlink" href="#集成资源监视器irm" title="Permanent link">&para;</a></h4>
+<p>集成资源监视器（IRM）为底层平台中的不同资源提供剖析度量指标。</p>
+<p>ARC 平台为系统设计者显示资源度量指标（MIPS、带宽、堆使用等）。</p>
+<p><img alt="Image21" src="../../_images/Image21.png" />
+<em>集成资源监视器</em></p>
+<h4 id="平台与操作系统抽象层">平台与操作系统抽象层<a class="headerlink" href="#平台与操作系统抽象层" title="Permanent link">&para;</a></h4>
+<p>平台与操作系统抽象层（POSAL）为框架提供必要的抽象，使其与处理器（硬件）或平台（软件）无关。</p>
+<p>这些抽象包括但不限于以下内容：</p>
+<ul>
+<li>电源管理</li>
+<li>MIPs/MCPs/MPPs 和带宽投票，以选择处理器和系统总线时钟。</li>
+<li>延迟投票，可控制各种性能模式</li>
+<li>自定义电源域，以实现各种功耗目标</li>
+<li>处理器特定的内建函数（intrinsics），以帮助优化</li>
+<li>内存管理（不同类型的堆内存、共享内存映射等）</li>
+<li>缓存内存操作（清理、失效操作）</li>
+<li>条件变量和原子变量</li>
+<li>优先级继承和递归互斥锁、nmutex</li>
+<li>信号和通道（可监听多个信号）</li>
+<li>中断处理</li>
+<li>定时器</li>
+<li>软件线程（基于优先级的抢占式调度）</li>
+<li>平台特定的线程优先级数据库</li>
+<li>用于诊断目的的数据（PCM 或压缩）和消息日志记录</li>
+</ul>
+<h3 id="校准与配置">校准与配置<a class="headerlink" href="#校准与配置" title="Permanent link">&para;</a></h3>
+<p>校准与配置由在建立时和运行时提供给模块的控制信息组成，用以控制模块的功能。</p>
+<p><img alt="Image22" src="../../_images/Image22.png" />
+<em>校准模式</em></p>
+<p>以下是 AudioReach 引擎暴露的三类校准接口。</p>
+<h4 id="常规且非共享校准">常规且非共享校准<a class="headerlink" href="#常规且非共享校准" title="Permanent link">&para;</a></h4>
+<p>步骤：</p>
+<ol>
+<li>客户端向模块提供校准内存。</li>
+<li>模块将校准数据拷贝到内部缓冲区，并向客户端提供响应。</li>
+<li>客户端释放共享缓冲区。</li>
+</ol>
+<p>开销：</p>
+<ul>
+<li>额外的内存（内部缓冲区）和缓冲区拷贝开销。</li>
+<li>因此，我们建议使用较小的校准尺寸。</li>
+</ul>
+<p>ARE 同时支持带内和带外校准方法。</p>
+<h4 id="持久且共享校准">持久且共享校准<a class="headerlink" href="#持久且共享校准" title="Permanent link">&para;</a></h4>
+<p>步骤：</p>
+<ol>
+<li>客户端通过带外负载向模块提供校准内存。</li>
+<li>模块直接使用客户端共享的内存，而不将校准数据拷贝到内部缓冲区，并向客户端提供响应。</li>
+<li>如果用例处于活动状态，客户端保留模块正在使用的共享内存。</li>
+<li>一旦用例关闭，客户端就释放共享缓冲区。</li>
+</ol>
+<p>由于不涉及拷贝，内存使用和处理周期都是最优的。</p>
+<p>从模块实例的角度看，持久校准内存表现为可读写（RW）。我们推荐将此方法用于大型校准和配置块（如机器学习模型）。</p>
+<p>仅支持带外校准。</p>
+<h4 id="共享持久或全局共享校准">共享持久或全局共享校准<a class="headerlink" href="#共享持久或全局共享校准" title="Permanent link">&para;</a></h4>
+<p>此方法类似于持久校准。但在这种情况下，同一数据被共享给多个模块，从而有助于节省更多内存。</p>
+<p>从模块的角度看，共享持久校准内存表现为只读（RO）。它通常用于大型校准或配置块，其中同一数据可以在多个模块实例之间共享（如重采样器系数）。</p>
+<p>仅支持带外校准。</p>
+<h3 id="多实例与多核">多实例与多核<a class="headerlink" href="#多实例与多核" title="Permanent link">&para;</a></h3>
+<p>ARE 借助主从（Master 与 Satellite）架构，实现多核和多实例系统配置。这些能力有助于跨处理器分布音频处理负载，以实现功能和性能目标。</p>
+<h4 id="多实例配置">多实例配置<a class="headerlink" href="#多实例配置" title="Permanent link">&para;</a></h4>
+<p>使用多实例配置在不同处理域中运行互不相交且完整的用例。</p>
+<p>要将特定用例路由到特定处理域，用例设计者必须提供提示（通过路由 ID）。GSL 使用路由信息，并与该处理域的 ARE（也称为<em>主框架</em>）交互，以实现该用例。</p>
+<p>一个示例场景是使用多个处理器实现不同功耗档位的系统：</p>
+<ul>
+<li>常开（Always ON）用例被路由到低功耗处理器</li>
+<li>另一个高功耗用例被路由到另一个处理器</li>
+</ul>
+<p><img alt="Image23" src="../../_images/Image23.png" />
+<em>多核和多实例配置中的 ARE</em></p>
+<h4 id="多核配置">多核配置<a class="headerlink" href="#多核配置" title="Permanent link">&para;</a></h4>
+<p>使用多核配置将给定用例分布到多个处理域。类似于星型拓扑，每个 offload 图都以主 ARE 为起点和终点。</p>
+<p>为避免数据或控制同步以及子系统重启机制带来的额外复杂性，各个 satellite 之间没有通信。</p>
+<ul>
+<li>用例设计者必须为要 offload 和分布的模块提供提示（通过选择适当的处理域）。</li>
+<li>GSL 将此用例信息提供给 ARE（Master），后者进而与所需的 satellite 框架交互，以实现该用例。</li>
+<li>分布式处理有助于有效利用系统中的处理资源，代价是可能增加延迟或功耗。因此选择用例和模块的控制权交给了用例设计者（借助 ARC）。</li>
+</ul>
+<p><img alt="Image24" src="../../_images/Image24.png" />
+<em>带 offload 模块的播放——用例设计者视图</em></p>
+<p>ARE-Master 和 ARE-Satellite 都支持跨处理域的大多数能力，任何平台特定的能力或模块除外。</p>
+<ul>
+<li>图“带 offload 模块的播放——用例设计者视图”展示了使用卸载容器将若干模块 offload 到另一处理器的简单播放用例。</li>
+<li>图“带 offload 模块的播放——ARE 实现视图”表示其实现视图。<ul>
+<li>带共享内存端点的卸载容器被插入到图中，以为给定的 offload 用例在主处理域和 satellite 处理域之间路由数据。</li>
+<li>由于处理器间通信开销以及卸载容器与 satellite 容器之间为启用并行处理所需的额外缓冲，这一跨处理域的额外跳转可能会增加额外的延迟。</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Image25" src="../../_images/Image25.png" />
+<em>带 offload 模块的播放——ARE 实现视图</em></p>
+<p>卸载容器可与其他参考容器互操作。它有助于跨被卸载模块传播元数据、流结束（EOS）、媒体格式和状态（START、STOP、SUSPEND）信息。</p>
+<h2 id="定制化">定制化<a class="headerlink" href="#定制化" title="Permanent link">&para;</a></h2>
+<h3 id="自定义模块_1">自定义模块<a class="headerlink" href="#自定义模块_1" title="Permanent link">&para;</a></h3>
+<p>有关如何添加自定义模块的步骤，请参见 <a href="../../dev/adding_modules/">How to add an Audio Module</a> 指南。</p>
+<h3 id="自定义容器">自定义容器<a class="headerlink" href="#自定义容器" title="Permanent link">&para;</a></h3>
+<p>自定义容器的开发工作流涉及以下步骤：</p>
+<ol>
+<li>自定义容器必须使用在 APM 与容器之间定义的内部消息传递 API 来建立、配置、启动、停止、挂起和拆除图。</li>
+<li>自定义容器必须使用容器间消息传递，使其可与其他参考容器互操作。</li>
+<li>按上述准则开发自定义容器，并满足指定的调度策略和性能需求。</li>
+<li>用这个新的自定义容器更新受支持模块的头文件。</li>
+<li>用入口点函数更新内部容器数据库表，以便 APM 能在用例建立期间创建该容器。</li>
+<li>用新的容器类型更新 APM API 头文件，并重新生成 API XML 文件（使用 h2xml 工具）。</li>
+<li>将 API XML 文件导入 ARC 平台，以查看用于创建用例图的新容器和受支持模块。</li>
+</ol>
+<h2 id="用例">用例<a class="headerlink" href="#用例" title="Permanent link">&para;</a></h2>
+<p>本节列出一些使用 AudioReach 实现的常见用例。<strong>注意：</strong> 这不是详尽列表。</p>
+<h3 id="播放">播放<a class="headerlink" href="#播放" title="Permanent link">&para;</a></h3>
+<p>播放用例是最常见的音频用例，它涉及解码、后处理和渲染。AudioReach 软件是数据驱动的，不对图的形状或其内容做任何假设，因为这取决于设计者，但下图可作为示例。</p>
+<p>图被划分为 3 个子图：流（stream）、设备 PP（device PP）和全局设备（global device）。此结构与手机产品中控制音频播放的方式相一致。全局设备子图从低功耗流以及低延迟音频流 + 语音通话获取数据。设备 PP 子图执行设备特定的处理，例如多频带 DRC。流子图包含解码器、流特定处理以及音视频同步控制。在设备切换期间，例如从听筒切换到耳机，设备子图可以被换成另一个变体。</p>
+<p>下图还展示了 5 个处理阶段。各个阶段有助于实现流水线处理，从而将负载分布到多个线程上。这些阶段被指定为容器，每个容器运行在其自己的软件线程中。通常在低功耗配置中，所有容器都以 5 ms 帧尺寸运行，而编解码器 DMA 汇容器以 1 ms 帧尺寸运行。允许任何 ≥ 1 ms 的帧尺寸。</p>
+<p>第一个容器涉及通过写共享内存端点从客户端接收数据，对数据进行解码（任何解码器如 AAC 或 MP3 都可以替换 PCM 解码器），随后进行 PCM 转换，例如为后续处理转换为去交织格式的位宽转换。</p>
+<p>第二个阶段包含流特定处理，例如音量控制、媒体格式转换（如采样率转换）。可以在图中的任意位置放置数据日志记录以用于调试。软暂停（soft-pause）模块有助于在暂停或恢复期间进行渐入或渐出。</p>
+<p>分离器渲染器（splitter renderer）可以将流同步地分离到多个设备上（如有需要），并计算用于 AV 同步的会话时间。</p>
+<p>设备后处理是多个并发流可以被混合并进一步后处理的地方。在使用简单累加器和限幅器进行混合之前，输入先使用同步模块进行同步。在全局设备 SG 中，可以进行进一步的混合（与低延迟音频），最终数据通过编解码器 DMA 汇模块渲染出去。</p>
+<p><img alt="Image27" src="../../_images/Image27.png" /></p>
+<h3 id="采集">采集<a class="headerlink" href="#采集" title="Permanent link">&para;</a></h3>
+<p>以下采集通路包含 3 个子图和 4 个容器。通过编解码器 DMA 源从硬件接收的数据经过若干处理阶段，最终由 HLOS 通过读共享内存端点读取。</p>
+<p><img alt="Image28" src="../../_images/Image28.png" /></p>
+<h3 id="带源模块与汇模块的用例">带源模块与汇模块的用例<a class="headerlink" href="#带源模块与汇模块的用例" title="Permanent link">&para;</a></h3>
+<p>以下示例图包含源模块（DTMF 生成器）和汇模块（DTMF 检测器）。</p>
+<p><img alt="Image29" src="../../_images/Image29.png" /></p>
+<h3 id="免提配置文件hfp">免提配置文件（HFP）<a class="headerlink" href="#免提配置文件hfp" title="Permanent link">&para;</a></h3>
+<p>以下 HFP 图包含 2 个从硬件源到硬件汇的环回。还有一条用于 EC 的反馈路径。上方的图是本地设备上的麦克风通路，被发送到蓝牙（通过 I2S 连接）。下方的图是扬声器通路，其中来自 I2S 的 BT 数据在编解码器 DMA 汇上渲染。</p>
+<p><img alt="Image30" src="../../_images/Image30.png" /></p>
+<h3 id="语音激活">语音激活<a class="headerlink" href="#语音激活" title="Permanent link">&para;</a></h3>
+<p>语音激活用例涉及接收麦克风数据，在噪声预处理之后将其送入语音激活模块运行。历史缓冲区存储大量预滚（pre-roll）数据（&gt; 1 秒）。每当语音激活引擎检测到关键词时，这些数据就被释放给运行在客户端上的第二阶段。这两个模块通过控制链路通信。此图既包含实时处理，也包含非实时处理。</p>
+<p><img alt="Image31" src="../../_images/Image31.png" /></p>
+<h2 id="图设计者-faq">图设计者 FAQ<a class="headerlink" href="#图设计者-faq" title="Permanent link">&para;</a></h2>
+<p>用例图必须同时满足功能需求和性能需求。图设计者通常专注于功能，而没有意识到恰当的图形状对性能的重要性。不恰当的图会消耗额外的周期开销或占用额外的内存。本章描述与图绘制相关的方面。更多信息见 <a href="../../dev/capi_mod_dev/">CAPI Module Development Guide</a>。</p>
+<h3 id="应画多少个子图">应画多少个子图？<a class="headerlink" href="#应画多少个子图" title="Permanent link">&para;</a></h3>
+<p>给定用例的图由一个或多个子图组成。信号处理框架（ARE）与子图无关。子图是根据客户端希望如何控制图来绘制的，例如设备切换用例要求区分流子图与设备子图。</p>
+<h3 id="应使用多少个容器">应使用多少个容器？<a class="headerlink" href="#应使用多少个容器" title="Permanent link">&para;</a></h3>
+<p>像 GC 和 SC 这样的容器是数据处理线程（自定义容器可能有多个数据处理线程，但本指导仅考虑 GC 和 SC）。数据处理线程通常根据其帧时长周期性运行，例如端点可能每毫秒运行一次，设备 PP 可能每 5 ms 运行一次，或解码器可能每 21.33 ms 运行一次（48k 下 1024 个样本），所以使用不同容器的一个原因是处理帧时长的差异。</p>
+<p>即使对于给定的帧时长，你也可能出于负载均衡的目的想要使用不同的容器。对于支持多个硬件线程的 Hexagon 处理器尤其如此。拥有多个容器有助于并发利用硬件线程，更快地完成工作，并允许在帧之间有更长的休眠时长。</p>
+<p>信号触发模块是中断或定时器驱动的。目前一个容器仅支持一个信号触发模块。此外，某些模块仅在特定容器类型中受支持，例如编码器仅在 GC 中受支持。</p>
+<p>使用大量容器会因栈、实例内存和缓冲区内存而增加内存需求。对于容器的每个阶段，通常会增加双缓冲。这可能会增加数据通路延迟。更多的容器也意味着在开销上使用更多的 MIPS。</p>
+<p>有时子图边界可能会影响所需容器的数量，例如一个超低延迟（ULL）流在 2 个设备上渲染：听筒和扬声器。在独立用例中，可以将 ULL 流 SG 放在一个端点容器中。但是，如果有 2 个使用不同容器的端点，而我们把流 SG 放在设备容器中，那么在设备切换期间流也会被拆除；由于这不可接受，我们需要将流 SG 放在其自己的容器中。</p>
+<p>对于非常小的帧尺寸（≤ 1 ms），当容器内没有子图边界时，周期开销可能会降低。详细来说，考虑图 [{A-&gt;B}-&gt;{C-&gt;D}]，在此图中方括号表示容器边界。花括号表示子图边界，A、B、C、D 是模块实例。此图中容器内存在子图。然而在此图中：{[A-&gt;B-&gt;C-&gt;D]}，容器内没有子图边界。此图 {[A-&gt;B]-&gt;[C-&gt;D]} 同样在容器内没有子图边界。</p>
+<h3 id="我应该用-sc-还是-gc">我应该用 SC 还是 GC？<a class="headerlink" href="#我应该用-sc-还是-gc" title="Permanent link">&para;</a></h3>
+<p>某些模块仅在 GC 中受支持，某些可能仅在 SC 中可用。模块的 h2xml 指定了受支持的容器类型。</p>
+<p>通用容器可以满足大多数需求，除了：</p>
+<ul>
+<li>移动用例中 PP 模块链的功耗优化</li>
+<li>特殊的同步需求，例如语音通话的智能同步</li>
+<li>背靠背的速率匹配或分数重采样模块，即样本滑移（sample slip）&gt; MFC 进行分数重采样</li>
+</ul>
+<p>如果你只有 PP 模块（包括 sync、SAL、splitter、EC、滤波器、效果器等），推荐使用 SC。GC 对 PP 模块的支持主要在这些模块必须与其他仅 GC 支持的模块协同工作时才使用。</p>
+<h3 id="如何提升效率">如何提升效率？<a class="headerlink" href="#如何提升效率" title="Permanent link">&para;</a></h3>
+<p>内存、MIPS（开销）和延迟是一些 KPI，除非使用高效的图，否则无法改善。一些通用准则是：</p>
+<ul>
+<li>保持最优的容器数量</li>
+<li>有些图有不服务于任何目的的额外容器。如果可能且更优，则合并容器</li>
+<li>移除不必要的模块</li>
+<li>图中的每个模块因其存在而增加开销（MIPS 或内存）</li>
+<li>即使被禁用的模块也可能造成额外开销</li>
+<li>质疑图中每个模块的必要性</li>
+<li>移除模块之间任何不必要的连接</li>
+<li>通过尝试重新排序模块来减少媒体格式转换</li>
+<li>降低帧时长会增加 MIPS 开销。</li>
+<li>仅在较小帧尺寸下保留必要的模块。如果不关心延迟，就使用较长的帧尺寸</li>
+<li>信号触发容器在 MIPS 方面通常更优，因为信号触发容器中使用的调度策略</li>
+<li>使用 ARC 在线模式确认在你的用例运行时只有为该用例设计的模块在运行。有时 HLOS 可能会启动一些不需要的后台图。使用 ARC IRM 工具在各个层级（整体处理器、用例或模块级）测量 MIPS 和内存</li>
+</ul>
+<p>更多模块特定的准则可参考 <a href="../../dev/capi_mod_dev/">CAPI Module Development Guide</a></p>
+<h2 id="缩略语与术语">缩略语与术语<a class="headerlink" href="#缩略语与术语" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>缩略语或术语</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACDB</td>
+<td>Audio Calibration Data Base</td>
+</tr>
+<tr>
+<td>AMDB</td>
+<td>Audio Module Data Base</td>
+</tr>
+<tr>
+<td>APM</td>
+<td>Audio Processing Manager</td>
+</tr>
+<tr>
+<td>CAPI</td>
+<td>Common Audio Processor Interface</td>
+</tr>
+<tr>
+<td>GC</td>
+<td>Generic Container</td>
+</tr>
+<tr>
+<td>GSL</td>
+<td>Graph Service Library</td>
+</tr>
+<tr>
+<td>ICB</td>
+<td>Inter-container buffering</td>
+</tr>
+<tr>
+<td>IPC</td>
+<td>Interprocessor communication</td>
+</tr>
+<tr>
+<td>IRM</td>
+<td>Integrated Resource Monitor</td>
+</tr>
+<tr>
+<td>NRT</td>
+<td>Non-Real Time</td>
+</tr>
+<tr>
+<td>OLC</td>
+<td>Off-load Container</td>
+</tr>
+<tr>
+<td>Opcode</td>
+<td>Operation code</td>
+</tr>
+<tr>
+<td>POSAL</td>
+<td>Platform and Operating System Abstraction Layer</td>
+</tr>
+<tr>
+<td>RAT</td>
+<td>Rate Adaptive Timer</td>
+</tr>
+<tr>
+<td>RT</td>
+<td>Real Time</td>
+</tr>
+<tr>
+<td>RTOS</td>
+<td>Real Time Operating System</td>
+</tr>
+<tr>
+<td>SC</td>
+<td>Specialized Container</td>
+</tr>
+<tr>
+<td>SDK</td>
+<td>Software development kit</td>
+</tr>
+<tr>
+<td>ARE</td>
+<td>AudioReach Engine</td>
+</tr>
+<tr>
+<td>ARC</td>
+<td>AudioReach Creator</td>
+</tr>
+<tr>
+<td>SPF</td>
+<td>Signal Processing Framework</td>
+</tr>
+<tr>
+<td>VoIP</td>
+<td>Voice over IP</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../design_concept/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 核心概念与术语">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                核心概念与术语
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../args_design/" class="md-footer__link md-footer__link--next" aria-label="下一页: 图服务（ARGS）">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                图服务（ARGS）
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

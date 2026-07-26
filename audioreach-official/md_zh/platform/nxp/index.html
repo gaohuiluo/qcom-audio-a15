@@ -1,0 +1,3001 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="高通 AudioReach 与 Qualcomm Linux 音频子系统中文整理资料">
+      
+      
+        <meta name="author" content="gaohuiluo">
+      
+      
+        <link rel="canonical" href="https://gaohuiluo.github.io/qcom-audio-a15/audioreach-official/md_zh/platform/nxp/">
+      
+      
+        <link rel="prev" href="../rb3_gen2/">
+      
+      
+        <link rel="next" href="../../../../qcom-linux-audio-guide/docs-zh/overview/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>NXP IMX8M Plus - Qualcomm 音频文档资料库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nxp-imx8m-plus" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="Qualcomm 音频文档资料库" class="md-header__button md-logo" aria-label="Qualcomm 音频文档资料库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Qualcomm 音频文档资料库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              NXP IMX8M Plus
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gaohuiluo/qcom-audio-a15" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gaohuiluo/qcom-audio-a15
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../blogs/qcom-audioreach-zh/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  博客与演讲
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  AudioReach 官方文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../qcom-linux-audio-guide/docs-zh/overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Qualcomm Linux 音频指南
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Qualcomm 音频文档资料库" class="md-nav__button md-logo" aria-label="Qualcomm 音频文档资料库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Qualcomm 音频文档资料库
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gaohuiluo/qcom-audio-a15" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gaohuiluo/qcom-audio-a15
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    博客与演讲
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    博客与演讲
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blogs/qcom-audioreach-zh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach 开源（中文）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blogs/linaro-connect-2024-talk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linaro Connect 2024 演讲
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach 官方文档
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AudioReach 官方文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdk_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 概览与路线图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../design/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    设计
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    设计
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/arch_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    架构概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/design_concept/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    核心概念与术语
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/arspf_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach 引擎（SPF）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/args_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图服务（ARGS）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/gpr_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通用包路由器（GPR）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/lx_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 适配设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/linux_asoc_arch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux ASoC 架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/linux_plug-in_arch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 插件架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 参考
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API 参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/arspf_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    引擎 API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/spf_capi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SPF CAPI 接口
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/posal_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    POSAL 平台抽象层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/args_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图服务 API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/args_gsl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GSL 图服务层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/args_arosal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AROSAL OS 抽象层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/gpr_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPR API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发者指南
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    开发者指南
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/dev_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/system_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/plat_port/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    平台移植指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/available_modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    可用音频模块列表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/adding_modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    如何添加音频模块
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/capi_mod_dev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAPI 模块开发指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/alsalib_using_audioreach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用 ALSA lib
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach Creator（ARC）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    平台参考
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    平台参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raspberry_pi4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rb3_gen2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RB3 Gen2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NXP IMX8M Plus
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NXP IMX8M Plus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#架构概览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        架构概览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#步骤-1创建-yocto-镜像" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        步骤 1：创建 Yocto 镜像
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="步骤 1：创建 Yocto 镜像">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#集成-audioreach-组件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        集成 AudioReach 组件
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#步骤-2创建-zephyr-镜像" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        步骤 2：创建 Zephyr 镜像
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="步骤 2：创建 Zephyr 镜像">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#安装依赖" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装依赖
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="安装依赖">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#主机工具依赖" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主机工具依赖
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-依赖与-west" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 依赖与 West
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zephyr-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zephyr SDK
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#设置-west-工作区" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        设置 West 工作区
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#应用补丁" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用补丁
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#构建-zephyr-镜像" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        构建 Zephyr 镜像
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#构建产物" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        构建产物
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#步骤-3设置设备" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        步骤 3：设置设备
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="步骤 3：设置设备">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#烧录并上电" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        烧录并上电
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#配置设备树" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        配置设备树
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#连接到网络" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        连接到网络
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#将文件推送到设备" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        将文件推送到设备
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#步骤-4运行一个-audioreach-用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        步骤 4：运行一个 AudioReach 用例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="步骤 4：运行一个 AudioReach 用例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#启动-dsp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        启动 DSP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#启用实时校准模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        启用实时校准模式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#开始播放" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        开始播放
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qualcomm Linux 音频指南
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Qualcomm Linux 音频指南
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    音频概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/enable-audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    启用音频
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/pal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL 层定制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/tinyalsa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TinyALSA 应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/agm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定制音频图（AGM）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/customize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定制音频用例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高级特性（VoIP ECNS）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/troubleshoot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    故障排查
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7%E8%A1%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    术语对照表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#架构概览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        架构概览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#步骤-1创建-yocto-镜像" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        步骤 1：创建 Yocto 镜像
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="步骤 1：创建 Yocto 镜像">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#集成-audioreach-组件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        集成 AudioReach 组件
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#步骤-2创建-zephyr-镜像" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        步骤 2：创建 Zephyr 镜像
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="步骤 2：创建 Zephyr 镜像">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#安装依赖" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装依赖
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="安装依赖">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#主机工具依赖" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主机工具依赖
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-依赖与-west" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 依赖与 West
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zephyr-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zephyr SDK
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#设置-west-工作区" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        设置 West 工作区
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#应用补丁" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用补丁
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#构建-zephyr-镜像" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        构建 Zephyr 镜像
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#构建产物" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        构建产物
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#步骤-3设置设备" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        步骤 3：设置设备
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="步骤 3：设置设备">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#烧录并上电" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        烧录并上电
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#配置设备树" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        配置设备树
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#连接到网络" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        连接到网络
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#将文件推送到设备" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        将文件推送到设备
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#步骤-4运行一个-audioreach-用例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        步骤 4：运行一个 AudioReach 用例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="步骤 4：运行一个 AudioReach 用例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#启动-dsp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        启动 DSP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#启用实时校准模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        启用实时校准模式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#开始播放" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        开始播放
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="nxp-imx8m-plus">NXP IMX8M Plus<a class="headerlink" href="#nxp-imx8m-plus" title="Permanent link">&para;</a></h1>
+<ul>
+<li>架构概览</li>
+<li>步骤 1：创建 Yocto 镜像<ul>
+<li>集成 AudioReach 组件</li>
+</ul>
+</li>
+<li>步骤 2：创建 Zephyr 镜像<ul>
+<li>安装依赖</li>
+<li>设置 West 工作区</li>
+<li>应用补丁</li>
+<li>构建 Zephyr 镜像</li>
+<li>构建产物</li>
+</ul>
+</li>
+<li>步骤 3：设置设备<ul>
+<li>烧录并上电</li>
+<li>配置设备树</li>
+<li>连接到网络</li>
+<li>将文件推送到设备</li>
+</ul>
+</li>
+<li>步骤 4：运行一个 AudioReach 用例<ul>
+<li>启动 DSP</li>
+<li>启用实时校准模式</li>
+<li>开始播放</li>
+</ul>
+</li>
+</ul>
+<p>本指南提供 NXP IMX8M Plus 平台上的 AudioReach 架构概览，并逐步介绍如何创建集成了 AudioReach 的 Yocto 镜像、为 HiFi ADSP 创建 Zephyr 镜像、设置设备以及运行一个 AudioReach 用例。</p>
+<h2 id="架构概览">架构概览<a class="headerlink" href="#架构概览" title="Permanent link">&para;</a></h2>
+<p><img alt="nxp imx8m plus evk 架构图" src="../../_images/nxp_imx8m_plus_evk_arch_diagram.png" /></p>
+<p>上面的架构图展示了在 NXP IMX8M Plus 上使用 AudioReach 的模拟播放用例。该平台采用异构多处理器设计：AudioReach 引擎（ARE）在 Zephyr OS 下运行于 HiFi ADSP 上，而 AudioReach 栈的其余部分——AudioReach 图服务（ARGS）、Audio Graph Manager（AGM）和 ACDB——在 Linux 下运行于 APPS 处理器上。</p>
+<p>当 ARGS 从客户端（<code>agmplay</code>）收到图打开请求时，ARGS 会使用用例句柄和校准句柄从音频校准数据库（ACDB）中检索音频图和校准数据。然后它通过通用包路由器（GPR）协议将图定义和校准数据提供给 ADSP 上的 ARE。</p>
+<p>GPR 消息使用 RPMsg 框架在两个处理器之间传输，该框架构建于共享内存上的 Virtio 环（vrings）之上。控制通路（图打开、关闭和参数设置命令）使用基于 RPMsg 的 GPR，而音频数据则通过映射到两个处理器的共享内存区域在 APPS 处理器和 ADSP 之间交换。</p>
+<p>在收到图定义后，ADSP 上的 ARE 会构建出一个音频处理图。在当前的模拟播放用例中，Rate-Adapted Timer 模块会周期性地向 APPS 处理器发出信号，以便向流水线中馈入更多数据。目前尚没有针对 NXP 开发板的硬件端点模块，因此不会有音频被渲染到物理输出设备。端点模块目前正在开发中。</p>
+<p>在活动用例期间，可以使用基于 PC 的 GUI 工具 AudioReach Creator（ARC，也称为 QACT）实时可视化图拓扑。</p>
+<p><img alt="nxp 播放用例拓扑" src="../../_images/nxp_playback_use_case_topology.png" /></p>
+<p>上图展示了当前为 NXP IMX8M Plus 启用的用例图。</p>
+<h2 id="步骤-1创建-yocto-镜像">步骤 1：创建 Yocto 镜像<a class="headerlink" href="#步骤-1创建-yocto-镜像" title="Permanent link">&para;</a></h2>
+<p>要创建 Yocto 镜像，请按照 <a href="https://github.com/nxp-imx/meta-imx/tree/scarthgap-6.6.52-2.2.2">NXP 官方 GitHub 页面</a> 上的指南操作。AudioReach 目前在 NXP 开发板上支持 scarthgap 版本的 Yocto。</p>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>如果在 repo init 步骤中出现错误，请将以下标志追加到 repo init 命令中：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>--no-repo-verify<span class="w"> </span>--repo-url<span class="o">=</span>http://android.googlesource.com/tools/repo
+</code></pre></div>
+</blockquote>
+<p>对于 IMX 8M Plus，使用以下 setup 命令来创建构建文件夹。请在将作为 <code>&lt;yocto_build_root&gt;</code> 的目录中运行此命令——即包含 <code>sources/</code> 和 <code>build/</code> 文件夹的根目录：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">MACHINE</span><span class="o">=</span>imx8mpevk<span class="w"> </span><span class="nv">DISTRO</span><span class="o">=</span>fsl-imx-wayland<span class="w"> </span><span class="nb">source</span><span class="w"> </span>./imx-setup-release.sh<span class="w"> </span>-b<span class="w"> </span>./build
+</code></pre></div>
+<p>一旦构建同步完成且 setup 结束，运行以下命令生成完整构建：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>bitbake<span class="w"> </span>imx-image-multimedia
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>如果 bitbake 命令报 <code>umask</code> 错误，请运行 <code>umask 022</code> 然后重试。</p>
+</blockquote>
+<h3 id="集成-audioreach-组件">集成 AudioReach 组件<a class="headerlink" href="#集成-audioreach-组件" title="Permanent link">&para;</a></h3>
+<p>进入 <code>&lt;yocto_build_root&gt;/sources</code> 并克隆 meta-audioreach 仓库：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AudioReach/meta-audioreach.git<span class="w"> </span>-b<span class="w"> </span>scarthgap
+</code></pre></div>
+<p>打开 <code>&lt;yocto_build_root&gt;/build/conf/bblayers.conf</code>，在 <code>BBLAYERS ?= " \</code> 部分下追加以下行，以集成 AudioReach meta-layer：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>&lt;yocto_build_root&gt;/sources/meta-audioreach \
+</code></pre></div>
+<p>打开 <code>&lt;yocto_build_root&gt;/build/conf/local.conf</code>，追加以下行，以将 AudioReach 组件包含到完整的 Yocto 构建中：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>IMAGE_INSTALL:append<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;audioreach-graphservices tinyalsa audioreach-graphmgr audioreach-conf audioreach-kernel&quot;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>PACKAGECONFIG:pn-audioreach-graphmgr<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;use_default_acdb_path&quot;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>EXTRA_OECONF:append:pn-audioreach-conf<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot; --with-nxp&quot;</span>
+</code></pre></div>
+<p>配置完成后，运行以下命令生成包含已集成 AudioReach 组件的完整构建：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>bitbake<span class="w"> </span>imx-image-multimedia
+</code></pre></div>
+<h2 id="步骤-2创建-zephyr-镜像">步骤 2：创建 Zephyr 镜像<a class="headerlink" href="#步骤-2创建-zephyr-镜像" title="Permanent link">&para;</a></h2>
+<p>此步骤会生成一个 Zephyr 固件镜像，其中集成了作为 DSP 组件、运行于 HiFi ADSP 上的 AudioReach 引擎（ARE）。ARE 作为一个 west 模块被添加到 Zephyr 构建中，在工作区清单（manifest）中注册，并作为 Zephyr 构建系统的一部分进行构建。<code>audioreach-engine</code> 仓库中的 <code>zephyr/module.yml</code> 文件将其声明为一个 Zephyr 模块，向 Zephyr 构建系统暴露其 Kconfig 选项和 CMake 构建目标。</p>
+<p><code>audioreach-engine</code> 模块以 Zephyr 兼容库的形式提供核心信号处理框架（SPF）、平台与操作系统抽象层（POSAL）以及通用包路由器（GPR）。<code>audioreach-engine/app/</code> 下的一个 Zephyr 示例应用演示了该模块的用法。此应用会初始化三个核心组件——POSAL、GPR 和 ARE 框架——并作为运行于 ADSP 上的 Zephyr 固件镜像的入口点。</p>
+<p>下面的步骤涵盖安装依赖、设置 west 工作区、应用补丁以及构建镜像。</p>
+<h3 id="安装依赖">安装依赖<a class="headerlink" href="#安装依赖" title="Permanent link">&para;</a></h3>
+<p>在设置工作区之前，先安装所需的依赖。请根据你的操作系统，参照 <a href="https://docs.zephyrproject.org/latest/develop/getting_started/index.html">Zephyr 入门指南</a> 中的相关章节操作：</p>
+<h4 id="主机工具依赖">主机工具依赖<a class="headerlink" href="#主机工具依赖" title="Permanent link">&para;</a></h4>
+<p>按照 Zephyr 入门指南中的 <a href="https://docs.zephyrproject.org/latest/develop/getting_started/index.html#install-dependencies">Install dependencies</a> 部分，为你的操作系统安装所需的主机工具（CMake、Python、DTC）。</p>
+<h4 id="python-依赖与-west">Python 依赖与 West<a class="headerlink" href="#python-依赖与-west" title="Permanent link">&para;</a></h4>
+<p>按照 Zephyr 入门指南中的 <a href="https://docs.zephyrproject.org/latest/develop/getting_started/index.html#get-zephyr-and-install-python-dependencies">Get Zephyr and install Python dependencies</a> 部分，设置 Python 虚拟环境并安装 <code>west</code>。</p>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>每次开始工作时都要激活虚拟环境：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">source</span><span class="w"> </span>~/zephyrproject/.venv/bin/activate
+</code></pre></div>
+</blockquote>
+<h4 id="zephyr-sdk">Zephyr SDK<a class="headerlink" href="#zephyr-sdk" title="Permanent link">&para;</a></h4>
+<p>安装 Zephyr SDK <strong>0.17.0</strong> 版，它与 AudioReach 所用的 Zephyr 版本兼容。请参考 Zephyr 入门指南中的 <a href="https://docs.zephyrproject.org/latest/develop/getting_started/index.html#install-the-zephyr-sdk">Install the Zephyr SDK</a> 部分，并使用以下命令安装该特定版本：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>west<span class="w"> </span>sdk<span class="w"> </span>install<span class="w"> </span>--version<span class="w"> </span><span class="m">0</span>.17.0
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>使用 <code>west sdk install --help</code> 可查看其他选项，例如指定安装目标位置或选择特定架构的工具链。</p>
+</blockquote>
+<h3 id="设置-west-工作区">设置 West 工作区<a class="headerlink" href="#设置-west-工作区" title="Permanent link">&para;</a></h3>
+<p>创建一个目录作为 west 工作区根目录，并将 <code>audioreach-engine</code> 仓库克隆到其中：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>mkdir<span class="w"> </span>&lt;workspace_dir&gt;<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>&lt;workspace_dir&gt;
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AudioReach/audioreach-engine.git
+</code></pre></div>
+<p><code>audioreach-engine</code> 仓库在 <code>zephyr/</code> 子目录下包含一个 <code>west.yml</code> 清单文件（<code>zephyr/west.yml</code>）。此清单定义了所有必需的依赖，包括 Zephyr RTOS。当运行 <code>west update</code> 时，west 会将清单中定义的所有项目——包括 Zephyr RTOS 本身——作为 <code>&lt;workspace_dir&gt;</code> 的子目录抓取下来。</p>
+<p>使用克隆下来的仓库作为清单源来初始化 west 工作区：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>west<span class="w"> </span>init<span class="w"> </span>-l<span class="w"> </span>./audioreach-engine/<span class="w"> </span>--mf<span class="w"> </span>zephyr/west.yml
+</code></pre></div>
+<p>然后抓取清单中定义的所有项目，包括 Zephyr：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>west<span class="w"> </span>update
+</code></pre></div>
+<h3 id="应用补丁">应用补丁<a class="headerlink" href="#应用补丁" title="Permanent link">&para;</a></h3>
+<p>在运行 <code>west init</code> 和 <code>west update</code> 之后，向工作区应用所需的补丁：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>west<span class="w"> </span>patch<span class="w"> </span>apply
+</code></pre></div>
+<p>要撤销补丁并将工作区重置为固定状态（例如，将 <code>zephyr/</code> 重置到固定的提交）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>west<span class="w"> </span>patch<span class="w"> </span>clean
+</code></pre></div>
+<h3 id="构建-zephyr-镜像">构建 Zephyr 镜像<a class="headerlink" href="#构建-zephyr-镜像" title="Permanent link">&para;</a></h3>
+<p>要为 NXP IMX8M Plus ADSP 目标构建 Zephyr 镜像，运行以下命令：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>west<span class="w"> </span>build<span class="w"> </span>-p<span class="w"> </span>always<span class="w"> </span>--build-dir<span class="w"> </span>&lt;build_dir_path&gt;<span class="w"> </span>-b<span class="w"> </span>imx8mp_evk/mimx8ml8/adsp<span class="w"> </span>./audioreach-engine/app
+</code></pre></div>
+<p>命令中使用的参数说明如下：</p>
+<ul>
+<li><code>-p always</code> — 启用纯净（pristine）构建，在构建前清理构建目录，以避免残留自先前构建的陈旧产物。</li>
+<li><code>--build-dir &lt;build_dir_path&gt;</code> — 指定构建产物的输出目录。将 <code>&lt;build_dir_path&gt;</code> 替换为所需的路径。</li>
+<li><code>-b imx8mp_evk/mimx8ml8/adsp</code> — 指定目标开发板。<code>imx8mp_evk</code> 是 NXP IMX8M Plus 评估套件，<code>mimx8ml8</code> 是 SoC 变体，<code>adsp</code> 是所针对的 DSP 核心。</li>
+<li><code>./audioreach-engine/app</code> — 要构建的 AudioReach 应用源码的路径。</li>
+</ul>
+<h3 id="构建产物">构建产物<a class="headerlink" href="#构建产物" title="Permanent link">&para;</a></h3>
+<p>如果构建成功，构建产物会生成在 <code>&lt;build_dir_path&gt;/zephyr/</code> 目录下。关键的输出文件有：</p>
+<ul>
+<li><code>zephyr.elf</code> — 为 DSP 编译出的固件镜像。这是通过 remoteproc 加载到 NXP 开发板上以启动 AudioReach DSP 组件的文件。</li>
+<li><code>.config</code> — 构建期间生成的 Kconfig 配置文件。它反映了所有构建时选项和已启用的模块，可用于验证生成该固件所用的配置。</li>
+</ul>
+<h2 id="步骤-3设置设备">步骤 3：设置设备<a class="headerlink" href="#步骤-3设置设备" title="Permanent link">&para;</a></h2>
+<h3 id="烧录并上电">烧录并上电<a class="headerlink" href="#烧录并上电" title="Permanent link">&para;</a></h3>
+<p>进入 <code>&lt;yocto_build_root&gt;/build/tmp/deploy/images/imx8mpevk</code>，找到文件 <code>imx-image-multimedia-imx8mpevk.rootfs.wic.zst</code>。这就是步骤 1 中生成的完整 Yocto 镜像。</p>
+<p>使用 <a href="https://etcher.balena.io">Balena Etcher</a> 将此镜像烧录到一张 micro SD 卡上。烧录完成后，将卡插入 NXP 开发板。</p>
+<p>将设备左上方的启动开关设为 <code>0011</code> 以选择 SD 卡启动。将串口线连接到串口，为开发板接通电源，并按下 <code>PWR</code> 开关上电。关于开发板上启动开关、串口和电源接口的位置，请参考 <a href="https://www.nxp.com/document/guide/getting-started-with-the-i-mx-8m-plus-evk:GS-iMX-8M-Plus-EVK">Getting Started with the i.MX 8M Plus EVK</a>。</p>
+<h3 id="配置设备树">配置设备树<a class="headerlink" href="#配置设备树" title="Permanent link">&para;</a></h3>
+<p>在开发板上电过程中，串口会显示一个中断启动的提示。按任意键中断，然后运行以下命令来设置并持久化设备树：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>=&gt; editenv fdtfile
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>edit: imx8mp-evk-dsp.dtb
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>=&gt; saveenv
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>=&gt; boot
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong></p>
+<p><code>saveenv</code> 会将更新后的 <code>fdtfile</code> 变量写入 eMMC 上一个专用的环境分区。这会跨重启持久保存，使得 DSP 设备树在每次启动时都会被自动选中，无需手动干预。注意，运行 <code>env default -a</code> 或重新烧录 eMMC 会重置已保存的环境，需要重新执行此步骤。</p>
+</blockquote>
+<h3 id="连接到网络">连接到网络<a class="headerlink" href="#连接到网络" title="Permanent link">&para;</a></h3>
+<p>开发板启动后，使用以太网或 WiFi 将其连接到互联网。</p>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>关于 WiFi 设置说明，请参考 <a href="https://community.nxp.com/t5/i-MX-Processors-Knowledge-Base/How-to-connect-to-a-Wi-Fi-network-on-i-MX8MP/ta-p/1376634">用于在 i.MX8MP 上连接 WiFi 的 NXP 社区指南</a>。</p>
+</blockquote>
+<h3 id="将文件推送到设备">将文件推送到设备<a class="headerlink" href="#将文件推送到设备" title="Permanent link">&para;</a></h3>
+<p>将步骤 2 中生成的 <code>zephyr.elf</code> 镜像和一个 <code>.wav</code> 音频文件复制到设备上的某个位置，例如 <code>/etc</code>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>scp<span class="w"> </span>zephyr.elf<span class="w"> </span>root@&lt;board_ip_address&gt;:/etc/
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>scp<span class="w"> </span>&lt;clip_name&gt;.wav<span class="w"> </span>root@&lt;board_ip_address&gt;:/etc/
+</code></pre></div>
+<h2 id="步骤-4运行一个-audioreach-用例">步骤 4：运行一个 AudioReach 用例<a class="headerlink" href="#步骤-4运行一个-audioreach-用例" title="Permanent link">&para;</a></h2>
+<h3 id="启动-dsp">启动 DSP<a class="headerlink" href="#启动-dsp" title="Permanent link">&para;</a></h3>
+<p>使用 remoteproc 接口加载 <code>zephyr.elf</code> 固件并启动 AudioReach DSP：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span>/etc/zephyr.elf<span class="w"> </span>&gt;<span class="w"> </span>/sys/class/remoteproc/remoteproc0/firmware
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nb">echo</span><span class="w"> </span>start<span class="w"> </span>&gt;<span class="w"> </span>/sys/class/remoteproc/remoteproc0/state
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>要检查当前 DSP 状态，运行 <code>cat /sys/class/remoteproc/remoteproc0/state</code>。要停止 DSP，运行 <code>echo stop &gt; /sys/class/remoteproc/remoteproc0/state</code>。</p>
+</blockquote>
+<h3 id="启用实时校准模式">启用实时校准模式<a class="headerlink" href="#启用实时校准模式" title="Permanent link">&para;</a></h3>
+<p>ARC（AudioReach Creator）是一个用于创建和编辑音频用例图、并在活动用例期间实时编辑音频配置的工具。关于 ARC 的更多信息，请参考 <a href="../../arc/">AudioReach Creator</a> 页面。</p>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>AudioReach Creator 目前仅在 Windows 上可用。</p>
+</blockquote>
+<p>下面的步骤演示如何将 ARC 连接到 NXP 开发板。运行 AudioReach 用例并不要求连接 ARC。</p>
+<p><strong>在 NXP 开发板上：</strong></p>
+<ul>
+<li>使用以太网或 WiFi 将 NXP 开发板连接到互联网。</li>
+<li>在串口上或通过 SSH，运行：
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>ats_gateway<span class="w"> </span>&lt;IP<span class="w"> </span>address&gt;<span class="w"> </span><span class="m">5558</span>
+</code></pre></div><blockquote>
+<p><strong>注意</strong></p>
+<p>在启动 <code>ats_gateway</code> 之前，DSP 必须已在运行。如果尚未完成，请参考上面的启动 DSP。</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>在本地计算机上：</strong></p>
+<ul>
+<li>使用 <a href="../../sdk_overview/">Steps to install ARC</a> 在一台 Windows 主机上安装 ARC（也称为 QACT）。需要 QACT 8.1 或更高版本。</li>
+<li>打开 ARC 并点击 <strong>Connection configuration</strong>。</li>
+<li>在 TCP/IP 部分输入 <code>&lt;IP address&gt;:5558</code>，将 NXP 开发板添加为一个设备。</li>
+<li>刷新 <strong>Available Devices</strong> 列表。NXP 开发板的 IP 地址应会出现。<blockquote>
+<p><strong>注意</strong></p>
+<p>如果开发板未出现，请确认 <code>ats_gateway</code> 命令仍在开发板上运行。</p>
+</blockquote>
+</li>
+<li>选中该条目并点击 <strong>Connect</strong>。</li>
+</ul>
+<h3 id="开始播放">开始播放<a class="headerlink" href="#开始播放" title="Permanent link">&para;</a></h3>
+<p>使用 <code>agmplay</code> 启动模拟播放：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>agmplay<span class="w"> </span>/&lt;path_to_audio_file&gt;/<span class="o">[</span>clip_name<span class="o">]</span>.wav<span class="w"> </span>-D<span class="w"> </span><span class="m">100</span><span class="w"> </span>-d<span class="w"> </span><span class="m">100</span><span class="w"> </span>-i<span class="w"> </span>PCM_RT_PROXY-RX-2
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong></p>
+<p><code>-D 100</code> 和 <code>-d 100</code> 参数分别指定声卡索引和设备索引。声卡 ID <code>100</code> 标识 AGM 虚拟声卡（<code>virtualsndcard</code>），设备 ID <code>100</code> 指的是 <code>PCM100</code>，即播放 PCM 设备。<code>-i PCM_RT_PROXY-RX-2</code> 参数指定 RT proxy 后端设备（设备 ID <code>200</code>）。这些 ID 是在 <a href="https://github.com/AudioReach/audioreach-conf/blob/master/nxp/reference/card-defs.xml">card-defs.xml</a> 中为 NXP 平台定义的，该文件是安装在设备上的 <code>audioreach-conf</code> 包的一部分。</p>
+</blockquote>
+<p>播放现在正在运行。如果 NXP 开发板已连接到 ARC，当前用例图将出现在图视图中。用例的系统日志保存到 <code>/var/log/syslog</code>。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../rb3_gen2/" class="md-footer__link md-footer__link--prev" aria-label="上一页: RB3 Gen2">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                RB3 Gen2
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../../qcom-linux-audio-guide/docs-zh/overview/" class="md-footer__link md-footer__link--next" aria-label="下一页: 音频概览">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                音频概览
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

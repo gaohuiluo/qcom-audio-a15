@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="../media/ECNS_overview.svg" class="st10 cursor-zoomin" color-interpolation-filters="sRGB" height="4.25in" viewbox="0 0 594.8 306" width="8.26111in" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" xmlns:xlink="http://www.w3.org/1999/xlink">
+<v:documentproperties v:langid="1033" v:viewmarkup="false">
+<v:userdefs>
+<v:ud v:nameu="msvNoAutoConnect" v:val="VT0(1):26"></v:ud>
+</v:userdefs>
+</v:documentproperties>
+<style>.svg-1 .st1 { fill: #ffffff; stroke: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1 }
+.svg-1 .st2 { fill: #fafafa; stroke: #d2d7e1; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5 }
+.svg-1 .st3 { stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-1 .st4 { fill: none; stroke: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1 }
+.svg-1 .st5 { fill: #000000; font-family: Roboto; font-size: 1.00001em; letter-spacing: 0.0833327em }
+.svg-1 .st6 { marker-end: url("#1-mrkr4-65"); stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-1 .st7 { fill: #000000; fill-opacity: 1; stroke: #000000; stroke-opacity: 1; stroke-width: 0.44247787610619 }
+.svg-1 .st8 { marker-end: url("#1-mrkr4-76"); stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-1 .st9 { marker-start: url("#1-mrkr4-82"); stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.svg-1 .st10 { fill: none; fill-rule: evenodd; font-size: 12px; overflow: visible; stroke-linecap: square; stroke-miterlimit: 3 }</style>
+<defs id="Markers">
+<g id="lend4">
+<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"></path>
+</g>
+<marker class="st7" id="1-mrkr4-65" markerunits="strokeWidth" orient="auto" overflow="visible" refx="-4.52" v:arrowsize="2" v:arrowtype="4" v:setback="4.52">
+<use transform="scale(-2.26,-2.26) " xlink:href="#lend4"></use>
+</marker>
+<marker class="st7" id="1-mrkr4-76" markerunits="strokeWidth" orient="auto" overflow="visible" refx="-4.34" v:arrowsize="2" v:arrowtype="4" v:setback="4.34">
+<use transform="scale(-2.26,-2.26) " xlink:href="#lend4"></use>
+</marker>
+<marker class="st7" id="1-mrkr4-82" markerunits="strokeWidth" orient="auto" overflow="visible" refx="4.34" v:arrowsize="2" v:arrowtype="4" v:setback="4.34">
+<use transform="scale(2.26) " xlink:href="#lend4"></use>
+</marker>
+</defs>
+<g v:groupcontext="backgroundPage" v:index="1" v:mid="4">
+<v:userdefs>
+<v:ud v:nameu="msvVisioCreated" v:prompt="" v:val="VT0(0):26"></v:ud>
+</v:userdefs>
+<title>VBackground-1</title>
+<v:pageproperties height="4.25" v:drawingscale="0.0138889" v:drawingunits="29" v:pagescale="0.0138889" v:shadowoffsetx="9" v:shadowoffsety="-9" width="8.26111"></v:pageproperties>
+<g id="shape1-1" v:groupcontext="shape" v:mid="1">
+<title>Solid</title>
+<v:userdefs>
+<v:ud v:nameu="Background" v:val="VT0(0):26"></v:ud>
+<v:ud v:nameu="visVersion" v:val="VT0(15):26"></v:ud>
+<v:ud v:nameu="msvShapeCategories" v:prompt="" v:val="VT4(DoNotContain)"></v:ud>
+<v:ud v:nameu="msvVisioCreated" v:prompt="" v:val="VT0(0):26"></v:ud>
+</v:userdefs>
+<rect class="st1" height="306" rx="4.5" ry="4.5" width="594.8" x="0" y="0"></rect>
+</g>
+</g>
+<g v:groupcontext="foregroundPage" v:index="2" v:mid="0">
+<title>Page-1</title>
+<v:pageproperties v:drawingscale="0.0138889" v:drawingunits="29" v:pagescale="0.0138889" v:shadowoffsetx="9" v:shadowoffsety="-9"></v:pageproperties>
+<v:layer v:index="0" v:name="Connector"></v:layer>
+<g id="shape70-3" transform="translate(18.75,-18.75)" v:groupcontext="shape" v:mid="70">
+<title>Sheet.70</title>
+<rect class="st2" height="268.5" rx="4.5" ry="4.5" width="557.3" x="0" y="37.5"></rect>
+</g>
+<g id="shape35-5" transform="translate(370.163,-151.534) rotate(-5.59301)" v:groupcontext="shape" v:mid="35">
+<title>Sheet.35</title>
+<path class="st3" d="M0 301.72 C9.22 303.76 18.73 305.18 28.26 305.72 C38.71 306.32 49.18 305.86 59.43 305.41 C63.5 305.23 67.53
+						 305.05 71.76 304.71 C73.74 304.55 75.76 304.35 77.22 303.58 C78.45 302.93 79.27 301.87 80.57 301.72"></path>
+</g>
+<g id="shape36-8" transform="translate(721.265,-52.9172) rotate(60.0719)" v:groupcontext="shape" v:mid="36">
+<title>Sheet.36</title>
+<path class="st3" d="M0 306 C6.08 301.87 12.87 300.56 19.78 300.31 C29.28 299.97 39.02 301.65 47.48 306"></path>
+</g>
+<g id="shape37-11" transform="translate(672.362,288.765) rotate(123.453)" v:groupcontext="shape" v:mid="37">
+<title>Sheet.37</title>
+<path class="st3" d="M0 304.78 C10.58 305.54 24.45 307.14 33.56 304.78"></path>
+</g>
+<g id="shape38-14" transform="translate(418.069,-185.25)" v:groupcontext="shape" v:mid="38">
+<title>Sheet.38</title>
+<path class="st3" d="M6.5 290 L6.5 293.29 A4.5 4.5 0 0 1 4.58 296.97 C1.59 299.07 0.7 302.94 0 306"></path>
+</g>
+<g id="shape44-17" transform="translate(411.069,-200.475)" v:groupcontext="shape" v:mid="44">
+<title>Sheet.44</title>
+<path class="st3" d="M0 305.23 C4 306.2 9.2 306.37 13.5 305.23"></path>
+</g>
+<g id="shape47-20" transform="translate(409.807,-201.25)" v:groupcontext="shape" v:mid="47">
+<title>Sheet.47</title>
+<path class="st3" d="M1.26 306 C0.41 305.21 -0.17 303.95 0.05 302.48 A4.5 4.5 -180 0 0 0.08 301.44 C-0.03 300.04 0.16 298.54 0.15
+						 298"></path>
+</g>
+<g id="shape48-23" transform="translate(401.566,-206.25)" v:groupcontext="shape" v:mid="48">
+<title>Sheet.48</title>
+<path class="st3" d="M8.5 299 C8.46 298.51 8.1 298.2 7.54 297.86 A2.25 2.25 0 0 1 6.47 295.6 C6.62 294.6 6.35 293.63 5.67 292.73
+						 A2.25 2.25 -180 0 0 3.92 291.84 C2.4 291.81 0.11 292.04 0 290.4 C-0.01 290.14 0.03 289.83 0.24 289.64 A4.5
+						 4.5 -180 0 0 0.95 288.86 C3.25 285.59 5.83 283.1 8.66 279.95 A2.25 2.25 -180 0 0 9.09 277.65 C8.65 276.48
+						 8.04 275.52 7.3 274.7 A4.5 4.5 0 0 1 6.16 271.21 C6.42 268.72 6.96 266.46 7.7 264.3 C8.33 262.47 9.09 260.72
+						 10.39 259.48 A4.5 4.5 -180 0 0 11.74 255.57 C11.48 253.81 12.11 251.79 13.01 250.51 A4.5 4.5 -180 0 0 13.83
+						 248.1 C13.91 246.02 15.76 245.03 17.7 244.5 C21.45 243.48 25.56 244.19 29.5 245 C35.94 246.32 41.9 247.93
+						 48.5 248.2 C52.49 248.36 56.71 248.03 59.08 251.33 A4.5 4.5 -180 0 0 60.3 252.49 C63.53 254.56 66.56 257.53
+						 68.3 261.3 C71.11 267.36 70.62 275.49 68.1 282.2 C65.69 288.65 61.4 293.77 56.7 298.31 A4.5 4.5 0 0 1 56.35
+						 298.62 C54.17 300.31 53.79 303.44 54.5 306"></path>
+</g>
+<g id="shape50-26" transform="translate(714.342,101.564) rotate(91.6592)" v:groupcontext="shape" v:mid="50">
+<title>Sheet.50</title>
+<path class="st3" d="M0 304.4 C-0.39 307.34 3.97 305.6 4 304.4"></path>
+</g>
+<g id="shape51-29" transform="translate(226.957,-198.45)" v:groupcontext="shape" v:mid="51">
+<title>Sheet.51</title>
+<rect class="st4" height="28.8" rx="4.5" ry="4.5" v:rectcontext="foreign" width="28.8" x="0" y="277.2"></rect>
+<image height="28.8" preserveaspectratio="none" width="28.8" x="0" xlink:href="data:image/png;base64,iVBOR
+						w0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH
+						3gAAAMRSURBVGhD7ZhLaxRBFEbPzMRIUGKMQrL1BYpLQY1ZCooLxYX4E/QPuHCpCD5ABVHQILhTXAliFJcqPhcqLoSAD0QXoogLEaOgR
+						u50pVPzTc9UapxOT0IOXFLhfnXrVk/Xoy/MM/cYAkaAe8AXZ9a+AGxScSfRDZwA/gATDew3cHR9ou0ouoAnGQmnVq7937TWp2M4kiZX1
+						uRLdZNxdliDFMVG4K8kdx0Y7oM+EhsGRkVjfTZosCK4JIndUIHHTdHaYi+cB5LUZhV4mM/X3lFBEdg26Se1WAUe/VD2tZ9UMOPI7mIWw
+						unSiRROksjU7hMidsK5E5tQrD530mTc69ScunOieGITitXnTmxCE1CJ0edONRFvNwoRO+HciU1I70u5swcYc2ZtJX4CzfWh8aJ56Q1mb
+						SWUkBLSh8aLJjRgyK/oFVuJjRckFDDkV9yCb3iViI0XJBQw5FdC+pA/mlDAkF9pqi8F/K3wXQIuEv9H8feL38d8vtb6+thV3POXbez/5
+						q0Mukr8t8RvZZVGmC/VVpLPTJ81Euu1+FvikQTdLf5j4m/2SamTtWKAj+37vv+++FvivAQ9J/6VwLh8aY1CzxZgCbAMsLZ+D/8AVkgsH
+						eus+FtipwS1E1I5KJrp2AENArwSzQ4VRDOQLNqfEniryCrA48RX80s0soeuj89283m70C9X7WsLFyWBN8BC0dhgxxuWFkvVv1ZatDVTm
+						9gQPcAH6WOvU9sYdE/EH+CyihyTxd27wFdXtbB2s+LuNYk9nvz47eVk3VOF08nZ0zLW90xGXPsl282ArYUX/kDufbXdpVktqBG9wO2M5
+						J9C9ZXKhcFS/btq9t4twuliWuujcd4By1Xcbuy0tBNSBzezUuEhutgGrHXXjl7oXueStoq0adJP0PLUrmVb6GodLC+WTiYSb5nbrMWym
+						DNKGdgPfM5IaMrq60C+Wd99LlZh2HXh1OStNaNWmmXfXB9byB2DHU67gKvAcz9hN6lnwBWnWaCdOxF96rOO+QkUzayfwBildM/P+oboe
+						PZ6JUJrzzMn+QdjYPIFxW/sbgAAAABJRU5ErkJggg==" y="277.2"/>
+<rect class="st4" height="28.8" rx="4.5" ry="4.5" v:rectcontext="foreign" width="28.8" x="0" y="277.2"></rect>
+</g>
+<g id="shape53-33" transform="translate(58.4356,-211.25)" v:groupcontext="shape" v:mid="53">
+<title>Sheet.53</title>
+<desc>Near-end speech signal</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="81.3214" cy="296" height="20" width="162.65"></v:textrect>
+<rect class="st4" height="20" rx="4.5" ry="4.5" width="162.643" x="0" y="286"></rect>
+<text class="st5" v:langid="1033" x="4" y="300.5"><v:paragraph v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Near-end speech signal</text> </g>
+<g id="shape56-36" transform="translate(68.55,-85.25)" v:groupcontext="shape" v:mid="56">
+<title>Sheet.56</title>
+<desc>Far-end speech signal</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="81.3214" cy="296" height="20" width="162.65"></v:textrect>
+<rect class="st4" height="20" rx="4.5" ry="4.5" width="162.643" x="0" y="286"></rect>
+<text class="st5" v:langid="1033" x="4" y="300.5"><v:paragraph v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Far-end speech signal</text> </g>
+<g id="shape61-39" transform="translate(394.757,-136.25)" v:groupcontext="shape" v:mid="61">
+<title>Sheet.61</title>
+<desc>Near-end speaker</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="81.3214" cy="296" height="20" width="162.65"></v:textrect>
+<rect class="st4" height="20" rx="4.5" ry="4.5" width="162.643" x="0" y="286"></rect>
+<text class="st5" v:langid="1033" x="4" y="300.5"><v:paragraph v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Near-end speaker</text> </g>
+<g id="shape62-42" transform="translate(386.757,-89.25)" v:groupcontext="shape" v:mid="62">
+<title>Sheet.62</title>
+<desc>Environmental noise</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="81.3214" cy="296" height="20" width="162.65"></v:textrect>
+<rect class="st4" height="20" rx="4.5" ry="4.5" width="162.643" x="0" y="286"></rect>
+<text class="st5" v:langid="1033" x="4" y="300.5"><v:paragraph v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Environmental noise</text> </g>
+<g id="shape63-45" transform="translate(326.436,-37.25)" v:groupcontext="shape" v:mid="63">
+<title>Sheet.63</title>
+<desc>Acoustic echo path</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="81.3214" cy="296" height="20" width="162.65"></v:textrect>
+<rect class="st4" height="20" rx="4.5" ry="4.5" width="162.643" x="0" y="286"></rect>
+<text class="st5" v:langid="1033" x="4" y="300.5"><v:paragraph v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Acoustic echo path</text> </g>
+<g id="shape64-48" transform="translate(162.869,-122.75)" v:groupcontext="shape" v:mid="64">
+<title>Sheet.64</title>
+<desc>Acoustic echo</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="50.8407" cy="296" height="20" width="101.69"></v:textrect>
+<rect class="st4" height="20" rx="4.5" ry="4.5" width="101.681" x="0" y="286"></rect>
+<text class="st5" v:langid="1033" x="4" y="300.5"><v:paragraph v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Acoustic echo</text> </g>
+<g id="shape65-51" transform="translate(58.757,-181.25)" v:groupcontext="shape" v:mid="65">
+<title>Sheet.65</title>
+<desc>Near-end speech</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="81.3214" cy="296" height="20" width="162.65"></v:textrect>
+<rect class="st4" height="20" rx="4.5" ry="4.5" width="162.643" x="0" y="286"></rect>
+<text class="st5" v:langid="1033" x="4" y="300.5"><v:paragraph v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Near-end speech</text> </g>
+<g id="shape66-54" transform="translate(68.55,-58.75)" v:groupcontext="shape" v:mid="66">
+<title>Sheet.66</title>
+<desc>Far-end speech</desc>
+<v:textblock v:margins="rect(4,4,4,4)"></v:textblock>
+<v:textrect cx="81.3214" cy="296" height="20" width="162.65"></v:textrect>
+<rect class="st4" height="20" rx="4.5" ry="4.5" width="162.643" x="0" y="286"></rect>
+<text class="st5" v:langid="1033" x="4" y="300.5"><v:paragraph v:spline="-1.5"></v:paragraph><v:tablist></v:tablist>Far-end speech</text> </g>
+<g id="shape69-57" transform="translate(332.941,-75.0093) rotate(12.9148)" v:groupcontext="shape" v:mid="69">
+<title>Sheet.69</title>
+<path class="st3" d="M0 306 L114.09 306"></path>
+</g>
+<g id="shape15-60" transform="translate(393.757,-196.75)" v:groupcontext="shape" v:layermember="0" v:mid="15">
+<title>Dynamic connector.15</title>
+<path class="st6" d="M0 293.5 L-125.96 293.5"></path>
+</g>
+<g id="shape52-66" transform="translate(226.957,-196.75)" v:groupcontext="shape" v:layermember="0" v:mid="52">
+<title>Dynamic connector.52</title>
+<path class="st6" d="M0 293.5 L-171.16 293.5"></path>
+</g>
+<g id="shape57-71" transform="translate(-20.978,281.953) rotate(-101.618)" v:groupcontext="shape" v:mid="57">
+<title>Sheet.57</title>
+<path class="st8" d="M0 291.5 C13.24 304.85 72.07 313.93 100.99 296.93 L101.28 296.71"></path>
+</g>
+<g id="shape58-77" transform="translate(477.716,-94.0467) rotate(47.7367)" v:groupcontext="shape" v:mid="58">
+<title>Sheet.58</title>
+<path class="st9" d="M8.68 305.85 L9.04 305.85 C48.53 304.62 118.02 296.74 162.48 302.19 C170.59 303.18 177.87 304.62 185.12 306"></path>
+</g>
+<g id="shape60-83" transform="translate(448.503,-134.922) rotate(38.4416)" v:groupcontext="shape" v:mid="60">
+<title>Sheet.60</title>
+<path class="st9" d="M8.68 306 L9.04 306 L164.06 306"></path>
+</g>
+<g id="shape67-88" transform="translate(167.757,-169.273)" v:groupcontext="shape" v:layermember="0" v:mid="67">
+<title>Dynamic connector.67</title>
+<path class="st6" d="M0 294.02 L-112.06 293.05"></path>
+</g>
+<g id="shape68-93" transform="translate(187.343,-46.25)" v:groupcontext="shape" v:layermember="0" v:mid="68">
+<title>Dynamic connector.68</title>
+<path class="st9" d="M-8.68 293.5 L-9.04 293.5 L-118.79 293.5"></path>
+</g>
+<g id="shape71-98" transform="translate(232,-66)" v:groupcontext="shape" v:mid="71">
+<title>Sheet.71</title>
+<rect class="st4" height="34.35" rx="4.5" ry="4.5" v:rectcontext="foreign" width="34.35" x="0" y="271.65"></rect>
+<image height="34.35" preserveaspectratio="none" width="34.35" x="0" xlink:href="data:image/png;base64,iV
+						BORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad
+						5mH3gAAADdSURBVEhL7ZQ9CgIxFIS/TbplwRXRk9l4DI/kCTyGhRYqW4iKlZVY264k+0sw+iCx2w9SZd5MkbyBgQhMNKyBO7BwL0PJgS
+						NQQlICD1cQQgZslTXnWoXYE4UUzaY2PGcwCw2YA6eeSXP25g1qTVBAQdIZK3gBK2DU0wQFCIbtI//Q+NCSAJHGi2RYovEiGZZovEiGJR
+						ovzaZ+IyigAFUbJKVuv2luqqIhKMAs2qXahfY7mn2ItmguKXRVQYSq+IQpu501Tbj9I8AwBg4986criEA2NSG2thVL93YgmDdTZFX72m
+						ZtiwAAAABJRU5ErkJggg==" y="271.65"/>
+<rect class="st4" height="34.35" rx="4.5" ry="4.5" v:rectcontext="foreign" width="34.35" x="0" y="271.65"></rect>
+</g>
+<g id="shape75-102" transform="translate(72,-83.15)" v:groupcontext="shape" v:mid="75">
+<title>Sheet.75</title>
+<path class="st6" d="M0 306 L144.96 306"></path>
+</g>
+</g>
+</svg>

@@ -1,0 +1,2790 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="高通 AudioReach 与 Qualcomm Linux 音频子系统中文整理资料">
+      
+      
+        <meta name="author" content="gaohuiluo">
+      
+      
+        <link rel="canonical" href="https://gaohuiluo.github.io/qcom-audio-a15/blogs/qcom-audioreach-zh/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../linaro-connect-2024-talk/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>AudioReach 开源（中文） - Qualcomm 音频文档资料库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#高通开源-audioreach端到端音频软件解决方案" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Qualcomm 音频文档资料库" class="md-header__button md-logo" aria-label="Qualcomm 音频文档资料库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Qualcomm 音频文档资料库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AudioReach 开源（中文）
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gaohuiluo/qcom-audio-a15" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gaohuiluo/qcom-audio-a15
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  博客与演讲
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../audioreach-official/md_zh/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  AudioReach 官方文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../qcom-linux-audio-guide/docs-zh/overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Qualcomm Linux 音频指南
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Qualcomm 音频文档资料库" class="md-nav__button md-logo" aria-label="Qualcomm 音频文档资料库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Qualcomm 音频文档资料库
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gaohuiluo/qcom-audio-a15" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gaohuiluo/qcom-audio-a15
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    博客与演讲
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    博客与演讲
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach 开源（中文）
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach 开源（中文）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#高通的开源实践" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        高通的开源实践
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audioreach-sdk-里有什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AudioReach SDK 里有什么？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AudioReach SDK 里有什么？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-audioreach-creator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. AudioReach Creator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-信号处理框架spf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 信号处理框架（SPF）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-音频校准数据库acdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 音频校准数据库（ACDB）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-audioreach-graph-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. AudioReach graph services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-os-平台适配" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. OS 平台适配
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-audioreach-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. AudioReach SDK
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audioreach-开发工作流" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AudioReach 开发工作流
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AudioReach 开发工作流">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#在-pc-主机环境里" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        在 PC 主机环境里
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audioreach-在-linux-上" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AudioReach 在 Linux 上
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AudioReach 在 Linux 上">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#设备部署愿景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        设备部署愿景
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audioreach-路线图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AudioReach 路线图
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AudioReach 路线图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#下一步" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下一步
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#关于作者" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关于作者
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linaro-connect-2024-talk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linaro Connect 2024 演讲
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../audioreach-official/md_zh/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach 官方文档
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AudioReach 官方文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/sdk_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 概览与路线图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../audioreach-official/md_zh/design/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    设计
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    设计
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/design/arch_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    架构概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/design/design_concept/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    核心概念与术语
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/design/arspf_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach 引擎（SPF）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/design/args_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图服务（ARGS）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/design/gpr_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通用包路由器（GPR）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/design/lx_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 适配设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/design/linux_asoc_arch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux ASoC 架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/design/linux_plug-in_arch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 插件架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../audioreach-official/md_zh/api/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 参考
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API 参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/api/arspf_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    引擎 API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/api/spf_capi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SPF CAPI 接口
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/api/posal_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    POSAL 平台抽象层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/api/args_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图服务 API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/api/args_gsl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GSL 图服务层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/api/args_arosal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AROSAL OS 抽象层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/api/gpr_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPR API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../audioreach-official/md_zh/dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发者指南
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    开发者指南
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/dev/dev_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/dev/system_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/dev/plat_port/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    平台移植指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/dev/available_modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    可用音频模块列表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/dev/adding_modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    如何添加音频模块
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/dev/capi_mod_dev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAPI 模块开发指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/dev/alsalib_using_audioreach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用 ALSA lib
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/arc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach Creator（ARC）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../audioreach-official/md_zh/platform/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    平台参考
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    平台参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/platform/raspberry_pi4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/platform/rb3_gen2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RB3 Gen2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audioreach-official/md_zh/platform/nxp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NXP IMX8M Plus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qualcomm Linux 音频指南
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Qualcomm Linux 音频指南
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qcom-linux-audio-guide/docs-zh/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    音频概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qcom-linux-audio-guide/docs-zh/enable-audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    启用音频
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qcom-linux-audio-guide/docs-zh/pal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL 层定制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qcom-linux-audio-guide/docs-zh/tinyalsa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TinyALSA 应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qcom-linux-audio-guide/docs-zh/agm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定制音频图（AGM）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qcom-linux-audio-guide/docs-zh/customize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定制音频用例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qcom-linux-audio-guide/docs-zh/features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高级特性（VoIP ECNS）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qcom-linux-audio-guide/docs-zh/troubleshoot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    故障排查
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qcom-linux-audio-guide/docs-zh/%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7%E8%A1%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    术语对照表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qcom-linux-audio-guide/docs-zh/references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#高通的开源实践" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        高通的开源实践
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audioreach-sdk-里有什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AudioReach SDK 里有什么？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AudioReach SDK 里有什么？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-audioreach-creator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. AudioReach Creator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-信号处理框架spf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 信号处理框架（SPF）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-音频校准数据库acdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 音频校准数据库（ACDB）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-audioreach-graph-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. AudioReach graph services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-os-平台适配" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. OS 平台适配
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-audioreach-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. AudioReach SDK
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audioreach-开发工作流" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AudioReach 开发工作流
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AudioReach 开发工作流">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#在-pc-主机环境里" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        在 PC 主机环境里
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audioreach-在-linux-上" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AudioReach 在 Linux 上
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AudioReach 在 Linux 上">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#设备部署愿景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        设备部署愿景
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audioreach-路线图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AudioReach 路线图
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AudioReach 路线图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#下一步" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下一步
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#关于作者" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关于作者
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="高通开源-audioreach端到端音频软件解决方案">高通开源 AudioReach：端到端音频软件解决方案<a class="headerlink" href="#高通开源-audioreach端到端音频软件解决方案" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>作者：</strong> Patrick Lai，首席工程师 </br>
+<strong>首发时间：</strong> 2024 年 10 月 </br>
+<strong>原文链接：</strong> <a href="https://www.qualcomm.com/developer/blog/2024/10/qualcomm-open-sourcing-audio-reach-end-to-end-audio-software">https://www.qualcomm.com/developer/blog/2024/10/qualcomm-open-sourcing-audio-reach-end-to-end-audio-software</a> </br></p>
+</blockquote>
+<hr />
+<p>如果你自己设计和搭建音频用例（use case），大概早就碰过这几块绊脚石：</p>
+<ul>
+<li>找不到一个统一、集成的环境来开发自己的用例。</li>
+<li>缺少完整的调参（tuning）和用例配置基础设施。</li>
+<li>想跨多个处理器端到端地实现用例，就得同时套用多套软件框架。</li>
+<li>开源框架里没有对异构分布式处理的原生支持。</li>
+<li>没法在低功耗子系统和高性能子系统这个粒度上独立控制用例（信号流图，signal flow graph）。</li>
+</ul>
+<p>这些障碍让当前音频处理领域的开源生态出现了一些让人头疼的空档——无论对音频处理厂商、调参工程师，还是系统集成商 / OEM / ODM 都一样。</p>
+<p>为了补上这些空档，高通（Qualcomm Technologies, Inc.）把内部自研的 <a href="https://github.com/Audioreach">AudioReach</a> 信号处理框架作为端到端音频开发方案正式开源。AudioReach 已经在高通 SoC 驱动的各类产品上规模商用，覆盖可穿戴设备、汽车、手机、XR（扩展现实）设备和计算硬件。从旗舰 CPU 一路到内存小、功耗低的处理器，AudioReach 都能跑起来。</p>
+<p>不止于高通自家芯片，我们的愿景是把 AudioReach 发展成一个社区驱动的项目，服务全行业的厂商——首先从树莓派（Raspberry Pi）和 Xtensa DSP（数字信号处理器）开始。</p>
+<p>本文将带你走一遍 AudioReach SDK，看看它为 PC 主机和手机、车载、XR/VR、智能音箱、摄像头和视频会议等嵌入式设备准备的那些软件组件。</p>
+<p>（这是我在 Linaro Connect 上演讲《 AudioReach Open Source Project》的摘要，详情和链接见文末。）</p>
+<h3 id="高通的开源实践">高通的开源实践<a class="headerlink" href="#高通的开源实践" title="Permanent link">&para;</a></h3>
+<p>AudioReach 是高通最近开源的项目之一，所以我们期待社区给予指引和参与。</p>
+<p>AudioReach 开源项目覆盖音频方案开发流程的四个主要环节：</p>
+<ul>
+<li>脱机（off-target）开发——做音频产品的开发者可以直接在 PC 主机上开始动手。</li>
+<li>基于 GUI 工具的图形化设计与配置。</li>
+<li>设计完成后的完整测试与仿真套件。</li>
+<li>通往目标设备的便捷部署路径，含集成测试与调参。</li>
+</ul>
+<p>我们相信 AudioReach 能拉低音频软硬件整体的开发与维护成本。</p>
+<ul>
+<li>在它的 GUI IDE 里，你可以实时设计、仿真（脱机和在机都行）并调参信号流图。</li>
+<li>它面向互操作性设计，兼容标准 API、专业配置工具，以及 Gstreamer、PulseAudio 等产品。</li>
+<li>我们让脱机开发足够顺手，之后再平滑迁移到在机（on-target）开发。</li>
+<li>AudioReach 高度可移植，无论 SoC / 硬件和 OS 平台如何，你都能享受同一套开发环境和工作流。</li>
+<li>从内存和算力受限的可穿戴设备，到高性能车载应用，全覆盖。</li>
+</ul>
+<p>前面也说了，我们希望 AudioReach 能远远超出高通硬件的范围。AudioReach 采用 <a href="https://opensource.org/license/BSD-3-clause">3-Clause BSD License（“BSD-3-Clause-Clear”）</a>授权。我们期待围绕 AudioReach 成长出一个社区，由活跃贡献者和指导委员会协同共建项目。</p>
+<h3 id="audioreach-sdk-里有什么">AudioReach SDK 里有什么？<a class="headerlink" href="#audioreach-sdk-里有什么" title="Permanent link">&para;</a></h3>
+<p>下图展示 SDK 的主要组件：</p>
+<p><img alt="AudioReach SDK diagram" src="../images/fig1-audioreach-sdk-diagram.png" /></p>
+<p><em>图 1：AudioReach 的主要组件</em></p>
+<p>左侧那个大的米色框是 PC 主机环境；右侧的是在机环境（跑在嵌入式设备的 SoC 上）。</p>
+<h4 id="1-audioreach-creator">1. AudioReach Creator<a class="headerlink" href="#1-audioreach-creator" title="Permanent link">&para;</a></h4>
+<p>AudioReach Creator 是提供 GUI 环境的主工具，你在里面设计和配置音频用例。可以用拖拽的方式把处理模块搭成系统用例，支持离线和在线两种模式。Creator 里有几个很有价值的能力：</p>
+<ul>
+<li>运行时改图——设计用例图的过程中，可以直接在 AudioReach Creator 里把图跑起来。一旦发现缺了哪个模块，不用停掉用例就能插入新模块或删掉某个模块。<a href="https://www.youtube.com/watch?v=HgR2hiZNf_0&amp;t=26m38s">集成的可视化调试工具</a>含实时 PCM（脉冲编码调制）查看器和实时性能监视器。</li>
+<li>模块调参——用例在 Creator 里跑着的时候，你可以挑某个模块进去改系数或运行时参数，全程不停用例。针对各模块的调参视图是依据模块 API 自动生成并导入到 Creator 里的。</li>
+<li>处理器资源监控——按模块、按线程、按核观察 DSP 占用，可以看到平均和峰值 CPU 负载。</li>
+<li>如果处理器被吃满了，可以把任务卸载（offload）到其他 DSP。</li>
+</ul>
+<h4 id="2-信号处理框架spf">2. 信号处理框架（SPF）<a class="headerlink" href="#2-信号处理框架spf" title="Permanent link">&para;</a></h4>
+<p>SPF 是一个轻量、强能力、灵活、可扩展的框架。信号处理模块只要包装进 CAPI（Common Audio Processing Interface，通用音频处理接口）就能轻松集成进框架。框架高度模块化，支持多种信号流图、线程配置和端点类型。SPF 能力面很宽，让方案能覆盖一大片形态各异的产品。如下图所示，AudioReach 支持以下特性：</p>
+<ul>
+<li>定点和浮点 PCM 数据格式，以及各种标准压缩数据格式</li>
+<li>PCM 与非 PCM 媒体格式并发，支持转码（transcoding）和重采样（resampling）</li>
+<li>多种调度模式与数据投递机制</li>
+<li>跨异构 CPU、MCU 和 DSP 核运行多个（相互独立或相互依赖的）SPF 实例，组成逻辑信号流图，并把负载按核切分</li>
+<li>媒体格式沿信号流图的处理模块传播</li>
+<li>元数据沿信号流图传播（如 end-of-stream 事件的传播）</li>
+<li>线性与非线性拓扑都支持</li>
+<li>模块和整张信号流图都可以动态加载</li>
+<li>模块间的控制链路（control link），用于交换消息、意图（intent）或其他元数据</li>
+<li>信号流图的增量式构建</li>
+<li>模块间和容器间缓冲</li>
+<li>跨模块和容器灵活可配的帧大小（frame sizing）</li>
+<li>实时校准与处理数据监控（信号、周期、内存等），即集成资源监控（IRM）</li>
+<li>时钟投票（clock voting）以优化性能与功耗</li>
+<li>灵活可配的数据日志</li>
+</ul>
+<p><img alt="AudioReach workflow diagram" src="../images/fig2-audioreach-workflow-diagram.png" /></p>
+<p><em>图 2：信号处理框架细节</em></p>
+<h4 id="3-音频校准数据库acdb">3. 音频校准数据库（ACDB）<a class="headerlink" href="#3-音频校准数据库acdb" title="Permanent link">&para;</a></h4>
+<p>ACDB 存放所有用例拓扑与图定义，以及用例的调参数据。</p>
+<h4 id="4-audioreach-graph-services">4. AudioReach graph services<a class="headerlink" href="#4-audioreach-graph-services" title="Permanent link">&para;</a></h4>
+<p>AudioReach graph services 是一组跨 OS 的图服务库，里面是与 SPF 交互的控制软件。它对外提供 API，让客户端搭建用例图，并与跑在不同子系统 SPF 上的用例图交互。graph services 还会从 ACDB 取回并下发用例与设备的图定义和调参数据。</p>
+<h4 id="5-os-平台适配">5. OS 平台适配<a class="headerlink" href="#5-os-平台适配" title="Permanent link">&para;</a></h4>
+<p>确保 AudioReach 支持既有生态框架和 API 是我们的优先事项。通过平台适配和插件，你在 PulseAudio 这类既有音频框架里会看到一样的开发者接触点。</p>
+<h4 id="6-audioreach-sdk">6. AudioReach SDK<a class="headerlink" href="#6-audioreach-sdk" title="Permanent link">&para;</a></h4>
+<p>AudioReach SDK 在脱机仿真模式下跑的就是嵌入式设备上那一套软件组件。设计和开发人员可以把用例先在仿真里跑起来，再部署到设备上。</p>
+<h3 id="audioreach-开发工作流">AudioReach 开发工作流<a class="headerlink" href="#audioreach-开发工作流" title="Permanent link">&para;</a></h3>
+<p>下图展示我们为这个开源项目设想的工作流：</p>
+<p><img alt="AudioReach architecture diagram" src="../images/fig3-audioreach-architecture-diagram.png" /></p>
+<p><em>图 3：AudioReach 开发工作流</em></p>
+<p>虽然 AudioReach 开源项目（OSP）还很年轻，但我们正朝着下面这些步骤推进。</p>
+<h4 id="在-pc-主机环境里">在 PC 主机环境里<a class="headerlink" href="#在-pc-主机环境里" title="Permanent link">&para;</a></h4>
+<ol>
+<li>用例设计师用 MATLAB、Simulink 这类标准工业工具开始算法开发。</li>
+<li>初步开发后，可以把定制内容和数据文件导入到 AudioReach Creator。</li>
+<li>在 GUI 环境里设计和配置系统用例。</li>
+<li>设计好的用例可以跑在脱机仿真平台上。音频数据可以接回比如 MATLAB 处理，再回到脱机仿真里。</li>
+<li>脱机环境验证通过后，我们设想把测试从设计工具搬到真实目标上。设计师可以在特定硬件平台上验证自己的算法，这一步与 AudioReach 解耦。</li>
+<li>测试完成后，工具可以自动生成已经包装进 AudioReach 模块接口、并针对特定处理器架构优化过的算法模块。
+   在在机环境里
+   接下来，希望能把配置导出到 SoC 上软件栈的各个组件。
+   然后开发者就可以在目标设备上做集成、测试、配置和调参。</li>
+</ol>
+<p>一句话，我们的目标是让整个开发工作流都通过工具打通。</p>
+<h3 id="audioreach-在-linux-上">AudioReach 在 Linux 上<a class="headerlink" href="#audioreach-在-linux-上" title="Permanent link">&para;</a></h3>
+<p>前面提过，AudioReach 已经在高通 SoC 驱动的一大票产品上商用。作为 Linux 开发者，你有三条启用 AudioReach 的路径可选，架构图如下：</p>
+<p><img alt="AudioReach development on Linux" src="../images/fig4-audioreach-development-on-linux.png" /></p>
+<p><em>图 4：Linux 上的 AudioReach 开发</em></p>
+<ol>
+<li>
+<p>link ALSA 内核驱动——这个驱动已经上游化。注意目前只支持基本的播放（rendering）和录音（capture）。</p>
+</li>
+<li>
+<p>用户态架构——想要完整特性集，这是更合适的路径。它走的是典型 Linux 音频软件栈：PulseAudio 跑在 libALSA 之上。底层由 AudioReach SDK 提供插件去对接通用 AudioReach 组件。PulseAudio 直接连到一个叫 libALSA 的随机弹出的库。SDK 也有插件去对接通用 AudioReach 组件。</p>
+</li>
+<li>
+<p>平台适配层（PAL）——我们路线图上还有一条与 Linux PAL（相当于中间件）交互的路径。这层提供开箱即用的逻辑，能管理一大堆用例和声音设备。</p>
+</li>
+</ol>
+<h4 id="设备部署愿景">设备部署愿景<a class="headerlink" href="#设备部署愿景" title="Permanent link">&para;</a></h4>
+<p>把音频功能部署到设备上（这里以 Yocto 拼装为例），你会走下面这条流程：</p>
+<ul>
+<li>买一块被 AudioReach OSP 和 Yocto 支持的参考硬件。</li>
+<li>同步 Yocto 工程，拉入必要的 meta-layer。</li>
+<li>把板子带起来，验证音频用例。</li>
+<li>用 AudioReach Creator 针对形态调参。</li>
+<li>从 Qualcomm Developer 下载 AudioReach Creator，设计用例图。</li>
+<li>构建 BSP（板级支持包）和 AudioReach 软件。</li>
+<li>部署。</li>
+</ul>
+<p>高通已经为 AudioReach 开发了 meta-layer，所有内容都能从各 OSP 拉到。</p>
+<h3 id="audioreach-路线图">AudioReach 路线图<a class="headerlink" href="#audioreach-路线图" title="Permanent link">&para;</a></h3>
+<p>自 AudioReach 起步以来，这是它首次登陆非高通平台：树莓派 4。我们已经贡献了首批音频处理模块，并上线了文档站点。</p>
+<p>图 5 标出未来几个季度路线图上的主要活动和贡献。</p>
+<p>2025 Q2：</p>
+<ul>
+<li>文档站点上线首批内容，聚焦项目概览和整体软件设计。后续会陆续发布更多内容，带开发者一步步用 AudioReach SDK 搭产品。</li>
+</ul>
+<p>2025 Q3：</p>
+<ul>
+<li>Xtensa 的 Hifi DSP 是一种常被集成进 SoC、作为整体音频方案一部分的 DSP 架构。我们想把 AudioReach 移植到跑 Zephyr RTOS 的 Hifi DSP 上，把触角伸向更广的开发者社区。</li>
+<li>目前 AudioReach 在树莓派 4 上只支持播放。我们想再加上录音。</li>
+<li>我们正积极把 AudioReach IPC 内核驱动上游化，凑齐完整的 AudioReach Linux 栈。</li>
+</ul>
+<p>2025 Q4：</p>
+<ul>
+<li>为了让社区更深度参与，高通正在翻新工作流和 CI/CD 基础设施，转向公开开发。</li>
+</ul>
+<p>2026 Q1：</p>
+<p>我们设想在 2026 Q1 把整体方案的主组件 AudioReach Creator 彻底开源。</p>
+<p><img alt="AudioReach roadmap" src="../images/fig5-audioreach-roadmap.png" /></p>
+<p><em>图 5：AudioReach 路线图</em></p>
+<h4 id="下一步">下一步<a class="headerlink" href="#下一步" title="Permanent link">&para;</a></h4>
+<p>你的一砖一瓦、你的参与，都能帮我们把路线图打磨得更好。欢迎到 <a href="https://github.com/audioreach">github.com/audioreach</a> 看项目、下 SDK，告诉我们你想要什么。也欢迎加入我们的 <a href="https://discord.com/invite/qualcommdevelopernetwork">Discord 开源讨论</a>，认识各路专家、交换想法，并得到我们技术团队的快速支持。</p>
+<p>我们相信 AudioReach 开源项目能帮助应用开发者和算法方案开发者降低开发与维护成本，也给 OEM 和芯片厂商带来希望——他们可以把 AudioReach 装到自家硬件平台上。</p>
+<p>更多细节，可以看我在 Linaro Connect 2024 上的演讲《AudioReach Open Source Project》。视频末尾有两分钟的 AudioReach Creator 现场演示。</p>
+<hr />
+<h2 id="关于作者">关于作者<a class="headerlink" href="#关于作者" title="Permanent link">&para;</a></h2>
+<p>Patrick Lai 是高通首席工程师，音频软件团队成员，专攻 Linux 音频，也是 AudioReach 开源项目的首席维护者。</p>
+<hr />
+<p><em>本文 Markdown 由 Qualcomm Developer Network 博客原文翻译而来。原文为 React 单页应用，内容从 Adobe Experience Manager 内容模型的 JSON 中提取并转为 Markdown；所有图片已下载到本地，便于离线阅读和 GitHub 同步。</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="上一页: 首页">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                首页
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../linaro-connect-2024-talk/" class="md-footer__link md-footer__link--next" aria-label="下一页: Linaro Connect 2024 演讲">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                Linaro Connect 2024 演讲
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

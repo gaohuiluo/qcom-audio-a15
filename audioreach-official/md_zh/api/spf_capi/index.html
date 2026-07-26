@@ -1,0 +1,2997 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="高通 AudioReach 与 Qualcomm Linux 音频子系统中文整理资料">
+      
+      
+        <meta name="author" content="gaohuiluo">
+      
+      
+        <link rel="canonical" href="https://gaohuiluo.github.io/qcom-audio-a15/audioreach-official/md_zh/api/spf_capi/">
+      
+      
+        <link rel="prev" href="../arspf_api/">
+      
+      
+        <link rel="next" href="../posal_api/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>SPF CAPI 接口 - Qualcomm 音频文档资料库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#通用音频处理capi接口" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="Qualcomm 音频文档资料库" class="md-header__button md-logo" aria-label="Qualcomm 音频文档资料库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Qualcomm 音频文档资料库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SPF CAPI 接口
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gaohuiluo/qcom-audio-a15" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gaohuiluo/qcom-audio-a15
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../blogs/qcom-audioreach-zh/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  博客与演讲
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  AudioReach 官方文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../qcom-linux-audio-guide/docs-zh/overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Qualcomm Linux 音频指南
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Qualcomm 音频文档资料库" class="md-nav__button md-logo" aria-label="Qualcomm 音频文档资料库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Qualcomm 音频文档资料库
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gaohuiluo/qcom-audio-a15" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gaohuiluo/qcom-audio-a15
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    博客与演讲
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    博客与演讲
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blogs/qcom-audioreach-zh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach 开源（中文）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blogs/linaro-connect-2024-talk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linaro Connect 2024 演讲
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach 官方文档
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AudioReach 官方文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdk_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 概览与路线图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../design/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    设计
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    设计
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/arch_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    架构概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/design_concept/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    核心概念与术语
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/arspf_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach 引擎（SPF）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/args_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图服务（ARGS）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/gpr_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通用包路由器（GPR）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/lx_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 适配设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/linux_asoc_arch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux ASoC 架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/linux_plug-in_arch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 插件架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 参考
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API 参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arspf_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    引擎 API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SPF CAPI 接口
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SPF CAPI 接口
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capih" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        capi.h
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capi_typesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        capi_types.h
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../posal_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    POSAL 平台抽象层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../args_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图服务 API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../args_gsl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GSL 图服务层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../args_arosal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AROSAL OS 抽象层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpr_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPR API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发者指南
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    开发者指南
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/dev_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/system_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/plat_port/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    平台移植指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/available_modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    可用音频模块列表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/adding_modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    如何添加音频模块
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/capi_mod_dev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAPI 模块开发指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/alsalib_using_audioreach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用 ALSA lib
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach Creator（ARC）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../platform/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    平台参考
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    平台参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../platform/raspberry_pi4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../platform/rb3_gen2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RB3 Gen2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../platform/nxp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NXP IMX8M Plus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qualcomm Linux 音频指南
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Qualcomm Linux 音频指南
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    音频概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/enable-audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    启用音频
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/pal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL 层定制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/tinyalsa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TinyALSA 应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/agm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定制音频图（AGM）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/customize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定制音频用例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高级特性（VoIP ECNS）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/troubleshoot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    故障排查
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7%E8%A1%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    术语对照表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qcom-linux-audio-guide/docs-zh/references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参考资料
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capih" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        capi.h
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capi_typesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        capi_types.h
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="通用音频处理capi接口">通用音频处理（CAPI）接口<a class="headerlink" href="#通用音频处理capi接口" title="Permanent link">&para;</a></h1>
+<ul>
+<li>capi.h</li>
+<li>capi_types.h</li>
+<li>capi_events.h</li>
+<li>capi_properties.h</li>
+</ul>
+<h2 id="capih">capi.h<a class="headerlink" href="#capih" title="Permanent link">&para;</a></h2>
+<p>通用音频处理接口 v2 头文件。</p>
+<p>本文件定义了一个通用的 C 接口，可以封装种类繁多的音频处理模块，使控制代码能够以统一的方式对待它们。</p>
+<p>Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries. SPDX-License-Identifier: BSD-3-Clause-Clear</p>
+<p>Typedefs</p>
+<p><strong><code>typedef struct capi_t capi_t</code></strong></p>
+<p><strong><code>typedef struct capi_vtbl_t capi_vtbl_t</code></strong></p>
+<p><strong><code>typedef capi_err_t (*capi_get_static_properties_f)(capi_proplist_t *init_set_proplist, capi_proplist_t *static_proplist)</code></strong></p>
+<p>按如下方式查询属性：与实例无关的模块静态属性；以及可静态查询的属性集合中的任何属性。</p>
+<p>设置或获取属性时发生的错误必须按以下方式处理：如果模块不支持该属性，则必须在错误码中设置 CAPI_EUNSUPPORTED 标志，并且该属性的 actual_data_len 字段必须置为零。其余属性仍必须继续处理（而不是遇到不支持的属性时就退出）。</p>
+<p><strong>相关数据类型</strong> capi_proplist_t</p>
+<p><strong>详细说明</strong> 此函数用于查询模块创建实例所需的内存。函数必须填充 static_proplist 中各属性的数据。</p>
+<p>作为此函数的输入，客户端必须传入它传给 capi_init_f() 的属性列表。模块可以使用 init_set_proplist 中的属性值来计算其内存需求。</p>
+<p>传给 capi_init_f() 调用的相同属性也会传给本函数，以便模块计算内存需求。</p>
+<p>Error code — Failure（见相应章节）</p>
+<p><strong>依赖项</strong> 无。</p>
+<p><strong>Param init_set_proplist:</strong></p>
+<p><strong>[in]</strong> 指向在 capi_init_f() 调用中传入的相同属性的指针。</p>
+<p><strong>Param static_proplist:</strong></p>
+<p><strong>[out]</strong> 指向属性列表结构的指针。客户端填入其需要属性值的属性 ID。客户端还会为负载分配内存。模块必须在这块内存中填入相关信息。</p>
+<p><strong>Return:</strong></p>
+<p>CAPI_EOK — Success</p>
+<p><strong><code>typedef capi_err_t (*capi_init_f)(capi_t *_pif, capi_proplist_t *init_set_proplist)</code></strong></p>
+<p>实例化模块以建立虚函数表，同时分配模块所需的任何内存。</p>
+<p><strong>相关数据类型</strong> capi_t capi_proplist_t</p>
+<p><strong>详细说明</strong> 模块内部的状态必须同时初始化。</p>
+<p>对于在 init_set_proplist 参数中传入的任何不支持的属性 ID，函数会打印一条消息并继续处理其他属性 ID。</p>
+<p>除 CAPI_EOK 外，本函数返回的所有返回码都被视为 FATAL（致命）。</p>
+<p>Error code — Failure（见相应章节）</p>
+<p><strong>依赖项</strong> 无。</p>
+<p><strong>Param _pif:</strong></p>
+<p><strong>[inout]</strong> 指向模块对象的指针。内存已由客户端根据 CAPI_INIT_MEMORY_REQUIREMENT 属性返回的大小分配。</p>
+<p><strong>Param init_set_proplist:</strong></p>
+<p><strong>[in]</strong> 指向由服务设置、用于初始化过程中的属性的指针。</p>
+<p><strong>Return:</strong></p>
+<p>CAPI_EOK — Success</p>
+<p><strong><code>struct capi_vtbl_t</code></strong></p>
+<p><em>#include <capi.h></em>用于 CAPI 兼容对象的纯 C 实现的函数表。</p>
+<p>对象必须在其实例结构中将指向函数表的指针作为第一个元素。此结构就是所有此类对象的函数表类型。</p>
+<p>Public Members</p>
+<p><strong><code>capi_err_t (*process)(capi_t *_pif, capi_stream_data_t *input[], capi_stream_data_t *output[])</code></strong></p>
+<p>通用函数，处理所有输入端口上的输入数据，并在所有输出端口上提供输出。</p>
+<p><strong>相关数据类型</strong> capi_t capi_stream_data_t</p>
+<p><strong>详细说明</strong> 每次调用 capi_vtbl_t::process() 时，模块的行为取决于它为 CAPI_REQUIRES_DATA_BUFFERING 属性返回的值。关于该行为的说明，请参见 CAPI_REQUIRES_DATA_BUFFERING 的注释。</p>
+<p>本函数中不允许有调试消息。</p>
+<p>模块必须对以下各项进行 NULL 检查，并且仅在它们非 NULL 时才使用：input；output；capi_stream_data_t 中的 capi_buf_t；capi_buf_t 中的 data 缓冲区。</p>
+<p>对于由 capi_vtbl_t::process() 调用引发的某些事件，不得填充输出缓冲区。请查看事件定义中的此项限制。</p>
+<p>Error code — Failure（见相应章节）</p>
+<p><strong>依赖项</strong> 必须已使用 CAPI_INPUT_MEDIA_FORMAT 属性在每个输入端口上设置了有效的输入媒体类型。</p>
+<p><strong>Param _pif:</strong></p>
+<p><strong>[inout]</strong> 指向模块对象的指针。</p>
+<p><strong>Param input:</strong></p>
+<p><strong>[inout]</strong> 指向每个输入端口输入数据的指针数组。数组长度即输入端口数量。客户端使用 CAPI_PORT_NUM_INFO 属性设置输入端口数量。函数必须修改 actual_data_len 字段以指明消耗了多少字节。取决于 stream_data_version（在 capi_stream_flags_t 中），实际结构可以是 capi_stream_data_t 的某个版本（例如 capi_stream_data_t 或 capi_stream_data_v2_t）。input[] 中的某些元素可以为 NULL。当 CAPI_PORT_NUM_INFO 与当前活动端口之间不匹配时会出现这种情况。NULL 元素必须被忽略。</p>
+<p><strong>Param output:</strong></p>
+<p><strong>[out]</strong> 指向每个输出端口输出数据的指针数组。客户端使用 CAPI_PORT_NUM_INFO 属性设置输出端口数量。函数设置 actual_data_len 字段以指明生成了多少字节。取决于 stream_data_version（在 capi_stream_flags_t 中），实际结构可以是 capi_stream_data_t 的某个版本（例如 capi_stream_data_t 或 capi_stream_data_v2_t）。对于单输入/单输出模块，框架通常在调用 process 之前用输入的标志、时间戳和元数据来分配输出的标志、时间戳和元数据。元数据仅在 capi_stream_data_v2_t 及以后版本中可用。如果模块存在延迟，它必须重置输出的 capi_stream_data_t（或 capi_stream_data_v2_t），并在延迟结束后再将其设置回来。output[] 中的某些元素可以为 NULL。当 CAPI_PORT_NUM_INFO 与当前活动端口之间不匹配时会出现这种情况。NULL 元素必须被忽略。</p>
+<p><strong>Return:</strong></p>
+<p>CAPI_EOK — Success</p>
+<p><strong><code>capi_err_t (*end)(capi_t *_pif)</code></strong></p>
+<p>释放模块分配的任何内存。</p>
+<p>调用此函数后，_pif 不再是有效的 CAPI 对象。使用后不要再调用任何 CAPI 函数。</p>
+<p><strong>相关数据类型</strong> capi_t</p>
+<p>Error code — Failure（见相应章节）</p>
+<p><strong>依赖项</strong> 无。</p>
+<p><strong>Param _pif:</strong></p>
+<p><strong>[inout]</strong> 指向模块对象的指针。</p>
+<p><strong>Return:</strong></p>
+<p>CAPI_EOK — Success</p>
+<p><strong><code>capi_err_t (*set_param)(capi_t *_pif, uint32_t param_id, const capi_port_info_t *port_info_ptr, capi_buf_t *params_ptr)</code></strong></p>
+<p>根据唯一的参数 ID 设置参数值。</p>
+<p><strong>相关数据类型</strong> capi_t capi_port_info_t capi_buf_t</p>
+<p><strong>详细说明</strong> 参数指针的 actual_data_len 字段必须至少为参数结构的大小。因此，对于每个调参参数 ID，必须执行以下检查：</p>
+<p>if (params_ptr-&gt;actual_data_len &gt;= sizeof(gain_struct_t)) { : : } else { MSG_1(MSG_SSID_QDSP6, DBG_ERROR_PRIO,"CAPI Libname Set, Bad param size %lu",params_ptr-&gt;actual_data_len); return AR_ENEEDMORE; }</p>
+<p>可选地，可以打印某些参数值以进行调参验证。</p>
+<p>在此代码示例中，gain_struct 仅为示例。请根据参数 ID 使用正确的结构。</p>
+<p>Error code — Failure（见相应章节）</p>
+<p><strong>依赖项</strong> 无。</p>
+<p><strong>Param _pif:</strong></p>
+<p><strong>[inout]</strong> 指向模块对象的指针。</p>
+<p><strong>Param param_id:</strong></p>
+<p><strong>[in]</strong> 要设置其值的参数的 ID。</p>
+<p><strong>Param port_info_ptr:</strong></p>
+<p><strong>[in]</strong> 指向本函数必须操作的端口信息的指针。如果未提供有效的端口索引，则说明端口索引对该 param_id 无关紧要、该 param_id 适用于所有端口，或者端口索引可能是参数负载的一部分。</p>
+<p><strong>Param params_ptr:</strong></p>
+<p><strong>[in]</strong> 指向包含参数值的缓冲区的指针。缓冲区中数据的格式取决于具体实现。</p>
+<p><strong>Return:</strong></p>
+<p>CAPI_EOK — Success</p>
+<p><strong><code>capi_err_t (*get_param)(capi_t *_pif, uint32_t param_id, const capi_port_info_t *port_info_ptr, capi_buf_t *params_ptr)</code></strong></p>
+<p>根据唯一的参数 ID 获取参数值。</p>
+<p><strong>相关数据类型</strong> capi_t capi_port_info_t capi_buf_t</p>
+<p><strong>详细说明</strong> 参数指针的 max_data_len 字段必须至少为参数结构的大小。因此，对于每个调参参数 ID，必须执行以下检查。</p>
+<p>if (params_ptr-&gt;max_data_len &gt;= sizeof(gain_struct_t)) { : : } else { MSG_1(MSG_SSID_QDSP6, DBG_ERROR_PRIO,"CAPI Libname Get, Bad param size %lu",params_ptr-&gt;max_data_len); return AR_ENEEDMORE; }</p>
+<p>返回之前，必须用写入缓冲区的字节数填充 actual_data_len 字段。</p>
+<p>可选地，可以打印某些参数值以进行调参验证。</p>
+<p>在此代码示例中，gain_struct 仅为示例。请根据参数 ID 使用正确的结构。</p>
+<p>Error code — Failure（见相应章节）</p>
+<p><strong>依赖项</strong> 无。</p>
+<p><strong>Param _pif:</strong></p>
+<p><strong>[inout]</strong> 指向模块对象的指针。</p>
+<p><strong>Param param_id:</strong></p>
+<p><strong>[in]</strong> 在本函数中传入其值的参数的参数 ID。例如：  CAPI_LIBNAME_ENABLE CAPI_LIBNAME_FILTER_COEFF</p>
+<p><strong>Param port_info_ptr:</strong></p>
+<p><strong>[in]</strong> 指向本函数必须操作的端口信息的指针。如果端口索引无效，则说明端口索引对该 param_id 无关紧要、该 param_id 适用于所有端口，或者端口信息可能是参数负载的一部分。</p>
+<p><strong>Param params_ptr:</strong></p>
+<p><strong>[out]</strong> 指向要填入参数值的缓冲区的指针。格式取决于具体实现。</p>
+<p><strong>Return:</strong></p>
+<p>CAPI_EOK — Success</p>
+<p><strong><code>capi_err_t (*set_properties)(capi_t *_pif, capi_proplist_t *proplist_ptr)</code></strong></p>
+<p>设置一组属性值。可选地，可以打印某些属性值以进行调试。</p>
+<p>设置或获取属性时发生的错误必须按以下方式处理：如果模块不支持该属性，则必须在错误码中设置 CAPI_EUNSUPPORTED 标志，并且该属性的 actual_data_len 字段必须置为零。其余属性仍必须继续处理（而不是遇到不支持的属性时就退出）。</p>
+<p><strong>相关数据类型</strong> capi_t capi_proplist_t</p>
+<p>Error code — Failure（见相应章节）</p>
+<p><strong>依赖项</strong> 无。</p>
+<p><strong>Param _pif:</strong></p>
+<p><strong>[inout]</strong> 指向模块对象的指针。</p>
+<p><strong>Param proplist_ptr:</strong></p>
+<p><strong>[in]</strong> 指向属性值列表的指针。</p>
+<p><strong>Return:</strong></p>
+<p>CAPI_EOK — Success</p>
+<p><strong><code>capi_err_t (*get_properties)(capi_t *_pif, capi_proplist_t *proplist_ptr)</code></strong></p>
+<p>获取一组属性值。</p>
+<p>设置或获取属性时发生的错误必须按以下方式处理：如果模块不支持该属性，则必须在错误码中设置 CAPI_EUNSUPPORTED 标志，并且该属性的 actual_data_len 字段必须置为零。其余属性仍必须继续处理（而不是遇到不支持的属性时就退出）。</p>
+<p><strong>相关数据类型</strong> capi_t capi_proplist_t</p>
+<p>Error code — Failure（见相应章节）</p>
+<p><strong>依赖项</strong> 无。</p>
+<p><strong>Param _pif:</strong></p>
+<p><strong>[inout]</strong> 指向模块对象的指针。</p>
+<p><strong>Param proplist_ptr:</strong></p>
+<p><strong>[out]</strong> 指向空结构列表的指针，这些结构必须根据所提供的属性 ID 填入相应的属性值。客户端必须填写这些结构的某些元素作为模块的输入。这些元素必须在结构定义中明确指出。</p>
+<p><strong>Return:</strong></p>
+<p>CAPI_EOK — Success</p>
+<p><strong><code>struct capi_t</code></strong></p>
+<p><em>#include <capi.h></em>虚函数表 capi_vtbl_t 的纯 C 接口封装。</p>
+<p>此 capi_t 结构在调用者看来就是一个虚函数表。实例结构中的虚函数表后面还跟着其他结构元素，但这些对 CAPI 对象的使用者是不可见的。此 capi_t 结构是唯一公开可见的部分。</p>
+<p>Public Members</p>
+<p><strong><code>const capi_vtbl_t *vtbl_ptr</code></strong></p>
+<p>指向虚函数表的指针。</p>
+<h2 id="capi_typesh">capi_types.h<a class="headerlink" href="#capi_typesh" title="Permanent link">&para;</a></h2>
+<p>本文件定义了通用音频处理接口的基本数据类型。</p>
+<p>Copyright (c) Qualcomm Innovation Center, Inc. All Rights Reserved. SPDX-License-Identifier: BSD-3-Clause-Clear</p>
+<p>Defines</p>
+<p><strong><code>CAPI_INVALID_VAL</code></strong></p>
+<p>Typedefs</p>
+<p><strong><code>typedef struct capi_buf_t capi_buf_t</code></strong></p>
+<p><strong><code>typedef struct capi_data_format_header_t capi_data_format_header_t</code></strong></p>
+<p><strong><code>typedef struct capi_port_info_t capi_port_info_t</code></strong></p>
+<p><strong><code>struct capi_buf_t</code></strong></p>
+<p><em>#include <capi_types.h></em>包含传入 CAPI 函数的输入缓冲区、输出缓冲区、属性负载、事件负载以及参数。</p>
+<p>Public Members</p>
+<p><strong><code>int8_t *data_ptr</code></strong></p>
+<p>指向原始数据的数据指针。对齐方式取决于原始数据的格式。</p>
+<p><strong><code>uint32_t actual_data_len</code></strong></p>
+<p>有效数据的长度（以字节为单位）。</p>
+<p>对于输入缓冲区：@vtspstrbul 调用者用缓冲区中有效数据的字节数填充此字段。被调用者用它读取的数据字节数填充此字段。</p>
+<p>对于输出缓冲区：@vtspstrbul 调用者不初始化此字段。被调用者用它填入的数据字节数填充此字段。</p>
+<p><strong><code>uint32_t max_data_len</code></strong></p>
+<p>缓冲区分配的总大小（以字节为单位）。</p>
+<p>调用者始终填充此值，被调用者不会修改它。</p>
+<p><strong><code>union capi_stream_flags_t</code></strong></p>
+<p><em>#include <capi_types.h></em>随每个输入缓冲区传入、且必须由模块为每个输出缓冲区填充的标志。这些标志仅适用于与之关联的缓冲区。</p>
+<p>marker_eos 和 end_of_frame 标志与元数据密切相关。实现 #INTF_EXTN_METADATA 的模块必须负责设置/清除/传播 marker_eos 和 end_of_frame。对于其他模块，框架负责处理 end_of_frame 和 marker_eos。如果框架处理 marker_eos/end_of_frame 的方式不能满足模块的需求，则该模块必须实现 #INTF_EXTN_METADATA 扩展并自行处理这些标志。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t is_timestamp_valid</code></strong></p>
+<p>指定时间戳是否有效。</p>
+<p>对于 SISO 模块，框架将时间戳及相关标志（timestamp valid、continue）从输入传播到输出。</p>
+<p>@valuesbul 0 — Not valid 1 — Valid</p>
+<p><strong><code>uint32_t end_of_frame</code></strong></p>
+<p>指定缓冲区是否具有帧结束。</p>
+<p>@valuesbul 0 — end_of_frame is not marked 1 — end_of_frame is marked</p>
+<p>当设置了 end_of_frame 时，即使未达到阈值，模块也必须尝试处理给定的数据。否则，数据可能会被丢弃。</p>
+<p>对于 raw-compressed-data，end_of_frame 通常表示缓冲区包含整数个已编码帧。</p>
+<p>end_of_frame 也会在出现不连续（时间戳不连续、EOS）时被设置。</p>
+<p>如果模块未实现 #INTF_EXTN_METADATA 扩展，则它不得写入此标志。</p>
+<h1 id="intf_extn_metadata-中的框架回调不负责处理-end_of_frame因此支持-intf_extn_metadata-扩展的模块也必须负责设置清除传播此标志">INTF_EXTN_METADATA 中的框架回调不负责处理 end_of_frame。因此，支持 #INTF_EXTN_METADATA 扩展的模块也必须负责设置/清除/传播此标志。<a class="headerlink" href="#intf_extn_metadata-中的框架回调不负责处理-end_of_frame因此支持-intf_extn_metadata-扩展的模块也必须负责设置清除传播此标志" title="Permanent link">&para;</a></h1>
+<p><strong><code>uint32_t marker_eos</code></strong></p>
+<p>表示这是来自上游端口的最后一份有效数据。</p>
+<p>EOS 有两种类型：flushing（冲刷）和 non-flushing（非冲刷）。此标志涉及冲刷型 EOS。</p>
+<p>冲刷型 EOS 会将所有数据从模块中抽取出来。@vtspstrbul 对于解码器，这是通过在无输入的情况下反复调用模块来实现的。对于通用模块，这是通过推入相当于算法延迟量的零数据（零数据量 = 等于算法延迟量的零样本数）来实现的。多端口模块必须在内部负责处理冲刷。</p>
+<p>非冲刷型 EOS 仅通过元数据来指示（不设置 marker_eos）。</p>
+<p>marker_eos 伴随着 EOS 元数据。</p>
+<p>典型的冲刷型 EOS 传播过程如下：在模块输入端给出 EOS。输入上设置 marker_eos 标志。EOS 元数据出现在输入端口的元数据列表中。EOS 经历算法延迟或缓冲延迟（如适用）。输入上设置 marker_eos 标志。EOS 元数据移入模块内部，输入端口的元数据列表被清空。EOS 到达输出、被销毁，或被转换为非冲刷型 EOS。marker_eos 标志移到输出。输入的 marker_eos 被清除，内部元数据列表被清空。当 EOS 移到输出时，输出上的 marker_eos 被设置，输出端口的元数据列表被填充。</p>
+<p>在输入端口上，每当有新的 EOS 到达，或者上一个 EOS 因延迟而滞留在模块内部时，marker_eos 都会被设置。仅当输出列表中存在 EOS 元数据时，输出的 marker_eos 才会被设置。</p>
+<p>对于未实现 INTF_EXTN_METADATA 的模块，marker_eos 的处理由框架负责。对于其他模块，包括 marker_eos 处理在内的 EOS 元数据传播，由 #INTF_EXTN_METADATA 中的 #intf_extn_param_id_metadata_handler_t::metadata_propagate() 负责。但对于创建/销毁/克隆等操作，模块必须自行设置/清除 marker_eos。</p>
+<p><strong><code>uint32_t marker_1</code></strong></p>
+<p>服务用来跟踪数据的数据标记 1。</p>
+<p>模块必须将此标记从输入端口传播到从该端口获取输入的任何输出端口。</p>
+<p><strong><code>uint32_t marker_2</code></strong></p>
+<p>服务用来跟踪数据的数据标记 2。</p>
+<p>模块必须将此标记从输入端口传播到从该端口获取输入的任何输出端口。</p>
+<p><strong><code>uint32_t marker_3</code></strong></p>
+<p>服务用来跟踪数据的数据标记 3。</p>
+<p>模块必须将此标记从输入端口传播到从该端口获取输入的任何输出端口。</p>
+<p><strong><code>uint32_t erasure</code></strong></p>
+<p>显式地发出因下溢导致的擦除（erasure）信号。</p>
+<p>@valuesbul 0 — No erasure 1 — Erasure</p>
+<p>此标志在解码器中触发擦除处理。某些实现会在发出擦除信号时将此标志推给模块。</p>
+<p><strong><code>uint32_t stream_data_version</code></strong></p>
+<p>capi_stream_data_t 结构的版本。</p>
+<p>版本在 capi_stream_version_t 中定义：@vtspstrbul 00 — capi_stream_data_t 01 — capi_stream_data_v2_t 10 — Reserved 11 — Reserved</p>
+<p><strong><code>uint32_t ts_continue</code></strong></p>
+<p>如果设置了 timestamp continue 标志，则不得读取 timestamp 字段。应基于先前设置的时间戳继续推算时间戳值。如果先前的时间戳值无效，则此标志不适用。如果 ts_continue 被复位且 ts_valid 被设置，则同步到输入时间戳。此字段应仅用于 raw compressed 数据格式。</p>
+<p>@valuesbul 0 — ts_continue is set as FALSE 1 — ts_continue is set as TRUE</p>
+<p><strong><code>uint32_t reserved</code></strong></p>
+<p>保留供将来使用。对于输入端口，模块必须忽略此值。</p>
+<p><strong><code>struct capi_stream_flags_t</code></strong></p>
+<p>定义这些标志。</p>
+<p><strong><code>uint32_t word</code></strong></p>
+<p>完整的 32 位字，便于一次性读取或写入整个字。</p>
+<p><strong><code>struct capi_stream_data_t</code></strong></p>
+<p><em>#include <capi_types.h></em>用于一路流的数据结构。</p>
+<p>Public Members</p>
+<p><strong><code>capi_stream_flags_t flags</code></strong></p>
+<p>指示流属性的标志。关于这些标志的更多信息，请参见 capi_stream_flags_t。</p>
+<p><strong><code>int64_t timestamp</code></strong></p>
+<p>第一个数据样本的时间戳，以微秒为单位。</p>
+<p>时间原点不固定；必须从第一个缓冲区的时间戳推断出来。允许为负值。</p>
+<p><strong><code>capi_buf_t *buf_ptr</code></strong></p>
+<p>指向 CAPI 缓冲区元素数组的指针。</p>
+<p>对于去交织非打包（deinterleaved unpacked）的未压缩数据，每个通道使用一个缓冲区。对于 CAPI_DEINTERLEAVED_RAW_COMPRESSED，使用媒体格式中指定数量的缓冲区。对于所有其他情况，仅使用一个缓冲区。</p>
+<p><strong><code>uint32_t bufs_num</code></strong></p>
+<p>buf_ptr 数组中缓冲区元素的数量。</p>
+<p>对于去交织非打包的未压缩数据，此值等于流中的通道数。对于 CAPI_V2_DEINTERLEAVED_RAW_COMPRESSED，使用媒体格式中指定数量的缓冲区。对于所有其他情况，所有数据都放在一个缓冲区中，因此此字段设为 1。</p>
+<p><strong><code>struct capi_stream_data_v2_t</code></strong></p>
+<p><em>#include <capi_types.h></em>用于一路流的数据结构的版本 2。</p>
+<p>Public Members</p>
+<p><strong><code>capi_stream_flags_t flags</code></strong></p>
+<p>指示流属性的标志。</p>
+<p>关于这些标志的更多信息，请参见 capi_stream_flags_t。</p>
+<p><strong><code>int64_t timestamp</code></strong></p>
+<p>第一个数据样本的时间戳，以微秒为单位。</p>
+<p>时间原点不固定；必须从第一个缓冲区的时间戳推断出来。允许为负值。</p>
+<p><strong><code>capi_buf_t *buf_ptr</code></strong></p>
+<p>指向 CAPI 缓冲区元素数组的指针。</p>
+<p>对于去交织非打包的未压缩数据，每个通道使用一个缓冲区。对于 CAPI_V2_DEINTERLEAVED_RAW_COMPRESSED，使用媒体格式中指定数量的缓冲区。对于所有其他情况，仅使用一个缓冲区。</p>
+<p><strong><code>uint32_t bufs_num</code></strong></p>
+<p>buf_ptr 数组中缓冲区元素的数量。</p>
+<p>对于去交织非打包的未压缩数据，此值等于流中的通道数。对于所有其他情况，所有数据都放在一个缓冲区中，因此此字段设为 1。</p>
+<p><strong><code>module_cmn_md_list_t *metadata_list_ptr</code></strong></p>
+<p>指向元数据列表的指针。此列表中的对象指针类型为 #module_cmn_md_t。</p>
+<p><strong><code>struct capi_data_format_header_t</code></strong></p>
+<p><em>#include <capi_types.h></em>传入模块的数据格式的头结构。此头之后紧跟相应的媒体格式负载。</p>
+<p>Public Members</p>
+<p><strong><code>data_format_t data_format</code></strong></p>
+<p>指示数据的表示格式。负载的其余部分取决于数据格式。</p>
+<p><strong><code>struct capi_set_get_media_format_t</code></strong></p>
+<p><em>#include <capi_types.h></em>用于设置和获取媒体格式的头结构。此头之后紧跟相应的媒体格式负载。</p>
+<p>Public Members</p>
+<p><strong><code>capi_data_format_header_t format_header</code></strong></p>
+<p>媒体格式的头。</p>
+<p><strong><code>struct capi_standard_data_format_t</code></strong></p>
+<p><em>#include <capi_types.h></em>用于 CAPI_FIXED_POINT、CAPI_FLOATING_POINT 和 CAPI_IEC61937_PACKETIZED 数据格式的负载结构。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t bitstream_format</code></strong></p>
+<p>有效类型为 media_fmt_api.h 中定义的 MEDIA_FMT_ID_*。</p>
+<p><strong><code>uint32_t num_channels</code></strong></p>
+<p>通道数。</p>
+<p><strong><code>uint32_t bits_per_sample</code></strong></p>
+<p>用于存储每个样本的位数。</p>
+<p>此值应解释为以位为单位的样本字长。例如，如果数据是打包在 24 位中的 24 位音频，则此值为 24。如果数据是打包在 32 位中的 24 位音频，则此值为</p>
+<p><strong><code>uint32_t q_factor</code></strong></p>
+<p>数据定点表示中的小数位数。</p>
+<p>如果数据是浮点数，则此字段必须设为 CAPI_DATA_FORMAT_INVALID_VAL。</p>
+<p><strong><code>uint32_t sampling_rate</code></strong></p>
+<p>采样率，以每秒样本数为单位。</p>
+<p><strong><code>uint32_t data_is_signed</code></strong></p>
+<p>指定数据是否有符号。</p>
+<p>@valuesbul 1 — Signed 0 — Unsigned</p>
+<p><strong><code>capi_interleaving_t data_interleaving</code></strong></p>
+<p>指示数据是否交织。此值对打包（packetized）数据无关紧要。</p>
+<p>@valuesbul CAPI_INTERLEAVED CAPI_DEINTERLEAVED_PACKED CAPI_DEINTERLEAVED_UNPACKED</p>
+<p><strong><code>uint16_t channel_type[CAPI_MAX_CHANNELS]</code></strong></p>
+<p>针对每个 num_channels 的通道类型数组。</p>
+<p>media_fmt_api.h 中定义的 PCM_CHANNEL_* 类型。</p>
+<p><strong><code>struct capi_standard_data_format_v2_t</code></strong></p>
+<p><em>#include <capi_types.h></em>用于 CAPI_FIXED_POINT、CAPI_FLOATING_POINT 和 CAPI_IEC61937_PACKETIZED 数据格式的媒体格式版本 2 负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t minor_version</code></strong></p>
+<p>此负载的次版本号。</p>
+<p><strong><code>uint32_t bitstream_format</code></strong></p>
+<p>有效类型为 media_fmt_api.h 中定义的 MEDIA_FMT_ID_*。</p>
+<p><strong><code>uint32_t num_channels</code></strong></p>
+<p>通道数。</p>
+<p><strong><code>uint32_t bits_per_sample</code></strong></p>
+<p>用于存储每个样本的位数。</p>
+<p>此值应解释为以位为单位的样本字长。例如，如果数据是打包在 24 位中的 24 位音频，则此值为 如果数据是打包在 32 位中的 24 位音频，则此值为 32。</p>
+<p><strong><code>uint32_t q_factor</code></strong></p>
+<p>数据定点表示中的小数位数。</p>
+<p>如果数据是浮点数，则此字段必须设为 CAPI_DATA_FORMAT_INVALID_VAL。</p>
+<p><strong><code>uint32_t sampling_rate</code></strong></p>
+<p>采样率，以每秒样本数为单位。</p>
+<p><strong><code>uint32_t data_is_signed</code></strong></p>
+<p>指定数据是否有符号。</p>
+<p>@valuesbul 1 — Signed 0 — Unsigned</p>
+<p><strong><code>capi_interleaving_t data_interleaving</code></strong></p>
+<p>指示数据是否交织。此值对打包数据无关紧要。</p>
+<p>@valuesbul CAPI_INTERLEAVED CAPI_DEINTERLEAVED_PACKED CAPI_DEINTERLEAVED_UNPACKED</p>
+<p><strong><code>capi_channel_type_t channel_type[0]</code></strong></p>
+<p>通道类型负载为可变长度，取决于通道数。此负载包含每个 num_channels 的通道类型。</p>
+<p>media_fmt_api.h 中定义的 PCM_CHANNEL_* 类型</p>
+<p><strong><code>struct capi_raw_compressed_data_format_t</code></strong></p>
+<p><em>#include <capi_types.h></em>用于 RAW_COMPRESSED 数据格式的负载头。</p>
+<p>此结构之后紧跟着 media_fmt_api.h 或特定解码器 API 文件中为该特定数据格式定义的媒体格式结构。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t bitstream_format</code></strong></p>
+<p>有效类型为 media_fmt_api.h 中定义的 MEDIA_FMT_ID_*。</p>
+<p><strong><code>struct capi_channel_mask_t</code></strong></p>
+<p><em>#include <capi_types.h></em>Public Members</p>
+<p><strong><code>uint32_t channel_mask_lsw</code></strong></p>
+<p>通道掩码的 LSW（低有效字）。</p>
+<p><strong><code>uint32_t channel_mask_msw</code></strong></p>
+<p>通道掩码的 MSW（高有效字）。</p>
+<p><strong><code>struct capi_deinterleaved_raw_compressed_data_format_t</code></strong></p>
+<p><em>#include <capi_types.h></em>用于 DEINTERLEAVED_RAW_COMPRESSED 数据格式的负载头。与 raw compressed 不同，此结构之后没有媒体格式特定的负载，只跟随通道掩码。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t minor_version</code></strong></p>
+<p>此负载的次版本号。目前仅支持版本 1。</p>
+<p><strong><code>uint32_t bitstream_format</code></strong></p>
+<p>有效类型为 media_fmt_api.h 中定义的 MEDIA_FMT_ID_*。</p>
+<p><strong><code>uint32_t bufs_num</code></strong></p>
+<p>缓冲区数量。</p>
+<p><strong><code>struct capi_port_info_t</code></strong></p>
+<p><em>#include <capi_types.h></em>带有数据端口信息的负载结构头。</p>
+<p>控制端口不使用此结构。控制端口通过接口扩展来处理。</p>
+<p>Public Members</p>
+<p><strong><a href="../args_arosal/"><code>bool_t</code></a> <code>is_valid</code></strong></p>
+<p>指示 port_index 是否有效。</p>
+<p>@valuesbul 0 — Not valid 1 — Valid</p>
+<p><strong><a href="../args_arosal/"><code>bool_t</code></a> <code>is_input_port</code></strong></p>
+<p>指示端口的类型。</p>
+<p>@valuesbul TRUE — Input port FALSE — Output port</p>
+<p><strong><code>uint32_t port_index</code></strong></p>
+<p>标识端口。</p>
+<p>索引值必须是从零开始的连续数字。输入端口和输出端口有各自独立的序列。例如，如果一个模块有三个输入端口和两个输出端口：@vtspstrbul 输入端口的索引值为 0、1 和 2。输出端口的索引值为 0 和 1。</p>
+<p>当调用 capi_vtbl_t::process() 时：@vtspstrbul input[0] 中的数据对应输入端口 0。input[1] 中的数据对应输入端口 1。以此类推。输出端口 0 必须将数据填入 output[0]。输出端口 1 必须将数据填入 output[1]。以此类推。</p>
+<h2 id="capi_eventsh">capi_events.h<a class="headerlink" href="#capi_eventsh" title="Permanent link">&para;</a></h2>
+<p>本文件定义了模块可以使用 CAPI 接口触发的事件。</p>
+<p>Copyright (c) Qualcomm Innovation Center, Inc. All Rights Reserved. SPDX-License-Identifier: BSD-3-Clause-Clear</p>
+<p>Typedefs</p>
+<p><strong><code>typedef struct capi_event_info_t capi_event_info_t</code></strong></p>
+<p><strong><code>struct capi_event_info_t</code></strong></p>
+<p><em>#include <capi_events.h></em>包含关于事件的信息。</p>
+<p>Public Members</p>
+<p><strong><code>capi_port_info_t port_info</code></strong></p>
+<p>触发此事件所针对的端口。</p>
+<p>对于不特定于任何端口的事件，或者当负载包含端口信息时，将此字段设为无效值。</p>
+<p><strong><code>capi_buf_t payload</code></strong></p>
+<p>存放事件负载的缓冲区。</p>
+<p><strong><code>struct capi_event_KPPS_t</code></strong></p>
+<p><em>#include <capi_events.h></em>用于 CAPI_EVENT_KPPS 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t KPPS</code></strong></p>
+<p>模块的每秒千包（Kilo packets per second）需求。</p>
+<p><strong><code>struct capi_event_bandwidth_t</code></strong></p>
+<p><em>#include <capi_events.h></em>用于 CAPI_EVENT_BANDWIDTH 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t code_bandwidth</code></strong></p>
+<p>模块的代码带宽（以每秒字节数为单位）。</p>
+<p><strong><code>uint32_t data_bandwidth</code></strong></p>
+<p>模块的数据带宽（以每秒字节数为单位）。</p>
+<p><strong><code>struct capi_event_data_to_dsp_client_t</code></strong></p>
+<p><em>#include <capi_events.h></em>已弃用。参见 capi_event_data_to_dsp_client_v2_t。</p>
+<p>用于 CAPI_EVENT_DATA_TO_DSP_CLIENT 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t param_id</code></strong></p>
+<p>指示负载中所存在数据的类型。</p>
+<p><strong><code>uint32_t token</code></strong></p>
+<p>可选的令牌，用于指示附加信息，例如实例标识符。</p>
+<p><strong><code>capi_buf_t payload</code></strong></p>
+<p>包含负载的缓冲区。</p>
+<p>一旦回调返回，即可安全地销毁或重用此缓冲区。</p>
+<p><strong><code>struct capi_event_dynamic_inplace_change_t</code></strong></p>
+<p><em>#include <capi_events.h></em>已弃用。</p>
+<p>用于 CAPI_EVENT_DYNAMIC_INPLACE_CHANGE 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t is_inplace</code></strong></p>
+<p>@valuesbul 0 — Indicates module changed to non-inplace Non zero — Indicates module changed to inplace</p>
+<p><strong><code>struct capi_event_data_to_dsp_client_v2_t</code></strong></p>
+<p><em>#include <capi_events.h></em>用于 CAPI_EVENT_DATA_TO_DSP_CLIENT_V2 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint64_t dest_address</code></strong></p>
+<p>此事件要发送到的地址。必须使用注册期间提供的地址。</p>
+<p><strong><code>uint32_t token</code></strong></p>
+<p>可选的令牌，用于指示附加信息，例如实例标识符。</p>
+<p><strong><code>uint32_t event_id</code></strong></p>
+<p>标识事件。</p>
+<p><strong><code>capi_buf_t payload</code></strong></p>
+<p>包含负载的缓冲区。</p>
+<p>一旦回调返回，即可安全地销毁或重用此缓冲区。</p>
+<p><strong><code>struct capi_event_data_to_dsp_service_t</code></strong></p>
+<p><em>#include <capi_events.h></em>用于 CAPI_EVENT_DATA_TO_DSP_SERVICE 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t param_id</code></strong></p>
+<p>指示负载中所存在数据的类型。</p>
+<p><strong><code>uint32_t token</code></strong></p>
+<p>可选的令牌，用于指示附加信息，例如实例标识符。</p>
+<p><strong><code>capi_buf_t payload</code></strong></p>
+<p>包含负载的缓冲区。</p>
+<p>一旦回调返回，即可安全地销毁或重用此缓冲区。</p>
+<p><strong><code>struct capi_event_get_data_from_dsp_service_t</code></strong></p>
+<p><em>#include <capi_events.h></em>用于 CAPI_EVENT_GET_DATA_FROM_DSP_SERVICE 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t param_id</code></strong></p>
+<p>指示从框架所需数据的类型。</p>
+<p><strong><code>uint32_t token</code></strong></p>
+<p>可选的令牌，用于指示附加信息，例如实例标识符。</p>
+<p><strong><code>capi_buf_t payload</code></strong></p>
+<p>包含负载的缓冲区。</p>
+<p>一旦回调返回，即可安全地销毁或重用此缓冲区。</p>
+<p><strong><code>struct capi_event_process_state_t</code></strong></p>
+<p><em>#include <capi_events.h></em>用于 CAPI_EVENT_PROCESS_STATE 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><a href="../args_arosal/"><code>bool_t</code></a> <code>is_enabled</code></strong></p>
+<p>指定模块是否启用。如果模块被禁用，则不会调用其 capi_vtbl_t::process() 函数。</p>
+<p>@valuesbul 0 — Disabled 1 — Enabled (Default)</p>
+<p><strong><code>struct capi_event_algorithmic_delay_t</code></strong></p>
+<p><em>#include <capi_events.h></em>用于 CAPI_EVENT_ALGORITHMIC_DELAY 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t delay_in_us</code></strong></p>
+<p>由模块引起的算法延迟，以微秒为单位。</p>
+<p>此值<strong>不得</strong>包含缓冲延迟。否则，元数据偏移调整将被错误计算。</p>
+<p><strong><code>struct capi_event_headroom_t</code></strong></p>
+<p><em>#include <capi_events.h></em>已弃用。请改用控制链路。</p>
+<p>用于 CAPI_EVENT_HEADROOM 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t headroom_in_millibels</code></strong></p>
+<p>模块的余量（headroom）需求。默认值为零。</p>
+<p><strong><code>struct capi_port_data_threshold_change_t</code></strong></p>
+<p><em>#include <capi_events.h></em>用于 CAPI_EVENT_PORT_DATA_THRESHOLD_CHANGE 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t new_threshold_in_bytes</code></strong></p>
+<p>端口的阈值。</p>
+<p><strong><code>struct capi_library_base_t</code></strong></p>
+<p><em>#include <capi_events.h></em>作为每个库虚函数表第一个元素的函数指针。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t (*get_interface_id)(void *obj_ptr)</code></strong></p>
+<p>返回与此对象所实现接口相关联的 ID。</p>
+<p><strong><code>void (*end)(void *obj_ptr)</code></strong></p>
+<p>反初始化对象并释放与之关联的内存。此调用之后，对象指针不再有效。</p>
+<p><strong><code>struct capi_event_get_library_instance_t</code></strong></p>
+<p><em>#include <capi_events.h></em>用于 CAPI_EVENT_GET_LIBRARY_INSTANCE 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t id</code></strong></p>
+<p>标识库。</p>
+<p><strong><code>void *ptr</code></strong></p>
+<p>指向库实例的指针。</p>
+<p><strong><code>struct capi_event_dlinfo_t</code></strong></p>
+<p><em>#include <capi_events.h></em>用于 CAPI_EVENT_GET_DLINFO 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t is_dl</code></strong></p>
+<p>指示 SO 文件是否为动态加载。</p>
+<p>@valuesbul TRUE — File is dynamically loaded FALSE — Otherwise</p>
+<p>此负载的其余部分仅在 SO 文件被加载时适用。</p>
+<p><strong><code>uint32_t load_addr_lsw</code></strong></p>
+<p>SO 文件加载到的物理地址的低 32 位。</p>
+<p><strong><code>uint32_t load_addr_msw</code></strong></p>
+<p>SO 文件加载到的物理地址的高 32 位。</p>
+<p>由 load_addr_lsw 和 load_addr_msw 组成的 64 位数值必须按 32 字节对齐，并且必须已被预先映射。</p>
+<p><strong><code>uint32_t load_size</code></strong></p>
+<p>已加载 SO 文件的大小（以字节为单位）。</p>
+<p><strong><code>struct capi_event_hw_accl_proc_delay_t</code></strong></p>
+<p><em>#include <capi_events.h></em>用于 CAPI_EVENT_HW_ACCL_PROC_DELAY 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t delay_in_us</code></strong></p>
+<p>模块的硬件需求。默认值为 0。</p>
+<p><strong><code>struct capi_event_island_vote_t</code></strong></p>
+<p><em>#include <capi_events.h></em>用于 CAPI_EVENT_ISLAND_VOTE 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t island_vote</code></strong></p>
+<p>置于 LPI 容器中的模块的孤岛（island）投票。</p>
+<p>@valuesbul 0 — Vote for island entry 1 — Vote against island entry</p>
+<h2 id="capi_propertiesh">capi_properties.h<a class="headerlink" href="#capi_propertiesh" title="Permanent link">&para;</a></h2>
+<p>本文件定义了在通用音频处理接口中获取和设置属性所用的数据结构和 ID。</p>
+<p>Copyright (c) Qualcomm Innovation Center, Inc. All Rights Reserved. SPDX-License-Identifier: BSD-3-Clause-Clear</p>
+<p>Typedefs</p>
+<p><strong><code>typedef struct capi_prop_t capi_prop_t</code></strong></p>
+<p><strong><code>typedef struct capi_param_persistence_info_t capi_param_persistence_info_t</code></strong></p>
+<p><strong><code>struct capi_prop_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>包含可发送给模块的属性。</p>
+<p>属性用于通用的 set 和 get 命令，这些命令与底层模块无关。</p>
+<p>Public Members</p>
+<p><strong><code>capi_property_id_t id</code></strong></p>
+<p>标识正在发送的属性。</p>
+<p><strong><code>capi_buf_t payload</code></strong></p>
+<p>负载缓冲区。</p>
+<p>对于 capi_vtbl_t::set_properties() 调用，缓冲区必须包含与属性值对应的负载，并且必须足够大以容纳 set_properties() 调用的负载。</p>
+<p><strong><code>capi_port_info_t port_info</code></strong></p>
+<p>关于该属性所适用端口的信息。</p>
+<p>如果该属性适用于任何端口，则必须在端口信息中将 is_valid 标志设为 FALSE。</p>
+<p><strong><code>struct capi_proplist_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>包含 CAPI 属性列表。此结构可用于向模块发送属性列表或查询属性。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t props_num</code></strong></p>
+<p>数组中元素的数量。</p>
+<p><strong><code>capi_prop_t *prop_ptr</code></strong></p>
+<p>CAPI 属性元素数组。</p>
+<p><strong><code>struct capi_init_memory_requirement_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_INIT_MEMORY_REQUIREMENT 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t size_in_bytes</code></strong></p>
+<p>内存量。</p>
+<p><strong><code>struct capi_stack_size_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_STACK_SIZE 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t size_in_bytes</code></strong></p>
+<p>栈的大小。</p>
+<p><strong><code>struct capi_max_metadata_size_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>已弃用。参见 #module_cmn_md_t。</p>
+<p>用于 CAPI_MAX_METADATA_SIZE 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t output_port_index</code></strong></p>
+<p>此属性所适用的输出端口的索引。</p>
+<p><strong><code>uint32_t size_in_bytes</code></strong></p>
+<p>元数据的大小。</p>
+<p><strong><code>struct capi_is_inplace_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_IS_INPLACE 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><a href="../args_arosal/"><code>bool_t</code></a> <code>is_inplace</code></strong></p>
+<p>指示模块是否能够进行原地（in-place）处理。</p>
+<p>@valuesbul 0 — Does not support in-place processing 1 — Supports in-place processing</p>
+<p><strong><code>struct capi_requires_data_buffering_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_REQUIRES_DATA_BUFFERING 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><a href="../args_arosal/"><code>bool_t</code></a> <code>requires_data_buffering</code></strong></p>
+<p>指定数据缓冲是否设为 TRUE。</p>
+<p><strong><code>struct capi_is_elementary_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_IS_ELEMENTARY 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><a href="../args_arosal/"><code>bool_t</code></a> <code>is_elementary</code></strong></p>
+<p>指示模块是否可以作为基本（elementary）模块运行。</p>
+<p>@valuesbul 0 — This module is an elementary module 1 — This module is not an elementary module</p>
+<p><strong><code>struct capi_min_port_num_info_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_MIN_PORT_NUM_INFO 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t num_min_input_ports</code></strong></p>
+<p>最小输入端口数。</p>
+<p><strong><code>uint32_t num_min_output_ports</code></strong></p>
+<p>最小输出端口数。</p>
+<p><strong><code>struct capi_event_callback_info_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_EVENT_CALLBACK_INFO 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>capi_event_cb_f event_cb</code></strong></p>
+<p>用于触发事件的回调函数。</p>
+<p><strong><code>void *event_context</code></strong></p>
+<p>用作此回调函数上下文的不透明指针值。</p>
+<p><strong><code>struct capi_port_num_info_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_PORT_NUM_INFO 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t num_input_ports</code></strong></p>
+<p>输入端口数。</p>
+<p><strong><code>uint32_t num_output_ports</code></strong></p>
+<p>输出端口数。</p>
+<p><strong><code>struct capi_heap_id_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_HEAP_ID 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t heap_id</code></strong></p>
+<p>用于分配内存的堆 ID。</p>
+<p><strong><code>struct capi_metadata_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>已弃用。参见 #module_cmn_md_t。</p>
+<p>用于 CAPI_METADATA 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>capi_buf_t payload</code></strong></p>
+<p>包含元数据。</p>
+<p><strong><code>struct capi_port_data_threshold_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_PORT_DATA_THRESHOLD 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t threshold_in_bytes</code></strong></p>
+<p>输入或输出端口的阈值。</p>
+<p><strong><code>struct capi_output_media_format_size_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_OUTPUT_MEDIA_FORMAT_SIZE 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t size_in_bytes</code></strong></p>
+<p>输出端口媒体格式负载的大小。</p>
+<p><strong><code>struct capi_num_needed_framework_extensions_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_NUM_NEEDED_FRAMEWORK_EXTENSIONS 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t num_extensions</code></strong></p>
+<p>框架扩展的数量。</p>
+<p><strong><code>struct capi_framework_extension_id_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_NEEDED_FRAMEWORK_EXTENSIONS 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t id</code></strong></p>
+<p>标识框架扩展。</p>
+<p><strong><code>struct capi_log_code_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_LOG_CODE 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t code</code></strong></p>
+<p>用于记录模块数据的代码。</p>
+<p><strong><code>struct capi_session_identifier_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>已弃用。用于 CAPI_SESSION_IDENTIFIER 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint16_t service_id</code></strong></p>
+<p>标识包含该模块的服务。</p>
+<p>此 ID 是一个不透明值，不保证向后兼容。因此，模块不应基于此值来决定其行为。</p>
+<p><strong><code>uint16_t session_id</code></strong></p>
+<p>标识由 service_id 所指示服务内的会话。</p>
+<p>模块可以将此值与 service_id 结合使用，以生成唯一 ID，用于在同一服务会话内建立模块间通信或用于调试消息。</p>
+<p><strong><code>struct capi_custom_property_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_CUSTOM_PROPERTY 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t secondary_prop_id</code></strong></p>
+<p>次级属性 ID，指示负载其余部分的格式。</p>
+<p>此 ID 之后紧跟着由服务定义的自定义负载。如果模块不支持某个自定义属性或次级属性 ID，则它必须在 capi_prop_t 的 payload.actual_data_len 中返回 0。</p>
+<p><strong><code>struct capi_interface_extns_list_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_INTERFACE_EXTENSIONS 属性的负载。</p>
+<p>此结构之后紧跟着一个包含 num_extensions 个元素的 capi_interface_extn_desc_t 结构数组。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t num_extensions</code></strong></p>
+<p>客户端正在查询的接口扩展的数量。客户端必须提供此值。</p>
+<p><strong><code>struct capi_interface_extn_desc_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>一个包含 capi_interface_extns_list_t::num_extensions 个元素的数组中每个元素的数据类型（用于 CAPI_INTERFACE_EXTENSIONS 属性）。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t id</code></strong></p>
+<p>标识正在查询的接口扩展。客户端必须提供此值。</p>
+<p><strong><a href="../args_arosal/"><code>bool_t</code></a> <code>is_supported</code></strong></p>
+<p>指示是否支持此扩展。</p>
+<p>@valuesbul 0 — Not supported 1 — Supported</p>
+<p>模块必须提供此值。</p>
+<p><strong><code>capi_buf_t capabilities</code></strong></p>
+<p>可选缓冲区，包含一个可用于进一步协商与此扩展相关能力的结构。</p>
+<p>该结构在接口扩展文件中定义。如果它未在该文件中定义，则说明该接口扩展没有能力结构。</p>
+<p><strong><code>struct capi_register_event_to_dsp_client_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_REGISTER_EVENT_DATA_TO_DSP_CLIENT_V2 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t event_id</code></strong></p>
+<p>标识要注册的事件。</p>
+<p><strong><a href="../args_arosal/"><code>bool_t</code></a> <code>is_registered</code></strong></p>
+<p>指示是否存在已注册该事件的客户端。</p>
+<p>@valuesbul TRUE — Event is registered FALSE — Event is not registered</p>
+<p><strong><code>struct capi_register_event_to_dsp_client_v2_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_REGISTER_EVENT_DATA_TO_DSP_CLIENT_V2 事件的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint64_t dest_address</code></strong></p>
+<p>此事件必须发送到的地址。</p>
+<p><strong><code>uint32_t token</code></strong></p>
+<p>触发此事件时要使用的令牌。</p>
+<p><strong><code>uint32_t event_id</code></strong></p>
+<p>标识要注册的事件。</p>
+<p><strong><a href="../args_arosal/"><code>bool_t</code></a> <code>is_register</code></strong></p>
+<p>指示是否存在已注册此事件的客户端。</p>
+<p>@valuesbul 0 — FALSE (event is not registered) 1 — TRUE (event is registered)</p>
+<p><strong><code>capi_buf_t event_cfg</code></strong></p>
+<p>事件配置。数据根据事件 ID 进行解释。</p>
+<p><strong><code>struct capi_param_persistence_info_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>CAPI_PARAM_PERSISTENCE_INFO 属性的负载头。此结构之后紧跟着参数 ID 负载。</p>
+<p>Public Members</p>
+<p><strong><a href="../args_arosal/"><code>bool_t</code></a> <code>is_register</code></strong></p>
+<p>指示该属性用于内存的注册还是注销。</p>
+<p>@valuesbul TRUE — Registration FALSE — Deregistration</p>
+<p><strong><code>capi_persistence_type_t mem_type</code></strong></p>
+<p>指示与后续参数 ID 负载关联的持久化内存的类型。</p>
+<p>@valuesbul CAPI_PERSISTENT_MEM CAPI_GLOBAL_PERSISTENT</p>
+<p><strong><code>uint32_t param_id</code></strong></p>
+<p>标识参数。</p>
+<p><strong><code>struct capi_module_instance_id_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_MODULE_INSTANCE_ID 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t module_id</code></strong></p>
+<p>标识模块。</p>
+<p><strong><code>uint32_t module_instance_id</code></strong></p>
+<p>标识模块实例。</p>
+<p><strong><code>struct capi_logging_info_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 CAPI_LOGGING_INFO 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint32_t log_id</code></strong></p>
+<p>模块的有效日志 ID。</p>
+<p>任何用此 ID 打印的消息都能唯一标识来自该模块此实例的消息。</p>
+<p><strong><code>uint32_t log_id_mask</code></strong></p>
+<p>在 log_id 字段中保留供模块修改的位。</p>
+<p>模块可以在诸如 EOS 或 flush 等不连续期间使用这些位来更改日志 ID。</p>
+<p><strong><code>struct capi_module_version_info_t</code></strong></p>
+<p><em>#include <capi_properties.h></em>用于 #CAPI_MODULE_VERSION 属性的负载。</p>
+<p>Public Members</p>
+<p><strong><code>uint16_t version_major</code></strong></p>
+<p>模块的主版本号</p>
+<p><strong><code>uint16_t version_minor</code></strong></p>
+<p>模块的次版本号</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../arspf_api/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 引擎 API">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                引擎 API
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../posal_api/" class="md-footer__link md-footer__link--next" aria-label="下一页: POSAL 平台抽象层">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                POSAL 平台抽象层
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
