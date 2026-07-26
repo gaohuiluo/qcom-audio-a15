@@ -5,12 +5,12 @@
 <v:ud v:nameu="msvNoAutoConnect" v:val="VT0(1):26"></v:ud>
 </v:userdefs>
 </v:documentproperties>
-<style>.svg-2 .st1 { fill: none; stroke: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1 }
-.svg-2 .st2 { fill: #fafafa; fill-opacity: 0.25; stroke: #f5f032; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
-.svg-2 .st3 { fill: #f5f032; font-family: Roboto; font-size: 1.00001em; letter-spacing: 0.0833327em }
-.svg-2 .st4 { font-size: 1em }
-.svg-2 .st5 { stroke: #f5f032; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
-.svg-2 .st6 { fill: none; fill-rule: evenodd; font-size: 12px; overflow: visible; stroke-linecap: square; stroke-miterlimit: 3 }</style>
+<style>.st1 { fill: none; stroke: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1 }
+.st2 { fill: #fafafa; fill-opacity: 0.25; stroke: #f5f032; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.st3 { fill: #f5f032; font-family: Roboto; font-size: 1.00001em; letter-spacing: 0.0833327em }
+.st4 { font-size: 1em }
+.st5 { stroke: #f5f032; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2 }
+.st6 { fill: none; fill-rule: evenodd; font-size: 12px; overflow: visible; stroke-linecap: square; stroke-miterlimit: 3 }</style>
 <g v:groupcontext="foregroundPage" v:index="1" v:mid="0">
 <title>Page-1</title>
 <v:pageproperties v:drawingscale="0.0138889" v:drawingunits="29" v:pagescale="0.0138889" v:shadowoffsetx="9" v:shadowoffsety="-9"></v:pageproperties>
