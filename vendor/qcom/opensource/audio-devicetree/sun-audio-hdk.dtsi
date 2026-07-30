@@ -1,0 +1,21 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+ */
+
+#include "sun-audio-qrd.dtsi"
+
+&fm_i2s1_gpios {
+	status = "okay";
+};
+
+&sun_snd {
+	qcom,model = "sun-qrd-snd-card";
+
+	qcom,msm-mbhc-usbc-audio-supported = <0>;
+	qcom,msm-mbhc-hphl-swh = <1>;
+	qcom,msm-mbhc-gnd-swh = <1>;
+	qcom,wcn-bt-ext = <0>;
+	qcom,tdm-audio-intf = <1>;
+	qcom,sec-mi2s-gpios = <&fm_i2s1_gpios>;
+};
