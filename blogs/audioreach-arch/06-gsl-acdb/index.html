@@ -12,13 +12,13 @@
         <meta name="author" content="gaohuiluo">
       
       
-        <link rel="canonical" href="https://gaohuiluo.github.io/qcom-audio-a15/qcom-linux-audio-guide/docs-zh/agm/">
+        <link rel="canonical" href="https://gaohuiluo.github.io/qcom-audio-a15/blogs/audioreach-arch/06-gsl-acdb/">
       
       
-        <link rel="prev" href="../tinyalsa/">
+        <link rel="prev" href="../05-agm/">
       
       
-        <link rel="next" href="../customize/">
+        <link rel="next" href="../07-gpr/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>定制音频图（AGM） - Qualcomm 音频文档资料库</title>
+        <title>六、GSL + ACDB：图求解与标定 - Qualcomm 音频文档资料库</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#定制音频图" class="md-skip">
+        <a href="#第-6-篇-gsl--acdb图求解与标定" class="md-skip">
           跳转至
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              定制音频图（AGM）
+              六、GSL + ACDB：图求解与标定
             
           </span>
         </div>
@@ -246,11 +246,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../blogs/qcom-audioreach-zh/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../qcom-audioreach-zh/" class="md-tabs__link">
           
   
   
@@ -290,13 +292,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../overview/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../qcom-linux-audio-guide/docs-zh/overview/" class="md-tabs__link">
           
   
   
@@ -408,8 +408,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -423,19 +425,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -453,7 +458,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -471,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/qcom-audioreach-zh/" class="md-nav__link">
+      <a href="../../qcom-audioreach-zh/" class="md-nav__link">
         
   
   
@@ -499,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/linaro-connect-2024-talk/" class="md-nav__link">
+      <a href="../../linaro-connect-2024-talk/" class="md-nav__link">
         
   
   
@@ -524,6 +529,8 @@
                 
   
   
+    
+  
   
   
     
@@ -557,18 +564,21 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../blogs/audioreach-arch/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -586,13 +596,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -612,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/01-overview/" class="md-nav__link">
+      <a href="../01-overview/" class="md-nav__link">
         
   
   
@@ -640,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/02-pal-stream/" class="md-nav__link">
+      <a href="../02-pal-stream/" class="md-nav__link">
         
   
   
@@ -668,7 +678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/03-pal-rm-device/" class="md-nav__link">
+      <a href="../03-pal-rm-device/" class="md-nav__link">
         
   
   
@@ -696,7 +706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/04-pal-session-ipc/" class="md-nav__link">
+      <a href="../04-pal-session-ipc/" class="md-nav__link">
         
   
   
@@ -724,7 +734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/05-agm/" class="md-nav__link">
+      <a href="../05-agm/" class="md-nav__link">
         
   
   
@@ -749,10 +759,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/06-gsl-acdb/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    六、GSL + ACDB：图求解与标定
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -768,6 +805,137 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#一两个输入gkv-与-ckv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、两个输入：GKV 与 CKV
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#二acdb图与标定的数据库" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、ACDB：图与标定的数据库
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、ACDB：图与标定的数据库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gkv--子图图求解第一步" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GKV → 子图：图求解第一步
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#三gsl-的核心对象" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、GSL 的核心对象
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、GSL 的核心对象">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#子图池为什么子图能复用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        子图池：为什么子图能复用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#四图求解与下发gsl_open-全流程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、图求解与下发：gsl_open 全流程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#五数据面共享内存与读写" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、数据面：共享内存与读写
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#六gsl-还负责" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、GSL 还负责
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -780,7 +948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/07-gpr/" class="md-nav__link">
+      <a href="../07-gpr/" class="md-nav__link">
         
   
   
@@ -808,7 +976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/08-spf-dsp/" class="md-nav__link">
+      <a href="../08-spf-dsp/" class="md-nav__link">
         
   
   
@@ -836,7 +1004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/09-kernel/" class="md-nav__link">
+      <a href="../09-kernel/" class="md-nav__link">
         
   
   
@@ -2068,10 +2236,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -2099,22 +2265,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -2132,7 +2295,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2150,7 +2313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/overview/" class="md-nav__link">
         
   
   
@@ -2178,7 +2341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../enable-audio/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/enable-audio/" class="md-nav__link">
         
   
   
@@ -2206,7 +2369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pal/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/pal/" class="md-nav__link">
         
   
   
@@ -2234,7 +2397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tinyalsa/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/tinyalsa/" class="md-nav__link">
         
   
   
@@ -2259,37 +2422,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    定制音频图（AGM）
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/agm/" class="md-nav__link">
         
   
   
@@ -2305,115 +2441,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#音频图相关术语" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频图相关术语
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#图的分段" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        图的分段
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#音频图示例" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频图示例
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="音频图示例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#音频图管理器agm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频图管理器（AGM）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#audioreach-图服务args" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AudioReach 图服务（ARGS）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#音频校准数据库acdb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频校准数据库（acdb）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="音频校准数据库（acdb）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#信号处理框架spf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        信号处理框架（SPF）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2426,7 +2453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../customize/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/customize/" class="md-nav__link">
         
   
   
@@ -2454,7 +2481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/features/" class="md-nav__link">
         
   
   
@@ -2482,7 +2509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshoot/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/troubleshoot/" class="md-nav__link">
         
   
   
@@ -2510,7 +2537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7%E8%A1%A8/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7%E8%A1%A8/" class="md-nav__link">
         
   
   
@@ -2538,7 +2565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../references/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/references/" class="md-nav__link">
         
   
   
@@ -2684,10 +2711,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#音频图相关术语" class="md-nav__link">
+  <a href="#一两个输入gkv-与-ckv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        音频图相关术语
+        一、两个输入：GKV 与 CKV
       
     </span>
   </a>
@@ -2695,44 +2722,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#图的分段" class="md-nav__link">
+  <a href="#二acdb图与标定的数据库" class="md-nav__link">
     <span class="md-ellipsis">
       
-        图的分段
+        二、ACDB：图与标定的数据库
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#音频图示例" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频图示例
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="音频图示例">
+    <nav class="md-nav" aria-label="二、ACDB：图与标定的数据库">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#音频图管理器agm" class="md-nav__link">
+  <a href="#gkv--子图图求解第一步" class="md-nav__link">
     <span class="md-ellipsis">
       
-        音频图管理器（AGM）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#audioreach-图服务args" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AudioReach 图服务（ARGS）
+        GKV → 子图：图求解第一步
       
     </span>
   </a>
@@ -2745,22 +2750,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#音频校准数据库acdb" class="md-nav__link">
+  <a href="#三gsl-的核心对象" class="md-nav__link">
     <span class="md-ellipsis">
       
-        音频校准数据库（acdb）
+        三、GSL 的核心对象
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="音频校准数据库（acdb）">
+    <nav class="md-nav" aria-label="三、GSL 的核心对象">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#信号处理框架spf" class="md-nav__link">
+  <a href="#子图池为什么子图能复用" class="md-nav__link">
     <span class="md-ellipsis">
       
-        信号处理框架（SPF）
+        子图池：为什么子图能复用
       
     </span>
   </a>
@@ -2769,6 +2774,50 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#四图求解与下发gsl_open-全流程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、图求解与下发：gsl_open 全流程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#五数据面共享内存与读写" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、数据面：共享内存与读写
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#六gsl-还负责" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、GSL 还负责
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小结
+      
+    </span>
+  </a>
   
 </li>
       
@@ -2792,192 +2841,171 @@
   
 
 
-<h1 id="定制音频图">定制音频图<a class="headerlink" href="#定制音频图" title="Permanent link">&para;</a></h1>
-<p>每个音频用例都是一张图（graph），由若干特定类型的子图（subgraph）构成。每个子图包含一个或多个功能性软件块（称为模块，module），各自完成特定功能。</p>
-<h2 id="音频图相关术语">音频图相关术语<a class="headerlink" href="#音频图相关术语" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>术语</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>用例（Use case）</strong></td>
-<td>一张由模块组成的图，从源端点（source endpoint）连到汇端点（sink endpoint），满足产品定义的用例需求。</td>
-</tr>
-<tr>
-<td><strong>图（Graph）</strong></td>
-<td>对一组相互连接的子图的逻辑表述，用于实现某个特定用例。</td>
-</tr>
-<tr>
-<td><strong>子图（Subgraph）</strong></td>
-<td>对一组模块的逻辑抽象，这些模块相互连接、作为一个整体被操作。</td>
-</tr>
-<tr>
-<td><strong>容器（Container）</strong></td>
-<td>让系统设计者能够把多个音频处理模块归到一起、在同一个软件线程中运行的对象。</td>
-</tr>
-<tr>
-<td><strong>模块（Module）</strong></td>
-<td>信号处理框架中最小的独立处理单元。</td>
-</tr>
-<tr>
-<td><strong>键值对（Key-Value，KV pair）</strong></td>
-<td>键向量中单个的键及其关联的值。例如，键可以是某个声音设备，值可以是耳机、扬声器或其他声音设备。</td>
-</tr>
-<tr>
-<td><strong>键向量（Key vector）</strong></td>
-<td>通过一组 KV 对唯一标识一张图或一个子图。</td>
-</tr>
-<tr>
-<td><strong>图键向量（Graph Key Vector，GKV）</strong></td>
-<td>GKV 是用于获取某张图的唯一标识，以 KV 对表示。系统设计者在 QACT UI 画布上创建子图时，会为其关联一组唯一的 <code>&lt;keys&gt;</code> 和 <code>&lt;values&gt;</code>。</td>
-</tr>
-<tr>
-<td><strong>校准键向量（Calibration Key Vector，CKV）</strong></td>
-<td>CKV 是用于获取校准数据的唯一标识，以 KV 对表示。系统设计者在存储校准数据时，会为其关联一组唯一的 <code>&lt;keys&gt;</code> 和 <code>&lt;values&gt;</code>。</td>
-</tr>
-<tr>
-<td><strong>标签与标签键向量（Tag / Tag Key Vector，TKV）</strong></td>
-<td>标签（tag）是一种标识符，用于设置一个或多个模块的运行时参数。它允许在运行时更新模块配置（例如启用/禁用回声消除、均衡等特性）。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="图的分段">图的分段<a class="headerlink" href="#图的分段" title="Permanent link">&para;</a></h2>
-<p>一个音频用例包含以下几段。</p>
-<p>前端（front-end）对应 stream 与 streamPP 子图，后端（back-end）对应每流每设备（Per-Stream Per-Device，PSPD）、devicePP 和 device 子图。</p>
-<table>
-<thead>
-<tr>
-<th>分段</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Stream</strong></td>
-<td>提供数据写入/读取接口，并对压缩数据进行解码与编码。</td>
-</tr>
-<tr>
-<td><strong>StreamPP</strong></td>
-<td>承载基于流的处理模块（例如均衡器 equalizer）。</td>
-</tr>
-<tr>
-<td><strong>PSPD</strong></td>
-<td>承载一个模块，负责把流的媒体格式转换成设备的媒体格式。</td>
-</tr>
-<tr>
-<td><strong>DevicePP</strong></td>
-<td>承载用于声音设备调音（tuning）的处理模块。</td>
-</tr>
-<tr>
-<td><strong>Device</strong></td>
-<td>硬件端点，例如 CodecDMA（SoundWire）、I2S 或 TDM 端口。</td>
-</tr>
-</tbody>
-</table>
-<p>前端通过路由混音器控件（routing mixer control）连接到后端后，完整的 GKV 由子图 GKV 与通过混音器控件指定的 CKV 拼接而成。当打开前端的 PCM 或压缩（compress）设备时，AGM 用拼接好的 GKV 与 CKV 调用 GSL API，在 SPF 中搭建图并应用校准。与此同时，AGM 打开与所连接后端相对应的内核 PCM 设备，开始配置音频外设。</p>
-<h2 id="音频图示例">音频图示例<a class="headerlink" href="#音频图示例" title="Permanent link">&para;</a></h2>
-<p>下图展示了一个用于播放场景的音频图示例。</p>
-<p><img alt="播放用音频图示例" src="../../images/agm-sample_audio_graph.svg" /></p>
-<p><em>播放用音频图示例</em></p>
-<p>在这张图中：</p>
-<ol>
-<li>stream 子图包含一个写共享内存端点（write shared memory endpoint）、一个 PCM 解码器和一个 PCM 转换器。客户端把 PCM 采样数据传给写共享内存端点。</li>
-<li>如有必要，PCM 转换器会把 PCM 采样转换成流专属后处理模块所支持的格式。</li>
-<li>stream 子图的输出送入 stream-device 子图，其中包含媒体格式转换器（Media Format Converter，MFC）。MFC 把 stream 子图的 PCM 转换成 device 子图的 PCM 格式。</li>
-<li>转换完成后，stream-device 子图的输出送入 device PP 子图，进行设备专属的后处理。子图开头放置了一个混音器（mixer），用于混合输入流。</li>
-<li>devicePP 子图的输出接着送入 device 子图，其中包含硬件端点模块，例如 I2S 驱动。</li>
-</ol>
-<p>这张示例图对应的 GKV 如下：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>GKV1: &lt;StreamRX1 KVs, StreamRX2 PP KVs, StreamRX1DeviceRX KVs, DeviceRX PP KVs, DeviceRX KVs&gt;
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>GKV2: &lt;StreamRX2 KVs, StreamRX2 PP KVs, StreamRX2DeviceRX KVs, DeviceRX PP KVs, DeviceRX KVs&gt;
+<h1 id="第-6-篇-gsl--acdb图求解与标定">第 6 篇 GSL + ACDB：图求解与标定<a class="headerlink" href="#第-6-篇-gsl--acdb图求解与标定" title="Permanent link">&para;</a></h1>
+<p>AGM 交出 <code>gsl_open(GKV, CKV)</code> 后，就轮到本篇的主角。<strong>GSL（Graph Service Layer）是
+AudioReach 真正的“图编译器 + 链接器”</strong>：它拿着两组 key-value，去 <strong>ACDB</strong> 这个数据库
+查出图由哪些子图组成、怎么连接、每个模块用什么标定，然后把这张图打包成命令发给 DSP。</p>
+<p>如果说前面几层在做“描述用例”，那么从 GSL 开始才真正在“构建图”。</p>
+<h2 id="一两个输入gkv-与-ckv">一、两个输入：GKV 与 CKV<a class="headerlink" href="#一两个输入gkv-与-ckv" title="Permanent link">&para;</a></h2>
+<p>GSL 的一切都围绕两个 key vector（<code>gsl_intf.h:273</code>）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">gsl_key_vector</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">num_kvps</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">gsl_key_value_pair</span><span class="w"> </span><span class="o">*</span><span class="n">kvp</span><span class="p">;</span><span class="w">   </span><span class="c1">// 一组 &lt;key, value&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">};</span>
 </code></pre></div>
-<h3 id="音频图管理器agm">音频图管理器（AGM）<a class="headerlink" href="#音频图管理器agm" title="Permanent link">&para;</a></h3>
-<p>音频图管理器（Audio Graph Manager，AGM）提供接口，使基于 TinyALSA 的混音器控件与 PCM/压缩音频插件能够相互交互，进而启用各类音频用例。AGM 作为运行在用户空间的 PipeWire 服务的一部分运行。</p>
-<p>AGM 为混音器插件以及 PCM/压缩 API 提供接口，用于搭建音频用例。它维护多个 ALSA 客户端来搭建用例，同时还负责管理前端到后端的连接。</p>
-<p>下图展示了 AGM 模块的高层结构。</p>
-<p><img alt="AGM 软件模块（高层）" src="../../images/agm-AGM_service_blocks.svg" /></p>
-<p><em>AGM 软件模块（高层）</em></p>
+<ul>
+<li><strong>GKV（Graph Key Vector）</strong>：决定<strong>图的拓扑</strong>——用哪些子图、怎么连。</li>
+<li><strong>CKV（Calibration Key Vector）</strong>：决定<strong>标定数据</strong>——同一张图，不同 CKV 可以是不同
+  的调音（比如不同音量档、不同设备特性）。</li>
+</ul>
+<p><strong>同一个 GKV 决定“图长什么样”，CKV 决定“图里参数是多少”。</strong> 这就是第 4、5 篇一路
+传下来的 GKV/CKV 在此兑现。</p>
+<h2 id="二acdb图与标定的数据库">二、ACDB：图与标定的数据库<a class="headerlink" href="#二acdb图与标定的数据库" title="Permanent link">&para;</a></h2>
+<p>ACDB（Audio Calibration Database）是一套二进制数据库 + 查询引擎
+（<code>acdb/</code>），对外只有一个入口：<code>acdb_ioctl(cmd, req, rsp)</code>。
+GSL 通过一系列命令向它查询：</p>
+<table>
+<thead>
+<tr>
+<th>ACDB 命令</th>
+<th>查什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ACDB_CMD_GET_GRAPH</code></td>
+<td>给定 GKV → 返回子图列表及其连接关系</td>
+</tr>
+<tr>
+<td><code>ACDB_CMD_GET_SUBGRAPH_CONNECTIONS</code></td>
+<td>子图之间怎么连</td>
+</tr>
+<tr>
+<td><code>ACDB_CMD_GET_SUBGRAPH_DATA</code></td>
+<td>子图内部：容器、模块、连接、默认配置</td>
+</tr>
+<tr>
+<td><code>ACDB_CMD_GET_SUBGRAPH_CALIBRATION_DATA_NONPERSIST</code></td>
+<td>子图标定数据（按 CKV）</td>
+</tr>
+<tr>
+<td><code>ACDB_CMD_GET_SUBGRAPH_PROCIDS</code></td>
+<td>子图运行在哪个处理器（proc domain）</td>
+</tr>
+<tr>
+<td><code>ACDB_CMD_GET_TAGGED_MODULES</code></td>
+<td>按 tag 找模块实例（配合 TKV 调参）</td>
+</tr>
+<tr>
+<td><code>ACDB_CMD_GET_HW_ACCEL_SUBGRAPH_INFO</code></td>
+<td>硬件加速（如 CMA 内存）相关信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gkv--子图图求解第一步">GKV → 子图：图求解第一步<a class="headerlink" href="#gkv--子图图求解第一步" title="Permanent link">&para;</a></h3>
+<p><code>gsl_acdb_get_graph</code>（<code>gsl_graph.c:1565</code>）
+就是把 GKV 丢给 ACDB，拿回子图及连接：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">cmd_struct</span><span class="p">.</span><span class="n">num_keys</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">gkv</span><span class="o">-&gt;</span><span class="n">num_kvps</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">cmd_struct</span><span class="p">.</span><span class="n">graph_key_vector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">AcdbKeyValuePair</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">gkv</span><span class="o">-&gt;</span><span class="n">kvp</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">// 第一次调用 size=0，让 ACDB 回填所需大小；分配后再查一次拿数据（典型两段式 ioctl）</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">acdb_ioctl</span><span class="p">(</span><span class="n">ACDB_CMD_GET_GRAPH</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cmd_struct</span><span class="p">,</span><span class="w"> </span><span class="n">cmd_struct_size</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rsp_struct</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+</code></pre></div>
+<p>返回的 <code>AcdbGetGraphRsp</code>（<code>acdb.h</code>）里是
+一组 <code>AcdbSubgraph</code>，每个含 <code>sg_id</code> 和它的目标子图列表 <code>dst_sg_ids[]</code>——<strong>这就是一张
+有向图：节点是子图，边是连接。</strong> 拿到 0 个子图也是合法的（不在 DSP 上开任何东西）。</p>
+<blockquote>
+<p>数据来自哪里？ACDB 里的图定义由离线工具 <strong>ARC（AudioReach Creator / QACT）</strong> 生成。
+音频工程师用图形工具画出用例的模块拓扑、设好标定，导出成 <code>.acdb</code> 文件放进
+<code>/vendor/etc/acdbdata/</code>。<strong>改拓扑/调音 = 改 ACDB 文件，不改代码</strong>——这是 AudioReach
+数据驱动的最终落点。</p>
+</blockquote>
+<h2 id="三gsl-的核心对象">三、GSL 的核心对象<a class="headerlink" href="#三gsl-的核心对象" title="Permanent link">&para;</a></h2>
+<p>GSL 内部三层对象（<code>gsl/src/</code>）：</p>
 <table>
 <thead>
 <tr>
 <th>对象</th>
-<th>说明</th>
+<th>文件</th>
+<th>角色</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Session（会话）</strong></td>
-<td>会话对象代表一次音频播放或采集会话。调用会话专属的混音器控件或 API 会创建会话。它为 TinyALSA 插件提供配置流的 API，并管理图对象与设备对象的状态转换。</td>
+<td><strong>graph</strong></td>
+<td><code>gsl_graph.c</code></td>
+<td>一次 <code>gsl_open</code> 对应一个 graph，聚合多个 GKV 节点与子图</td>
 </tr>
 <tr>
-<td><strong>Graph（图）</strong></td>
-<td>图对象代表一个音频用例。它与 GSL 交互，负责打开、管理和关闭图；提供图创建的 API，管理图，并配置流与设备端点。</td>
+<td><strong>subgraph</strong></td>
+<td><code>gsl_subgraph.c</code> / <code>gsl_subgraph_pool.c</code></td>
+<td>子图对象，可跨 graph 复用（子图池）</td>
 </tr>
 <tr>
-<td><strong>Device（设备）</strong></td>
-<td>设备对象代表 ALSA 声卡中的一个 ALSA 设备。它枚举可用的音频接口，并提供用于切换设备状态的设备 API。</td>
+<td><strong>datapath</strong></td>
+<td><code>gsl_datapath.c</code></td>
+<td>数据面：读写缓冲、共享内存映射</td>
 </tr>
 </tbody>
 </table>
-<h3 id="audioreach-图服务args">AudioReach 图服务（ARGS）<a class="headerlink" href="#audioreach-图服务args" title="Permanent link">&para;</a></h3>
-<p>AudioReach™ 信号处理框架图服务（AudioReach Graph Services，ARGS）由图服务层（Graph Service Layer，GSL）、通用数据包路由器（Generic Packet Router，GPR）和 acdb 管理层（acdb Management Layer，AML）组成。它负责图的初始化与创建，以及构造数据包，向 SPF 下发一系列命令。</p>
-<table>
-<thead>
-<tr>
-<th>组件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>GSL</strong></td>
-<td>图服务层（GSL）是 SPF 的软件驱动，负责管理图、子图、缓冲区和各类配置。它使用图键向量（GKV）加载并初始化图，处理数据命令以及 SPF 模块校准。</td>
-</tr>
-<tr>
-<td><strong>GPR</strong></td>
-<td>通用数据包路由器（GPR）在 SPF 与图服务库之间路由音频消息数据包。处理用于构建音频图和处理音频的命令。</td>
-</tr>
-<tr>
-<td><strong>AML</strong></td>
-<td>acdb 管理层（AML）提供 get/set API，用于读取和调整 acdb 文件中的数据。它为音频驱动及其组件如何消费校准数据提供了数据抽象与组织方式。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="音频校准数据库acdb">音频校准数据库（acdb）<a class="headerlink" href="#音频校准数据库acdb" title="Permanent link">&para;</a></h2>
-<p>acdb 是应用处理器上的一个静态数据库，包含 LPAI 的全部调音/校准参数。<code>*.acdb</code> 文件格式负责为各种用例、各种音频模块组织校准数据。</p>
-<p>用 QACT（一款 PC 工具）编辑这种文件格式，并把文件放到设备文件系统的 <code>/etc/acdbdata/</code> 目录下。在用例初始化或设备切换期间，AML 会用指定的 GKV 查询 acdb 数据库，并把设备校准数据推送给 SPF。</p>
-<h3 id="信号处理框架spf">信号处理框架（SPF）<a class="headerlink" href="#信号处理框架spf" title="Permanent link">&para;</a></h3>
-<p>信号处理框架（Signal Processing Framework，SPF）运行在 LPAI 子系统中，负责音频数据处理。</p>
-<p>下图给出了 SPF 中所用功能块的高层概览。</p>
-<p><img alt="SPF 软件模块（高层）" src="../../images/agm-spf_blocks.svg" /></p>
-<p><em>SPF 软件模块（高层）</em></p>
-<table>
-<thead>
-<tr>
-<th>组件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>APM</strong></td>
-<td>音频处理管理器（Audio Processing Manager，APM）在 SPF 中搭建并管理用例图。它向图管理库和 APM 客户端提供标准 API，用于搭建和配置音频用例。</td>
-</tr>
-<tr>
-<td><strong>Modules（模块）</strong></td>
-<td>模块是 SPF 中的功能块，在 LPAI 子系统中执行实时音频处理。</td>
-</tr>
-<tr>
-<td><strong>Containers（容器）</strong></td>
-<td>容器是一种框架实现，把一组数据处理模块放在同一个软件线程中一起运行。每个容器都运行在各自独立的软件线程里。</td>
-</tr>
-</tbody>
-</table>
+<p>外加几个基础设施：<code>gsl_shmem_mgr.c</code>（共享内存管理）、<code>gsl_msg_builder.c</code>（构造发往 DSP
+的消息）、<code>gsl_mdf_utils.c</code>（多 DSP/multi-domain 支持）、<code>gsl_spf_ss_state.c</code>（SSR 状态）。</p>
+<h3 id="子图池为什么子图能复用">子图池：为什么子图能复用<a class="headerlink" href="#子图池为什么子图能复用" title="Permanent link">&para;</a></h3>
+<p><code>gsl_subgraph_pool.c</code> 维护一个<strong>全局子图池</strong>。多路用例常常共享同一个子图（比如都用
+同一个扬声器后端子图）。GSL 用引用计数管理：同一个 <code>sg_id</code> 只在 DSP 上开一次，第二个
+用户来了就复用并加引用。<strong>这直接对应第 3 篇 RM 的共享后端、第 2 篇 Device 单例——
+从上到下，“共享”这件事在每一层都有对应机制。</strong></p>
+<h2 id="四图求解与下发gsl_open-全流程">四、图求解与下发：gsl_open 全流程<a class="headerlink" href="#四图求解与下发gsl_open-全流程" title="Permanent link">&para;</a></h2>
+<p><code>gsl_open</code> → <code>gsl_graph_open</code>（<code>gsl_graph.c:4651</code>）
+→ 对每个 GKV 节点 <code>gsl_graph_open_single_gkv</code>（<code>gsl_graph.c:3290</code>）。
+单个 GKV 的求解过程：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>gsl_graph_open_single_gkv
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  ├─ gsl_acdb_get_graph(gkv)                 // ① GKV → 子图列表+连接 (ACDB_CMD_GET_GRAPH)
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  ├─ gsl_graph_open_sgids_and_connections    // ② 剪枝：去掉已开的子图(子图池)，算出真正要开的
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  │     ├─ ACDB_CMD_GET_SUBGRAPH_DATA        //    查每个子图内部：容器/模块/连接
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  │     ├─ ACDB_CMD_GET_SUBGRAPH_PROCIDS     //    查子图在哪个处理器
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  │     └─ ACDB_CMD_GET_..._CALIBRATION_DATA //    按 CKV 查标定
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>  ├─ gsl_msg_alloc(APM_CMD_GRAPH_OPEN, ...)  // ③ 构造发往 DSP APM 的 GRAPH_OPEN 消息
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>  └─ 通过 GPR 下发到 DSP                       // ④ (下一篇)
+</code></pre></div>
+<p>第 ③ 步是关键交接点（<code>gsl_graph.c:3198</code>）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gsl_msg_alloc</span><span class="p">(</span><span class="n">APM_CMD_GRAPH_OPEN</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-&gt;</span><span class="n">src_port</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+</code></pre></div>
+<p>GSL 把“求解出来的图”（子图 + 模块 + 连接 + 标定）打包成一条 <strong>APM_CMD_GRAPH_OPEN</strong>
+消息——<code>APM</code> 就是 DSP 侧的图管理器（第 8 篇）。这条消息通过 <strong>GPR</strong>（第 7 篇）跨核送到
+DSP，DSP 的 APM 收到后才真正实例化图。</p>
+<p><strong>注意 proc domain</strong>：<code>ACDB_CMD_GET_SUBGRAPH_PROCIDS</code> 告诉 GSL 每个子图跑在哪个处理器
+（ADSP / CDSP / APPS…）。这意味着<strong>一张图可以横跨多个处理器</strong>，GSL 要把对应子图的
+GRAPH_OPEN 发往不同 domain——这是 <code>gsl_mdf_utils.c</code>（Multi-DSP Framework）的活。</p>
+<h2 id="五数据面共享内存与读写">五、数据面：共享内存与读写<a class="headerlink" href="#五数据面共享内存与读写" title="Permanent link">&para;</a></h2>
+<p>控制面走 APM 命令，<strong>数据面走共享内存</strong>。<code>gsl_datapath.c</code> + <code>gsl_shmem_mgr.c</code> 负责：</p>
+<ul>
+<li>分配 DSP 可访问的共享内存（<code>gsl_shmem_alloc_data</code>，含 <code>spf_addr</code> 即 DSP 侧地址）。</li>
+<li>把外部（客户端）内存映射进来（<code>gsl_shmem_map_extern_mem</code>），并做 LRU 缓存避免反复
+  映射（<code>gsl_datapath.c</code> 的 <code>ext_mem_cache</code>）。</li>
+<li><code>gsl_write</code>/<code>gsl_read</code> 把数据缓冲的<strong>共享内存句柄</strong>通过数据命令发给 DSP，DSP 直接
+  读写该内存，避免拷贝。</li>
+</ul>
+<p>所以第 2 篇说的“数据面走共享内存”，到这里才是真正实现：PCM 数据不经过 GPR 命令通道，
+而是放在双方都能访问的物理内存里，GPR 只传“数据在哪、多大”。</p>
+<h2 id="六gsl-还负责">六、GSL 还负责<a class="headerlink" href="#六gsl-还负责" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>RTC（Real-Time Calibration）</strong>：<code>gsl_rtc.c</code> / <code>gsl_rtc_main.c</code> 支持在线调音——QACT
+  工具连上设备，实时改标定、看效果，不用重启用例。这是音频工程师日常调音的通道。</li>
+<li><strong>动态模块加载</strong>：<code>gsl_dynamic_module_mgr.c</code> 配合 DSP 侧 AMDB 加载非内建模块。</li>
+<li><strong>DLS（Data Logging Service）</strong>：<code>gsl_dls_client.c</code> 抓 DSP 内部数据流用于调试。</li>
+<li><strong>SSR 处理</strong>：<code>gsl_spf_ss_state.c</code> 跟踪各 DSP 子系统状态，崩溃重启时重建图。</li>
+</ul>
+<h2 id="小结">小结<a class="headerlink" href="#小结" title="Permanent link">&para;</a></h2>
+<ul>
+<li>GSL 是真正的 graph solver：输入 GKV（拓扑）+ CKV（标定），通过 <code>acdb_ioctl</code> 系列命令
+  从 ACDB 查出子图、连接、模块、proc domain 与标定数据。</li>
+<li>ACDB 是数据库，图拓扑与标定由离线工具（ARC/QACT）生成为 <code>.acdb</code> 文件——<strong>改用例/调音
+  改数据不改码</strong>，这是数据驱动的终点。</li>
+<li>GSL 三层对象 graph/subgraph/datapath；子图池实现跨用例复用，与上层“共享”机制一脉相承。</li>
+<li>求解结果打包成 <code>APM_CMD_GRAPH_OPEN</code>，经 GPR 下发；子图可横跨多处理器（MDF）。</li>
+<li>数据面走共享内存（gsl_shmem_mgr），GPR 只传地址与大小；RTC 提供在线调音通道。</li>
+</ul>
+<p>下一篇讲这条“下发通道”本身——GPR 如何把 APM 命令打成包，按 domain/port 跨处理器路由。</p>
 
 
 
@@ -3013,7 +3041,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../tinyalsa/" class="md-footer__link md-footer__link--prev" aria-label="上一页: TinyALSA 应用">
+          <a href="../05-agm/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 五、AGM：编排与 ALSA plugin">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3023,20 +3051,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                TinyALSA 应用
+                五、AGM：编排与 ALSA plugin
               </div>
             </div>
           </a>
         
         
           
-          <a href="../customize/" class="md-footer__link md-footer__link--next" aria-label="下一页: 定制音频用例">
+          <a href="../07-gpr/" class="md-footer__link md-footer__link--next" aria-label="下一页: 七、GPR：通用包路由与跨核传输">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                定制音频用例
+                七、GPR：通用包路由与跨核传输
               </div>
             </div>
             <div class="md-footer__button md-icon">

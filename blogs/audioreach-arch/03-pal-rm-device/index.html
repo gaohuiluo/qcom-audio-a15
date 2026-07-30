@@ -12,13 +12,13 @@
         <meta name="author" content="gaohuiluo">
       
       
-        <link rel="canonical" href="https://gaohuiluo.github.io/qcom-audio-a15/qcom-linux-audio-guide/docs-zh/agm/">
+        <link rel="canonical" href="https://gaohuiluo.github.io/qcom-audio-a15/blogs/audioreach-arch/03-pal-rm-device/">
       
       
-        <link rel="prev" href="../tinyalsa/">
+        <link rel="prev" href="../02-pal-stream/">
       
       
-        <link rel="next" href="../customize/">
+        <link rel="next" href="../04-pal-session-ipc/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>定制音频图（AGM） - Qualcomm 音频文档资料库</title>
+        <title>三、PAL（下）：ResourceManager 与 Device - Qualcomm 音频文档资料库</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#定制音频图" class="md-skip">
+        <a href="#第-3-篇-pal下resourcemanager-路由决策与-device-抽象" class="md-skip">
           跳转至
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              定制音频图（AGM）
+              三、PAL（下）：ResourceManager 与 Device
             
           </span>
         </div>
@@ -246,11 +246,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../blogs/qcom-audioreach-zh/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../qcom-audioreach-zh/" class="md-tabs__link">
           
   
   
@@ -290,13 +292,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../overview/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../qcom-linux-audio-guide/docs-zh/overview/" class="md-tabs__link">
           
   
   
@@ -408,8 +408,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -423,19 +425,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -453,7 +458,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -471,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/qcom-audioreach-zh/" class="md-nav__link">
+      <a href="../../qcom-audioreach-zh/" class="md-nav__link">
         
   
   
@@ -499,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/linaro-connect-2024-talk/" class="md-nav__link">
+      <a href="../../linaro-connect-2024-talk/" class="md-nav__link">
         
   
   
@@ -524,6 +529,8 @@
                 
   
   
+    
+  
   
   
     
@@ -557,18 +564,21 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../blogs/audioreach-arch/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -586,13 +596,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -612,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/01-overview/" class="md-nav__link">
+      <a href="../01-overview/" class="md-nav__link">
         
   
   
@@ -640,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/02-pal-stream/" class="md-nav__link">
+      <a href="../02-pal-stream/" class="md-nav__link">
         
   
   
@@ -665,10 +675,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/03-pal-rm-device/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    三、PAL（下）：ResourceManager 与 Device
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -684,6 +721,170 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#一resourcemanager全局单例大脑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、ResourceManager：全局单例大脑
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、ResourceManager：全局单例大脑">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-配置解析启动时" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) 配置解析（启动时）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-设备配置决策" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) 设备配置决策
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-并发仲裁与共享后端这是重点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) 并发仲裁与共享后端（这是重点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-路由与设备切换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) 路由与设备切换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lockgraph并发模型的核心" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lockGraph：并发模型的核心
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#决策流程起一路流时-rm-做了什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        决策流程（起一路流时 RM 做了什么）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#二device硬件端点抽象" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、Device：硬件端点抽象
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、Device：硬件端点抽象">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getinstance-是按设备-id-分派--单例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getInstance 是“按设备 ID 分派 + 单例”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#设备家族一览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        设备家族一览
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#两个值得音频工程师关注的特例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        两个值得音频工程师关注的特例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -696,7 +897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/04-pal-session-ipc/" class="md-nav__link">
+      <a href="../04-pal-session-ipc/" class="md-nav__link">
         
   
   
@@ -724,7 +925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/05-agm/" class="md-nav__link">
+      <a href="../05-agm/" class="md-nav__link">
         
   
   
@@ -752,7 +953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/06-gsl-acdb/" class="md-nav__link">
+      <a href="../06-gsl-acdb/" class="md-nav__link">
         
   
   
@@ -780,7 +981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/07-gpr/" class="md-nav__link">
+      <a href="../07-gpr/" class="md-nav__link">
         
   
   
@@ -808,7 +1009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/08-spf-dsp/" class="md-nav__link">
+      <a href="../08-spf-dsp/" class="md-nav__link">
         
   
   
@@ -836,7 +1037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/09-kernel/" class="md-nav__link">
+      <a href="../09-kernel/" class="md-nav__link">
         
   
   
@@ -2068,10 +2269,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -2099,22 +2298,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -2132,7 +2328,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2150,7 +2346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/overview/" class="md-nav__link">
         
   
   
@@ -2178,7 +2374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../enable-audio/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/enable-audio/" class="md-nav__link">
         
   
   
@@ -2206,7 +2402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pal/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/pal/" class="md-nav__link">
         
   
   
@@ -2234,7 +2430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tinyalsa/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/tinyalsa/" class="md-nav__link">
         
   
   
@@ -2259,37 +2455,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    定制音频图（AGM）
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/agm/" class="md-nav__link">
         
   
   
@@ -2305,115 +2474,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#音频图相关术语" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频图相关术语
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#图的分段" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        图的分段
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#音频图示例" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频图示例
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="音频图示例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#音频图管理器agm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频图管理器（AGM）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#audioreach-图服务args" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AudioReach 图服务（ARGS）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#音频校准数据库acdb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频校准数据库（acdb）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="音频校准数据库（acdb）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#信号处理框架spf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        信号处理框架（SPF）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2426,7 +2486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../customize/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/customize/" class="md-nav__link">
         
   
   
@@ -2454,7 +2514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/features/" class="md-nav__link">
         
   
   
@@ -2482,7 +2542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshoot/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/troubleshoot/" class="md-nav__link">
         
   
   
@@ -2510,7 +2570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7%E8%A1%A8/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7%E8%A1%A8/" class="md-nav__link">
         
   
   
@@ -2538,7 +2598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../references/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/references/" class="md-nav__link">
         
   
   
@@ -2684,44 +2744,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#音频图相关术语" class="md-nav__link">
+  <a href="#一resourcemanager全局单例大脑" class="md-nav__link">
     <span class="md-ellipsis">
       
-        音频图相关术语
+        一、ResourceManager：全局单例大脑
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#图的分段" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        图的分段
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#音频图示例" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频图示例
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="音频图示例">
+    <nav class="md-nav" aria-label="一、ResourceManager：全局单例大脑">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#音频图管理器agm" class="md-nav__link">
+  <a href="#1-配置解析启动时" class="md-nav__link">
     <span class="md-ellipsis">
       
-        音频图管理器（AGM）
+        1) 配置解析（启动时）
       
     </span>
   </a>
@@ -2729,10 +2767,54 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#audioreach-图服务args" class="md-nav__link">
+  <a href="#2-设备配置决策" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AudioReach 图服务（ARGS）
+        2) 设备配置决策
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-并发仲裁与共享后端这是重点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) 并发仲裁与共享后端（这是重点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-路由与设备切换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) 路由与设备切换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lockgraph并发模型的核心" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lockGraph：并发模型的核心
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#决策流程起一路流时-rm-做了什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        决策流程（起一路流时 RM 做了什么）
       
     </span>
   </a>
@@ -2745,22 +2827,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#音频校准数据库acdb" class="md-nav__link">
+  <a href="#二device硬件端点抽象" class="md-nav__link">
     <span class="md-ellipsis">
       
-        音频校准数据库（acdb）
+        二、Device：硬件端点抽象
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="音频校准数据库（acdb）">
+    <nav class="md-nav" aria-label="二、Device：硬件端点抽象">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#信号处理框架spf" class="md-nav__link">
+  <a href="#getinstance-是按设备-id-分派--单例" class="md-nav__link">
     <span class="md-ellipsis">
       
-        信号处理框架（SPF）
+        getInstance 是“按设备 ID 分派 + 单例”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#设备家族一览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        设备家族一览
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#两个值得音频工程师关注的特例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        两个值得音频工程师关注的特例
       
     </span>
   </a>
@@ -2769,6 +2873,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小结
+      
+    </span>
+  </a>
   
 </li>
       
@@ -2792,192 +2907,157 @@
   
 
 
-<h1 id="定制音频图">定制音频图<a class="headerlink" href="#定制音频图" title="Permanent link">&para;</a></h1>
-<p>每个音频用例都是一张图（graph），由若干特定类型的子图（subgraph）构成。每个子图包含一个或多个功能性软件块（称为模块，module），各自完成特定功能。</p>
-<h2 id="音频图相关术语">音频图相关术语<a class="headerlink" href="#音频图相关术语" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>术语</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>用例（Use case）</strong></td>
-<td>一张由模块组成的图，从源端点（source endpoint）连到汇端点（sink endpoint），满足产品定义的用例需求。</td>
-</tr>
-<tr>
-<td><strong>图（Graph）</strong></td>
-<td>对一组相互连接的子图的逻辑表述，用于实现某个特定用例。</td>
-</tr>
-<tr>
-<td><strong>子图（Subgraph）</strong></td>
-<td>对一组模块的逻辑抽象，这些模块相互连接、作为一个整体被操作。</td>
-</tr>
-<tr>
-<td><strong>容器（Container）</strong></td>
-<td>让系统设计者能够把多个音频处理模块归到一起、在同一个软件线程中运行的对象。</td>
-</tr>
-<tr>
-<td><strong>模块（Module）</strong></td>
-<td>信号处理框架中最小的独立处理单元。</td>
-</tr>
-<tr>
-<td><strong>键值对（Key-Value，KV pair）</strong></td>
-<td>键向量中单个的键及其关联的值。例如，键可以是某个声音设备，值可以是耳机、扬声器或其他声音设备。</td>
-</tr>
-<tr>
-<td><strong>键向量（Key vector）</strong></td>
-<td>通过一组 KV 对唯一标识一张图或一个子图。</td>
-</tr>
-<tr>
-<td><strong>图键向量（Graph Key Vector，GKV）</strong></td>
-<td>GKV 是用于获取某张图的唯一标识，以 KV 对表示。系统设计者在 QACT UI 画布上创建子图时，会为其关联一组唯一的 <code>&lt;keys&gt;</code> 和 <code>&lt;values&gt;</code>。</td>
-</tr>
-<tr>
-<td><strong>校准键向量（Calibration Key Vector，CKV）</strong></td>
-<td>CKV 是用于获取校准数据的唯一标识，以 KV 对表示。系统设计者在存储校准数据时，会为其关联一组唯一的 <code>&lt;keys&gt;</code> 和 <code>&lt;values&gt;</code>。</td>
-</tr>
-<tr>
-<td><strong>标签与标签键向量（Tag / Tag Key Vector，TKV）</strong></td>
-<td>标签（tag）是一种标识符，用于设置一个或多个模块的运行时参数。它允许在运行时更新模块配置（例如启用/禁用回声消除、均衡等特性）。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="图的分段">图的分段<a class="headerlink" href="#图的分段" title="Permanent link">&para;</a></h2>
-<p>一个音频用例包含以下几段。</p>
-<p>前端（front-end）对应 stream 与 streamPP 子图，后端（back-end）对应每流每设备（Per-Stream Per-Device，PSPD）、devicePP 和 device 子图。</p>
-<table>
-<thead>
-<tr>
-<th>分段</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Stream</strong></td>
-<td>提供数据写入/读取接口，并对压缩数据进行解码与编码。</td>
-</tr>
-<tr>
-<td><strong>StreamPP</strong></td>
-<td>承载基于流的处理模块（例如均衡器 equalizer）。</td>
-</tr>
-<tr>
-<td><strong>PSPD</strong></td>
-<td>承载一个模块，负责把流的媒体格式转换成设备的媒体格式。</td>
-</tr>
-<tr>
-<td><strong>DevicePP</strong></td>
-<td>承载用于声音设备调音（tuning）的处理模块。</td>
-</tr>
-<tr>
-<td><strong>Device</strong></td>
-<td>硬件端点，例如 CodecDMA（SoundWire）、I2S 或 TDM 端口。</td>
-</tr>
-</tbody>
-</table>
-<p>前端通过路由混音器控件（routing mixer control）连接到后端后，完整的 GKV 由子图 GKV 与通过混音器控件指定的 CKV 拼接而成。当打开前端的 PCM 或压缩（compress）设备时，AGM 用拼接好的 GKV 与 CKV 调用 GSL API，在 SPF 中搭建图并应用校准。与此同时，AGM 打开与所连接后端相对应的内核 PCM 设备，开始配置音频外设。</p>
-<h2 id="音频图示例">音频图示例<a class="headerlink" href="#音频图示例" title="Permanent link">&para;</a></h2>
-<p>下图展示了一个用于播放场景的音频图示例。</p>
-<p><img alt="播放用音频图示例" src="../../images/agm-sample_audio_graph.svg" /></p>
-<p><em>播放用音频图示例</em></p>
-<p>在这张图中：</p>
-<ol>
-<li>stream 子图包含一个写共享内存端点（write shared memory endpoint）、一个 PCM 解码器和一个 PCM 转换器。客户端把 PCM 采样数据传给写共享内存端点。</li>
-<li>如有必要，PCM 转换器会把 PCM 采样转换成流专属后处理模块所支持的格式。</li>
-<li>stream 子图的输出送入 stream-device 子图，其中包含媒体格式转换器（Media Format Converter，MFC）。MFC 把 stream 子图的 PCM 转换成 device 子图的 PCM 格式。</li>
-<li>转换完成后，stream-device 子图的输出送入 device PP 子图，进行设备专属的后处理。子图开头放置了一个混音器（mixer），用于混合输入流。</li>
-<li>devicePP 子图的输出接着送入 device 子图，其中包含硬件端点模块，例如 I2S 驱动。</li>
-</ol>
-<p>这张示例图对应的 GKV 如下：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>GKV1: &lt;StreamRX1 KVs, StreamRX2 PP KVs, StreamRX1DeviceRX KVs, DeviceRX PP KVs, DeviceRX KVs&gt;
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>GKV2: &lt;StreamRX2 KVs, StreamRX2 PP KVs, StreamRX2DeviceRX KVs, DeviceRX PP KVs, DeviceRX KVs&gt;
+<h1 id="第-3-篇-pal下resourcemanager-路由决策与-device-抽象">第 3 篇 PAL（下）：ResourceManager 路由决策与 Device 抽象<a class="headerlink" href="#第-3-篇-pal下resourcemanager-路由决策与-device-抽象" title="Permanent link">&para;</a></h1>
+<p>上一篇看到，每路 Stream 构造时都要 <code>ResourceManager::getInstance()</code> 和
+<code>Device::getInstance()</code>。这一篇讲这两个东西：<strong>ResourceManager 是 PAL 的全局大脑</strong>，
+负责用例决策、设备路由、并发仲裁；<strong>Device 是硬件端点的抽象</strong>，把扬声器/耳机/蓝牙/USB
+统一成一组 <code>start/stop/config</code> 接口。</p>
+<h2 id="一resourcemanager全局单例大脑">一、ResourceManager：全局单例大脑<a class="headerlink" href="#一resourcemanager全局单例大脑" title="Permanent link">&para;</a></h2>
+<p><code>ResourceManager.cpp</code> 一个
+文件一万四千行，是 PAL 里最重的模块。它是<strong>进程内单例</strong>，职责可归为四类：</p>
+<h3 id="1-配置解析启动时">1) 配置解析（启动时）<a class="headerlink" href="#1-配置解析启动时" title="Permanent link">&para;</a></h3>
+<p>初始化时解析多份 XML，把“平台有哪些设备、哪个用例该配什么”读进内存：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// ResourceManager.cpp init 路径</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">XmlParser</span><span class="p">(</span><span class="n">SNDPARSER</span><span class="p">);</span><span class="w">          </span><span class="c1">// /vendor/etc/card-defs.xml：声卡与后端定义</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">XmlParser</span><span class="p">(</span><span class="n">rmngr_xml_file</span><span class="p">);</span><span class="w">     </span><span class="c1">// resourcemanager.xml：设备能力/用例默认配置</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">// 另有 usecase manager xml、hapticsconfig xml、mixer xml 等</span>
 </code></pre></div>
-<h3 id="音频图管理器agm">音频图管理器（AGM）<a class="headerlink" href="#音频图管理器agm" title="Permanent link">&para;</a></h3>
-<p>音频图管理器（Audio Graph Manager，AGM）提供接口，使基于 TinyALSA 的混音器控件与 PCM/压缩音频插件能够相互交互，进而启用各类音频用例。AGM 作为运行在用户空间的 PipeWire 服务的一部分运行。</p>
-<p>AGM 为混音器插件以及 PCM/压缩 API 提供接口，用于搭建音频用例。它维护多个 ALSA 客户端来搭建用例，同时还负责管理前端到后端的连接。</p>
-<p>下图展示了 AGM 模块的高层结构。</p>
-<p><img alt="AGM 软件模块（高层）" src="../../images/agm-AGM_service_blocks.svg" /></p>
-<p><em>AGM 软件模块（高层）</em></p>
+<p>这些 XML 决定了 PAL 的“世界观”：有哪些 backend（后端/BE）、每个设备默认采样率/通道/
+位宽、哪些用例要走哪个后端。<strong>改设备配置往往改 XML，而不是改代码</strong>（源码里也留了
+<code>//TBD: decide on supported devices from XML and not in code</code> 的注释，说明方向是往
+数据驱动走）。相关入口：<code>getDeviceInfo</code>
+（<code>ResourceManager.cpp:2503</code>）、
+<code>getDeviceConfig</code>
+（<code>ResourceManager.cpp:2822</code>）。</p>
+<h3 id="2-设备配置决策">2) 设备配置决策<a class="headerlink" href="#2-设备配置决策" title="Permanent link">&para;</a></h3>
+<p>Stream 拿到的 <code>pal_device</code> 只是个“愿望”（我想用扬声器），真正生效的采样率/通道/
+位宽由 RM 结合 XML + 当前并发情况算出来：</p>
+<ul>
+<li><code>checkAndGetDeviceConfig</code>
+  （<code>ResourceManager.cpp:6215</code>）：
+  校正并填好设备配置。</li>
+<li><code>checkAndUpdateGroupDevConfig</code>
+  （<code>ResourceManager.cpp:6346</code>）：
+  处理<strong>设备组</strong>（如多路流共享一个物理后端时，配置要统一）。</li>
+<li><code>getDeviceEpName</code>
+  （<code>ResourceManager.cpp:6735</code>）、
+  <code>getBackEndNames</code>
+  （<code>ResourceManager.cpp:7616</code>）：
+  把设备 ID 映射成 ALSA 后端名/端点名——这就是连接 ALSA/AGM 的桥。</li>
+</ul>
+<h3 id="3-并发仲裁与共享后端这是重点">3) 并发仲裁与共享后端（这是重点）<a class="headerlink" href="#3-并发仲裁与共享后端这是重点" title="Permanent link">&para;</a></h3>
+<p>多路流可能落到<strong>同一个物理后端（Shared Backend, BE）</strong>。比如深缓冲和低时延同时放到
+扬声器，它们在 DSP 侧共享同一个硬件端点。RM 用一组“活跃流-设备”映射来管理：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// 拿到与某设备共享同一后端的所有活跃流</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">getSharedBEActiveStreamDevs</span><span class="p">(</span><span class="n">activeStreamsDevices</span><span class="p">,</span><span class="w"> </span><span class="n">dev_id</span><span class="p">);</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">// ResourceManager.cpp:7406</span>
+</code></pre></div>
+<p>为什么重要？<strong>同一后端只能有一套配置</strong>。当第二路流想用不同采样率接入同一后端时，
+RM 必须仲裁：要么让新流适配已有配置，要么触发<strong>设备切换</strong>把所有共享流一起切到新配置。</p>
+<h3 id="4-路由与设备切换">4) 路由与设备切换<a class="headerlink" href="#4-路由与设备切换" title="Permanent link">&para;</a></h3>
+<p>运行中切设备（拔耳机、连蓝牙）走 <code>streamDevSwitch</code> /<code>forceDeviceSwitch</code>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// ResourceManager.cpp:8037</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">int32_t</span><span class="w"> </span><span class="nf">ResourceManager::streamDevSwitch</span><span class="p">(</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">Stream</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">streamDevDisconnectList</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">Stream</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">streamDevConnectList</span><span class="p">);</span>
+</code></pre></div>
+<p>它接收“要断开的(流,设备)列表”和“要连接的列表”，成对完成断开→连接。<code>pal_stream_set_device</code>
+（<code>Pal.cpp:1025</code>）最终就走到这里。切换全程也持
+<code>lockGraph()</code>，因为它要重连底层的图。</p>
+<h3 id="lockgraph并发模型的核心">lockGraph：并发模型的核心<a class="headerlink" href="#lockgraph并发模型的核心" title="Permanent link">&para;</a></h3>
+<p>RM 持有一把全局图锁 <code>mGraphMutex</code>（<code>lockGraph</code>/<code>unlockGraph</code>）。<strong>任何会改变 DSP 侧
+图拓扑的操作——起流、停流、设备切换——都必须持这把锁串行执行。</strong> 这是 PAL 面对
+“多路并发 + 共享硬件 + 单一 DSP 图空间”时最简单可靠的选择。理解这把锁，就理解了
+PAL 为什么很多操作看起来是串行的。</p>
+<h3 id="决策流程起一路流时-rm-做了什么">决策流程（起一路流时 RM 做了什么）<a class="headerlink" href="#决策流程起一路流时-rm-做了什么" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Stream.open/start
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>   │
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>   ├─ getDeviceInfo / getDeviceConfig      查 XML，得到设备默认能力
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>   ├─ checkAndGetDeviceConfig              校正为本次用例实际配置
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>   ├─ getSharedBEActiveStreamDevs          看这个后端上还有谁在跑
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>   │      └─ 有并发？ checkAndUpdateGroupDevConfig 统一配置
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>   │              └─ 配置冲突？ streamDevSwitch 把共享流一起切
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>   ├─ getBackEndNames / getDeviceEpName     算出 ALSA 后端名（交给 Session）
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>   └─ (lockGraph 保护整个过程)
+</code></pre></div>
+<h2 id="二device硬件端点抽象">二、Device：硬件端点抽象<a class="headerlink" href="#二device硬件端点抽象" title="Permanent link">&para;</a></h2>
+<p><code>Device</code> 基类（<code>Device.h:83</code>）把所有物理
+端点统一成一组接口：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Device.h（节选）</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Device</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getInstance</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">pal_device</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ResourceManager</span><span class="o">&gt;</span><span class="p">);</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Device</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getObject</span><span class="p">(</span><span class="n">pal_device_id_t</span><span class="w"> </span><span class="n">dev_id</span><span class="p">);</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">start</span><span class="p">();</span><span class="w">                 </span><span class="c1">// 起硬件端点</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">stop</span><span class="p">();</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getDeviceAttributes</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">pal_device</span><span class="w"> </span><span class="o">*</span><span class="n">dattr</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getCodecConfig</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">pal_media_config</span><span class="w"> </span><span class="o">*</span><span class="n">config</span><span class="p">);</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="nf">setDeviceParameter</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">param_id</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">param</span><span class="p">);</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">isDeviceReady</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h3 id="getinstance-是按设备-id-分派--单例">getInstance 是“按设备 ID 分派 + 单例”<a class="headerlink" href="#getinstance-是按设备-id-分派--单例" title="Permanent link">&para;</a></h3>
+<p><code>Device.cpp</code> 里 <code>getInstance</code> 按
+<code>device-&gt;id</code> 分派到具体子类，而每个子类内部维护自己的单例：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">device</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">case</span><span class="w"> </span><span class="no">PAL_DEVICE_OUT_SPEAKER</span><span class="p">:</span><span class="w">              </span><span class="k">return</span><span class="w"> </span><span class="n">Speaker</span><span class="o">::</span><span class="n">getInstance</span><span class="p">(</span><span class="n">device</span><span class="p">,</span><span class="w"> </span><span class="n">Rm</span><span class="p">);</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">case</span><span class="w"> </span><span class="no">PAL_DEVICE_OUT_WIRED_HEADSET</span><span class="p">:</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">case</span><span class="w"> </span><span class="no">PAL_DEVICE_OUT_WIRED_HEADPHONE</span><span class="p">:</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">Headphone</span><span class="o">::</span><span class="n">getInstance</span><span class="p">(</span><span class="n">device</span><span class="p">,</span><span class="w"> </span><span class="n">Rm</span><span class="p">);</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">case</span><span class="w"> </span><span class="no">PAL_DEVICE_OUT_USB_DEVICE</span><span class="p">:</span><span class="w"> </span><span class="p">...</span><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="n">USB</span><span class="o">::</span><span class="n">getInstance</span><span class="p">(</span><span class="n">device</span><span class="p">,</span><span class="w"> </span><span class="n">Rm</span><span class="p">);</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">case</span><span class="w"> </span><span class="no">PAL_DEVICE_OUT_BLUETOOTH_A2DP</span><span class="p">:</span><span class="w"> </span><span class="p">...</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">BtA2dp</span><span class="o">::</span><span class="n">getInstance</span><span class="p">(</span><span class="n">device</span><span class="p">,</span><span class="w"> </span><span class="n">Rm</span><span class="p">);</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">case</span><span class="w"> </span><span class="no">PAL_DEVICE_IN_VI_FEEDBACK</span><span class="p">:</span><span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="n">SpeakerFeedback</span><span class="o">::</span><span class="n">getInstance</span><span class="p">(</span><span class="n">device</span><span class="p">,</span><span class="w"> </span><span class="n">Rm</span><span class="p">);</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">...</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>单例的意义</strong>：一个物理扬声器在系统里只有一个 <code>Speaker</code> 对象，被所有用到它的流共享。
+起停靠引用计数——最后一路流停了才真正关硬件。这与 RM 的共享后端仲裁是同一件事的
+两面：RM 管“逻辑并发”，Device 单例管“物理复用”。</p>
+<h3 id="设备家族一览">设备家族一览<a class="headerlink" href="#设备家族一览" title="Permanent link">&para;</a></h3>
+<p><code>device/src/</code> 下的子类，按复杂度分三档：</p>
 <table>
 <thead>
 <tr>
-<th>对象</th>
-<th>说明</th>
+<th>档</th>
+<th>设备</th>
+<th>特点</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Session（会话）</strong></td>
-<td>会话对象代表一次音频播放或采集会话。调用会话专属的混音器控件或 API 会创建会话。它为 TinyALSA 插件提供配置流的 API，并管理图对象与设备对象的状态转换。</td>
+<td>简单端点</td>
+<td>Speaker / Handset / Headphone / HeadsetMic / SpeakerMic</td>
+<td>直接对接 codec/I2S 后端</td>
 </tr>
 <tr>
-<td><strong>Graph（图）</strong></td>
-<td>图对象代表一个音频用例。它与 GSL 交互，负责打开、管理和关闭图；提供图创建的 API，管理图，并配置流与设备端点。</td>
+<td>协议设备</td>
+<td>BtA2dp / BtSco / USBAudio / DisplayPort</td>
+<td>带自己的编解码协商、连接状态；A2dp 还要处理 suspend/mute</td>
 </tr>
 <tr>
-<td><strong>Device（设备）</strong></td>
-<td>设备对象代表 ALSA 声卡中的一个 ALSA 设备。它枚举可用的音频接口，并提供用于切换设备状态的设备 API。</td>
+<td>特殊功能</td>
+<td>SpeakerProtection / HapticsDevProtection / ECRefDevice / ExtEC / RTProxy / UltrasoundDevice</td>
+<td>不只是端点，含算法/回采/代理逻辑</td>
 </tr>
 </tbody>
 </table>
-<h3 id="audioreach-图服务args">AudioReach 图服务（ARGS）<a class="headerlink" href="#audioreach-图服务args" title="Permanent link">&para;</a></h3>
-<p>AudioReach™ 信号处理框架图服务（AudioReach Graph Services，ARGS）由图服务层（Graph Service Layer，GSL）、通用数据包路由器（Generic Packet Router，GPR）和 acdb 管理层（acdb Management Layer，AML）组成。它负责图的初始化与创建，以及构造数据包，向 SPF 下发一系列命令。</p>
-<table>
-<thead>
-<tr>
-<th>组件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>GSL</strong></td>
-<td>图服务层（GSL）是 SPF 的软件驱动，负责管理图、子图、缓冲区和各类配置。它使用图键向量（GKV）加载并初始化图，处理数据命令以及 SPF 模块校准。</td>
-</tr>
-<tr>
-<td><strong>GPR</strong></td>
-<td>通用数据包路由器（GPR）在 SPF 与图服务库之间路由音频消息数据包。处理用于构建音频图和处理音频的命令。</td>
-</tr>
-<tr>
-<td><strong>AML</strong></td>
-<td>acdb 管理层（AML）提供 get/set API，用于读取和调整 acdb 文件中的数据。它为音频驱动及其组件如何消费校准数据提供了数据抽象与组织方式。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="音频校准数据库acdb">音频校准数据库（acdb）<a class="headerlink" href="#音频校准数据库acdb" title="Permanent link">&para;</a></h2>
-<p>acdb 是应用处理器上的一个静态数据库，包含 LPAI 的全部调音/校准参数。<code>*.acdb</code> 文件格式负责为各种用例、各种音频模块组织校准数据。</p>
-<p>用 QACT（一款 PC 工具）编辑这种文件格式，并把文件放到设备文件系统的 <code>/etc/acdbdata/</code> 目录下。在用例初始化或设备切换期间，AML 会用指定的 GKV 查询 acdb 数据库，并把设备校准数据推送给 SPF。</p>
-<h3 id="信号处理框架spf">信号处理框架（SPF）<a class="headerlink" href="#信号处理框架spf" title="Permanent link">&para;</a></h3>
-<p>信号处理框架（Signal Processing Framework，SPF）运行在 LPAI 子系统中，负责音频数据处理。</p>
-<p>下图给出了 SPF 中所用功能块的高层概览。</p>
-<p><img alt="SPF 软件模块（高层）" src="../../images/agm-spf_blocks.svg" /></p>
-<p><em>SPF 软件模块（高层）</em></p>
-<table>
-<thead>
-<tr>
-<th>组件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>APM</strong></td>
-<td>音频处理管理器（Audio Processing Manager，APM）在 SPF 中搭建并管理用例图。它向图管理库和 APM 客户端提供标准 API，用于搭建和配置音频用例。</td>
-</tr>
-<tr>
-<td><strong>Modules（模块）</strong></td>
-<td>模块是 SPF 中的功能块，在 LPAI 子系统中执行实时音频处理。</td>
-</tr>
-<tr>
-<td><strong>Containers（容器）</strong></td>
-<td>容器是一种框架实现，把一组数据处理模块放在同一个软件线程中一起运行。每个容器都运行在各自独立的软件线程里。</td>
-</tr>
-</tbody>
-</table>
+<h3 id="两个值得音频工程师关注的特例">两个值得音频工程师关注的特例<a class="headerlink" href="#两个值得音频工程师关注的特例" title="Permanent link">&para;</a></h3>
+<p><strong>SpeakerProtection</strong>（<code>SpeakerProtection.cpp</code>）：
+扬声器保护需要 <strong>VI feedback</strong>（电压/电流回采）——所以你会看到 <code>PAL_DEVICE_IN_VI_FEEDBACK</code>
+这个“输入设备”其实是扬声器的反馈通道，配合 DSP 里的保护算法（限幅、热模型）防止喇叭
+烧毁。这是“一个逻辑用例牵出多个物理设备”的典型。</p>
+<p><strong>BtA2dp</strong>（<code>Bluetooth.cpp</code>）：蓝牙音频的
+编解码（SBC/AAC/LDAC/aptX）协商、A2DP suspend（通话时挂起）、以及和扬声器之间的
+mute 联动，都在这里。上一篇 start 里那段 <code>a2dpSuspend</code> / <code>a2dpMuted</code> 逻辑就是和它配合。</p>
+<h2 id="小结">小结<a class="headerlink" href="#小结" title="Permanent link">&para;</a></h2>
+<ul>
+<li>ResourceManager 是 PAL 的大脑：解析 XML 建立世界观、决策设备实际配置、仲裁共享
+  后端上的并发、执行设备切换，全程用 <code>lockGraph</code> 串行化图操作。</li>
+<li>Device 把物理端点抽象成统一接口，<code>getInstance</code> 按 ID 分派且每个物理设备单例化，
+  靠引用计数在多路流间复用。</li>
+<li>RM 管逻辑并发，Device 单例管物理复用，两者共同解决“多流共享一套硬件与一张 DSP 图”
+  的根本矛盾。</li>
+<li>特殊设备（SpeakerProtection 的 VI 回采、蓝牙的编解码协商）说明：一个用例常常不止
+  一个设备，PAL 在这层把这些复杂度收敛掉，再交给 Session 去下发。</li>
+</ul>
+<p>下一篇：Session 如何把这些决策落到 ALSA/AGM——SessionAlsaPcm / Compress / Voice 的
+分工，PayloadBuilder 如何拼参数，以及 PAL 的跨进程 IPC（HwBinder）。</p>
 
 
 
@@ -3013,7 +3093,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../tinyalsa/" class="md-footer__link md-footer__link--prev" aria-label="上一页: TinyALSA 应用">
+          <a href="../02-pal-stream/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 二、PAL（上）：入口与 Stream 家族">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3023,20 +3103,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                TinyALSA 应用
+                二、PAL（上）：入口与 Stream 家族
               </div>
             </div>
           </a>
         
         
           
-          <a href="../customize/" class="md-footer__link md-footer__link--next" aria-label="下一页: 定制音频用例">
+          <a href="../04-pal-session-ipc/" class="md-footer__link md-footer__link--next" aria-label="下一页: 四、PAL Session 与 IPC">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                定制音频用例
+                四、PAL Session 与 IPC
               </div>
             </div>
             <div class="md-footer__button md-icon">

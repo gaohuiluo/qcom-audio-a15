@@ -12,13 +12,13 @@
         <meta name="author" content="gaohuiluo">
       
       
-        <link rel="canonical" href="https://gaohuiluo.github.io/qcom-audio-a15/qcom-linux-audio-guide/docs-zh/agm/">
+        <link rel="canonical" href="https://gaohuiluo.github.io/qcom-audio-a15/blogs/audioreach-arch/08-spf-dsp/">
       
       
-        <link rel="prev" href="../tinyalsa/">
+        <link rel="prev" href="../07-gpr/">
       
       
-        <link rel="next" href="../customize/">
+        <link rel="next" href="../09-kernel/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>定制音频图（AGM） - Qualcomm 音频文档资料库</title>
+        <title>八、SPF/DSP：APM/Container/Module - Qualcomm 音频文档资料库</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#定制音频图" class="md-skip">
+        <a href="#第-8-篇-spfdspapmcontainermodule-与-amdb" class="md-skip">
           跳转至
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              定制音频图（AGM）
+              八、SPF/DSP：APM/Container/Module
             
           </span>
         </div>
@@ -246,11 +246,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../blogs/qcom-audioreach-zh/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../qcom-audioreach-zh/" class="md-tabs__link">
           
   
   
@@ -290,13 +292,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../overview/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../qcom-linux-audio-guide/docs-zh/overview/" class="md-tabs__link">
           
   
   
@@ -408,8 +408,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -423,19 +425,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -453,7 +458,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -471,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/qcom-audioreach-zh/" class="md-nav__link">
+      <a href="../../qcom-audioreach-zh/" class="md-nav__link">
         
   
   
@@ -499,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/linaro-connect-2024-talk/" class="md-nav__link">
+      <a href="../../linaro-connect-2024-talk/" class="md-nav__link">
         
   
   
@@ -524,6 +529,8 @@
                 
   
   
+    
+  
   
   
     
@@ -557,18 +564,21 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../blogs/audioreach-arch/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -586,13 +596,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -612,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/01-overview/" class="md-nav__link">
+      <a href="../01-overview/" class="md-nav__link">
         
   
   
@@ -640,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/02-pal-stream/" class="md-nav__link">
+      <a href="../02-pal-stream/" class="md-nav__link">
         
   
   
@@ -668,7 +678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/03-pal-rm-device/" class="md-nav__link">
+      <a href="../03-pal-rm-device/" class="md-nav__link">
         
   
   
@@ -696,7 +706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/04-pal-session-ipc/" class="md-nav__link">
+      <a href="../04-pal-session-ipc/" class="md-nav__link">
         
   
   
@@ -724,7 +734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/05-agm/" class="md-nav__link">
+      <a href="../05-agm/" class="md-nav__link">
         
   
   
@@ -752,7 +762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/06-gsl-acdb/" class="md-nav__link">
+      <a href="../06-gsl-acdb/" class="md-nav__link">
         
   
   
@@ -780,7 +790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/07-gpr/" class="md-nav__link">
+      <a href="../07-gpr/" class="md-nav__link">
         
   
   
@@ -805,10 +815,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/08-spf-dsp/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    八、SPF/DSP：APM/Container/Module
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -824,6 +861,154 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#一apmdsp-侧的图管理器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、APM：DSP 侧的图管理器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、APM：DSP 侧的图管理器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#命令时序器apm-的核心" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        命令时序器：APM 的核心
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#二container图运行的执行引擎" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、Container：图运行的“执行引擎”
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、Container：图运行的“执行引擎”">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#olc-与-mdf-呼应" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OLC 与 MDF 呼应
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#三module真正干活的算法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、Module：真正干活的算法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、Module：真正干活的算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#模块家族" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模块家族
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#硬件端点hw-ep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        硬件端点（HW-EP）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#四amdb模块从哪来" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、AMDB：模块从哪来
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#五把整条链路合起来看" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、把整条链路合起来看
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -836,7 +1021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/09-kernel/" class="md-nav__link">
+      <a href="../09-kernel/" class="md-nav__link">
         
   
   
@@ -2068,10 +2253,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -2099,22 +2282,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -2132,7 +2312,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2150,7 +2330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/overview/" class="md-nav__link">
         
   
   
@@ -2178,7 +2358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../enable-audio/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/enable-audio/" class="md-nav__link">
         
   
   
@@ -2206,7 +2386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pal/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/pal/" class="md-nav__link">
         
   
   
@@ -2234,7 +2414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tinyalsa/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/tinyalsa/" class="md-nav__link">
         
   
   
@@ -2259,37 +2439,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    定制音频图（AGM）
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/agm/" class="md-nav__link">
         
   
   
@@ -2305,115 +2458,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#音频图相关术语" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频图相关术语
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#图的分段" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        图的分段
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#音频图示例" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频图示例
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="音频图示例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#音频图管理器agm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频图管理器（AGM）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#audioreach-图服务args" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AudioReach 图服务（ARGS）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#音频校准数据库acdb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频校准数据库（acdb）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="音频校准数据库（acdb）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#信号处理框架spf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        信号处理框架（SPF）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2426,7 +2470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../customize/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/customize/" class="md-nav__link">
         
   
   
@@ -2454,7 +2498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/features/" class="md-nav__link">
         
   
   
@@ -2482,7 +2526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshoot/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/troubleshoot/" class="md-nav__link">
         
   
   
@@ -2510,7 +2554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7%E8%A1%A8/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7%E8%A1%A8/" class="md-nav__link">
         
   
   
@@ -2538,7 +2582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../references/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/references/" class="md-nav__link">
         
   
   
@@ -2684,55 +2728,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#音频图相关术语" class="md-nav__link">
+  <a href="#一apmdsp-侧的图管理器" class="md-nav__link">
     <span class="md-ellipsis">
       
-        音频图相关术语
+        一、APM：DSP 侧的图管理器
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#图的分段" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        图的分段
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#音频图示例" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频图示例
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="音频图示例">
+    <nav class="md-nav" aria-label="一、APM：DSP 侧的图管理器">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#音频图管理器agm" class="md-nav__link">
+  <a href="#命令时序器apm-的核心" class="md-nav__link">
     <span class="md-ellipsis">
       
-        音频图管理器（AGM）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#audioreach-图服务args" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AudioReach 图服务（ARGS）
+        命令时序器：APM 的核心
       
     </span>
   </a>
@@ -2745,22 +2756,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#音频校准数据库acdb" class="md-nav__link">
+  <a href="#二container图运行的执行引擎" class="md-nav__link">
     <span class="md-ellipsis">
       
-        音频校准数据库（acdb）
+        二、Container：图运行的“执行引擎”
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="音频校准数据库（acdb）">
+    <nav class="md-nav" aria-label="二、Container：图运行的“执行引擎”">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#信号处理框架spf" class="md-nav__link">
+  <a href="#olc-与-mdf-呼应" class="md-nav__link">
     <span class="md-ellipsis">
       
-        信号处理框架（SPF）
+        OLC 与 MDF 呼应
       
     </span>
   </a>
@@ -2769,6 +2780,78 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#三module真正干活的算法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、Module：真正干活的算法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、Module：真正干活的算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#模块家族" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模块家族
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#硬件端点hw-ep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        硬件端点（HW-EP）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#四amdb模块从哪来" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、AMDB：模块从哪来
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#五把整条链路合起来看" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、把整条链路合起来看
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小结
+      
+    </span>
+  </a>
   
 </li>
       
@@ -2792,192 +2875,178 @@
   
 
 
-<h1 id="定制音频图">定制音频图<a class="headerlink" href="#定制音频图" title="Permanent link">&para;</a></h1>
-<p>每个音频用例都是一张图（graph），由若干特定类型的子图（subgraph）构成。每个子图包含一个或多个功能性软件块（称为模块，module），各自完成特定功能。</p>
-<h2 id="音频图相关术语">音频图相关术语<a class="headerlink" href="#音频图相关术语" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>术语</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>用例（Use case）</strong></td>
-<td>一张由模块组成的图，从源端点（source endpoint）连到汇端点（sink endpoint），满足产品定义的用例需求。</td>
-</tr>
-<tr>
-<td><strong>图（Graph）</strong></td>
-<td>对一组相互连接的子图的逻辑表述，用于实现某个特定用例。</td>
-</tr>
-<tr>
-<td><strong>子图（Subgraph）</strong></td>
-<td>对一组模块的逻辑抽象，这些模块相互连接、作为一个整体被操作。</td>
-</tr>
-<tr>
-<td><strong>容器（Container）</strong></td>
-<td>让系统设计者能够把多个音频处理模块归到一起、在同一个软件线程中运行的对象。</td>
-</tr>
-<tr>
-<td><strong>模块（Module）</strong></td>
-<td>信号处理框架中最小的独立处理单元。</td>
-</tr>
-<tr>
-<td><strong>键值对（Key-Value，KV pair）</strong></td>
-<td>键向量中单个的键及其关联的值。例如，键可以是某个声音设备，值可以是耳机、扬声器或其他声音设备。</td>
-</tr>
-<tr>
-<td><strong>键向量（Key vector）</strong></td>
-<td>通过一组 KV 对唯一标识一张图或一个子图。</td>
-</tr>
-<tr>
-<td><strong>图键向量（Graph Key Vector，GKV）</strong></td>
-<td>GKV 是用于获取某张图的唯一标识，以 KV 对表示。系统设计者在 QACT UI 画布上创建子图时，会为其关联一组唯一的 <code>&lt;keys&gt;</code> 和 <code>&lt;values&gt;</code>。</td>
-</tr>
-<tr>
-<td><strong>校准键向量（Calibration Key Vector，CKV）</strong></td>
-<td>CKV 是用于获取校准数据的唯一标识，以 KV 对表示。系统设计者在存储校准数据时，会为其关联一组唯一的 <code>&lt;keys&gt;</code> 和 <code>&lt;values&gt;</code>。</td>
-</tr>
-<tr>
-<td><strong>标签与标签键向量（Tag / Tag Key Vector，TKV）</strong></td>
-<td>标签（tag）是一种标识符，用于设置一个或多个模块的运行时参数。它允许在运行时更新模块配置（例如启用/禁用回声消除、均衡等特性）。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="图的分段">图的分段<a class="headerlink" href="#图的分段" title="Permanent link">&para;</a></h2>
-<p>一个音频用例包含以下几段。</p>
-<p>前端（front-end）对应 stream 与 streamPP 子图，后端（back-end）对应每流每设备（Per-Stream Per-Device，PSPD）、devicePP 和 device 子图。</p>
-<table>
-<thead>
-<tr>
-<th>分段</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Stream</strong></td>
-<td>提供数据写入/读取接口，并对压缩数据进行解码与编码。</td>
-</tr>
-<tr>
-<td><strong>StreamPP</strong></td>
-<td>承载基于流的处理模块（例如均衡器 equalizer）。</td>
-</tr>
-<tr>
-<td><strong>PSPD</strong></td>
-<td>承载一个模块，负责把流的媒体格式转换成设备的媒体格式。</td>
-</tr>
-<tr>
-<td><strong>DevicePP</strong></td>
-<td>承载用于声音设备调音（tuning）的处理模块。</td>
-</tr>
-<tr>
-<td><strong>Device</strong></td>
-<td>硬件端点，例如 CodecDMA（SoundWire）、I2S 或 TDM 端口。</td>
-</tr>
-</tbody>
-</table>
-<p>前端通过路由混音器控件（routing mixer control）连接到后端后，完整的 GKV 由子图 GKV 与通过混音器控件指定的 CKV 拼接而成。当打开前端的 PCM 或压缩（compress）设备时，AGM 用拼接好的 GKV 与 CKV 调用 GSL API，在 SPF 中搭建图并应用校准。与此同时，AGM 打开与所连接后端相对应的内核 PCM 设备，开始配置音频外设。</p>
-<h2 id="音频图示例">音频图示例<a class="headerlink" href="#音频图示例" title="Permanent link">&para;</a></h2>
-<p>下图展示了一个用于播放场景的音频图示例。</p>
-<p><img alt="播放用音频图示例" src="../../images/agm-sample_audio_graph.svg" /></p>
-<p><em>播放用音频图示例</em></p>
-<p>在这张图中：</p>
-<ol>
-<li>stream 子图包含一个写共享内存端点（write shared memory endpoint）、一个 PCM 解码器和一个 PCM 转换器。客户端把 PCM 采样数据传给写共享内存端点。</li>
-<li>如有必要，PCM 转换器会把 PCM 采样转换成流专属后处理模块所支持的格式。</li>
-<li>stream 子图的输出送入 stream-device 子图，其中包含媒体格式转换器（Media Format Converter，MFC）。MFC 把 stream 子图的 PCM 转换成 device 子图的 PCM 格式。</li>
-<li>转换完成后，stream-device 子图的输出送入 device PP 子图，进行设备专属的后处理。子图开头放置了一个混音器（mixer），用于混合输入流。</li>
-<li>devicePP 子图的输出接着送入 device 子图，其中包含硬件端点模块，例如 I2S 驱动。</li>
-</ol>
-<p>这张示例图对应的 GKV 如下：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>GKV1: &lt;StreamRX1 KVs, StreamRX2 PP KVs, StreamRX1DeviceRX KVs, DeviceRX PP KVs, DeviceRX KVs&gt;
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>GKV2: &lt;StreamRX2 KVs, StreamRX2 PP KVs, StreamRX2DeviceRX KVs, DeviceRX PP KVs, DeviceRX KVs&gt;
+<h1 id="第-8-篇-spfdspapmcontainermodule-与-amdb">第 8 篇 SPF/DSP：APM、Container、Module 与 AMDB<a class="headerlink" href="#第-8-篇-spfdspapmcontainermodule-与-amdb" title="Permanent link">&para;</a></h1>
+<p>GPR 把 <code>APM_CMD_GRAPH_OPEN</code> 送到了 DSP。终点到了——<strong>SPF（Signal Processing Framework）</strong>
+是 DSP 侧的音频运行时。前面所有层的努力，都是为了在这里把一张“描述出来的图”变成
+“运行中的模块”。</p>
+<p>SPF 有三个核心角色：<strong>APM</strong>（图管理器，接命令、建图）、<strong>Container</strong>（承载图运行的
+线程/调度单元）、<strong>Module</strong>（真正处理 PCM 的算法）。加上 <strong>AMDB</strong>（模块数据库）负责
+把模块加载进来。</p>
+<h2 id="一apmdsp-侧的图管理器">一、APM：DSP 侧的图管理器<a class="headerlink" href="#一apmdsp-侧的图管理器" title="Permanent link">&para;</a></h2>
+<p>APM（Audio Processing Manager，<code>fwk/spf/apm/</code>）
+是 DSP 上第一个收到 GPR 命令的服务。它在 GPR 注册一个固定 port，处理一整套图命令
+（<code>apm_api.h</code>）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#define APM_CMD_GRAPH_OPEN      0x01001000   </span><span class="c1">// 建图：创建容器、模块、连接</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#define APM_CMD_GRAPH_PREPARE   ...          </span><span class="c1">// 准备</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#define APM_CMD_GRAPH_START     ...          </span><span class="c1">// 启动数据处理</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cp">#define APM_CMD_GRAPH_STOP / FLUSH / SUSPEND / CLOSE</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cp">#define APM_CMD_SET_CFG         ...          </span><span class="c1">// 设参数/标定</span>
 </code></pre></div>
-<h3 id="音频图管理器agm">音频图管理器（AGM）<a class="headerlink" href="#音频图管理器agm" title="Permanent link">&para;</a></h3>
-<p>音频图管理器（Audio Graph Manager，AGM）提供接口，使基于 TinyALSA 的混音器控件与 PCM/压缩音频插件能够相互交互，进而启用各类音频用例。AGM 作为运行在用户空间的 PipeWire 服务的一部分运行。</p>
-<p>AGM 为混音器插件以及 PCM/压缩 API 提供接口，用于搭建音频用例。它维护多个 ALSA 客户端来搭建用例，同时还负责管理前端到后端的连接。</p>
-<p>下图展示了 AGM 模块的高层结构。</p>
-<p><img alt="AGM 软件模块（高层）" src="../../images/agm-AGM_service_blocks.svg" /></p>
-<p><em>AGM 软件模块（高层）</em></p>
+<p>这套命令与第 5 篇 AGM <code>graph.c</code> 里的 <code>gsl_ioctl(GSL_CMD_START/PREPARE/...)</code> <strong>一一对应</strong>——
+GSL 的 GSL_CMD_<em> 经过打包，到 DSP 就成了 APM_CMD_</em>。</p>
+<h3 id="命令时序器apm-的核心">命令时序器：APM 的核心<a class="headerlink" href="#命令时序器apm-的核心" title="Permanent link">&para;</a></h3>
+<p>APM 处理命令不是一步到位，而是走一个<strong>命令时序器</strong>（<code>apm_cmd_sequencer.c</code>，
+<code>apm_cmd_sequencer.c:423</code>）。
+以 <code>APM_CMD_GRAPH_OPEN</code> 为例，APM 要按顺序完成一串子步骤：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>APM_CMD_GRAPH_OPEN 到达
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  ├─ 解析 payload：子图、容器、模块、连接、配置（GSL 打包的那堆）
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  ├─ 为每个容器创建 Container 实例（按容器类型选 gen/spl/olc/wear）
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  ├─ 在容器内创建 Module 实例（通过 AMDB 加载 CAPI 模块）
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  ├─ 按连接关系连好模块间、容器间的数据端口
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  └─ 回 GPR 响应（带 token）给 GSL
+</code></pre></div>
+<p>为什么要时序器？因为建图涉及多容器、多模块、跨容器连接，且可能跨多个处理器（MDF），
+必须<strong>分阶段、可回滚</strong>地推进。时序器就是这套状态机。</p>
+<h2 id="二container图运行的执行引擎">二、Container：图运行的“执行引擎”<a class="headerlink" href="#二container图运行的执行引擎" title="Permanent link">&para;</a></h2>
+<p><strong>子图不会自己运行，它需要一个容器来承载。</strong> Container 提供线程、调度、缓冲边界。
+一个容器管理一到多个模块，容器之间通过数据队列连接。</p>
+<p><code>fwk/spf/containers/</code> 提供了四种容器，
+针对不同用例特性：</p>
 <table>
 <thead>
 <tr>
-<th>对象</th>
-<th>说明</th>
+<th>容器</th>
+<th>目录</th>
+<th>定位</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Session（会话）</strong></td>
-<td>会话对象代表一次音频播放或采集会话。调用会话专属的混音器控件或 API 会创建会话。它为 TinyALSA 插件提供配置流的 API，并管理图对象与设备对象的状态转换。</td>
+<td><strong>GEN_CNTR</strong>（通用容器）</td>
+<td><code>gen_cntr/</code></td>
+<td>最常用。硬件端点、编解码、常规处理，帧驱动</td>
 </tr>
 <tr>
-<td><strong>Graph（图）</strong></td>
-<td>图对象代表一个音频用例。它与 GSL 交互，负责打开、管理和关闭图；提供图创建的 API，管理图，并配置流与设备端点。</td>
+<td><strong>SPL_CNTR</strong>（专用/特殊容器）</td>
+<td><code>spl_cntr/</code></td>
+<td>低时延、信号驱动的处理路径（如某些实时后处理）</td>
 </tr>
 <tr>
-<td><strong>Device（设备）</strong></td>
-<td>设备对象代表 ALSA 声卡中的一个 ALSA 设备。它枚举可用的音频接口，并提供用于切换设备状态的设备 API。</td>
+<td><strong>OLC</strong>（Offload Container）</td>
+<td><code>olc/</code></td>
+<td>跨处理器 offload：本地容器代理远端（如 CDSP）子图</td>
+</tr>
+<tr>
+<td><strong>WEAR_CNTR</strong></td>
+<td><code>wear_cntr/</code></td>
+<td>穿戴设备场景的裁剪容器</td>
 </tr>
 </tbody>
 </table>
-<h3 id="audioreach-图服务args">AudioReach 图服务（ARGS）<a class="headerlink" href="#audioreach-图服务args" title="Permanent link">&para;</a></h3>
-<p>AudioReach™ 信号处理框架图服务（AudioReach Graph Services，ARGS）由图服务层（Graph Service Layer，GSL）、通用数据包路由器（Generic Packet Router，GPR）和 acdb 管理层（acdb Management Layer，AML）组成。它负责图的初始化与创建，以及构造数据包，向 SPF 下发一系列命令。</p>
+<p><strong>为什么要分容器类型？</strong> 不同用例对调度、时延、缓冲的要求差别很大。播放音乐可以帧
+驱动、缓冲大、省电（GEN_CNTR）；某些实时链路要信号驱动、低时延（SPL_CNTR）；而跨核
+子图需要一个本地代理来收发数据（OLC）。<strong>容器类型决定了子图“怎么被调度和缓冲”。</strong></p>
+<h3 id="olc-与-mdf-呼应">OLC 与 MDF 呼应<a class="headerlink" href="#olc-与-mdf-呼应" title="Permanent link">&para;</a></h3>
+<p>第 6/7 篇说一张图的子图可以横跨处理器。落到 DSP 就是：主处理器上的 OLC 容器
+（<code>containers/olc/</code>）作为远端子图的
+本地代理——它在本地看起来是个普通容器，实际把数据/命令通过 GPR 转发给另一处理器上
+真正运行该子图的容器。上层图逻辑因此无需关心物理分布。</p>
+<h2 id="三module真正干活的算法">三、Module：真正干活的算法<a class="headerlink" href="#三module真正干活的算法" title="Permanent link">&para;</a></h2>
+<p>Module 是处理单元。AudioReach 用统一的 <strong>CAPI（Common Audio Processing Interface）</strong>
+封装所有模块（<code>interfaces/module/capi/capi.h</code>），
+无论内建还是第三方，都实现同一个 vtable：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">capi_vtbl_t</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">capi_err_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">process</span><span class="p">)(</span><span class="n">capi_t</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">capi_stream_data_t</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">[],</span><span class="w"> </span><span class="n">capi_stream_data_t</span><span class="w"> </span><span class="o">*</span><span class="n">output</span><span class="p">[]);</span><span class="w"> </span><span class="c1">// 处理数据</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">capi_err_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">set_param</span><span class="p">)(</span><span class="n">capi_t</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">param_id</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w">   </span><span class="c1">// 设参数（对应上层 TKV/标定）</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">capi_err_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">get_param</span><span class="p">)(</span><span class="n">capi_t</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">param_id</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">capi_err_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">set_properties</span><span class="p">)(</span><span class="n">capi_t</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">capi_proplist_t</span><span class="o">*</span><span class="p">);</span><span class="w">    </span><span class="c1">// 设属性（媒体格式、端口等）</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="n">capi_err_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">get_properties</span><span class="p">)(</span><span class="n">capi_t</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">capi_proplist_t</span><span class="o">*</span><span class="p">);</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="n">capi_err_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">end</span><span class="p">)(</span><span class="n">capi_t</span><span class="o">*</span><span class="p">);</span><span class="w">                                 </span><span class="c1">// 销毁</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">};</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1">// 外加静态入口：</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">capi_get_static_properties_f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">capi_init_f</span><span class="w">   </span><span class="c1">// 查询静态属性 + 初始化实例</span>
+</code></pre></div>
+<p>对音频工程师来说，这就是最熟悉的地方——<strong>一个模块 = 一个 CAPI 实现</strong>：</p>
+<ul>
+<li><code>process()</code>：核心。输入缓冲 → 算法 → 输出缓冲。容器每帧调它。</li>
+<li><code>set_param(param_id, ...)</code>：上层一路传下来的参数最终落到这里。第 4 篇 PayloadBuilder
+  拼的那个 payload，第 6 篇 ACDB 里的标定，最后都变成某个 <code>param_id</code> + 结构体，进这个函数。</li>
+<li><code>set_properties()</code>：告诉模块输入输出媒体格式、端口数等。</li>
+</ul>
+<h3 id="模块家族">模块家族<a class="headerlink" href="#模块家族" title="Permanent link">&para;</a></h3>
+<p><code>modules/</code> 下是内建模块，音频工程师一眼就懂：</p>
 <table>
 <thead>
 <tr>
-<th>组件</th>
-<th>说明</th>
+<th>类别</th>
+<th>目录</th>
+<th>例子</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>GSL</strong></td>
-<td>图服务层（GSL）是 SPF 的软件驱动，负责管理图、子图、缓冲区和各类配置。它使用图键向量（GKV）加载并初始化图，处理数据命令以及 SPF 模块校准。</td>
+<td>编解码</td>
+<td><code>modules/audio/</code></td>
+<td><code>pcm_decoder</code>、<code>pcm_encoder</code></td>
 </tr>
 <tr>
-<td><strong>GPR</strong></td>
-<td>通用数据包路由器（GPR）在 SPF 与图服务库之间路由音频消息数据包。处理用于构建音频图和处理音频的命令。</td>
+<td>后处理</td>
+<td><code>modules/processing/</code></td>
+<td><code>volume_control</code>、<code>gain_control</code>、<code>PoplessEqualizer</code>、<code>bassboost</code>、<code>Virtualizer</code>、<code>shoebox_reverb</code>、<code>channel_mixer</code>、<code>resamplers</code>、<code>filters</code></td>
 </tr>
 <tr>
-<td><strong>AML</strong></td>
-<td>acdb 管理层（AML）提供 get/set API，用于读取和调整 acdb 文件中的数据。它为音频驱动及其组件如何消费校准数据提供了数据抽象与组织方式。</td>
+<td>公共</td>
+<td><code>modules/cmn/</code></td>
+<td>通用工具模块</td>
 </tr>
 </tbody>
 </table>
-<h2 id="音频校准数据库acdb">音频校准数据库（acdb）<a class="headerlink" href="#音频校准数据库acdb" title="Permanent link">&para;</a></h2>
-<p>acdb 是应用处理器上的一个静态数据库，包含 LPAI 的全部调音/校准参数。<code>*.acdb</code> 文件格式负责为各种用例、各种音频模块组织校准数据。</p>
-<p>用 QACT（一款 PC 工具）编辑这种文件格式，并把文件放到设备文件系统的 <code>/etc/acdbdata/</code> 目录下。在用例初始化或设备切换期间，AML 会用指定的 GKV 查询 acdb 数据库，并把设备校准数据推送给 SPF。</p>
-<h3 id="信号处理框架spf">信号处理框架（SPF）<a class="headerlink" href="#信号处理框架spf" title="Permanent link">&para;</a></h3>
-<p>信号处理框架（Signal Processing Framework，SPF）运行在 LPAI 子系统中，负责音频数据处理。</p>
-<p>下图给出了 SPF 中所用功能块的高层概览。</p>
-<p><img alt="SPF 软件模块（高层）" src="../../images/agm-spf_blocks.svg" /></p>
-<p><em>SPF 软件模块（高层）</em></p>
-<table>
-<thead>
-<tr>
-<th>组件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>APM</strong></td>
-<td>音频处理管理器（Audio Processing Manager，APM）在 SPF 中搭建并管理用例图。它向图管理库和 APM 客户端提供标准 API，用于搭建和配置音频用例。</td>
-</tr>
-<tr>
-<td><strong>Modules（模块）</strong></td>
-<td>模块是 SPF 中的功能块，在 LPAI 子系统中执行实时音频处理。</td>
-</tr>
-<tr>
-<td><strong>Containers（容器）</strong></td>
-<td>容器是一种框架实现，把一组数据处理模块放在同一个软件线程中一起运行。每个容器都运行在各自独立的软件线程里。</td>
-</tr>
-</tbody>
-</table>
+<p>一条“深缓冲播放 + 均衡 + 音量”的图，在 DSP 里就是 <code>PoplessEqualizer</code> →
+<code>volume_control</code> → 硬件端点模块 这样一串 CAPI 实例，被 GEN_CNTR 每帧依次 <code>process</code>。</p>
+<h3 id="硬件端点hw-ep">硬件端点（HW-EP）<a class="headerlink" href="#硬件端点hw-ep" title="Permanent link">&para;</a></h3>
+<p>图的尽头是硬件端点模块（HW-EP），它对接物理接口：I2S、Slimbus、TDM、CodecDMA 等。
+HW-EP 一端是图内的数据端口，另一端是编解码器/DMA。第 3 篇 PAL 的 Device、<code>getDeviceEpName</code>
+算出的后端名，最终对应的就是 DSP 里这个 HW-EP 模块的配置。</p>
+<h2 id="四amdb模块从哪来">四、AMDB：模块从哪来<a class="headerlink" href="#四amdb模块从哪来" title="Permanent link">&para;</a></h2>
+<p>APM 建图时要“创建某个 module_id 的实例”，谁负责把对应的 CAPI 代码找出来、加载、给出
+<code>capi_init</code>？——<strong>AMDB（AudioReach Module Database，<code>fwk/spf/amdb/</code>）</strong>。</p>
+<ul>
+<li><strong>静态模块</strong>（<code>amdb_static.h</code> / <code>amdb_autogen_def.h</code>）：编译进 SPF 镜像的内建模块，
+  AMDB 里有一张 module_id → 入口函数的表，直接查。</li>
+<li><strong>动态模块</strong>（<code>amdb_parallel_loader.h</code> / <code>amdb_thread.h</code>）：以 <code>.so</code> 形式存在的第三方
+  或可选模块，用到时才从文件系统加载（<code>dlopen</code> 类机制），拿到 <code>capi_get_static_properties</code>
+  和 <code>capi_init</code>。这与第 6 篇 GSL 的 <code>gsl_dynamic_module_mgr.c</code> 是同一件事的两端：GSL 在
+  APPS 侧登记动态模块信息，AMDB 在 DSP 侧真正加载。</li>
+<li><strong>offload 加载</strong>（<code>amdb_offload_utils.h</code>）：为跨处理器场景加载远端模块。</li>
+</ul>
+<p>这套设计让 AudioReach 的模块集<strong>可扩展</strong>：加一个新算法，实现 CAPI、注册到 AMDB、在 ACDB
+里把它编进某个用例的图，就能上线——<strong>框架代码一行不用改</strong>。</p>
+<h2 id="五把整条链路合起来看">五、把整条链路合起来看<a class="headerlink" href="#五把整条链路合起来看" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>GSL(APPS)──GPR──►APM(DSP)
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>                  │ apm_cmd_sequencer 处理 GRAPH_OPEN
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>                  ├─ 建 Container（gen/spl/olc/wear）
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>                  │     └─ 建 Module（AMDB 加载 CAPI 实例）
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>                  │            └─ set_properties / set_param（媒体格式+标定+TKV）
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>                  ├─ 连接模块端口、容器队列
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>                  └─ GRAPH_START → 容器线程开始每帧调 module-&gt;process
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>                                        │
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>   共享内存 ◄──── HW-EP ◄── volume ◄── EQ ◄── decoder ◄── 数据(来自APPS共享内存)
+</code></pre></div>
+<p>数据流：APPS 写入的 PCM 放在共享内存（第 6 篇），DSP 容器线程被调度，把数据依次喂给
+链上每个模块的 <code>process()</code>，最后经 HW-EP 出到编解码器；录音方向相反。</p>
+<h2 id="小结">小结<a class="headerlink" href="#小结" title="Permanent link">&para;</a></h2>
+<ul>
+<li>SPF 是 DSP 侧运行时：APM 接 GPR 命令建图，Container 承载子图运行，Module 是算法本体。</li>
+<li>APM 用命令时序器分阶段、可回滚地处理 GRAPH_OPEN 等命令，与 GSL 的 GSL_CMD_* 一一对应。</li>
+<li>四种 Container（GEN/SPL/OLC/WEAR）按用例的调度/时延/缓冲/跨核特性分工；OLC 是跨处理器
+  子图的本地代理，呼应 MDF。</li>
+<li>Module 全部实现统一的 CAPI vtable（process/set_param/set_properties…）；上层的参数和
+  标定最终都落到 <code>set_param</code>。</li>
+<li>AMDB 负责加载模块（静态查表 / 动态 dlopen / offload），与 GSL 动态模块管理器两端配合，
+  让模块集可扩展、框架不改码。</li>
+</ul>
+<p>下一篇（收尾）：内核 audio-kernel-ar 如何承载 GPR 的跨核传输与共享内存数据搬运，把
+用户态与 DSP 真正连起来。</p>
 
 
 
@@ -3013,7 +3082,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../tinyalsa/" class="md-footer__link md-footer__link--prev" aria-label="上一页: TinyALSA 应用">
+          <a href="../07-gpr/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 七、GPR：通用包路由与跨核传输">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3023,20 +3092,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                TinyALSA 应用
+                七、GPR：通用包路由与跨核传输
               </div>
             </div>
           </a>
         
         
           
-          <a href="../customize/" class="md-footer__link md-footer__link--next" aria-label="下一页: 定制音频用例">
+          <a href="../09-kernel/" class="md-footer__link md-footer__link--next" aria-label="下一页: 九、内核篇：audio-kernel-ar">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                定制音频用例
+                九、内核篇：audio-kernel-ar
               </div>
             </div>
             <div class="md-footer__button md-icon">

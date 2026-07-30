@@ -12,13 +12,13 @@
         <meta name="author" content="gaohuiluo">
       
       
-        <link rel="canonical" href="https://gaohuiluo.github.io/qcom-audio-a15/qcom-linux-audio-guide/docs-zh/agm/">
+        <link rel="canonical" href="https://gaohuiluo.github.io/qcom-audio-a15/blogs/audioreach-arch/05-agm/">
       
       
-        <link rel="prev" href="../tinyalsa/">
+        <link rel="prev" href="../04-pal-session-ipc/">
       
       
-        <link rel="next" href="../customize/">
+        <link rel="next" href="../06-gsl-acdb/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>定制音频图（AGM） - Qualcomm 音频文档资料库</title>
+        <title>五、AGM：编排与 ALSA plugin - Qualcomm 音频文档资料库</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#定制音频图" class="md-skip">
+        <a href="#第-5-篇-agm会话图设备编排与-alsa-plugin" class="md-skip">
           跳转至
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              定制音频图（AGM）
+              五、AGM：编排与 ALSA plugin
             
           </span>
         </div>
@@ -246,11 +246,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../blogs/qcom-audioreach-zh/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../qcom-audioreach-zh/" class="md-tabs__link">
           
   
   
@@ -290,13 +292,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../overview/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../qcom-linux-audio-guide/docs-zh/overview/" class="md-tabs__link">
           
   
   
@@ -408,8 +408,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -423,19 +425,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -453,7 +458,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -471,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/qcom-audioreach-zh/" class="md-nav__link">
+      <a href="../../qcom-audioreach-zh/" class="md-nav__link">
         
   
   
@@ -499,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/linaro-connect-2024-talk/" class="md-nav__link">
+      <a href="../../linaro-connect-2024-talk/" class="md-nav__link">
         
   
   
@@ -524,6 +529,8 @@
                 
   
   
+    
+  
   
   
     
@@ -557,18 +564,21 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../blogs/audioreach-arch/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -586,13 +596,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -612,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/01-overview/" class="md-nav__link">
+      <a href="../01-overview/" class="md-nav__link">
         
   
   
@@ -640,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/02-pal-stream/" class="md-nav__link">
+      <a href="../02-pal-stream/" class="md-nav__link">
         
   
   
@@ -668,7 +678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/03-pal-rm-device/" class="md-nav__link">
+      <a href="../03-pal-rm-device/" class="md-nav__link">
         
   
   
@@ -696,7 +706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/04-pal-session-ipc/" class="md-nav__link">
+      <a href="../04-pal-session-ipc/" class="md-nav__link">
         
   
   
@@ -721,10 +731,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/05-agm/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    五、AGM：编排与 ALSA plugin
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -740,6 +777,143 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#一alsa-pluginalsa-请求的入口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、ALSA plugin：ALSA 请求的入口
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、ALSA plugin：ALSA 请求的入口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mixer-pluginpal-的-control-变成-agm-调用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mixer plugin：PAL 的 control 变成 AGM 调用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pcm-plugin会话与数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pcm plugin：会话与数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#二agm-的三大对象session--aifdevice--graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、AGM 的三大对象：Session / AIF(Device) / Graph
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、AGM 的三大对象：Session / AIF(Device) / Graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metadata-合并gkv-的最终成形" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metadata 合并：GKV 的最终成形
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#三graph映射到-gsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、Graph：映射到 GSL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、Graph：映射到 GSL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agm-侧的完整时序" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AGM 侧的完整时序
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#四agm-还管什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、AGM 还管什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -752,7 +926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/06-gsl-acdb/" class="md-nav__link">
+      <a href="../06-gsl-acdb/" class="md-nav__link">
         
   
   
@@ -780,7 +954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/07-gpr/" class="md-nav__link">
+      <a href="../07-gpr/" class="md-nav__link">
         
   
   
@@ -808,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/08-spf-dsp/" class="md-nav__link">
+      <a href="../08-spf-dsp/" class="md-nav__link">
         
   
   
@@ -836,7 +1010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blogs/audioreach-arch/09-kernel/" class="md-nav__link">
+      <a href="../09-kernel/" class="md-nav__link">
         
   
   
@@ -2068,10 +2242,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -2099,22 +2271,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -2132,7 +2301,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2150,7 +2319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/overview/" class="md-nav__link">
         
   
   
@@ -2178,7 +2347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../enable-audio/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/enable-audio/" class="md-nav__link">
         
   
   
@@ -2206,7 +2375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pal/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/pal/" class="md-nav__link">
         
   
   
@@ -2234,7 +2403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tinyalsa/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/tinyalsa/" class="md-nav__link">
         
   
   
@@ -2259,37 +2428,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    定制音频图（AGM）
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/agm/" class="md-nav__link">
         
   
   
@@ -2305,115 +2447,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#音频图相关术语" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频图相关术语
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#图的分段" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        图的分段
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#音频图示例" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频图示例
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="音频图示例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#音频图管理器agm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频图管理器（AGM）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#audioreach-图服务args" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AudioReach 图服务（ARGS）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#音频校准数据库acdb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频校准数据库（acdb）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="音频校准数据库（acdb）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#信号处理框架spf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        信号处理框架（SPF）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2426,7 +2459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../customize/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/customize/" class="md-nav__link">
         
   
   
@@ -2454,7 +2487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/features/" class="md-nav__link">
         
   
   
@@ -2482,7 +2515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshoot/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/troubleshoot/" class="md-nav__link">
         
   
   
@@ -2510,7 +2543,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7%E8%A1%A8/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7%E8%A1%A8/" class="md-nav__link">
         
   
   
@@ -2538,7 +2571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../references/" class="md-nav__link">
+      <a href="../../../qcom-linux-audio-guide/docs-zh/references/" class="md-nav__link">
         
   
   
@@ -2684,44 +2717,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#音频图相关术语" class="md-nav__link">
+  <a href="#一alsa-pluginalsa-请求的入口" class="md-nav__link">
     <span class="md-ellipsis">
       
-        音频图相关术语
+        一、ALSA plugin：ALSA 请求的入口
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#图的分段" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        图的分段
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#音频图示例" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        音频图示例
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="音频图示例">
+    <nav class="md-nav" aria-label="一、ALSA plugin：ALSA 请求的入口">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#音频图管理器agm" class="md-nav__link">
+  <a href="#mixer-pluginpal-的-control-变成-agm-调用" class="md-nav__link">
     <span class="md-ellipsis">
       
-        音频图管理器（AGM）
+        mixer plugin：PAL 的 control 变成 AGM 调用
       
     </span>
   </a>
@@ -2729,10 +2740,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#audioreach-图服务args" class="md-nav__link">
+  <a href="#pcm-plugin会话与数据" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AudioReach 图服务（ARGS）
+        pcm plugin：会话与数据
       
     </span>
   </a>
@@ -2745,22 +2756,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#音频校准数据库acdb" class="md-nav__link">
+  <a href="#二agm-的三大对象session--aifdevice--graph" class="md-nav__link">
     <span class="md-ellipsis">
       
-        音频校准数据库（acdb）
+        二、AGM 的三大对象：Session / AIF(Device) / Graph
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="音频校准数据库（acdb）">
+    <nav class="md-nav" aria-label="二、AGM 的三大对象：Session / AIF(Device) / Graph">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#信号处理框架spf" class="md-nav__link">
+  <a href="#metadata-合并gkv-的最终成形" class="md-nav__link">
     <span class="md-ellipsis">
       
-        信号处理框架（SPF）
+        Metadata 合并：GKV 的最终成形
       
     </span>
   </a>
@@ -2769,6 +2780,56 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#三graph映射到-gsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、Graph：映射到 GSL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、Graph：映射到 GSL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agm-侧的完整时序" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AGM 侧的完整时序
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#四agm-还管什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、AGM 还管什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小结
+      
+    </span>
+  </a>
   
 </li>
       
@@ -2792,192 +2853,176 @@
   
 
 
-<h1 id="定制音频图">定制音频图<a class="headerlink" href="#定制音频图" title="Permanent link">&para;</a></h1>
-<p>每个音频用例都是一张图（graph），由若干特定类型的子图（subgraph）构成。每个子图包含一个或多个功能性软件块（称为模块，module），各自完成特定功能。</p>
-<h2 id="音频图相关术语">音频图相关术语<a class="headerlink" href="#音频图相关术语" title="Permanent link">&para;</a></h2>
+<h1 id="第-5-篇-agm会话图设备编排与-alsa-plugin">第 5 篇 AGM：会话/图/设备编排与 ALSA plugin<a class="headerlink" href="#第-5-篇-agm会话图设备编排与-alsa-plugin" title="Permanent link">&para;</a></h1>
+<p>PAL 通过 tinyALSA 的 pcm 节点和 mixer control 下发请求。这些请求进内核 ALSA 后，被
+一层 <strong>AGM plugin</strong> 截获，转成对 <strong>AGM 服务</strong> 的调用。AGM（Audio Graph Manager）是
+连接“ALSA 世界”和“图世界”的枢纽：它对上说 ALSA 的语言，对下调 GSL 的 <code>gsl_*</code>。</p>
+<p>这一篇讲三块：ALSA plugin 如何进入 AGM、AGM 的会话/设备/图三大对象、以及 graph 如何
+映射到 GSL。</p>
+<h2 id="一alsa-pluginalsa-请求的入口">一、ALSA plugin：ALSA 请求的入口<a class="headerlink" href="#一alsa-pluginalsa-请求的入口" title="Permanent link">&para;</a></h2>
+<p><code>agm/plugins/tinyalsa/src/</code> 下有三个 plugin，分别接管
+ALSA 的三类操作：</p>
 <table>
 <thead>
 <tr>
-<th>术语</th>
-<th>说明</th>
+<th>plugin</th>
+<th>接管</th>
+<th>关键转调</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>用例（Use case）</strong></td>
-<td>一张由模块组成的图，从源端点（source endpoint）连到汇端点（sink endpoint），满足产品定义的用例需求。</td>
+<td><code>agm_mixer_plugin.c</code></td>
+<td>所有 mixer control（控制面）</td>
+<td><code>agm_session_set_metadata</code> / <code>agm_session_aif_connect</code> / <code>agm_set_params_with_tag</code></td>
 </tr>
 <tr>
-<td><strong>图（Graph）</strong></td>
-<td>对一组相互连接的子图的逻辑表述，用于实现某个特定用例。</td>
+<td><code>agm_pcm_plugin.c</code></td>
+<td>PCM 设备节点（数据面 + 会话生命周期）</td>
+<td><code>agm_session_open/prepare/start</code> / <code>agm_session_write/read</code></td>
 </tr>
 <tr>
-<td><strong>子图（Subgraph）</strong></td>
-<td>对一组模块的逻辑抽象，这些模块相互连接、作为一个整体被操作。</td>
-</tr>
-<tr>
-<td><strong>容器（Container）</strong></td>
-<td>让系统设计者能够把多个音频处理模块归到一起、在同一个软件线程中运行的对象。</td>
-</tr>
-<tr>
-<td><strong>模块（Module）</strong></td>
-<td>信号处理框架中最小的独立处理单元。</td>
-</tr>
-<tr>
-<td><strong>键值对（Key-Value，KV pair）</strong></td>
-<td>键向量中单个的键及其关联的值。例如，键可以是某个声音设备，值可以是耳机、扬声器或其他声音设备。</td>
-</tr>
-<tr>
-<td><strong>键向量（Key vector）</strong></td>
-<td>通过一组 KV 对唯一标识一张图或一个子图。</td>
-</tr>
-<tr>
-<td><strong>图键向量（Graph Key Vector，GKV）</strong></td>
-<td>GKV 是用于获取某张图的唯一标识，以 KV 对表示。系统设计者在 QACT UI 画布上创建子图时，会为其关联一组唯一的 <code>&lt;keys&gt;</code> 和 <code>&lt;values&gt;</code>。</td>
-</tr>
-<tr>
-<td><strong>校准键向量（Calibration Key Vector，CKV）</strong></td>
-<td>CKV 是用于获取校准数据的唯一标识，以 KV 对表示。系统设计者在存储校准数据时，会为其关联一组唯一的 <code>&lt;keys&gt;</code> 和 <code>&lt;values&gt;</code>。</td>
-</tr>
-<tr>
-<td><strong>标签与标签键向量（Tag / Tag Key Vector，TKV）</strong></td>
-<td>标签（tag）是一种标识符，用于设置一个或多个模块的运行时参数。它允许在运行时更新模块配置（例如启用/禁用回声消除、均衡等特性）。</td>
+<td><code>agm_compress_plugin.c</code></td>
+<td>compress 节点</td>
+<td>offload 版本的上述调用</td>
 </tr>
 </tbody>
 </table>
-<h2 id="图的分段">图的分段<a class="headerlink" href="#图的分段" title="Permanent link">&para;</a></h2>
-<p>一个音频用例包含以下几段。</p>
-<p>前端（front-end）对应 stream 与 streamPP 子图，后端（back-end）对应每流每设备（Per-Stream Per-Device，PSPD）、devicePP 和 device 子图。</p>
-<table>
-<thead>
-<tr>
-<th>分段</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Stream</strong></td>
-<td>提供数据写入/读取接口，并对压缩数据进行解码与编码。</td>
-</tr>
-<tr>
-<td><strong>StreamPP</strong></td>
-<td>承载基于流的处理模块（例如均衡器 equalizer）。</td>
-</tr>
-<tr>
-<td><strong>PSPD</strong></td>
-<td>承载一个模块，负责把流的媒体格式转换成设备的媒体格式。</td>
-</tr>
-<tr>
-<td><strong>DevicePP</strong></td>
-<td>承载用于声音设备调音（tuning）的处理模块。</td>
-</tr>
-<tr>
-<td><strong>Device</strong></td>
-<td>硬件端点，例如 CodecDMA（SoundWire）、I2S 或 TDM 端口。</td>
-</tr>
-</tbody>
-</table>
-<p>前端通过路由混音器控件（routing mixer control）连接到后端后，完整的 GKV 由子图 GKV 与通过混音器控件指定的 CKV 拼接而成。当打开前端的 PCM 或压缩（compress）设备时，AGM 用拼接好的 GKV 与 CKV 调用 GSL API，在 SPF 中搭建图并应用校准。与此同时，AGM 打开与所连接后端相对应的内核 PCM 设备，开始配置音频外设。</p>
-<h2 id="音频图示例">音频图示例<a class="headerlink" href="#音频图示例" title="Permanent link">&para;</a></h2>
-<p>下图展示了一个用于播放场景的音频图示例。</p>
-<p><img alt="播放用音频图示例" src="../../images/agm-sample_audio_graph.svg" /></p>
-<p><em>播放用音频图示例</em></p>
-<p>在这张图中：</p>
-<ol>
-<li>stream 子图包含一个写共享内存端点（write shared memory endpoint）、一个 PCM 解码器和一个 PCM 转换器。客户端把 PCM 采样数据传给写共享内存端点。</li>
-<li>如有必要，PCM 转换器会把 PCM 采样转换成流专属后处理模块所支持的格式。</li>
-<li>stream 子图的输出送入 stream-device 子图，其中包含媒体格式转换器（Media Format Converter，MFC）。MFC 把 stream 子图的 PCM 转换成 device 子图的 PCM 格式。</li>
-<li>转换完成后，stream-device 子图的输出送入 device PP 子图，进行设备专属的后处理。子图开头放置了一个混音器（mixer），用于混合输入流。</li>
-<li>devicePP 子图的输出接着送入 device 子图，其中包含硬件端点模块，例如 I2S 驱动。</li>
-</ol>
-<p>这张示例图对应的 GKV 如下：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>GKV1: &lt;StreamRX1 KVs, StreamRX2 PP KVs, StreamRX1DeviceRX KVs, DeviceRX PP KVs, DeviceRX KVs&gt;
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>GKV2: &lt;StreamRX2 KVs, StreamRX2 PP KVs, StreamRX2DeviceRX KVs, DeviceRX PP KVs, DeviceRX KVs&gt;
+<h3 id="mixer-pluginpal-的-control-变成-agm-调用">mixer plugin：PAL 的 control 变成 AGM 调用<a class="headerlink" href="#mixer-pluginpal-的-control-变成-agm-调用" title="Permanent link">&para;</a></h3>
+<p>回忆第 4 篇，PAL 写了 <code>FE_METADATA</code>、<code>FE_CONNECT</code>、<code>setParamTag</code> 等 control。
+mixer plugin 就是这些 control 的<strong>注册者与处理者</strong>
+（<code>agm_mixer_plugin.c</code>）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// PAL 写 metadata control → plugin 收到 →</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">agm_session_set_metadata</span><span class="p">(</span><span class="n">pcm_idx</span><span class="p">,</span><span class="w"> </span><span class="n">tlv_size</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">);</span><span class="w">          </span><span class="c1">// :1232</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">// PAL 写 connect control（FE 连 BE）→</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">agm_session_aif_connect</span><span class="p">(</span><span class="n">pcm_idx</span><span class="p">,</span><span class="w"> </span><span class="n">be_idx</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">);</span><span class="w">              </span><span class="c1">// :1079</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">// PAL 写 setParamTag（TKV 参数）→</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strstr</span><span class="p">(</span><span class="n">ctl</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;setParamTag&quot;</span><span class="p">))</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">agm_set_params_with_tag</span><span class="p">(</span><span class="n">pcm_idx</span><span class="p">,</span><span class="w"> </span><span class="n">be_idx</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">);</span><span class="w">        </span><span class="c1">// :1442</span>
 </code></pre></div>
-<h3 id="音频图管理器agm">音频图管理器（AGM）<a class="headerlink" href="#音频图管理器agm" title="Permanent link">&para;</a></h3>
-<p>音频图管理器（Audio Graph Manager，AGM）提供接口，使基于 TinyALSA 的混音器控件与 PCM/压缩音频插件能够相互交互，进而启用各类音频用例。AGM 作为运行在用户空间的 PipeWire 服务的一部分运行。</p>
-<p>AGM 为混音器插件以及 PCM/压缩 API 提供接口，用于搭建音频用例。它维护多个 ALSA 客户端来搭建用例，同时还负责管理前端到后端的连接。</p>
-<p>下图展示了 AGM 模块的高层结构。</p>
-<p><img alt="AGM 软件模块（高层）" src="../../images/agm-AGM_service_blocks.svg" /></p>
-<p><em>AGM 软件模块（高层）</em></p>
+<p>这就闭合了第 4 篇的链路：<strong>PAL 的 mixer_ctl_set_array → 内核 ALSA → AGM plugin →
+agm_session_xxx()。</strong> <code>pcm_idx</code> 就是前端号，<code>be_idx</code> 是后端号，metadata payload 里
+就装着 GKV/CKV。</p>
+<h3 id="pcm-plugin会话与数据">pcm plugin：会话与数据<a class="headerlink" href="#pcm-plugin会话与数据" title="Permanent link">&para;</a></h3>
+<p>PCM 设备节点的打开/写读被 pcm plugin 转成会话生命周期
+（<code>agm_pcm_plugin.c</code>）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">agm_session_open</span><span class="p">(</span><span class="n">session_id</span><span class="p">,</span><span class="w"> </span><span class="n">sess_mode</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">handle</span><span class="p">);</span><span class="w">   </span><span class="c1">// :998  打开会话</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">agm_session_prepare</span><span class="p">(</span><span class="n">handle</span><span class="p">);</span><span class="w">                        </span><span class="c1">// :646</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">agm_session_start</span><span class="p">(</span><span class="n">handle</span><span class="p">);</span><span class="w">                          </span><span class="c1">// :662</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">agm_session_write</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">buff</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">count</span><span class="p">);</span><span class="w">            </span><span class="c1">// :584  数据面</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">agm_session_read</span><span class="w"> </span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">buff</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">count</span><span class="p">);</span><span class="w">            </span><span class="c1">// :608</span>
+</code></pre></div>
+<p><strong>控制面（mixer）和数据面（pcm）在 AGM 这层仍然分开</strong>，但都汇聚到同一个 <code>session_id</code>
+标识的会话对象上。</p>
+<h2 id="二agm-的三大对象session--aifdevice--graph">二、AGM 的三大对象：Session / AIF(Device) / Graph<a class="headerlink" href="#二agm-的三大对象session--aifdevice--graph" title="Permanent link">&para;</a></h2>
+<p>AGM 内部围绕三个对象组织（<code>agm/service/src/</code>）：</p>
 <table>
 <thead>
 <tr>
 <th>对象</th>
-<th>说明</th>
+<th>文件</th>
+<th>角色</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Session（会话）</strong></td>
-<td>会话对象代表一次音频播放或采集会话。调用会话专属的混音器控件或 API 会创建会话。它为 TinyALSA 插件提供配置流的 API，并管理图对象与设备对象的状态转换。</td>
+<td><strong>Session</strong></td>
+<td><code>session_obj.c</code></td>
+<td>一路用例的编排中心，持有 metadata、graph、绑定的 AIF 列表</td>
 </tr>
 <tr>
-<td><strong>Graph（图）</strong></td>
-<td>图对象代表一个音频用例。它与 GSL 交互，负责打开、管理和关闭图；提供图创建的 API，管理图，并配置流与设备端点。</td>
+<td><strong>AIF / Device</strong></td>
+<td><code>device.c</code> / <code>device_hw_ep.c</code></td>
+<td>Audio Interface：后端/硬件端点，持设备 metadata 与媒体配置</td>
 </tr>
 <tr>
-<td><strong>Device（设备）</strong></td>
-<td>设备对象代表 ALSA 声卡中的一个 ALSA 设备。它枚举可用的音频接口，并提供用于切换设备状态的设备 API。</td>
+<td><strong>Graph</strong></td>
+<td><code>graph.c</code> / <code>graph_module.c</code></td>
+<td>对 GSL 的封装，一个 graph 对应 DSP 上一张图</td>
 </tr>
 </tbody>
 </table>
-<h3 id="audioreach-图服务args">AudioReach 图服务（ARGS）<a class="headerlink" href="#audioreach-图服务args" title="Permanent link">&para;</a></h3>
-<p>AudioReach™ 信号处理框架图服务（AudioReach Graph Services，ARGS）由图服务层（Graph Service Layer，GSL）、通用数据包路由器（Generic Packet Router，GPR）和 acdb 管理层（acdb Management Layer，AML）组成。它负责图的初始化与创建，以及构造数据包，向 SPF 下发一系列命令。</p>
-<table>
-<thead>
-<tr>
-<th>组件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>GSL</strong></td>
-<td>图服务层（GSL）是 SPF 的软件驱动，负责管理图、子图、缓冲区和各类配置。它使用图键向量（GKV）加载并初始化图，处理数据命令以及 SPF 模块校准。</td>
-</tr>
-<tr>
-<td><strong>GPR</strong></td>
-<td>通用数据包路由器（GPR）在 SPF 与图服务库之间路由音频消息数据包。处理用于构建音频图和处理音频的命令。</td>
-</tr>
-<tr>
-<td><strong>AML</strong></td>
-<td>acdb 管理层（AML）提供 get/set API，用于读取和调整 acdb 文件中的数据。它为音频驱动及其组件如何消费校准数据提供了数据抽象与组织方式。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="音频校准数据库acdb">音频校准数据库（acdb）<a class="headerlink" href="#音频校准数据库acdb" title="Permanent link">&para;</a></h2>
-<p>acdb 是应用处理器上的一个静态数据库，包含 LPAI 的全部调音/校准参数。<code>*.acdb</code> 文件格式负责为各种用例、各种音频模块组织校准数据。</p>
-<p>用 QACT（一款 PC 工具）编辑这种文件格式，并把文件放到设备文件系统的 <code>/etc/acdbdata/</code> 目录下。在用例初始化或设备切换期间，AML 会用指定的 GKV 查询 acdb 数据库，并把设备校准数据推送给 SPF。</p>
-<h3 id="信号处理框架spf">信号处理框架（SPF）<a class="headerlink" href="#信号处理框架spf" title="Permanent link">&para;</a></h3>
-<p>信号处理框架（Signal Processing Framework，SPF）运行在 LPAI 子系统中，负责音频数据处理。</p>
-<p>下图给出了 SPF 中所用功能块的高层概览。</p>
-<p><img alt="SPF 软件模块（高层）" src="../../images/agm-spf_blocks.svg" /></p>
-<p><em>SPF 软件模块（高层）</em></p>
-<table>
-<thead>
-<tr>
-<th>组件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>APM</strong></td>
-<td>音频处理管理器（Audio Processing Manager，APM）在 SPF 中搭建并管理用例图。它向图管理库和 APM 客户端提供标准 API，用于搭建和配置音频用例。</td>
-</tr>
-<tr>
-<td><strong>Modules（模块）</strong></td>
-<td>模块是 SPF 中的功能块，在 LPAI 子系统中执行实时音频处理。</td>
-</tr>
-<tr>
-<td><strong>Containers（容器）</strong></td>
-<td>容器是一种框架实现，把一组数据处理模块放在同一个软件线程中一起运行。每个容器都运行在各自独立的软件线程里。</td>
-</tr>
-</tbody>
-</table>
+<p>三者关系：<strong>一个 Session 通过 <code>agm_session_aif_connect</code> 绑定一个或多个 AIF；每个
+(Session, AIF) 组合的 metadata 合并后，开出一个 Graph。</strong></p>
+<h3 id="metadata-合并gkv-的最终成形">Metadata 合并：GKV 的最终成形<a class="headerlink" href="#metadata-合并gkv-的最终成形" title="Permanent link">&para;</a></h3>
+<p>AudioReach 的图由 GKV 唯一确定，而完整的 GKV 是<strong>多来源合并</strong>的结果。看
+<code>session_obj.c</code> 里遍布的 <code>metadata_merge</code>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// session_obj.c:752 —— 打开图前合并三层 metadata</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">merged_metadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metadata_merge</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sess_obj</span><span class="o">-&gt;</span><span class="n">sess_meta</span><span class="p">,</span><span class="w">          </span><span class="c1">// 会话级</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">                                     </span><span class="o">&amp;</span><span class="n">aif_obj</span><span class="o">-&gt;</span><span class="n">sess_aif_meta</span><span class="p">,</span><span class="w">      </span><span class="c1">// 会话+AIF 级</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">                                     </span><span class="o">&amp;</span><span class="n">aif_obj</span><span class="o">-&gt;</span><span class="n">dev_obj</span><span class="o">-&gt;</span><span class="n">metadata</span><span class="p">);</span><span class="w"> </span><span class="c1">// 设备级</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">...</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">graph_open</span><span class="p">(</span><span class="n">merged_metadata</span><span class="p">,</span><span class="w"> </span><span class="n">sess_obj</span><span class="p">,</span><span class="w"> </span><span class="n">aif_obj</span><span class="o">-&gt;</span><span class="n">dev_obj</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">graph_obj</span><span class="p">);</span><span class="w">  </span><span class="c1">// :776</span>
+</code></pre></div>
+<p>这正好对应第 4 篇 PAL 下发的三类 metadata（stream / device / stream-device）。<strong>AGM
+把它们按会话/设备维度合并成一个完整的 GKV+CKV，再交给 graph_open。</strong> 这是“图到底长啥样”
+的最终决定点（在 APPS 侧）。</p>
+<h2 id="三graph映射到-gsl">三、Graph：映射到 GSL<a class="headerlink" href="#三graph映射到-gsl" title="Permanent link">&para;</a></h2>
+<p><code>graph.c</code> 是对 GSL 的薄封装。它把 AGM 的动作一一映射成 <code>gsl_*</code> 调用，命令类操作统一走
+<code>gsl_ioctl</code>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// graph.c —— AGM 动作 → GSL 调用</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">graph_open</span><span class="w">   </span><span class="err">→</span><span class="w">  </span><span class="n">gsl_open</span><span class="p">(</span><span class="o">&amp;</span><span class="n">gkv</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ckv</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">graph_handle</span><span class="p">);</span><span class="w">            </span><span class="c1">// :667</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">graph_prepare</span><span class="err">→</span><span class="w">  </span><span class="n">gsl_ioctl</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">GSL_CMD_PREPARE</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w">        </span><span class="c1">// :856</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">graph_start</span><span class="w">  </span><span class="err">→</span><span class="w">  </span><span class="n">gsl_ioctl</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">GSL_CMD_START</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w">          </span><span class="c1">// :882</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">graph_stop</span><span class="w">   </span><span class="err">→</span><span class="w">  </span><span class="n">gsl_ioctl</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">GSL_CMD_STOP</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w">           </span><span class="c1">// :948</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">graph_add</span><span class="w">    </span><span class="err">→</span><span class="w">  </span><span class="n">gsl_ioctl</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">GSL_CMD_ADD_GRAPH</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w">      </span><span class="c1">// :1458  动态扩图</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">graph_change</span><span class="w"> </span><span class="err">→</span><span class="w">  </span><span class="n">gsl_ioctl</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">GSL_CMD_CHANGE_GRAPH</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w">   </span><span class="c1">// :1697  切换拓扑</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">set_config</span><span class="w">   </span><span class="err">→</span><span class="w">  </span><span class="n">gsl_set_config</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">gkv</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w">              </span><span class="c1">// :1143</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">write</span><span class="w">        </span><span class="err">→</span><span class="w">  </span><span class="n">gsl_write</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w">                        </span><span class="c1">// :1359  数据面</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="n">read</span><span class="w">         </span><span class="err">→</span><span class="w">  </span><span class="n">gsl_read</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w">                         </span><span class="c1">// :1404</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">get_tag_info</span><span class="w"> </span><span class="err">→</span><span class="w">  </span><span class="n">gsl_get_tagged_module_info</span><span class="p">(</span><span class="n">gkv</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w">          </span><span class="c1">// :1480</span>
+</code></pre></div>
+<p>几个值得注意的点：</p>
+<ul>
+<li><strong><code>gsl_open</code> 只吃 GKV + CKV</strong>（<code>graph.c:667</code>）：
+  拓扑（GKV）+ 标定（CKV, Calibration Key Vector）就是图的全部输入。GSL 拿这两个 KV
+  去 ACDB 查出实际子图。<strong>AGM 到这里就“交棒”了，它不知道图内部长啥样，那是 GSL+ACDB 的事。</strong></li>
+<li><strong><code>GSL_CMD_ADD_GRAPH</code> / <code>CHANGE_GRAPH</code></strong>：支持在运行中往图里加子图、或整体换拓扑——
+  这是设备切换、动态后处理挂载的底层能力。</li>
+<li><strong>回调</strong>：<code>gsl_register_event_cb(handle, gsl_callback_func, graph_obj)</code> 注册事件回调，
+  DSP 侧的事件（数据就绪、EOS、检测结果）经 GSL 回到 AGM，再经 pcm/mixer plugin 回到 PAL。</li>
+</ul>
+<h3 id="agm-侧的完整时序">AGM 侧的完整时序<a class="headerlink" href="#agm-侧的完整时序" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>PAL(mixer/pcm)      AGM plugin        session_obj        graph.c         GSL
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>   │ set metadata      │                  │                 │             │
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>   ├──────────────────►│ agm_session_set_metadata           │             │
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>   │                   ├─────────────────►│ 存 sess_meta     │             │
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>   │ aif_connect       │                  │                 │             │
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>   ├──────────────────►│ agm_session_aif_connect            │             │
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>   │                   ├─────────────────►│ metadata_merge   │             │
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>   │                   │                  ├─ graph_open ────►│ gsl_open ──►│ (查ACDB建图)
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>   │ pcm open          │                  │                 │             │
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>   ├──────────────────►│ agm_session_open │                 │             │
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>   │ pcm prepare/start │                  ├─ graph_prepare ─►│ GSL_CMD_PREPARE
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>   ├──────────────────►│ agm_session_start├─ graph_start ──►│ GSL_CMD_START
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>   │ pcm write         │                  │                 │             │
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>   ├──────────────────►│ agm_session_write├─ graph_write ──►│ gsl_write ─►│ (共享内存到DSP)
+</code></pre></div>
+<h2 id="四agm-还管什么">四、AGM 还管什么<a class="headerlink" href="#四agm-还管什么" title="Permanent link">&para;</a></h2>
+<p>除了编排，AGM 服务（<code>agm.c</code>）还负责：</p>
+<ul>
+<li><strong>会话池</strong>：<code>session_obj_get_from_pool</code> 按 <code>session_id</code> 复用会话对象
+  （<code>session_obj.c:356</code>），不存在则 <code>session_obj_create</code>。</li>
+<li><strong>回环/组合用例</strong>：<code>graph_add</code> 支持把回采（capture）与播放（playback）metadata 合并到
+  同一图（<code>session_obj.c:461</code>），实现 loopback、
+  EC reference 等。</li>
+<li><strong>AIF 媒体配置与标定</strong>：<code>agm_aif_set_media_config</code> / <code>agm_session_aif_set_cal</code> 把后端
+  采样率、通道、标定送下去。</li>
+<li><strong>可选 IPC</strong>：AGM 自己也能作为独立服务，<code>agm/ipc</code> 提供 DBus/HwBinder 包装（配置项
+  <code>--with-no-ipc</code> 可关）。</li>
+</ul>
+<h2 id="小结">小结<a class="headerlink" href="#小结" title="Permanent link">&para;</a></h2>
+<ul>
+<li>AGM plugin 是 ALSA 与 AGM 的接缝：mixer plugin 处理控制面（metadata/connect/setParamTag），
+  pcm/compress plugin 处理会话生命周期与数据面。</li>
+<li>AGM 内部三大对象 Session / AIF / Graph；<code>metadata_merge</code> 把 PAL 下发的三类 metadata
+  合并成完整 GKV+CKV，这是 APPS 侧“图长啥样”的最终决定点。</li>
+<li><code>graph.c</code> 把 AGM 动作映射成 <code>gsl_*</code>；<code>gsl_open(GKV, CKV)</code> 是交棒点——之后图的内部
+  结构由 GSL + ACDB 决定。</li>
+<li>ADD_GRAPH/CHANGE_GRAPH 提供运行时扩图/换图能力，是动态路由与后处理挂载的基础。</li>
+</ul>
+<p>下一篇进入真正的 graph solver——GSL 如何用 GKV/CKV 从 ACDB 求解出子图、管理共享内存
+与数据通路，以及 ACDB 里到底存了什么。</p>
 
 
 
@@ -3013,7 +3058,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../tinyalsa/" class="md-footer__link md-footer__link--prev" aria-label="上一页: TinyALSA 应用">
+          <a href="../04-pal-session-ipc/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 四、PAL Session 与 IPC">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3023,20 +3068,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                TinyALSA 应用
+                四、PAL Session 与 IPC
               </div>
             </div>
           </a>
         
         
           
-          <a href="../customize/" class="md-footer__link md-footer__link--next" aria-label="下一页: 定制音频用例">
+          <a href="../06-gsl-acdb/" class="md-footer__link md-footer__link--next" aria-label="下一页: 六、GSL + ACDB：图求解与标定">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                定制音频用例
+                六、GSL + ACDB：图求解与标定
               </div>
             </div>
             <div class="md-footer__button md-icon">
