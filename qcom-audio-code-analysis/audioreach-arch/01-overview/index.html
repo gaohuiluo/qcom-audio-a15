@@ -12,7 +12,7 @@
         <meta name="author" content="gaohuiluo">
       
       
-        <link rel="canonical" href="https://gaohuiluo.github.io/qcom-audio-a15/blogs/audioreach-arch/01-overview/">
+        <link rel="canonical" href="https://gaohuiluo.github.io/qcom-audio-a15/qcom-audio-code-analysis/audioreach-arch/01-overview/">
       
       
         <link rel="prev" href="../">
@@ -246,13 +246,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../qcom-audioreach-zh/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../blogs/qcom-audioreach-zh/" class="md-tabs__link">
           
   
   
@@ -314,11 +312,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../qcom-audio-code-analysis/%E9%AB%98%E9%80%9A%20AudioReach%20%E9%9F%B3%E9%A2%91%E6%9E%B6%E6%9E%84%E8%AF%A6%E8%A7%A3/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../%E9%AB%98%E9%80%9A%20AudioReach%20%E9%9F%B3%E9%A2%91%E6%9E%B6%E6%9E%84%E8%AF%A6%E8%A7%A3/" class="md-tabs__link">
           
   
   
@@ -408,14 +408,10 @@
       
   
   
-    
   
   
-  
     
     
-      
-        
       
         
       
@@ -425,22 +421,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -458,7 +451,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -476,7 +469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../qcom-audioreach-zh/" class="md-nav__link">
+      <a href="../../../blogs/qcom-audioreach-zh/" class="md-nav__link">
         
   
   
@@ -504,7 +497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linaro-connect-2024-talk/" class="md-nav__link">
+      <a href="../../../blogs/linaro-connect-2024-talk/" class="md-nav__link">
         
   
   
@@ -520,519 +513,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    AudioReach 架构解析（PAL 到 DSP）
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    AudioReach 架构解析（PAL 到 DSP）
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    一、总览：七层全景与端到端追踪
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    一、总览：七层全景与端到端追踪
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#为什么是图" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        为什么是“图”
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#七层全景" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        七层全景
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#端到端路径追踪一次-pcm-播放" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        端到端路径追踪：一次 PCM 播放
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="端到端路径追踪：一次 PCM 播放">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-打开pal_stream_open" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1) 打开：pal_stream_open
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-建会话与设备streampcm-构造" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2) 建会话与设备：StreamPCM 构造
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-启动pal_stream_start--streampcmstart" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3) 启动：pal_stream_start → StreamPCM::start
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-会话向下session--agm--gsl--gpr--dsp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4) 会话向下：Session → AGM → GSL → GPR → DSP
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#端到端时序简化" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        端到端时序（简化）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#各仓库速览后续每篇的落点" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        各仓库速览（后续每篇的落点）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#小结" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        小结
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-pal-stream/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    二、PAL（上）：入口与 Stream 家族
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-pal-rm-device/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    三、PAL（下）：ResourceManager 与 Device
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04-pal-session-ipc/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    四、PAL Session 与 IPC
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-agm/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    五、AGM：编排与 ALSA plugin
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06-gsl-acdb/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    六、GSL + ACDB：图求解与标定
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07-gpr/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    七、GPR：通用包路由与跨核传输
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../08-spf-dsp/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    八、SPF/DSP：APM/Container/Module
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09-kernel/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    九、内核篇：audio-kernel-ar
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -2602,10 +2082,14 @@
       
   
   
+    
   
   
+  
     
     
+      
+        
       
         
       
@@ -2613,19 +2097,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -2643,7 +2130,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2661,7 +2148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../qcom-audio-code-analysis/%E9%AB%98%E9%80%9A%20AudioReach%20%E9%9F%B3%E9%A2%91%E6%9E%B6%E6%9E%84%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
+      <a href="../../%E9%AB%98%E9%80%9A%20AudioReach%20%E9%9F%B3%E9%A2%91%E6%9E%B6%E6%9E%84%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
         
   
   
@@ -2677,6 +2164,519 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioReach 架构解析（PAL 到 DSP）
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AudioReach 架构解析（PAL 到 DSP）
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一、总览：七层全景与端到端追踪
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一、总览：七层全景与端到端追踪
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#为什么是图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么是“图”
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#七层全景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七层全景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#端到端路径追踪一次-pcm-播放" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        端到端路径追踪：一次 PCM 播放
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="端到端路径追踪：一次 PCM 播放">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-打开pal_stream_open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) 打开：pal_stream_open
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-建会话与设备streampcm-构造" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) 建会话与设备：StreamPCM 构造
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-启动pal_stream_start--streampcmstart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) 启动：pal_stream_start → StreamPCM::start
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-会话向下session--agm--gsl--gpr--dsp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) 会话向下：Session → AGM → GSL → GPR → DSP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#端到端时序简化" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        端到端时序（简化）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#各仓库速览后续每篇的落点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        各仓库速览（后续每篇的落点）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-pal-stream/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二、PAL（上）：入口与 Stream 家族
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-pal-rm-device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    三、PAL（下）：ResourceManager 与 Device
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-pal-session-ipc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    四、PAL Session 与 IPC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-agm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    五、AGM：编排与 ALSA plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-gsl-acdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    六、GSL + ACDB：图求解与标定
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-gpr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    七、GPR：通用包路由与跨核传输
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-spf-dsp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    八、SPF/DSP：APM/Container/Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-kernel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    九、内核篇：audio-kernel-ar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
