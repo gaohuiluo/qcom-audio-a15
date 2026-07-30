@@ -86,17 +86,6 @@ nav:
   - 博客与演讲:
       - AudioReach 开源（中文）: blogs/qcom-audioreach-zh.md
       - Linaro Connect 2024 演讲: blogs/linaro-connect-2024-talk.md
-      - AudioReach 架构解析（PAL 到 DSP）:
-          - 系列总览: blogs/audioreach-arch/index.md
-          - 一、总览：七层全景与端到端追踪: blogs/audioreach-arch/01-overview.md
-          - 二、PAL（上）：入口与 Stream 家族: blogs/audioreach-arch/02-pal-stream.md
-          - 三、PAL（下）：ResourceManager 与 Device: blogs/audioreach-arch/03-pal-rm-device.md
-          - 四、PAL Session 与 IPC: blogs/audioreach-arch/04-pal-session-ipc.md
-          - 五、AGM：编排与 ALSA plugin: blogs/audioreach-arch/05-agm.md
-          - 六、GSL + ACDB：图求解与标定: blogs/audioreach-arch/06-gsl-acdb.md
-          - 七、GPR：通用包路由与跨核传输: blogs/audioreach-arch/07-gpr.md
-          - 八、SPF/DSP：APM/Container/Module: blogs/audioreach-arch/08-spf-dsp.md
-          - 九、内核篇：audio-kernel-ar: blogs/audioreach-arch/09-kernel.md
   - AudioReach 官方文档:
       - 概览: audioreach-official/md_zh/index.md
       - SDK 概览与路线图: audioreach-official/md_zh/sdk_overview.md
@@ -147,3 +136,16 @@ nav:
       - 参考资料: qcom-linux-audio-guide/docs-zh/references.md
   - 代码分析:
       - 高通 AudioReach 音频架构详解: qcom-audio-code-analysis/高通 AudioReach 音频架构详解.md
+      - AudioReach 架构解析（PAL 到 DSP）:
+          - 系列总览: qcom-audio-code-analysis/audioreach-arch/index.md
+          - 一、总览：七层全景与端到端追踪: qcom-audio-code-analysis/audioreach-arch/01-overview.md
+          - 二、PAL（上）：入口与 Stream 家族: qcom-audio-code-analysis/audioreach-arch/02-pal-stream.md
+          - 三、PAL（下）：ResourceManager 与 Device: qcom-audio-code-analysis/audioreach-arch/03-pal-rm-device.md
+          - 四、PAL Session 与 IPC: qcom-audio-code-analysis/audioreach-arch/04-pal-session-ipc.md
+          - 五、AGM：编排与 ALSA plugin: qcom-audio-code-analysis/audioreach-arch/05-agm.md
+          - 六、GSL + ACDB：图求解与标定: qcom-audio-code-analysis/audioreach-arch/06-gsl-acdb.md
+          - 七、GPR：通用包路由与跨核传输: qcom-audio-code-analysis/audioreach-arch/07-gpr.md
+          - 八、SPF/DSP：APM/Container/Module: qcom-audio-code-analysis/audioreach-arch/08-spf-dsp.md
+          - 九、内核篇：audio-kernel-ar: qcom-audio-code-analysis/audioreach-arch/09-kernel.md
+      
+      
